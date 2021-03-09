@@ -2,3 +2,5 @@
 *.pyc
 __pycahce__
 workspace.code-workspace
+settings.py
+.gitignore
