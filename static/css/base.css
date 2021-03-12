@@ -1,0 +1,102 @@
+/* ----------------------------------------- General */
+
+* {
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    /* border: 1px solid red; */
+}
+
+html {
+    font-size: 10px;
+}
+
+.no-gutters, figure {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2, .navbar-brand {
+    font-size: 3rem;
+    color: red;
+}
+
+h4 {
+    font-size: 2.2rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+a {
+    color: red;
+    border-bottom: none;
+}
+
+.btn-primary {
+    font-size: 2rem;
+    background-color: red;
+}
+
+input {
+    font-size: 2rem;
+}
+
+/* ----------------------------------------- Navbar */
+
+header {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+.nav-link {
+    font-size: 1.7rem;
+}
+
+#searchbar {
+    font-size: 1.7rem;
+    width: 32rem;
+}
+
+/* ----------------------------------------- Footer */
+
+footer {
+    margin-bottom: 5rem;
+}
+
+footer a {
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+/* ----------------------------------------- Homepage */
+
+.background-image {
+    min-width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+}
+
+.jumbotron {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 6.5rem 9rem;
+}
+
+.lead {
+    font-size: 2rem;
+}
+
+.cuisines {
+    margin-top: 10rem;
+}
+
+.cuisine i {
+    font-size: 2.4rem;
+}

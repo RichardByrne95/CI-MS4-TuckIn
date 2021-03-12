@@ -6,5 +6,103 @@
 {% endblock %}
 
 {% block content %}
-    <!-- <h1 class="display-4 text-success">It works!</h1> -->
+    <div class="container-fluid no-gutters">
+        <section>
+            <div class="row no-gutters">
+                <div class="col-12 no-gutters">
+                    <figure>
+                        <img src="{% static 'media/pan.jpg' %}" class="background-image" alt="#">
+                    </figure>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-4 no-gutters"></div>
+                <div class="col-4 no-gutters">
+                    <div class="jumbotron jumbotron-fluid text-center border border-dark rounded">
+                        <div class="container no-gutters">
+                            <h1>Tuck In to Some Goodness</h1>
+                            <p class="lead">Your One-Stop-Shop for Dublin's Best Restaurants</p>
+                            <p>Find restaurants near you, delivering right now</p>
+                            <input type="text" class="address">
+                            <button class="btn btn-lg btn-primary" type="submit">Find</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters"></div>
+            </div>
+        </section>
+        <section class="row no-gutters text-center cuisines">
+            <div class="col-2 no-gutters"></div>
+            <div class="col-8 no-gutters">
+                <div class="row no-gutters">
+                    <div class="col-2 no-gutters"></div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-pizza-slice"></i>
+                            </a>
+                            <p class="cuisine-text">Pizza</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-hamburger"></i>
+                            </a>
+                            <p class="cuisine-text">American</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-fish"></i>
+                            </a>
+                            <p class="cuisine-text">Seafood</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-egg"></i>
+                            </a>
+                            <p class="cuisine-text">Vegetarian</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-pepper-hot"></i>
+                            </a>
+                            <p class="cuisine-text">Indian</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-carrot"></i>
+                            </a>
+                            <p class="cuisine-text">Vegan</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </a>
+                            <p class="cuisine-text">Chicken</p>
+                        </span>
+                    </div>
+                    <div class="col-1 no-gutters">
+                        <span class="cuisine">
+                            <a href="#" class="cuisine-icon">
+                                <i class="fas fa-cookie"></i>
+                            </a>
+                            <p class="cuisine-text">Treats</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 no-gutters"></div>
+        </section>
+    </div>
 {% endblock %}
