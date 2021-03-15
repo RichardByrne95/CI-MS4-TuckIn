@@ -25,7 +25,7 @@
 
     {% block corejs %}
         <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e2f6d2d599.js" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
@@ -42,16 +42,16 @@
     <header class="fixed-top">
         {% block page_header %}
         {% endblock %}
-        <div class="row">
+        <div id="topnav" class="row d-none d-lg-flex">
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid justify-content-evenly align-items-center">
                         <h2 class="logo d-flex justify-content-start"><a href="#" class="navbar-brand">TuckIn - Dublin</a></h2>
-                        <div class="search-bar d-flex justify-content-end">
+                        <div class="search-bar-container d-flex justify-content-end">
                             <form action="#" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
                                     placeholder="Favourite Restaurant?">
-                                <button class="form-control btn rounded-0" type="submit">
+                                <button id="desktop-search-button" class="form-control btn rounded-0" type="submit">
                                     <span class="search-icon"><i class="fas fa-search"></i></span>
                                 </button>
                             </form>
@@ -72,6 +72,15 @@
                     </div>
                 </nav>
             </div>
+        </div>
+        <div class="row bg-white d-flex d-lg-none">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {% include 'includes/mobile-top-header.html' %}
+            </nav>
         </div>
     </header>
 
