@@ -2,7 +2,13 @@
 
 #### Food Images Source
 
+Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
 https://www.kaggle.com/kmader/food41
+
+#### Logo Images Sources
+
+Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
+McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/)
 
 ### Django Secret Key Exposure
 
