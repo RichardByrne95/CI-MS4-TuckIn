@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+    | Restaurants
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid no-gutters">
+        <section>
+            <div class="row no-gutters">
+                <div class="col-3 no-gutters bg-red"></div>
+                <div class="col-9 no-gutters bg-blue">
+                    {% for restaurant in restaurants %}
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="card h-100 border-0">
+                                {% if restaurant.logo %}
+                                    <a href="#">
+                                        <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }}" class="card-img-top img-fluid">
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-3 no-gutters bg-red"></div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
