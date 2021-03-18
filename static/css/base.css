@@ -74,6 +74,10 @@ header {
     padding: 0 1rem 2rem 1rem;
 }
 
+.search-icon {
+    transition: all 0s ease-in-out;
+}
+
 .search-bar-container {
     padding-top: 1.3rem;
 }
@@ -158,16 +162,18 @@ footer a, footer span {
 
 .cuisines-section {
     margin-top: 10rem;
-    -webkit-box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
-    -moz-box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
-    box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
+}
+
+.cuisines-container {
+    -webkit-box-shadow: 0px 4px 17px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 17px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 17px -4px rgba(0,0,0,0.75);
 }
 
 .cuisine-col {
     background-color: rgba(255, 68, 0, 0.808);
     padding: 1.25rem 0 1rem 0;
-    
-    
+    transition: text-decoration .05s ease-in-out, box-shadow .05s ease-in-out;
 }
 
 .cuisine i {
