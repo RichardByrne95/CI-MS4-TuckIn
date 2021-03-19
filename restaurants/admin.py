@@ -7,7 +7,7 @@ class RestaurantsAdmin(admin.ModelAdmin):
         'name',
         'cuisine',
         'rating',
-        'delivery_charge',
+        'delivery_cost',
     )
 
     ordering = ('name',)

@@ -7,23 +7,37 @@
 
 {% block content %}
     <div class="container-fluid no-gutters">
-        <section>
+        <section id="restaurants">
             <div class="row no-gutters">
-                <div class="col-3 no-gutters bg-red"></div>
-                <div class="col-9 no-gutters bg-blue">
+                <div class="col-1 d-none d-lg-block no-gutters"></div>
+                <div class="col-2 no-gutters cuisines-col"></div>
+                <div class="col-8 no-gutters">
+                    <h4 class="d-inline-block">6 Restaurants Near You</h4>
+                    <span><a href="#">change location</a></span>
+                    <p class="sort-by">Sort by:</p>
                     {% for restaurant in restaurants %}
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 border-0">
-                                {% if restaurant.logo %}
-                                    <a href="#">
-                                        <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }}" class="card-img-top img-fluid">
-                                    </a>
-                                {% endif %}
+                        <div class="col-12 col-md-6 col-lg-4 d-inline-block">
+                            <div class="card bg-light h-100 border-0">
+                                <a href="#" class="card-body">
+                                    <div class="restaurant-card-cover-image-container">
+                                        {% if restaurant.cover_image %}
+                                            <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                        {% endif %}    
+                                        {% if restaurant.logo %}
+                                            <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                        {% endif %}
+                                    </div>   
+
+                                    <p class="card-title">{{ restaurant.friendly_name }}</p>
+                                    <p class="card-text">{{ restaurant.rating }}</p>
+                                    <p class="card-text">{{ restaurant.cuisine }}</p>
+                                    <p class="card-text">Delivery: €{{ restaurant.delivery_cost }}</p>
+                                </a>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
-                <div class="col-3 no-gutters bg-red"></div>
+                <div class="col-1 no-gutters bg-red"></div>
             </div>
         </section>
     </div>

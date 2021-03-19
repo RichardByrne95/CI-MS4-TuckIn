@@ -50,7 +50,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid justify-content-evenly align-items-center">
-                        <h2 class="logo d-flex justify-content-start"><a href="#" class="navbar-brand">TuckIn - Dublin</a></h2>
+                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand">TuckIn - Dublin</a></h2>
                         <div class="search-bar-container d-flex justify-content-end">
                             <form action="#" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
@@ -97,7 +97,7 @@
         {% endblock %}
     </main>
 
-    <footer class="fixed-bottom">
+    <footer class="footer">
         {% block footer %}
         {% endblock %}
         <div class="d-flex justify-content-center">
