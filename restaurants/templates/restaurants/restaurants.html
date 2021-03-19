@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mathfilters %}
+{% load restaurants_extra %}
 
 {% block extra_title %}
     | Restaurants
@@ -10,6 +12,7 @@
         <section id="restaurants">
             <div class="row no-gutters">
                 <div class="col-1 d-none d-lg-block no-gutters"></div>
+                <!-- Cuisines Column -->
                 <div class="col-1 no-gutters d-none d-lg-block text-center restaurant-cuisines-col">
                     <h4>Cuisines</h4>
                     <div class="restaurant-cuisine">
@@ -62,6 +65,7 @@
                     </div>
                 </div>
                 <div class="col-9 no-gutters">
+                    <!-- Restaurants Near You -->
                     <div class="row">
                         <div class="col-12">
                             <h4 class="d-inline-block">6 Restaurants Near You</h4>
@@ -69,22 +73,45 @@
                             <p class="sort-by">Sort by:</p>
                         </div>
                     </div>
-                    <div class="restaurant-list">
+                    <!-- Restaurant Cards -->
+                    <div class="row restaurant-list">
                         {% for restaurant in restaurants %}
                             <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
-                                <div class="card bg-light h-100 border-0">
+                                <!-- Card -->
+                                <div class="card h-100 border-0">
                                     <a href="#" class="card-body">
                                         <div class="restaurant-card-cover-image-container">
+                                            <!-- Images -->
                                             {% if restaurant.cover_image %}
                                                 <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
                                             {% endif %}    
                                             {% if restaurant.logo %}
                                                 <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
                                             {% endif %}
-                                        </div>   
+                                        </div>
+                                        <!-- Name -->
                                         <p class="card-title">{{ restaurant.friendly_name }}</p>
-                                        <p class="card-text">{{ restaurant.rating }}</p>
-                                        <p class="card-text">{{ restaurant.cuisine }}</p>
+                                        <!-- Rating -->
+                                        <p class="card-text restaurant-rating">
+                                            {% for star in 5|create_list_from_number %}
+                                                {% if forloop.counter <= restaurant.rating %}
+                                                    <span><i class="fas fa-star"></i></span>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if restaurant.rating < 4.7 %}
+                                                {% with rating_remainder=5|sub:restaurant.rating %}
+                                                    {% if rating_remainder|remove_whole_number > 0.2 and rating_remainder|remove_whole_number < 0.8 %}
+                                                        <span><i class="fas fa-star-half-alt"></i></span>
+                                                    {% endif %}
+                                                    {% with rating_remainder_integer=rating_remainder|remove_decimals %}
+                                                        {% for num in rating_remainder_integer|create_list_from_number %}
+                                                            <span><i class="far fa-star"></i></span>
+                                                        {% endfor %}
+                                                    {% endwith %}
+                                                {% endwith %}
+                                            {% endif %}
+                                        </p>
+                                        <!-- Delivery Cost -->
                                         <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
                                     </a>
                                 </div>

@@ -12,10 +12,6 @@
     font-size: 10px;
 }
 
-html {
-    
-}
-
 main {
     margin-bottom: 10rem;
 }
@@ -115,7 +111,7 @@ footer {
     padding-bottom: 4rem;
     padding-top: 3rem;
     background-color: #f1f2f4;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
 }
@@ -125,8 +121,8 @@ footer a, footer span {
     text-decoration: none;
 }
 
-.footer-icons a {
-    padding-right: .6rem;
+.footer-icons a i {
+    padding-right: .9rem;
     font-size: 1.8rem;
 }
 
@@ -234,20 +230,21 @@ footer a, footer span {
 
 .card-body {
     padding: 0;
-    margin: 3rem;
+    margin: 7% 14%;
 }
 
 .card-title {
     font-size: 1.8rem;
     font-weight: bold;
+    margin-top: 1rem;
 }
 
 .delivery-cost {
     font-weight: bold;
 }
 
-.restaurant-cuisine {
-    margin-bottom: 2rem;
+.restaurant-rating i {
+    font-size: 1.4rem;
 }
 
 .restaurant-cuisine i {
