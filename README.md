@@ -28,3 +28,7 @@ In order use multiplication and division in the Django templating language (with
 ### Custom Django Template Filters
 
 Custom template filters were written to aid in the creation and rendering of the star rating system for restaurants.
+
+## Roadmap
+
+Restaurant menu urls will have restaurant names instead of id numbers

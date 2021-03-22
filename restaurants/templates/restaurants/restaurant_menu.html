@@ -7,6 +7,7 @@
 
 {% block content %}
     <div class="container-fluid no-gutters">
+        <!-- Hero Image -->
         <section class="row no-gutters">
             <div class="col-12 no-gutters">
                 <figure>
@@ -16,26 +17,59 @@
                 <h1 class="restaurant-name-menu">{{ restaurant.friendly_name }}</h1>
             </div>
         </section>
-        <div class="row no-gutters">
+        <!-- Menu -->
+        <section class="row no-gutters restaurant-menu-section">
             <div class="col-1 d-none d-lg-block no-gutters"></div>
             <div class="col-9 no-gutters">
-                <!-- Restaurants Near You -->
-                <div class="row">
+                <!-- Restaurant Info -->
+                <div class="row restaurant-info-menu">
                     <div class="col-12">
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
                         <p class="opening-hours">Opening Hours</p>
                     </div>
                 </div>
                 <!-- Menu Sections -->
-                <div class="row menu-sections">
-                    <div class="col-12">
+                <div class="row menu-sections-container">
+                    <div class="col-12 no-gutters">
+                        {% for menu_section in menu_sections %}
                             <a href="#">
                                 <h3 class="menu-section">
-                                    {{ menu_section }}
+                                    {{ menu_section.friendly_name }}
                                 </h3>
                             </a>
+                        {% endfor %}
                     </div>
                 </div>
+                <hr id="menu-divider">
+                <!-- Food Items List -->
+                {% for menu_section in menu_sections %}
+                    <div class="menu-section-food-items">
+                        <h2 class="menu-section-heading">{{ menu_section.friendly_name }}</h2>
+                        <div class="row food-items-container">
+                            <!-- Food Item Cards -->
+                            {% for food in food_items %}
+                                {% if food.menu_section == menu_section %}
+                                    <div class="col-12 col-md-6 col-lg-4 card h-100 border-0 food-item-card">
+                                        <a href="#" class="card-body food-item-card-body">
+                                            <div class="food-item-card-text">
+                                                <p class="font-weight-bold food-item-card-name">{{ food.friendly_name }}</p>
+                                                <p class="food-item-card-description">{{ food.description }}</p>
+                                            </div>
+                                            <div class="food-item-price-container">
+                                                <p class="font-weight-bold food-item-card-price">€{{ food.price }}</p>
+                                            </div>
+                                            <div class="food-item-photo-container">
+                                                <figure>
+                                                    <img src="{{ food.image.url }}" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                </figure>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
                 <!-- Restaurant Cards -->
                 <div class="row restaurant-list">
                     {% for restaurant in restaurants %}
@@ -46,10 +80,14 @@
                                     <div class="restaurant-card-cover-image-container">
                                         <!-- Images -->
                                         {% if restaurant.cover_image %}
-                                            <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                            <figure>
+                                                <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                            </figure>
                                         {% endif %}    
                                         {% if restaurant.logo %}
-                                            <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                            <figure>
+                                                <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                            </figure>
                                         {% endif %}
                                     </div>
                                     <!-- Name -->
@@ -63,6 +101,6 @@
                 </div>
             </div>
             <div class="col-1 d-none d-lg-block no-gutters"></div>
-        </div>
+        </section>
     </div>
 {% endblock %}

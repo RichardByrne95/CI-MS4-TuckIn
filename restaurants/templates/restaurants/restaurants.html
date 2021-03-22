@@ -83,10 +83,14 @@
                                         <div class="restaurant-card-cover-image-container">
                                             <!-- Images -->
                                             {% if restaurant.cover_image %}
-                                                <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                <figure>
+                                                    <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                </figure>
                                             {% endif %}    
                                             {% if restaurant.logo %}
-                                                <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                <figure>
+                                                    <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                </figure>
                                             {% endif %}
                                         </div>
                                         <!-- Name -->
