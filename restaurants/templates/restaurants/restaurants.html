@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-9 no-gutters">
-                    <!-- Restaurants Near You -->
+                    <!-- Restaurants Near You Header -->
                     <div class="row">
                         <div class="col-12">
                             <h4 class="d-inline-block">6 Restaurants Near You</h4>
@@ -79,7 +79,7 @@
                             <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
                                 <!-- Card -->
                                 <div class="card h-100 border-0">
-                                    <a href="#" class="card-body">
+                                    <a href="{% url 'restaurant_menu' restaurant.id %}" class="card-body">
                                         <div class="restaurant-card-cover-image-container">
                                             <!-- Images -->
                                             {% if restaurant.cover_image %}
@@ -93,7 +93,7 @@
                                         <p class="card-title">{{ restaurant.friendly_name }}</p>
                                         <!-- Rating -->
                                         <p class="card-text restaurant-rating">
-                                            {% for star in 5|create_list_from_number %}
+                                            {% for star in 5|create_list_of_length_number %}
                                                 {% if forloop.counter <= restaurant.rating %}
                                                     <span><i class="fas fa-star"></i></span>
                                                 {% endif %}
@@ -104,7 +104,7 @@
                                                         <span><i class="fas fa-star-half-alt"></i></span>
                                                     {% endif %}
                                                     {% with rating_remainder_integer=rating_remainder|remove_decimals %}
-                                                        {% for num in rating_remainder_integer|create_list_from_number %}
+                                                        {% for num in rating_remainder_integer|create_list_of_length_number %}
                                                             <span><i class="far fa-star"></i></span>
                                                         {% endfor %}
                                                     {% endwith %}
