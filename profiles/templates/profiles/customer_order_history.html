@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_title %}
+    | Order History
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid no-gutters">
+        <section id="customer-orders">
+            <div class="row no-gutters">
+                <div class="col-2 d-none d-lg-block no-gutters"></div>
+                <div class="col-8 no-gutters">
+                    <div class="row">
+                        <div class="col-3 no-gutters account-sidebar">
+                            <a href="#">
+                                <h3>Account</h3>
+                            </a>
+                            <a href="#">
+                                <h3>Order History</h3>
+                            </a>
+                        </div>
+                        <div class="col-6 no-gutters order-history text-center">
+                            <h1 class="account-heading">Order History</h1>
+                            <!-- Taken from Boutique Ado and modified -->
+                            <div class="order-history table-responsive">
+                                <table class="table table-sm table-borderless">
+                                    <thead>
+                                        <th>Order Number</th>
+                                        <th>Date</th>
+                                        <th>Items</th>
+                                        <th>Order Total</th>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in orders %}
+                                            <tr>
+                                                <td>
+                                                    <a href="#" title="Order Number Here">Order Number Here</a>
+                                                </td>
+                                                <td>Order Date</td>
+                                                <td>
+                                                    <ul class="list-unstyled">
+                                                        <!-- For item in order here -->
+                                                        <li class="small">Item Name</li>
+                                                        <!-- endfor -->
+                                                    </ul>
+                                                </td>
+                                                <td>Grand Total</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
