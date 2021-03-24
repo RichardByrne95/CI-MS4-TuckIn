@@ -8,11 +8,11 @@ from django.dispatch import receiver
 
 class CustomerProfile(models.Model):
     customer = models.OneToOneField(User, on_delete=CASCADE)
-    phone_number = models.CharField(max_length=20, null=False, blank=False)
-    address_1 = models.CharField(max_length=80, null=False, blank=False)
-    address_2 =  models.CharField(max_length=80, null=False, blank=False)
-    city = 'Dublin'
-    postcode = models.CharField(max_length=8, null=True, blank=True)
+    default_phone_number = models.CharField(max_length=20, null=False, blank=False)
+    default_address_1 = models.CharField(max_length=80, null=False, blank=False)
+    default_address_2 =  models.CharField(max_length=80, null=False, blank=False)
+    default_city = 'Dublin'
+    default_postcode = models.CharField(max_length=8, null=True, blank=True)
 
     def __str__():
         return self.customer.username

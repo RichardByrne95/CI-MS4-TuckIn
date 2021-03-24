@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_title %}
+    | Profile
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid no-gutters">
+        <section id="customer-account">
+            <div class="row no-gutters">
+                <div class="col-2 d-none d-lg-block no-gutters"></div>
+                <div class="col-8 no-gutters">
+                    <div class="row">
+                        <div class="col-3 no-gutters account-sidebar">
+                            <a href="#">
+                                <h3>Account</h3>
+                            </a>
+                            <a href="#">
+                                <h3>Order History</h3>
+                            </a>
+                        </div>
+                        <div class="col-6 no-gutters account-info text-center">
+                            <h1 class="account-heading">Account</h1>
+                            <form action="" id="account-details-form">
+                                {{ form|crispy }}
+                                <button type="submit" class="w-50 save-changes-button">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
