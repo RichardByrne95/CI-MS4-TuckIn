@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('restaurants/', include('restaurants.urls')),
     path('profiles/', include('profiles.urls')),
+    path('links/', include('footer_links.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

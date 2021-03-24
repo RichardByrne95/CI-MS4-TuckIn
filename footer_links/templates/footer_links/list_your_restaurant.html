@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_title %}
+    | List Your Restaurant
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid no-gutters">
+        <!-- Hero Image -->
+        <section class="row no-gutters" id="list-your-restaurant-cover-image">
+            <div class="col-12 no-gutters">
+                <figure>
+                    <img src="{{ MEDIA_URL }}list_your_restaurant_cover_image.jpg" class="background-image footer-background-image" alt="#">
+                    <div class="background-image shadow-overlay"></div>
+                </figure>
+                <h1 class="restaurant-name-menu">Want to list your restaurant?</h1>
+                <p class="restaurant-name-menu">Fill out the form below and we'll be in contact!</p>
+            </div>
+        </section>
+        <!-- Form -->
+        <section id="list-your-restaurant">
+            <div class="row no-gutters">
+                <div class="col-3 d-none d-lg-block no-gutters"></div>
+                <div class="col-6 no-gutters">
+                    <form action="" class="footer-link-form">
+                        <div class="row list-restaurant-fields text-center">
+                            <div class="col-6 no-gutters form-col-left">
+                                <label for="restaurant-name">Restaurant Name *</label>
+                                <input type="text" id="restaurant-name" name="restaurant-name" required>
+                            </div>
+                            <div class="col-6 no-gutters form-col-right">
+                                <label for="contact-name">Your Name *</label>
+                                <input type="text" id="contact-name" name="contact-name" required>
+                            </div>
+                            <div class="col-6 no-gutters form-col-left">
+                                <label for="restaurant-phone">Restaurant Phone *</label>
+                                <input type="text" id="restaurant-phone" name="restaurant-phone" required>
+                            </div>
+                            <div class="col-6 no-gutters form-col-right">
+                                <label for="contact-number">Your Phone *</label>
+                                <input type="tel" id="contact-number" name="contact-number" required>
+                            </div>
+                            <div class="col-6 no-gutters form-col-left">
+                                <label for="restaurant-address-1">Restaurant Address 1 *</label>
+                                <input type="text" id="restaurant-address-1" name="restaurant-address-1" required>
+                            </div>
+                            <div class="col-6 no-gutters form-col-right">
+                                <label for="restaurant-address-2">Restaurant Address 2</label>
+                                <input type="text" name="restaurant-address-2" id="restaurant-address-2">
+                            </div>
+                            <div class="col-6 no-gutters form-col-left">
+                                <label for="restaurant-cuisine">Cuisine *</label>
+                                <select type="select" name="restaurant-cuisine" required>
+                                    <option value="none" autofocus></option>
+                                    {% for cuisine in cuisines %}
+                                        <option value="{{ cuisine.name }}">{{ cuisine.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-6 no-gutters form-col-right">
+                                <label for="contact-number">Your Number *</label>
+                                <input type="text" name="contact-number">
+                            </div>
+                            <button type="submit" class="footer-links-submit-button">Sumbit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
