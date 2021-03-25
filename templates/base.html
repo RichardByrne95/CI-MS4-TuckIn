@@ -52,7 +52,7 @@
                     <div class="container-fluid justify-content-evenly align-items-center">
                         <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand">TuckIn - Dublin</a></h2>
                         <div class="search-bar-container d-flex justify-content-end">
-                            <form action="#" method="GET" class="d-flex">
+                            <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
                                     placeholder="Favourite Restaurant?">
                                 <button id="desktop-search-button" class="form-control btn rounded-0" type="submit">
