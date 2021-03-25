@@ -32,15 +32,30 @@
                 </div>
                 <div class="col-9 no-gutters">
                     <!-- Restaurants Near You Header -->
-                    <div class="row">
-                        <div class="col-12">
-                            <h4 class="d-inline-block">6 Restaurants Near You</h4>
-                            <span><a href="#">change location</a></span>
-                            <p class="sort-by">Refine:</p>
+                    <div class="row no-gutters">
+                        <div class="col-12 no-gutters">
+                            <div class="row no-gutters">
+                                <div class="col-6 no-gutters">
+                                    <h4 class="d-inline-block nearby-restaurants">6 Restaurants Near You</h4>
+                                    <span class="change-location"><a href="#">change location</a></span>
+                                </div>
+                                <div class="col-6 no-gutters">
+                                    <div class="dropdown d-flex justify-content-end">
+                                        <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
+                                            Refine:
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+                                            <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest Rated</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=open_now&direction=asc">Open Now</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=free_delivery&direction=asc">Free delivery</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- Restaurant Cards -->
-                    <div class="row restaurant-list">
+                    <div class="row restaurant-list d-flex">
                         {% for restaurant in restaurants %}
                             <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
                                 <!-- Card -->

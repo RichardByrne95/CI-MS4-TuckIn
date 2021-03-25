@@ -233,8 +233,16 @@ footer a, footer span {
     margin-bottom: 3rem;
 }
 
-.restaurant-list {
-    display: flex;
+.nearby-restaurants {
+    margin-left: 4.5%;
+}
+
+.dropdown {
+    margin-right: 7%;
+}
+
+#sort-by, .dropdown-item, .dropdown-toggle {
+    font-size: 1.5rem;
 }
 
 .card-body {

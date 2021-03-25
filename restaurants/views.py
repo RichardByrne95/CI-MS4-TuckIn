@@ -7,12 +7,26 @@ from .models import FoodItem, Restaurant, MenuSection, Cuisine
 
 def all_restaurants(request):
     restaurants = Restaurant.objects.all()
-    all_restaurants = None
+    all_cuisines = None
+    sort = None
+    sortkey = None
+    direction = None
     query_cuisine = None
     query_search = None
     cuisine = None
 
     if request.GET:
+        # Refining (referenced Boutique Ado)
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            if sortkey == 'rating_high':
+                sortkey = 'rating'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            restaurants = restaurants.order_by(sortkey)
+
         # Sorting by Cuisine (referenced Boutique Ado)
         if 'cuisine' in request.GET:
             cuisine = request.GET['cuisine']
@@ -36,7 +50,8 @@ def all_restaurants(request):
                             menusection__fooditem__friendly_name__icontains=query_search) | Q(
                                 menusection__fooditem__description__icontains=query_search)
             restaurants = restaurants.filter(queries).distinct()
-    
+
+    current_sorting = f'{sortkey}_{direction}'
     all_cuisines = Cuisine.objects.all()
 
     context =  {
