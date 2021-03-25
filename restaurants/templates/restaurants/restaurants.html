@@ -16,53 +16,19 @@
                 <div class="col-1 no-gutters d-none d-lg-block text-center restaurant-cuisines-col">
                     <h4>Cuisines</h4>
                     <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-pizza-slice"></i>
-                            <p class="restaurant-cuisine-name">Pizza</p>
+                        <a href="{% url 'restaurants' %}">
+                            <p class="restuarant-cuisine-name">All Restaurants</p>
                         </a>
                     </div>
+                    <hr>
+                    {% for cuisine in all_cuisines %}
                     <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-hamburger"></i>
-                            <p class="restaurant-cuisine-name">American</p>
+                        <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}">
+                            <i class="{{ cuisine.icon_html }}"></i>
+                            <p class="restaurant-cuisine-name">{{ cuisine.name|title }}</p>
                         </a>
                     </div>
-                    <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-fish"></i>
-                            <p class="restaurant-cuisine-name">Seafood</p>
-                        </a>
-                    </div>
-                    <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-egg"></i>
-                            <p class="restaurant-cuisine-name">Vegetarian</p>
-                        </a>
-                    </div>
-                    <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-pepper-hot"></i>
-                            <p class="restaurant-cuisine-name">Indian</p>
-                        </a>
-                    </div>
-                    <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-carrot"></i>
-                            <p class="restaurant-cuisine-name">Vegan</p>
-                        </a>
-                    </div>
-                    <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-drumstick-bite"></i>
-                            <p class="restaurant-cuisine-name">Chicken</p>
-                        </a>
-                    </div>
-                    <div class="restaurant-cuisine">
-                        <a href="#">
-                            <i class="fas fa-cookie"></i>
-                            <p class="restaurant-cuisine-name">Treats</p>
-                        </a>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="col-9 no-gutters">
                     <!-- Restaurants Near You Header -->
@@ -70,7 +36,7 @@
                         <div class="col-12">
                             <h4 class="d-inline-block">6 Restaurants Near You</h4>
                             <span><a href="#">change location</a></span>
-                            <p class="sort-by">Sort by:</p>
+                            <p class="sort-by">Refine:</p>
                         </div>
                     </div>
                     <!-- Restaurant Cards -->

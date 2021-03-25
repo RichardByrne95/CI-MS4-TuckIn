@@ -3,6 +3,7 @@ from django.db.models.deletion import CASCADE, SET_NULL
 
 class Cuisine(models.Model):
     name = models.CharField(max_length=254)
+    icon_html = models.TextField(max_length=254, default="Please enter icon html")
 
     def __str__(self):
         return self.name

@@ -1,6 +1,14 @@
 from django.contrib import admin
 from .models import Restaurant, Cuisine, MenuSection, FoodItem
 
+class CuisineAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'icon_html',
+    )
+
+    ordering = ('name',)
+
 class RestaurantsAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
@@ -35,6 +43,6 @@ class FoodItemAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 admin.site.register(Restaurant, RestaurantsAdmin)
-admin.site.register(Cuisine)
+admin.site.register(Cuisine, CuisineAdmin)
 admin.site.register(MenuSection, MenuSectionAdmin)
 admin.site.register(FoodItem, FoodItemAdmin)

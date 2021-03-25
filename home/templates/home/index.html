@@ -39,70 +39,16 @@
             <div class="col-3 no-gutters"></div>
             <div class="col-6 no-gutters">
                 <div class="row no-gutters cuisines-container">
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-pizza-slice"></i>
-                                <p class="cuisine-text">Pizza</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-hamburger"></i>
-                                <p class="cuisine-text">American</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-fish"></i>
-                                <p class="cuisine-text">Seafood</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-egg"></i>
-                                <p class="cuisine-text">Vegetarian</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-pepper-hot"></i>
-                                <p class="cuisine-text">Indian</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-carrot"></i>
-                                <p class="cuisine-text">Vegan</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-drumstick-bite"></i>
-                                <p class="cuisine-text">Chicken</p>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="col no-gutters cuisine-col">
-                        <span class="cuisine">
-                            <a href="#" class="cuisine-icon">
-                                <i class="fas fa-cookie"></i>
-                                <p class="cuisine-text">Treats</p>
-                            </a>
-                        </span>
-                    </div>
+                    {% for cuisine in cuisines %}
+                        <div class="col no-gutters cuisine-col">
+                            <span class="cuisine">
+                                <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}" class="cuisine-icon">
+                                    <i class="{{ cuisine.icon_html }}"></i>
+                                    <p class="cuisine-text">{{ cuisine.name|title }}</p>
+                                </a>
+                            </span>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-3 no-gutters"></div>

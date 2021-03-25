@@ -21,7 +21,7 @@ class CustomerProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_customer_profile(sender, instance, created, **kwargs):
     if created:
-        CustomerProfile.objects.create(customer=instance)
+        CustomerProfile.objects.create_user(customer=instance)
     
     # THIS MIGHT BE THE CAUSE OF AN ISSUE, MIGHT NEED TO BE userprofile
-    instance.CustomerProfile.save()
+    # instance.save()
