@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+    | Checkout
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid no-gutters">
+        <section id="shopping-bag-section">
+            <div class="row no-gutters">
+                <div class="col-12 no-gutters text-center">
+                    <hr>
+                    <h2>Shopping Bag</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row no-gutters bag-contents">
+                <div class="col-4 no-gutters"></div>
+                <div class="col-4 no-gutters text-center">
+                    <!-- Referenced Boutique Ado -->
+                    {% if bag_items %}
+                        <div class="table-responsive rounded"></div>
+                    {% else %}
+                        <h4>Your bag is empty.</h4>
+                        <a href="{% url 'restaurants' %}" class="btn btn-outline-black rounded-0 btn-lg" role="button">
+                            <span><i class="fas fa-chevron-left"></i></span>
+                            <span class="text-uppercase">Keep Shopping</span>
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="col-4 no-gutters"></div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer_js %} 
+{% endblock %}

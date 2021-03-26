@@ -1,7 +1,7 @@
 # Referenced Boutique Ado
-def bag_content(request):
+def bag_contents(request):
     current_restaurant = None
-    bag_items = []
+    bag_contents = []
     total = 0
     food_item_count = 0
     delivery = 0
@@ -9,7 +9,7 @@ def bag_content(request):
 
     context = {
         'current_restaurant': current_restaurant,
-        'bag_items': current_restaurant,
+        'bag_contents': bag_contents,
         'total': total,
         'food_item_count': food_item_count,
         'delivery': delivery,
