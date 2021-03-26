@@ -342,6 +342,16 @@ footer a, footer span {
     object-fit: cover;
 }
 
+/* ----------------------------------------- Shopping Bag */
+
+#shopping-bag-section {
+    margin-top: 9rem;
+}
+
+.bag-contents {
+    margin-top: 3rem;
+}
+
 /* ----------------------------------------- Login/Signup */
 
 #login, #signup {

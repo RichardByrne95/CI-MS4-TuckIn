@@ -1,6 +1,5 @@
-from restaurants.models import Restaurant
+from restaurants.models import Restaurant, Cuisine
 from django.shortcuts import render
-from restaurants.models import Cuisine
 
 # Create your views here.
 def home(request):
