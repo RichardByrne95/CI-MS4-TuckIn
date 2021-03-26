@@ -1,5 +1,7 @@
 # TuckIn - Dublin
 
+If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
+
 #### Food Images Source
 
 Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
