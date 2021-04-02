@@ -14,10 +14,11 @@ class Restaurant(models.Model):
     friendly_name = models.CharField(max_length=254, default="Please set friendly name")
     description = models.TextField()
     rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
+    opening_hours = models.TextField(max_length=254, null=True, blank=True, default="Please enter opening hours")
     logo = models.ImageField(null=True, blank=True)
     cover_image = models.ImageField(null=True, blank=True)
-    address_1 = models.CharField(max_length=254, default="Please enter address")
-    address_2 = models.CharField(max_length=254, default="Please enter address", null=True, blank=True)
+    address_1 = models.CharField(max_length=254, default="Please enter address 1")
+    address_2 = models.CharField(max_length=254, default="Please enter address 2", null=True, blank=True)
     post_code = models.CharField(max_length=254, default="Please enter post code")
     delivery_cost = models.DecimalField(max_digits=4, decimal_places=2, default="0.00")
 

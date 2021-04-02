@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_title %}
-    | {{ restaurant.friendly_name }}
+    | {{ restaurant.friendly_name|title }}
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,9 @@
                 <div class="row restaurant-info-menu">
                     <div class="col-12">
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
-                        <p class="opening-hours">Opening Hours</p>
+                        {% if restaurant.opening_hours %}
+                            <p class="opening-hours">Opening Hours: {{ restaurant.opening_hours }}</p>
+                        {% endif %}
                     </div>
                 </div>
                 <!-- Menu Sections -->
@@ -50,7 +52,7 @@
                             {% for food in food_items %}
                                 {% if food.menu_section == menu_section %}
                                     <div class="col-12 col-md-6 col-lg-4 card h-100 border-0 food-item-card">
-                                        <a href="#" class="card-body food-item-card-body">
+                                        <a href="#" class="card-body food-item-card-body" data-bs-toggle="modal" data-bs-target="#food-item-modal" data-food-item="{{ food.friendly_name }}">
                                             <div class="food-item-card-text">
                                                 <p class="font-weight-bold food-item-card-name">{{ food.friendly_name }}</p>
                                                 <p class="food-item-card-description">{{ food.description }}</p>
@@ -70,37 +72,70 @@
                         </div>
                     </div>
                 {% endfor %}
-                <!-- Restaurant Cards -->
-                <div class="row restaurant-list">
-                    {% for restaurant in restaurants %}
-                        <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
-                            <!-- Card -->
-                            <div class="card h-100 border-0">
-                                <a href="#" class="card-body">
-                                    <div class="restaurant-card-cover-image-container">
-                                        <!-- Images -->
-                                        {% if restaurant.cover_image %}
-                                            <figure>
-                                                <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
-                                            </figure>
-                                        {% endif %}    
-                                        {% if restaurant.logo %}
-                                            <figure>
-                                                <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
-                                            </figure>
-                                        {% endif %}
+                <!-- Food Modal referenced https://getbootstrap.com/docs/5.0/components/modal/ -->
+                <div class="modal fade" id="food-item-modal" aria-labelledby="#modal-label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title text-center" id="modal-label">Modal header</h4>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <!-- Modal Image -->
+                                <div class="modal-image">
+                                    <figure>
+                                        <img id="food-item-modal-image" src="#" alt="">
+                                    </figure>
+                                </div>
+                                <!-- Modal Form -->
+                                <form class="form food-item-form" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <!-- Quantity Selector -->
+                                            <p class="mt-3" id="quantity-title"><strong>Quantity:</strong></p>
+                                            <div class="form-group quantity-selector">
+                                                <div class="input-group">
+                                                    <!-- Minus Button -->
+                                                    <div class="input-group-prepend">
+                                                        <button class="decrement-qty btn btn-black rounded-0" type="button">
+                                                            <span class="icon">
+                                                                <i class="fas fa-minus"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Quantity Input -->
+                                                    <input class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="15">
+                                                    <!-- Plus Button -->
+                                                    <div class="input-group-append">
+                                                        <button class="increment-qty btn btn-black rounded-0" type="button">
+                                                            <span class="icon">
+                                                                <i class="fas fa-plus"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </div>
-                                    <!-- Name -->
-                                    <p class="card-title">{{ restaurant.friendly_name }}</p>
-                                    <!-- Delivery Cost -->
-                                    <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
-                                </a>
+                                    <!-- Modal Footer -->
+                                    <div class="modal-footer text-center">
+                                        <button class="btn btn-secondary food-form-btn" type="submit">Add to Basket</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="col-1 d-none d-lg-block no-gutters"></div>
         </section>
     </div>
+{% endblock %}
+
+{% block footer_js %} 
+    <script src="{% static 'js/foodModal.js' %}"></script>
 {% endblock %}
