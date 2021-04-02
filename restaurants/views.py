@@ -36,11 +36,12 @@ def all_restaurants(request):
 
         # Search Request (referenced Boutique Ado)
         if 'q' in request.GET:
+            redirect_url = request.GET['redirect_url']
             query_search = request.GET['q']
             if not query_search:
                 messages.error(
                     request, "You didn't enter any search criteria!")
-                return redirect(reverse('restaurants'))
+                return redirect(redirect_url)
             # Referenced book for advanced queries https://books.agiliq.com/projects/django-orm-cookbook/en/latest/query.html
             queries = Q(name__icontains=query_search) | Q(friendly_name__icontains=query_search) | Q(
                 description__icontains=query_search) | Q(cuisine__name__icontains=query_search) | Q(
