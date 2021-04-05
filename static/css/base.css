@@ -344,10 +344,20 @@ footer a, footer span {
 
 /* Modal */
 
+.food-item-form {
+    margin-top: 3rem;
+}
+
+.form-row {
+    margin: 1rem 1rem 0 1rem;
+}
+
 .modal-body {
     padding: 0;
     margin: 1rem;
 }
+
+/* Image */
 
 .modal-image {
     height: 15rem;
@@ -361,7 +371,10 @@ footer a, footer span {
     object-fit: cover;
 }
 
-#quantity-title strong {
+/* Quantity */
+
+#quantity-title strong,
+#additional-details-title strong {
     font-size: 1.4rem;
 }
 
@@ -377,18 +390,17 @@ footer a, footer span {
     align-items: center;
 }
 
-.modal-footer {
-    justify-content: center;
-}
-
-.food-item-form {
-    margin-top: 5rem;
-}
-
 .qty-input,
 .icon i,
+.additional-details-input,
 .food-form-btn {
     font-size: 1.6rem;
+}
+
+/* Modal Footer */
+
+.modal-footer {
+    justify-content: center;
 }
 
 /* ----------------------------------------- Shopping Bag */

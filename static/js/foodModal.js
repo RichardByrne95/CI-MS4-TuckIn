@@ -14,9 +14,9 @@ $(".decrement-qty").on("click", function () {
     let currentVal = $(".qty-input").val()
     let newVal = Number(currentVal) - 1
 
-    // Prevent user from going below 0
-    if (newVal < 0) {
-        $(".qty-input").val(0)
+    // Prevent user from going below 1
+    if (newVal < 1) {
+        $(".qty-input").val(1)
     } else {
         $(".qty-input").val(newVal)
     }
