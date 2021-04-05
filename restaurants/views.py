@@ -1,5 +1,5 @@
-from django.http import response
-from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.contrib import messages
 from django.db.models import Q
 from .models import FoodItem, Restaurant, MenuSection, Cuisine
