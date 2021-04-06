@@ -19,8 +19,10 @@
                 <div class="col-4 no-gutters"></div>
                 <div class="col-4 no-gutters text-center">
                     <!-- Referenced Boutique Ado -->
-                    {% if bag_items %}
-                        <div class="table-responsive rounded"></div>
+                    {% if bag_contents %}
+                        <div class="table-responsive rounded">
+                            {{ bag_contents }}
+                        </div>
                     {% else %}
                         <h4>Your bag is empty.</h4>
                         <a href="{% url 'restaurants' %}" class="btn btn-outline-black rounded-0 btn-lg" role="button">

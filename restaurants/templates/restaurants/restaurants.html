@@ -97,7 +97,11 @@
                                             {% endif %}
                                         </p>
                                         <!-- Delivery Cost -->
-                                        <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
+                                        {% if restaurant.delivery_cost and restaurant.delivery_cost > 0 %}
+                                            <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
+                                        {% else %}
+                                            <p class="card-text delivery-cost">Free Delivery</p>
+                                        {% endif %}
                                     </a>
                                 </div>
                             </div>

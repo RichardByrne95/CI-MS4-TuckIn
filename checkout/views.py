@@ -7,11 +7,15 @@ from django.contrib import messages
 def checkout(request):
     bag = request.session.get('bag', {})
     if not bag:
-        messages.error(request, "There's nothing in your bag at the moment.")
-        return redirect(reverse('restaurants'))
+        pass
     
     order_form = OrderForm()
     context = {
         'order_form': order_form,
     }
     return render(request, 'checkout/checkout.html', context)
+
+
+def order_confirmation(request):
+    context = {}
+    return render(request, 'checkout/order_confirmation.html', context)
