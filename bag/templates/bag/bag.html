@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_title %}
-    | Bag
+    | Your Order
 {% endblock %}
 
 {% block content %}
@@ -11,17 +11,47 @@
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
                     <hr>
-                    <h2>Shopping Bag</h2>
+                    <h2>Your Order</h2>
                     <hr>
                 </div>
             </div>
             <div class="row no-gutters bag-contents">
-                <div class="col-4 no-gutters"></div>
-                <div class="col-4 no-gutters text-center">
+                <div class="col-3 no-gutters"></div>
+                <div class="col-6 no-gutters text-center">
                     <!-- Referenced Boutique Ado -->
                     {% if bag_contents %}
                         <div class="table-responsive rounded">
-                            {{ bag_contents }}
+                            <table class="table table-sm table-borderless bag-table">
+                                <thead class="text-black">
+                                    <tr>
+                                        <th scope="col">Food</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                {% for food in bag_contents %}
+                                    <tr>
+                                        <td class="p-3 w-25">
+                                            <img src="{{ MEDIA_URL }}{{ food.food.image }}" alt="{{ food.food.description }}" class="img-fluid rounded">
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0"><strong>{{ food.food.friendly_name }}</strong></p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ food.food.price }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ food.quantity }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ total }}</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <tr class="pt-5 text-right" aria-colspan="5"></tr>
+                            </table>
                         </div>
                     {% else %}
                         <h4>Your bag is empty.</h4>
@@ -31,7 +61,7 @@
                         </a>
                     {% endif %}
                 </div>
-                <div class="col-4 no-gutters"></div>
+                <div class="col-3 no-gutters"></div>
             </div>
         </section>
     </div>

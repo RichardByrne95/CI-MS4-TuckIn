@@ -413,6 +413,12 @@ footer a, footer span {
     margin-top: 3rem;
 }
 
+.bag-table th, 
+.bag-table p, 
+.bag-table strong {
+    font-size: 1.6rem;
+}
+
 /* ----------------------------------------- Order Confirmation */
 
 #order-confirmation-section {
