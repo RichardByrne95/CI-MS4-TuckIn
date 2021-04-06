@@ -9,10 +9,10 @@ class Cuisine(models.Model):
         return self.name
 
 class Restaurant(models.Model):
-    cuisine = models.ForeignKey('Cuisine', null=True, blank=True, on_delete=SET_NULL)
+    cuisine = models.ForeignKey(Cuisine, null=True, blank=True, on_delete=SET_NULL)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, default="Please set friendly name")
-    description = models.TextField()
+    description = models.TextField(max_length=254)
     rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
     opening_hours = models.TextField(max_length=254, null=True, blank=True, default="Please enter opening hours")
     logo = models.ImageField(null=True, blank=True)
@@ -29,7 +29,7 @@ class Restaurant(models.Model):
         return self.friendly_name
 
 class MenuSection(models.Model):
-    restaurant = models.ForeignKey('Restaurant', on_delete=CASCADE)
+    restaurant = models.ForeignKey(Restaurant, on_delete=CASCADE)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, default="Please set friendly name")
 
@@ -40,7 +40,7 @@ class MenuSection(models.Model):
         return self.friendly_name
 
 class FoodItem(models.Model):
-    menu_section = models.ForeignKey('MenuSection', on_delete=CASCADE)
+    menu_section = models.ForeignKey(MenuSection, on_delete=CASCADE)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254)
     description = models.TextField(null=True, blank=True)
