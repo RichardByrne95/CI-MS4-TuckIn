@@ -1,3 +1,4 @@
+from restaurants.models import Restaurant
 from django.shortcuts import get_object_or_404
 from restaurants.views import FoodItem
 
@@ -9,15 +10,13 @@ def bag_contents(request):
     food_item_count = 0
 
     bag = request.session.get('bag', {})
-    for food_id, quantity in bag.items():
-        food = get_object_or_404(FoodItem, pk=food_id)
-        total += quantity * food.price
-        food_item_count += quantity
-        bag_contents.append({
-            'food_id': food_id,
-            'quantity': quantity,
-            'food': food,
-        })
+    count = 0
+    for restaurant, food_item in bag.items():
+        food_item_list = list(food_item.keys())
+        food_id = food_item_list[count]
+        food_object = get_object_or_404(FoodItem, pk=food_id)
+        
+        count +=1
 
     delivery = 0
     grand_total = total + delivery

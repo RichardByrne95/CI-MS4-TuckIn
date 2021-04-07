@@ -16,16 +16,37 @@ def view_bag(request):
 def add_to_bag(request):
     food_id = request.POST.get('this_food')
     food = get_object_or_404(FoodItem, pk=food_id)
-    menu_section = MenuSection.objects.all().filter(name=food.menu_section)
-    restaurant = Restaurant.objects.get(menusection__in=menu_section)
+    menu_section = MenuSection.objects.get(fooditem__name=food.name)
+    restaurant = Restaurant.objects.get(menusection__name=menu_section.name)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    additional_details = request.POST.get('additional-details')
     bag = request.session.get('bag', {})
 
-    if food_id in list(bag.keys()):
-        bag[food_id] += quantity
+    # If food from this restaurant is already in the bag
+    bag_keys = list(bag.keys())
+    # If bag has something in it
+    if bag_keys:
+        # If the food being added is from the restaurant that already has food in the bag
+        if bag_keys[0] == restaurant.name:
+            # If the same food exists in the bag, change quantity
+            if food_id in list(bag[restaurant.name].keys()):
+                bag[restaurant.name][food_id]['quantity'] += quantity
+                bag[restaurant.name][food_id]['additional_details'] += ", " + additional_details
+            # Else add food and set quantity
+            else:
+                bag[restaurant.name][food_id] = {'quantity': quantity, 'additional_details': additional_details}
+        # Else if there is food from another restaurant in the bag
+        elif bag_keys[0] != restaurant.name:
+            # Throw error
+            print("There is already food from another restaurant here.")
+            request.session['bag'] = bag
+            return redirect(redirect_url)
+    # Else add food to bag
     else:
-        bag[food_id] = quantity
+        bag[restaurant.name] = {food_id: {'quantity': quantity, 'additional_details': additional_details}}
+
+    print(bag)
     request.session['bag'] = bag
 
     return redirect(redirect_url)
