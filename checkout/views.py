@@ -6,8 +6,6 @@ from django.contrib import messages
 
 def checkout(request):
     bag = request.session.get('bag', {})
-    if not bag:
-        pass
     
     order_form = OrderForm()
     context = {

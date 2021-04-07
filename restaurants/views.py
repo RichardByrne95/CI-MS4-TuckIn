@@ -16,7 +16,7 @@ def all_restaurants(request):
     cuisine = None
 
     if request.GET:
-        # Refining (referenced Boutique Ado)
+        # Sorting (referenced Boutique Ado)
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             if sortkey == 'rating_high':
