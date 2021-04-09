@@ -1,0 +1,33 @@
+<form action="" method="POST" class="form update-form">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-12">
+            <div class="form-group quantity-selector">
+                <div class="input-group">
+                    <!-- Minus Button -->
+                    <div class="input-group-prepend">
+                        <button class="decrement-qty btn btn-black rounded-0" type="button">
+                            <span class="icon">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <!-- Quantity Input -->
+                    <input class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="15">
+                    <!-- Plus Button -->
+                    <div class="input-group-append">
+                        <button class="increment-qty btn btn-black rounded-0" type="button">
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Redirect URL -->
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        <!-- Current Food ID, valued filled via 'foodModal.js' -->
+        <input type="hidden" name="this_food" id="this-food" value="">
+    </div>
+</form>

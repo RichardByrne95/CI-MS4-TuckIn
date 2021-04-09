@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block extra_title %}
     | Bag
@@ -18,10 +19,38 @@
             <div class="row no-gutters bag-contents">
                 <div class="col-4 no-gutters"></div>
                 <div class="col-4 no-gutters text-center">
-                    <!-- Referenced Boutique Ado -->
                     {% if bag_contents %}
-                        <div class="table-responsive rounded">
-                            {{ bag_contents }}
+                        <div class="table-responsive rounded d-none d-md-block">
+                            <table class="table table-sm table-borderless">
+                                <thead class="text-black">
+                                    <tr>
+                                        <th scope="col">Food</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Qty</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                {% for item in bag_contents %}
+                                    <tr>
+                                        <td class="p-3 w-25">
+                                            {% include 'bag/food-image.html' %}
+                                        </td>
+                                        <td class="p-3 w-25">
+                                            {% include 'bag/food-info.html' %}
+                                        </td>
+                                        <td class="p-3 w-25">
+                                            <p class="my-0">€{{ item.food.price }}</p>
+                                        </td>
+                                        <td class="p-3 w-25">
+                                            {% include 'bag/quantity-form.html' %}
+                                        </td>
+                                        <td class="p-3 w-25">
+                                            <p class="my-0">€{{ item.food.price|calc_subtotal:item.quantity }}</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
                         </div>
                     {% else %}
                         <h4>Your bag is empty.</h4>
@@ -38,4 +67,5 @@
 {% endblock %}
 
 {% block footer_js %} 
+    <script src="{% static 'js/foodModal.js' %}"></script>
 {% endblock %}
