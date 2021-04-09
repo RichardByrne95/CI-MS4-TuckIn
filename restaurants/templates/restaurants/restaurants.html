@@ -62,15 +62,24 @@
                                 <div class="card h-100 border-0">
                                     <a href="{% url 'restaurant_menu' restaurant.id %}" class="card-body">
                                         <div class="restaurant-card-cover-image-container">
-                                            <!-- Images -->
+                                            <!-- Cover Image -->
                                             {% if restaurant.cover_image %}
                                                 <figure>
-                                                    <img src="/media/{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
                                                 </figure>
-                                            {% endif %}    
+                                            {% else %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                </figure>
+                                            {% endif %}
+                                            <!-- Logo -->
                                             {% if restaurant.logo %}
                                                 <figure>
-                                                    <img src="/media/{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                </figure>
+                                            {% else %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
                                                 </figure>
                                             {% endif %}
                                         </div>

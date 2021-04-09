@@ -11,7 +11,11 @@
         <section class="row no-gutters">
             <div class="col-12 no-gutters">
                 <figure>
-                    <img src="{{ restaurant.cover_image.url }}" class="background-image menu-background-image" alt="#">
+                    {% if restaurant.cover_image %}
+                        <img src="{{ restaurant.cover_image.url }}" class="background-image menu-background-image" alt="{{ restaurant.friendly_name }} cover image">
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}noimage.png" class="background-image menu-background-image" alt="{{ restaurant.friendly_name }} cover image">
+                    {% endif %}
                     <div class="background-image shadow-overlay"></div>
                 </figure>
                 <h1 class="restaurant-name-menu">{{ restaurant.friendly_name }}</h1>
@@ -63,7 +67,11 @@
                                             </div>
                                             <div class="food-item-photo-container">
                                                 <figure>
-                                                    <img src="{{ food.image.url }}" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                    {% if food.image %}
+                                                        <img src="{{ food.image.url }}" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                    {% else %}
+                                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                    {% endif %}
                                                 </figure>
                                             </div>
                                         </a>
@@ -87,7 +95,11 @@
                                 <!-- Modal Image -->
                                 <div class="modal-image">
                                     <figure>
-                                        <img id="food-item-modal-image" src="#" alt="">
+                                        {% if food.image %}
+                                            <img id="food-item-modal-image" src="#" alt="">
+                                        {% else %}
+                                            <img src="{{ MEDIA_URL }}noimage.png" alt="" class="food-item-photo">
+                                        {% endif %}
                                     </figure>
                                 </div>
                                 <!-- Modal Form -->
