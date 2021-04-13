@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+    | Checkout Address
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid no-gutters">
+        <section id="checkout-address-section">
+            <div class="row no-gutters">
+                <div class="col-12 no-gutters text-center">
+                    <hr>
+                    <h2>Delivery Address</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row no-gutters bag-contents">
+                <div class="col-4 no-gutters"></div>
+                <!-- Address Form -->
+                <div class="col-4 no-gutters text-center">
+                    <form action="" class="form" id="delivery-address">
+                        <div class="form-row">
+                            <!-- If logged in here -->
+                            <div class="col-12">
+                                {{ address_form.full_name | as_crispy_field }}
+                            </div>
+                            <div class="col-12">
+                                {{ address_form.email | as_crispy_field }}
+                            </div>
+                            <div class="col-12">
+                                {{ address_form.address_1 | as_crispy_field }}
+                            </div>
+                            <div class="col-12">
+                                {{ address_form.address_2 | as_crispy_field }}
+                            </div>
+                            <div class="col-12">
+                                {{ address_form.postcode | as_crispy_field }}
+                            </div>
+                            <div class="col-12">
+                                {{ address_form.phone_number | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row form-buttons">
+                            <a href="#" class="btn btn-outline-black-rounded-0 btn-lg">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Keep Shopping</span>
+                            </a>
+                            <a href="{% url 'checkout_time' %}" class="btn btn-outline-black-rounded-0 btn-lg" role="button" type="submit">
+                                <span class="text-uppercase">Next</span>
+                                <span class="icon">
+                                    <i class="fas fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4 no-gutters"></div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer_js %} 
+{% endblock %}
