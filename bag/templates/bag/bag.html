@@ -50,6 +50,16 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
+                                <tr>
+                                    <td colspan="5" class="pt-5 text-right">
+                                        {% include "bag/bag-total.html" %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="text-right">
+                                        {% include "bag/checkout-buttons.html" %}
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     {% else %}
