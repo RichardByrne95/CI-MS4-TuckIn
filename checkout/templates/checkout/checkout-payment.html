@@ -20,7 +20,7 @@
                 <div class="col-1 no-gutters"></div>
                 <div class="col-4 no-gutters text-center">
                     <p>Please fill out the form below to complete your order.</p>
-                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                         {% csrf_token %}
                         <fieldset class="rounded">
                             <legend class="fieldset-label small text-black w-auto">Details</legend>

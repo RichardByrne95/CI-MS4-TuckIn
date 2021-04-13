@@ -464,7 +464,8 @@ footer a, footer span {
 
 /* ----------------------------------------- Checkout */
 
-#checkout-address-section {
+#checkout-address-section,
+#checkout-time-section {
     margin-top: 9rem;
 }
 

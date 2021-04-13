@@ -19,7 +19,8 @@
                 <div class="col-4 no-gutters"></div>
                 <!-- Address Form -->
                 <div class="col-4 no-gutters text-center">
-                    <form action="" class="form" id="delivery-address">
+                    <form action="{% url 'checkout_time' %}" method="POST" class="form" id="delivery-address">
+                        {% csrf_token %}
                         <div class="form-row">
                             <!-- If logged in here -->
                             <div class="col-12">
@@ -42,18 +43,18 @@
                             </div>
                         </div>
                         <div class="form-row form-buttons">
-                            <a href="#" class="btn btn-outline-dark rounded-0 btn-lg">
+                            <button class="btn btn-outline-dark rounded-0 btn-lg">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
-                            </a>
-                            <a href="{% url 'checkout_time' %}" class="btn btn-outline-dark rounded-0 btn-lg" role="button" type="submit">
+                            </button>
+                            <button class="btn btn-outline-dark rounded-0 btn-lg" type="submit">
                                 <span class="text-uppercase">Next</span>
                                 <span class="icon">
                                     <i class="fas fa-chevron-right"></i>
                                 </span>
-                            </a>
+                            </button>
                         </div>
                     </form>
                 </div>
