@@ -462,6 +462,12 @@ footer a, footer span {
     margin-top: 16rem;
 }
 
+/* ----------------------------------------- Checkout */
+
+#checkout-address-section {
+    margin-top: 9rem;
+}
+
 /* ----------------------------------------- Footer Links */
 
 #list-your-restaurant-cover-image h1 {

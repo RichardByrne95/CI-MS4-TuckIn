@@ -1,19 +1,16 @@
 from django import forms
 from .models import Order
 
-# Referenced Boutique Ado
+
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number', 'postcode',
                   'address_1', 'address_2',)
-    
+
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
         super().__init__(*args, **kwargs)
+        
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email Address',
@@ -23,12 +20,19 @@ class OrderForm(forms.ModelForm):
             'address_2': 'Address 2',
         }
 
+        # Set cursor to this input field upon loading
         self.fields['full_name'].widget.attrs['autofocus'] = True
+
         for field in self.fields:
             if self.fields[field].required:
+                # If the current field is required, add '*'
                 placeholder = f'{placeholders[field]} *'
             else:
+                # Otherwise just assign it to the variable 'placeholder'
                 placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
+            # Add the placeholder value from the dictionary to the input field
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            # Give each field this class
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            # Remove the label for each field
             self.fields[field].label = False
