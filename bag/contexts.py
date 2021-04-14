@@ -29,7 +29,7 @@ def bag_contents(request):
                 'additional_details': additional_details,
             })
 
-    food_item_count = 0
+    food_item_count = len(bag_contents)
     delivery = 0
     grand_total = total + delivery
 
