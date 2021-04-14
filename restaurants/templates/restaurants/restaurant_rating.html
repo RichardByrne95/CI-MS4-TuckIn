@@ -1,0 +1,25 @@
+{% load static %}
+{% load mathfilters %}
+{% load restaurants_extra %}
+
+<p class="card-text restaurant-rating">
+    {% for star in 5|create_list_of_length_number %}
+        {% if forloop.counter <= restaurant.rating %}
+            <span><i class="fas fa-star"></i></span>
+        {% endif %}
+    {% endfor %}
+    {% if restaurant.rating < 4.7 %}
+        {% with rating_remainder=5|sub:restaurant.rating %}
+            {% if rating_remainder|remove_whole_number > 0.2 and rating_remainder|remove_whole_number < 0.8 %}
+                <span><i class="fas fa-star-half-alt"></i></span>
+            {% endif %}
+            {% with rating_remainder_integer=rating_remainder|remove_decimals %}
+                {% for num in rating_remainder_integer|create_list_of_length_number %}
+                    <span><i class="far fa-star"></i></span>
+                {% endfor %}
+            {% endwith %}
+        {% endwith %}
+    {% else %}
+        <span><i class="fas fa-star"></i></span>
+    {% endif %}
+</p>
