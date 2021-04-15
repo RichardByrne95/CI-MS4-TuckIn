@@ -97,9 +97,23 @@
     </header>
 
     {% if messages %}
-        <div class="message-container"></div>
+        {% for message in messages %}
+            <div class="message-container">
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast-error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast-warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast-success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast-info.html' %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% endfor %}
     {% endif %}
-
+    
     <main>
         {% block content %}
         {% endblock %}
@@ -135,12 +149,20 @@
             </div>
         </div>
     </footer>
+
+    <!-- Toasts JS -->
+    <script>
+        $(document).ready(function() {
+            $(".toast").toast('show')
+        });
+    </script>
+    
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
+
+    {% block footer_js %}
+    {% endblock %}
+
 </body>
-
-{% block footer_js %}
-{% endblock %}
-
-<!-- Google Maps API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
 
 </html>

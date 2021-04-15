@@ -35,7 +35,7 @@ def add_to_bag(request):
                 bag[restaurant.name][food_id]['additional_details'] += ", " + additional_details
             # Else add food and set quantity
             else:
-                bag[restaurant.name][food_id] = {'quantity': quantity, 'additional_details': additional_details}
+                bag[restaurant.name][food_id] = {"quantity": quantity, "additional_details": additional_details}
         # Else if there is food from another restaurant in the bag
         elif bag_keys[0] != restaurant.name:
             # Throw error
@@ -44,9 +44,9 @@ def add_to_bag(request):
             return redirect(redirect_url)
     # Else add food to bag
     else:
-        bag[restaurant.name] = {food_id: {'quantity': quantity, 'additional_details': additional_details}}
+        bag[restaurant.name] = {food_id: {"quantity": quantity, "additional_details": additional_details}}
 
-    print(bag)
     request.session['bag'] = bag
+    messages.warning(request, f"Added {food.friendly_name} to your cart")
 
     return redirect(redirect_url)

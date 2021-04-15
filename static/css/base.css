@@ -57,6 +57,25 @@ input {
     font-weight: bold;
 }
 
+/* ----------------------------------------- Messages */
+
+.messages-container {
+    position: relative;
+    color: black;
+}
+
+.custom-toast {
+    z-index: 9999999;
+    overflow: visible;
+    position: absolute;
+    top:7.5rem;
+    right: 2rem;
+}
+
+.toast-capper {
+    height: .2rem;
+}
+
 /* ----------------------------------------- Navbar */
 
 header {
