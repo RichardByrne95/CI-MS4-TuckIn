@@ -1,4 +1,3 @@
-# Boutique Ado Project Referenced
 from django import forms
 from .models import CustomerProfile
 
@@ -16,12 +15,19 @@ class CustomerProfileForm(forms.ModelForm):
             'default_city': 'City',
             'default_postcode': 'Postcode',
         }
-        self.fields['default_phone_number'].widget.attrs['autofocus'] = True
+        # Set cursor default field
+        self.fields['default_address_1'].widget.attrs['autofocus'] = True
+
+        # Make city readonly
+        self.fields['default_city'].widget.attrs['readonly'] = True
+
         for field in self.fields:
+            # Add asterisks to required fields only
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
             else:
-                placeholder = placeholder[field]
+                placeholder = placeholders[field]
+            # Add placeholders and classes to form, remove label
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'profile-form-input'
             self.fields[field].label = False

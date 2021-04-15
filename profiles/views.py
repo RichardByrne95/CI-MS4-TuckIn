@@ -1,9 +1,11 @@
-from .models import CustomerProfile
-from django.shortcuts import get_object_or_404, render
+from .forms import CustomerProfileForm
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
+@login_required
 def customer_profile(request):
-    form = None
+    form = CustomerProfileForm()
     orders = None
     context = {
         'form': form,
@@ -13,6 +15,7 @@ def customer_profile(request):
     return render(request, 'profiles/customer_account.html', context)
 
 
+@login_required
 def customer_order_history(request):
     order = None
     context = {

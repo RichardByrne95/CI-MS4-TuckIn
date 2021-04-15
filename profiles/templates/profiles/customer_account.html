@@ -14,17 +14,17 @@
                 <div class="col-8 no-gutters">
                     <div class="row">
                         <div class="col-3 no-gutters account-sidebar">
-                            <a href="#">
+                            <a href="{% url 'customer_profile' %}">
                                 <h3>Account</h3>
                             </a>
-                            <a href="#">
+                            <a href="{% url 'customer_order_history' %}">
                                 <h3>Order History</h3>
                             </a>
                         </div>
                         <div class="col-6 no-gutters account-info text-center">
                             <h1 class="account-heading">Account</h1>
                             <form action="" id="account-details-form">
-                                {{ form|crispy }}
+                                {{ form | crispy }}
                                 <button type="submit" class="w-50 save-changes-button">Save Changes</button>
                             </form>
                         </div>
