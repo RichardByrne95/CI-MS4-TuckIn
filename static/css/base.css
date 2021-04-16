@@ -347,7 +347,7 @@ footer a, footer span {
     margin-top: 5rem;
 }
 
-.menu-sections-container {
+.menu-nav-container {
     margin: 3rem 0 1.5rem 0;
 }
 
@@ -369,10 +369,15 @@ footer a, footer span {
 }
 
 .food-item-card-body {
+    color: black;
     margin: 0;
     padding: 2rem;
     border: 1px #e6e9ec solid;
     border-radius: 5px;
+}
+
+.food-item-card-body:hover {
+    color: black;
 }
 
 .food-item-card-text {

@@ -35,10 +35,10 @@
                     </div>
                 </div>
                 <!-- Menu Sections -->
-                <div class="row menu-sections-container">
+                <div class="row menu-nav-container">
                     <div class="col-12 no-gutters">
                         {% for menu_section in menu_sections %}
-                            <a href="#">
+                            <a href="#{{ menu_section.friendly_name }}">
                                 <h3 class="menu-section">
                                     {{ menu_section.friendly_name }}
                                 </h3>
@@ -50,7 +50,8 @@
                 <!-- Food Items List -->
                 {% for menu_section in menu_sections %}
                     <div class="menu-section-food-items">
-                        <h2 class="menu-section-heading">{{ menu_section.friendly_name }}</h2>
+                        <a href="#"></a>
+                        <h2 class="menu-section-heading" id="{{ menu_section.friendly_name }}">{{ menu_section.friendly_name }}</h2>
                         <div class="row food-items-container">
                             <!-- Food Item Cards -->
                             {% for food in food_items %}
