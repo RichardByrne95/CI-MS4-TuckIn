@@ -36,6 +36,8 @@
         crossorigin="anonymous"></script>
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Google Maps API -->
+        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -156,9 +158,6 @@
             $(".toast").toast('show')
         });
     </script>
-    
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
 
     {% block footer_js %}
     {% endblock %}
