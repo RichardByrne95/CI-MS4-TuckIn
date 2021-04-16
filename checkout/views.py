@@ -1,10 +1,6 @@
-from restaurants.models import Restaurant
-from restaurants.views import restaurant_menu
 from bag.contexts import bag_contents
 from checkout.forms import OrderForm
-from django.shortcuts import redirect, render
-from django.urls import reverse
-from django.contrib import messages
+from django.shortcuts import render
 
 
 def checkout_address(request):

@@ -1,7 +1,5 @@
-from restaurants.views import restaurant_menu
 from restaurants.models import FoodItem, MenuSection, Restaurant
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
 from django.contrib import messages
 
 
