@@ -465,6 +465,30 @@ footer a, footer span {
     margin-top: 3rem;
 }
 
+.bag-table th {
+    font-size: 1.8rem;
+}
+
+.bag-food-name strong {
+    font-size: 1.6rem;
+}
+
+.bag-food-description {
+    font-size: 1.4rem;
+}
+
+.bag-total strong {
+    font-size: 1.5rem;
+}
+
+.bag-delivery {
+    font-size: 1.5rem;
+}
+
+.bag-grand-total strong {
+    font-size: 1.7rem;
+}
+
 /* ----------------------------------------- Order Confirmation */
 
 #order-confirmation-section {
