@@ -155,6 +155,8 @@
     </div>
 {% endblock %}
 
-{% block footer_js %} 
+{% block footer_js %}
+    {{ block.super }}
     <script src="{% static 'js/foodModal.js' %}"></script>
+    <script src="{% static 'js/quantitySelection.js' %}"></script>
 {% endblock %}
