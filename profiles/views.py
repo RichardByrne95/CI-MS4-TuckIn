@@ -1,15 +1,29 @@
+from django.contrib import messages
+from django.contrib.auth.models import User
+from profiles.models import CustomerProfile
 from .forms import CustomerProfileForm
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 
 
 @login_required
 def customer_profile(request):
-    form = CustomerProfileForm()
-    orders = None
+    profile = get_object_or_404(CustomerProfile, customer=request.user)
+
+    if request.method == "POST":
+        form = CustomerProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully")
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
+    else:
+        form = CustomerProfileForm(instance=profile)
+
+    # orders = profile.orders.all()
     context = {
         'form': form,
-        'orders': orders,
+        # 'orders': orders,
         'on_profile_page': True,
     }
     return render(request, 'profiles/customer_account.html', context)

@@ -23,7 +23,8 @@
                         </div>
                         <div class="col-6 no-gutters account-info text-center">
                             <h1 class="account-heading">Account</h1>
-                            <form action="" id="account-details-form">
+                            <form action="{% url 'customer_profile' %}" method="POST" id="account-details-form">
+                                {% csrf_token %}
                                 {{ form | crispy }}
                                 <button type="submit" class="w-50 save-changes-button">Save Changes</button>
                             </form>

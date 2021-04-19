@@ -19,7 +19,9 @@
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Inter:wght@432&display=swap"
+            rel="stylesheet">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -32,12 +34,14 @@
         <script src="https://kit.fontawesome.com/e2f6d2d599.js" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <!-- Google Maps API -->
-        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
+        <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -54,7 +58,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid justify-content-evenly align-items-center">
-                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand">TuckIn - Dublin</a></h2>
+                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand">TUCKIN - Dublin</a></h2>
                         <div class="search-bar-container d-flex justify-content-end">
                             <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"

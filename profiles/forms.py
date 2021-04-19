@@ -9,6 +9,7 @@ class CustomerProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
+            'name': 'Full Name',
             'default_phone_number': 'Phone Number',
             'default_address_1': 'Address 1',
             'default_address_2': 'Address 2',
@@ -16,10 +17,11 @@ class CustomerProfileForm(forms.ModelForm):
             'default_postcode': 'Postcode',
         }
         # Set cursor default field
-        self.fields['default_address_1'].widget.attrs['autofocus'] = True
+        self.fields['name'].widget.attrs['autofocus'] = True
 
-        # Make city readonly
+        # Make city and name readonly
         self.fields['default_city'].widget.attrs['readonly'] = True
+        # self.fields['name'].widget.attrs['readonly'] = True
 
         for field in self.fields:
             # Add asterisks to required fields only
