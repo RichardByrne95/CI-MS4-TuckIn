@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 class CustomerProfile(models.Model):
     customer = models.OneToOneField(User, on_delete=CASCADE, related_name='customer_profile')
-    name = models.CharField(max_length=254, null=False, blank=False, default="Full name")
+    full_name = models.CharField(max_length=254, null=False, blank=False, default="Full name")
     default_address_1 = models.CharField(max_length=80, null=False, blank=False)
     default_address_2 =  models.CharField(max_length=80, null=False, blank=False)
     default_city = models.CharField(max_length=12, null=False, blank=False, default='Dublin')

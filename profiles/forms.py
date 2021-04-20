@@ -9,7 +9,7 @@ class CustomerProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
-            'name': 'Full Name',
+            'full_name': 'Full Name',
             'default_phone_number': 'Phone Number',
             'default_address_1': 'Address 1',
             'default_address_2': 'Address 2',
@@ -17,7 +17,7 @@ class CustomerProfileForm(forms.ModelForm):
             'default_postcode': 'Postcode',
         }
         # Set cursor default field
-        self.fields['name'].widget.attrs['autofocus'] = True
+        self.fields['full_name'].widget.attrs['autofocus'] = True
 
         # Make city and name readonly
         self.fields['default_city'].widget.attrs['readonly'] = True

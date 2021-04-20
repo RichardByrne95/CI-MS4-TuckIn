@@ -15,10 +15,11 @@ class OrderForm(forms.ModelForm):
             'full_name': 'Full Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
-            'postcode': 'Postal Code',
             'address_1': 'Address 1',
             'address_2': 'Address 2',
+            'postcode': 'Postal Code',
         }
+
 
         # Set cursor to this input field upon loading
         self.fields['full_name'].widget.attrs['autofocus'] = True
@@ -36,3 +37,4 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             # Remove the label for each field
             self.fields[field].label = False
+        
