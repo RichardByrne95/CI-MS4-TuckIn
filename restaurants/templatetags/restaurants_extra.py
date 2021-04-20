@@ -19,3 +19,7 @@ def create_list_of_length_number(number):
 def remove_whole_number(value):
     num = math.floor(value)
     return value - num
+
+@register.filter(name='count')
+def count(object):
+    return len(object)
