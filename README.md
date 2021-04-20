@@ -25,7 +25,7 @@ The most effective solution to this is to use a combination of Google's Maps API
 
 ### Django Math Filters
 
-In order use multiplication and division in the Django templating language (without the result return a rounded integer), [Django Math Filters](https://pypi.org/project/django-mathfilters/) was installed to allow this functionality. Specifically, it was required for the creation of the star ratings underneath each restaurant card in restaurants.html.
+In order use multiplication and division in the Django templating language (without the result returning a rounded integer), [Django Math Filters](https://pypi.org/project/django-mathfilters/) was installed to allow this functionality. Specifically, it was required for the creation of the star ratings underneath each restaurant card in 'restaurants.html'.
 
 ### Custom Django Template Filters
 
@@ -33,7 +33,8 @@ Custom template filters were written to aid in the creation and rendering of the
 
 ## Roadmap
 
-Restaurant menu urls will have restaurant names instead of id numbers
+-   Use restaurant names instead of id numbers in restaurant url.
+-   Ability to add multiple addresses to one account.
 
 
 

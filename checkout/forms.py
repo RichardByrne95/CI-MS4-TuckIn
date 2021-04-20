@@ -6,7 +6,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number', 'postcode',
-                  'address_1', 'address_2',)
+                  'address_1', 'address_2', 'city',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,11 +18,15 @@ class OrderForm(forms.ModelForm):
             'address_1': 'Address 1',
             'address_2': 'Address 2',
             'postcode': 'Postal Code',
+            'city': 'City',
         }
 
 
         # Set cursor to this input field upon loading
         self.fields['full_name'].widget.attrs['autofocus'] = True
+
+        # Make city and name readonly
+        self.fields['city'].widget.attrs['readonly'] = True
 
         for field in self.fields:
             if self.fields[field].required:

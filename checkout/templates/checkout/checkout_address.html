@@ -30,16 +30,19 @@
                                 {{ address_form.email | as_crispy_field }}
                             </div>
                             <div class="col-12">
+                                {{ address_form.phone_number | as_crispy_field }}
+                            </div>
+                            <div class="col-12">
                                 {{ address_form.address_1 | as_crispy_field }}
                             </div>
                             <div class="col-12">
                                 {{ address_form.address_2 | as_crispy_field }}
                             </div>
                             <div class="col-12">
-                                {{ address_form.postcode | as_crispy_field }}
+                                {{ address_form.city | as_crispy_field }}
                             </div>
                             <div class="col-12">
-                                {{ address_form.phone_number | as_crispy_field }}
+                                {{ address_form.postcode | as_crispy_field }}
                             </div>
                         </div>
                         <div class="form-row form-buttons">

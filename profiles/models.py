@@ -10,7 +10,7 @@ class CustomerProfile(models.Model):
     full_name = models.CharField(max_length=254, null=False, blank=False, default="Full name")
     default_address_1 = models.CharField(max_length=80, null=False, blank=False)
     default_address_2 =  models.CharField(max_length=80, null=False, blank=False)
-    default_city = models.CharField(max_length=12, null=False, blank=False, default='Dublin')
+    default_city = models.CharField(max_length=6, null=False, blank=False, default='Dublin')
     default_postcode = models.CharField(max_length=8, null=True, blank=True)
     default_phone_number = models.CharField(max_length=20, null=False, blank=False)
 

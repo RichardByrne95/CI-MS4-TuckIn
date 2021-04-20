@@ -7,12 +7,25 @@ from profiles.models import CustomerProfile
 
 def checkout_address(request):
     # Create instance of order form
-    address_form = OrderForm()
+    if request.user.is_authenticated:
+        profile = get_object_or_404(CustomerProfile, customer=request.user)
+        # Put saved details into fields
+        address_form = OrderForm(initial={
+            'full_name': profile.full_name,
+            'email': profile.customer.email,
+            'phone_number': profile.default_phone_number,
+            'postcode': profile.default_postcode,
+            'address_1': profile.default_address_1,
+            'address_2': profile.default_address_2,
+        })
+        address_form.save(commit=False)
+    else:
+        address_form = OrderForm()
 
     context = {
         'address_form': address_form,
     }
-    return render(request, 'checkout/checkout-address.html', context)
+    return render(request, 'checkout/checkout_address.html', context)
 
 
 def checkout_time(request):
@@ -39,7 +52,7 @@ def checkout_time(request):
     context = {
         'address_form': address_form,
     }
-    return render(request, 'checkout/checkout-time.html', context)
+    return render(request, 'checkout/checkout_time.html', context)
 
 
 def checkout_payment(request):
@@ -89,7 +102,7 @@ def checkout_payment(request):
         'order_form': order_form,
         'delivery_time': delivery_time,
     }
-    return render(request, 'checkout/checkout-payment.html', context)
+    return render(request, 'checkout/checkout_payment.html', context)
 
 
 def order_confirmation(request):

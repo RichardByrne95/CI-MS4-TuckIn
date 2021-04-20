@@ -21,7 +21,6 @@ class CustomerProfileForm(forms.ModelForm):
 
         # Make city and name readonly
         self.fields['default_city'].widget.attrs['readonly'] = True
-        # self.fields['name'].widget.attrs['readonly'] = True
 
         for field in self.fields:
             # Add asterisks to required fields only
