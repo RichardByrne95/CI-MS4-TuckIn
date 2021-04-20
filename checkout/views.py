@@ -62,13 +62,14 @@ def checkout_payment(request):
         delivery_time = request.POST.get('delivery_time')
         request.session['delivery_time'] = delivery_time
     
+    # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)
     
     # Generate Order Form
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
-        # Put saved details into fields
+        # Create order form with saved profile details
         order_form = OrderForm(initial={
             'full_name': profile.full_name,
             'email': profile.customer.email,
@@ -83,12 +84,12 @@ def checkout_payment(request):
         # Create order form using session data
         address_form = request.session.get('address')
         order_form = OrderForm(initial={
-            'full_name': address_form.full_name,
-            'email': address_form.customer.email,
-            'phone_number': address_form.default_phone_number,
-            'postcode': address_form.default_postcode,
-            'address_1': address_form.default_address_1,
-            'address_2': address_form.default_address_2,
+            'full_name': address_form['full_name'],
+            'email': address_form['email'],
+            'phone_number': address_form['phone_number'],
+            'postcode': address_form['postcode'],
+            'address_1': address_form['address_1'],
+            'address_2': address_form['address_2'],
             'order_restaurant': order_restaurant,
         })
         order_form.save(commit=False)
