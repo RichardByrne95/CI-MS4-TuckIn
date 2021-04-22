@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from bag.contexts import bag_contents
+from django.conf import settings
 from restaurants.models import Restaurant
 from checkout.forms import OrderForm
 from profiles.models import CustomerProfile
@@ -102,6 +103,8 @@ def checkout_payment(request):
     context = {
         'order_form': order_form,
         'delivery_time': delivery_time,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': 'test',
     }
     return render(request, 'checkout/checkout_payment.html', context)
 

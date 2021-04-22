@@ -31,6 +31,8 @@ In order use multiplication and division in the Django templating language (with
 
 Custom template filters were written to aid in the creation and rendering of the star rating system for restaurants.
 
+Django's built in "|json_script" template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
+
 ## Roadmap
 
 -   Use restaurant names instead of id numbers in restaurant url.

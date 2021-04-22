@@ -122,5 +122,8 @@
     </div>
 {% endblock %}
 
-{% block footer_js %} 
+{% block footer_js %}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripeElements.js' %}"></script>
 {% endblock %}
