@@ -550,10 +550,12 @@ footer a, footer span {
 /* Stripe */
 
 .StripeElement,
-.stripe-style-input {
+.stripe-style-input,
+.profile-form-input {
     box-sizing: border-box;
     height: 4rem;
-    padding: 1rem 1.2em;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
     border: .1rem solid black;
     border-radius: .3rem;
     background-color: white;
@@ -564,7 +566,9 @@ footer a, footer span {
 
 .StripeElement--focus,
 .stripe-style-input:focus,
-.stripe-style-input:active {
+.stripe-style-input:active,
+.profile-form-input:focus,
+.profile-form-input:active {
     box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
@@ -572,13 +576,24 @@ footer a, footer span {
     background-color: #fefde5 !important;
 }
 
-.stripe-style-input::placeholder {
+.stripe-style-input::placeholder,
+.profile-form-input::placeholder {
     color: #aab7c4;
+}
+
+fieldset {
+    padding: 1rem;
+}
+
+.stripe-style-input,
+.profile-form-input {
+    width: 100%;
+    padding-right: 20%;
 }
 
 .fieldset-label {
     position: relative;
-    right: .5rem;
+    left: 0;
 }
 
 #payment-form .form-control,

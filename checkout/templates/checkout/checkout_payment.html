@@ -17,19 +17,19 @@
                 </div>
             </div>
             <div class="row no-gutters bag-contents">
-                <div class="col-1 no-gutters"></div>
-                <div class="col-4 no-gutters text-center">
+                <div class="col-2 no-gutters"></div>
+                <div class="col-3 no-gutters text-center">
                     <p>Please fill out the form below to complete your order.</p>
                     <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                         {% csrf_token %}
                         <fieldset class="rounded">
-                            <legend class="fieldset-label small text-black w-auto">Details</legend>
+                            <legend class="fieldset-label text-black w-auto">Details</legend>
                             {{ order_form.full_name | as_crispy_field }}
                             {{ order_form.email | as_crispy_field }}
                             {{ order_form.phone_number | as_crispy_field }}
                         </fieldset>
                         <fieldset class="rounded">
-                            <legend class="fieldset-label small text-black w-auto">Delivery</legend>
+                            <legend class="fieldset-label text-black w-auto">Delivery</legend>
                             {{ order_form.address_1 | as_crispy_field }}
                             {{ order_form.address_2 | as_crispy_field }}
                             {{ order_form.city }}
@@ -73,6 +73,7 @@
                         </div>
                     </form>
                 </div>
+                <div class="col-1 no-gutters"></div>
                 <div class="col-4 no-gutters">
                     <p class="text-muted">Order Summary ({{ food_item_count }})</p>
                     <div class="row">
@@ -117,6 +118,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-2 no-gutters"></div>
             </div>
         </section>
     </div>

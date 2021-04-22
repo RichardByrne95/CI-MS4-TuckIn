@@ -10,7 +10,7 @@ const style =  {
         color: "#000",
         fontFamily: "'Inter', sans-serif",
         fontSmoothing: "antialiased",
-        fontSize: "1.4rem",
+        fontSize: "1.3rem",
         "::placeholder": {
             color: "#aab7c4"
         }
