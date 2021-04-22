@@ -53,6 +53,15 @@ input {
     font-size: 2rem;
 }
 
+select,
+option {
+    font-size: 1.6rem;
+}
+
+.btn span {
+    font-size: 1.25rem;
+}
+
 .font-weight-bold {
     font-weight: bold;
 }
@@ -491,12 +500,6 @@ footer a, footer span {
     font-size: 1.7rem;
 }
 
-/* ----------------------------------------- Order Confirmation */
-
-#order-confirmation-section {
-    margin-top: 9rem;
-}
-
 /* ----------------------------------------- Login/Signup */
 
 #login, #signup {
@@ -547,6 +550,14 @@ footer a, footer span {
     margin-top: 9rem;
 }
 
+label[for="delivery-time"] {
+    font-size: 1.4rem;
+}
+
+.save-info {
+    font-size: 1.4rem;
+}
+
 /* Stripe */
 
 .StripeElement,
@@ -588,7 +599,6 @@ fieldset {
 .stripe-style-input,
 .profile-form-input {
     width: 100%;
-    padding-right: 20%;
 }
 
 .fieldset-label {
@@ -600,6 +610,10 @@ fieldset {
 #card-element {
     color: #000;
     border: 1px solid #000;
+}
+
+.form-check .form-check-input {
+    margin: .25rem;
 }
 
 select,
@@ -629,6 +643,13 @@ select option[value=""] {
     justify-content: center;
     margin: 0;
     height: 100%;
+}
+
+
+/* ----------------------------------------- Order Confirmation */
+
+#order-confirmation-section {
+    margin-top: 9rem;
 }
 
 /* ----------------------------------------- Footer Links */

@@ -3,7 +3,7 @@ let stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 let clientSecret = $("#id_client_secret").text().slice(1, -1);
 let stripe = Stripe(stripePublicKey);
 let elements = stripe.elements();
-let cardElement = $("#card-element")
+let cardElement = $("#card-element");
 
 const style =  {
     base: {
@@ -32,3 +32,18 @@ card.on('change', function(event) {
       displayError.textContent = '';
     }
 });
+
+// Realtime Stripe validation errors
+card.addEventListener('change', (event) => {
+    let errorDiv = $("#card-errors");
+    if (event.error) {
+        let html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>`;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = "";
+    }
+})
