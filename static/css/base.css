@@ -58,6 +58,10 @@ option {
     font-size: 1.6rem;
 }
 
+strong {
+    font-size: inherit;
+}
+
 .btn span {
     font-size: 1.25rem;
 }

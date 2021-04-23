@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% debug %}
 {% load static %}
 {% load bag_tools %}
 
@@ -12,14 +13,14 @@
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
                     <hr>
-                    <h2>Checkout</h2>
+                    <h2>Your Order</h2>
                     <hr>
                 </div>
             </div>
             <div class="row no-gutters bag-contents">
                 <div class="col-2 no-gutters"></div>
                 <div class="col-3 no-gutterstext-left">
-                    <p class="px-3">Please fill out the form below to complete your order.</p>
+                    <p class="px-3">Please ensure you details are correct before you complete your order.</p>
                     <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                         {% csrf_token %}
                         <fieldset class="rounded">
@@ -68,7 +69,7 @@
                                 <span class="icon">
                                     <i class="fas fa-exclamation-circle"></i>
                                 </span>
-                                <span>Your card will be charged <strong>${{ grand_total | floatformat:2 }}</strong></span>
+                                <span>Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong></span>
                             </p>
                         </div>
                     </form>
@@ -100,7 +101,7 @@
                                 <p class="my-0 small text-muted">Qty: {{ food.quantity }}</p>
                             </div>
                             <div class="col-3 text-right">
-                                <p class="my-0 small text-muted">${{ food.food.price | calc_subtotal:food.quantity }}</p>
+                                <p class="my-0 small text-muted">€{{ food.food.price | calc_subtotal:food.quantity }}</p>
                             </div>
                         </div>
                     {% endfor %}
@@ -109,12 +110,12 @@
                         <div class="col-7 offset-2">
                             <p class="my-0">Order Total:</p>
                             <p class="my-0">Delivery:</p>
-                            <p class="my-0">Grand Total:</p>
+                            <p class="my-0"><strong>Grand Total:</strong></p>
                         </div>
                         <div class="col-3">
-                            <p class="my-0">${{ total | floatformat:2 }}</p>
-                            <p class="my-0">${{ delivery | floatformat:2 }}</p>
-                            <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                            <p class="my-0">€{{ order_total | floatformat:2 }}</p>
+                            <p class="my-0">€{{ delivery_cost | floatformat:2 }}</p>
+                            <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
                         </div>
                     </div>
                 </div>

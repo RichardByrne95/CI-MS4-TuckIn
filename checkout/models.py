@@ -8,14 +8,14 @@ from profiles.models import CustomerProfile
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    order_restaurant = models.ForeignKey(Restaurant, max_length=64, null=False, on_delete=RESTRICT)
+    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=True, blank=True, on_delete=RESTRICT)
     customer_profile = models.ForeignKey(CustomerProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
-    email = models.EmailField(max_length=254, null=False, blank=False)
-    phone_number = models.CharField(max_length=20, null=False, blank=False)
+    email = models.EmailField(max_length=128, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=True, blank=False)
     address_1 = models.CharField(max_length=80, null=False, blank=False)
     address_2 = models.CharField(max_length=80, null=True, blank=True)
-    postcode = models.CharField(max_length=20, null=True, blank=True)
+    postcode = models.CharField(max_length=8, null=True, blank=True)
     city = models.CharField(max_length=6, null=False, blank=False, default='Dublin')
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
@@ -23,7 +23,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
 
-    def _generate_order_number():
+    def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):

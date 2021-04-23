@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render
 from bag.contexts import bag_contents
-from django.conf import settings
+from profiles.models import CustomerProfile
+from checkout.models import OrderLineItem
 from restaurants.models import Restaurant
 from checkout.forms import OrderForm
-from profiles.models import CustomerProfile
+from django.conf import settings
 from django.contrib import messages
 import stripe
 
@@ -59,46 +60,94 @@ def checkout_time(request):
 
 
 def checkout_payment(request):
-    # Add selected delivery time to session
-    bag = request.session.get('bag', {})
-    if request.method == "POST" and 'delivery_time' in request.POST:
-        delivery_time = request.POST.get('delivery_time')
-        request.session['delivery_time'] = delivery_time
-    
+    bag = request.session.get('bag')
+    current_bag = bag_contents(request)
+
     # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)
+    
+    if request.method == "POST":
+        # Add selected delivery time to session
+        if 'delivery_time' in request.POST:
+            delivery_time = request.POST.get('delivery_time')
+            request.session['delivery_time'] = delivery_time
+
+        # Handle submitting order
+        elif 'delivery_time' not in request.POST:
+            address_form = request.session.get('address')
+            order_form = OrderForm(request.POST, initial={
+                'full_name': address_form['full_name'],
+                'email': address_form['email'],
+                'phone_number': address_form['phone_number'],
+                'address_1': address_form['address_1'],
+                'address_2': address_form['address_2'],
+                'postcode': address_form['postcode'],
+                'city': 'Dublin',
+                # 'order_restaurant': order_restaurant,
+                # 'delivery_cost': current_bag['delivery_cost'],
+                # 'order_total': current_bag['order_total'],
+                # 'grand_total': current_bag['grand_total'],
+                # 'original_bag': bag,
+            })
+            # If valid, save order form
+            if order_form.is_valid():
+                order = order_form.save()
+
+                # Create line item for each food in bag
+                for data in bag_contents(request)['bag_contents']:
+                    try:
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            food_item=data['food'],
+                            quantity=data['quantity'],
+                        )
+                        order_line_item.save()
+                    except:
+                        messages.error(request, "Issue creating order line items")
+            # Else tell user about error
+            else:
+                messages.error(
+                    request, "Order form either received incorrect data or did not receive all necessary fields.")
     
     # Generate Order Form
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Create order form with saved profile details
-        order_form = OrderForm(initial={
+        order_form = OrderForm(request.POST, initial={
             'full_name': profile.full_name,
             'email': profile.customer.email,
             'phone_number': profile.default_phone_number,
-            'postcode': profile.default_postcode,
             'address_1': profile.default_address_1,
             'address_2': profile.default_address_2,
-            'order_restaurant': order_restaurant,
+            'postcode': profile.default_postcode,
+            'city': 'Dublin',
+            # 'order_restaurant': order_restaurant,
         })
-        order_form.save(commit=False)
+        if order_form.is_valid():
+            order_form.save(commit=False)
+        else:
+            messages.error(request, "Order form is not accepting the inputted data.")
     else:
         # Create order form using session data
         address_form = request.session.get('address')
-        order_form = OrderForm(initial={
+        order_form_data = {
             'full_name': address_form['full_name'],
             'email': address_form['email'],
             'phone_number': address_form['phone_number'],
-            'postcode': address_form['postcode'],
             'address_1': address_form['address_1'],
             'address_2': address_form['address_2'],
-            'order_restaurant': order_restaurant,
-        })
-        order_form.save(commit=False)
+            'postcode': address_form['postcode'],
+            'city': 'Dublin',
+        }
+        order_form = OrderForm(order_form_data)
+        if order_form.is_valid():
+            order_form.save()
+        else:
+            messages.error(request, "Order form is not accepting the inputted data.")
 
     # Get variables
-    delivery_time = request.session.get('delivery_time')
+    delivery_time = request.POST.get('delivery_time')
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
 

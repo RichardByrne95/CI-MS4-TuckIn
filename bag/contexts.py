@@ -27,17 +27,17 @@ def bag_contents(request):
                 'quantity': quantity,
                 'additional_details': additional_details,
             })
-
+    order_total = total
     food_item_count = len(bag_contents)
-    delivery = 0
-    grand_total = total + delivery
+    delivery_cost = 0
+    grand_total = total + delivery_cost
 
     context = {
         'current_restaurant': current_restaurant,
         'bag_contents': bag_contents,
-        'total': total,
         'food_item_count': food_item_count,
-        'delivery': delivery,
+        'order_total': order_total,
+        'delivery_cost': delivery_cost,
         'grand_total': grand_total,
     }
 
