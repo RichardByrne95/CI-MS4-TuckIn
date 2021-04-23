@@ -46,3 +46,5 @@ Django's built in "|json_script" template tag was used to [prevent code injectio
 
 
 Why underscores were used in html files instead of hyphens
+
+Timezone for person marking this project. Some restaurants may not be open depending on what time of day the examiner is grading this project. Time is set to Dublin time.

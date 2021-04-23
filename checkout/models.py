@@ -27,8 +27,8 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-        self.delivery_cost = self.order_restaurant.delivery_cost
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.delivery_cost = self.delivery_cost
         self.grand_total = self.delivery_cost + self.order_total
         self.save()
 

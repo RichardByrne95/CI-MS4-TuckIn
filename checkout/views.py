@@ -1,9 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from bag.contexts import bag_contents
+from django.urls import reverse
+from restaurants.models import FoodItem, Restaurant
 from profiles.models import CustomerProfile
-from checkout.models import OrderLineItem
-from restaurants.models import Restaurant
-from checkout.forms import OrderForm
+from .models import Order, OrderLineItem
+from .forms import OrderForm
 from django.conf import settings
 from django.contrib import messages
 import stripe
@@ -84,11 +85,11 @@ def checkout_payment(request):
                 'address_2': address_form['address_2'],
                 'postcode': address_form['postcode'],
                 'city': 'Dublin',
-                # 'order_restaurant': order_restaurant,
-                # 'delivery_cost': current_bag['delivery_cost'],
-                # 'order_total': current_bag['order_total'],
-                # 'grand_total': current_bag['grand_total'],
-                # 'original_bag': bag,
+                'order_restaurant': order_restaurant,
+                'delivery_cost': current_bag['delivery_cost'],
+                'order_total': current_bag['order_total'],
+                'grand_total': current_bag['grand_total'],
+                'original_bag': bag,
             })
             # If valid, save order form
             if order_form.is_valid():
@@ -103,8 +104,11 @@ def checkout_payment(request):
                             quantity=data['quantity'],
                         )
                         order_line_item.save()
-                    except:
-                        messages.error(request, "Issue creating order line items")
+                    except FoodItem.DoesNotExist:
+                        messages.error(request, "Issue creating order line items.")
+                        order.delete()
+                        return redirect(reverse('view_bag'))
+                return redirect(reverse('order_confirmation', args=[order.order_number]))
             # Else tell user about error
             else:
                 messages.error(
@@ -158,6 +162,7 @@ def checkout_payment(request):
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
     )
+    # Warning if stripe public key has not been set in environment variables
     if not settings.STRIPE_PUBLIC_KEY:
         messages.warning(request, 'Stripe public key is missing.')
 
@@ -170,6 +175,17 @@ def checkout_payment(request):
     return render(request, 'checkout/checkout_payment.html', context)
 
 
-def order_confirmation(request):
-    context = {}
+def order_confirmation(request, order_number):
+    # Send success message to user
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Order successfully sent to the restaurant! \
+        Your order number is {order_number}. A confirmation email will be sent to {order.email}')
+    
+    # Remove the bag from the session
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    context = {
+        'order': order,
+    }
     return render(request, 'checkout/order_confirmation.html', context)
