@@ -1,3 +1,3 @@
-<h6 class="bag-total"><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
-<h6 class="bag-delivery">Delivery: €{{ delivery|floatformat:2 }}</h6>
-<h4 class="mt-4 bag-grand-total"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
+<h6 class="bag-total"><strong>Bag Total: €{{ order_total | floatformat:2 }}</strong></h6>
+<h6 class="bag-delivery">Delivery: €{{ delivery_cost | floatformat:2 }}</h6>
+<h4 class="mt-4 bag-grand-total"><strong>Grand Total: €{{ grand_total | floatformat:2 }}</strong></h4>
