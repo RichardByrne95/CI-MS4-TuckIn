@@ -116,9 +116,9 @@ def checkout_payment(request):
     
     # Generate Order Form
     if request.user.is_authenticated:
-        profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Create order form with saved profile details
-        order_form = OrderForm(request.POST, initial={
+        profile = get_object_or_404(CustomerProfile, customer=request.user)
+        order_form = OrderForm({
             'full_name': profile.full_name,
             'email': profile.customer.email,
             'phone_number': profile.default_phone_number,
@@ -129,13 +129,13 @@ def checkout_payment(request):
             # 'order_restaurant': order_restaurant,
         })
         if order_form.is_valid():
-            order_form.save(commit=False)
+            order_form.save()
         else:
             messages.error(request, "Order form is not accepting the inputted data.")
     else:
         # Create order form using session data
         address_form = request.session.get('address')
-        order_form_data = {
+        order_form = OrderForm({
             'full_name': address_form['full_name'],
             'email': address_form['email'],
             'phone_number': address_form['phone_number'],
@@ -143,8 +143,7 @@ def checkout_payment(request):
             'address_2': address_form['address_2'],
             'postcode': address_form['postcode'],
             'city': 'Dublin',
-        }
-        order_form = OrderForm(order_form_data)
+        })
         if order_form.is_valid():
             order_form.save()
         else:

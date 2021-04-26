@@ -4,17 +4,16 @@ from restaurants.views import FoodItem
 
 
 def bag_contents(request):
-    current_restaurant = None
     bag_contents = []
-    food_item_count = 0
     forloop_count = 0
     order_total = 0
+
     bag = request.session.get('bag', {})
+    current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0]) if bag else None
+    delivery_cost = current_restaurant.delivery_cost if bag else 0
 
     for restaurant, food_items in bag.items():
-        current_restaurant = get_object_or_404(Restaurant, name=restaurant)
         list_of_food_keys_in_bag = list(food_items.keys())
-        delivery_cost = current_restaurant.delivery_cost
 
         for food_item in bag[restaurant]:
             food_id = list_of_food_keys_in_bag[forloop_count]
@@ -29,10 +28,10 @@ def bag_contents(request):
                 'quantity': quantity,
                 'additional_details': additional_details,
             })
-    
-    food_item_count = len(bag_contents)
+
+    food_item_count = len(bag_contents) if bag_contents else 0
     grand_total = order_total + delivery_cost
-    
+
     context = {
         'current_restaurant': current_restaurant,
         'bag_contents': bag_contents,
