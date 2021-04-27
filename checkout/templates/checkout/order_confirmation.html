@@ -17,53 +17,66 @@
                 </div>
             </div>
             <div class="row no-gutters order-contents">
-                <div class="col-4 no-gutters"></div>
-                <div class="col-4 no-gutters">
-                    <h3>Your order has been submitted to the restaurant!</h3>
-                    <h5>You should be contacted by the restaurant in a few moments to confirm your order.</h4>
-                    <p class="text-muted">Order Summary ({{ product_count }})</p>
-                    <div class="row">
-                        <div class="col-7 offset-2">
-                            <p class="mb-1 mt-0 small text-muted">Item</p>
-                        </div>
-                        <div class="col-3 text-right">
-                            <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                <div class="col-3 no-gutters"></div>
+                <div class="col-6 no-gutters">
+                    <div class="row no-gutters">
+                        <div class="col no-gutters">
+                            <h3>Your order has been submitted to the restaurant!</h3>
+                            <h5>You should be contacted by the restaurant in a few moments to confirm your order.</h4>
                         </div>
                     </div>
-                    {% for item in bag_items %}
-                        <div class="row">
-                            <div class="col-2 mb-1">
-                                <a href="{% url 'restaurant_menu' item.food_item.id %}">
-                                    {% if item.food_item.image %}
-                                        <img class="w-100" src="{{ item.food_item.image.url }}" alt="{{ product.name }}">
-                                    {% else %}
-                                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                    {% endif %}
-                                </a>
-                            </div>
-                            <div class="col-7">
-                                <p class="my-0"><strong>{{ item.food_item.name }}</strong></p>
-                                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                            </div>
-                            <div class="col-3 text-right">
-                                <p class="my-0 small text-muted">${{ item.food_item.price | calc_subtotal:item.quantity }}</p>
+                    <div class="row no-gutters">
+                        <div class="col-md-6 no-gutters">
+                            <!-- Order Summary Card -->
+                            <div class="order-summary-card">
+                                <!-- Restaurant Info -->
+                                <div class="restaurant-info-container d-flex">
+                                    <div class="restaurant-checkout-logo-container d-flex">
+                                        <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
+                                            <figure class="restaurant-checkout-logo">
+                                                <img src="{{ MEDIA_URL }}{{ order.order_restaurant.logo }}" alt="{{ order.order_restaurant.friendly_name }}"
+                                                    class="restaurant-checkout-logo">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class=" restaurant-info-container">
+                                        <h3 class="d-inline restaurant-checkout-name">{{ order.order_restaurant.friendly_name }}</h3>
+                                        <p class="restaurant-checkout-address m-0">{{ order.order_restaurant.address_1 }}, {{ order.order_restaurant.address_2 }}</p>
+                                        <p class="restaurant-checkout-phone">{{ order.order_restaurant.phone_number }}</p>
+                                        <a href="{% url 'restaurant_menu' order.order_restaurant.id %}" class="checkout-view-menu">View menu</a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!-- Order Summary -->
+                                <div class="order-summary">
+                                    <h3 class="order-summary-heading">Order Summary</h3>
+                                    <p class="d-inline-block small float-right order-number">Ref: {{ order.order_number }}</p>
+                                    {% for food in bag_contents %}
+                                        <p class="food-line-item small"><strong>{{ food.food.friendly_name }}</strong></p>
+                                        {% if food.additional_details %}
+                                            <p class="food-additional-details small">{{ food.additional_details }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <hr>
+                                <!-- Order Fees -->
+                                <div class="order-fees">
+                                    <p class="small subtotal">Subtotal</p>
+                                    <br>
+                                    <p class="small delivery-cost">Delivery fee</p>
+                                </div>
+                                <hr>
+                                <!-- Order Total -->
+                                <div class="order-total">
+                                    <h3 class="total-paid">Total paid</h3>
+                                    <h2 class="grand-total d-inline">€{{ grand_total }}</h2>
+                                </div>
                             </div>
                         </div>
-                    {% endfor %}
-                    <hr class="my-0">
-                    <div class="row text-black text-right">
-                        <div class="col-7 offset-2">
-                            <p class="my-0">Order Total:</p>
-                            <p class="my-0">Delivery:</p>
-                            <p class="my-0">Grand Total:</p>
-                        </div>
-                        <div class="col-3">
-                            <p class="my-0">€{{ order_total | floatformat:2 }}</p>
-                            <p class="my-0">€{{ delivery_cost | floatformat:2 }}</p>
-                            <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
-                        </div>
+                        <div class="col-md-6 no-gutters"></div>
                     </div>
                 </div>
+                <div class="col-3 no-gutters"></div>
             </div>
         </section>
     </div>
