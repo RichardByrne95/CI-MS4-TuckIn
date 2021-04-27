@@ -67,7 +67,7 @@ def checkout_payment(request):
     # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)
-    
+
     if request.method == "POST":
         # Add selected delivery time to session
         if 'delivery_time' in request.POST:
@@ -77,7 +77,9 @@ def checkout_payment(request):
         # Handle submitting order
         elif 'delivery_time' not in request.POST:
             address_form = request.session.get('address')
+            customer_profile = get_object_or_404(CustomerProfile, customer=request.user)
             order_form = OrderForm(request.POST, initial={
+                'customer_profile': customer_profile,
                 'full_name': address_form['full_name'],
                 'email': address_form['email'],
                 'phone_number': address_form['phone_number'],
@@ -126,7 +128,7 @@ def checkout_payment(request):
             'address_2': profile.default_address_2,
             'postcode': profile.default_postcode,
             'city': 'Dublin',
-            # 'order_restaurant': order_restaurant,
+            'order_restaurant': order_restaurant,
         })
         if order_form.is_valid():
             order_form.save()
@@ -143,6 +145,7 @@ def checkout_payment(request):
             'address_2': address_form['address_2'],
             'postcode': address_form['postcode'],
             'city': 'Dublin',
+            'order_restaurant': order_restaurant,
         })
         if order_form.is_valid():
             order_form.save()
@@ -175,16 +178,19 @@ def checkout_payment(request):
 
 
 def order_confirmation(request, order_number):
-    # Send success message to user
     order = get_object_or_404(Order, order_number=order_number)
+    bag = request.session['bag']
+
+    # Send success message to user
     messages.success(request, f'Order successfully sent to the restaurant! \
         Your order number is {order_number}. A confirmation email will be sent to {order.email}')
     
     # Remove the bag from the session
-    if 'bag' in request.session:
-        del request.session['bag']
+    # if 'bag' in request.session:
+    #     del request.session['bag']
 
     context = {
         'order': order,
+        'bag': bag,
     }
     return render(request, 'checkout/order_confirmation.html', context)

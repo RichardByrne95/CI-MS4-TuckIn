@@ -8,8 +8,8 @@ from profiles.models import CustomerProfile
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=True, blank=True, on_delete=RESTRICT)
-    customer_profile = models.ForeignKey(CustomerProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=False, blank=False, on_delete=RESTRICT, default='1')
+    customer_profile = models.ForeignKey(CustomerProfile, on_delete=models.SET_NULL, null=True, blank=False, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=False)
@@ -24,7 +24,8 @@ class Order(models.Model):
     original_bag = models.TextField(null=False, blank=False, default='')
 
     def _generate_order_number(self):
-        return uuid.uuid4().hex.upper()
+        number = uuid.uuid4().hex
+        return str(number)[:16]
 
     def update_total(self):
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
