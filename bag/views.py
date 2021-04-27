@@ -8,7 +8,7 @@ def view_bag(request):
     context = {
         'bag': bag,
     }
-    return render(request, 'bag/bag.html')
+    return render(request, 'bag/bag.html', context)
 
 
 def add_to_bag(request):

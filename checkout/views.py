@@ -26,9 +26,13 @@ def checkout_address(request):
         address_form.save(commit=False)
     else:
         address_form = OrderForm()
+    
+    restaurant_name = request.session.get('restaurant')
+    restaurant = get_object_or_404(Restaurant, name=restaurant_name)
 
     context = {
         'address_form': address_form,
+        'restaurant': restaurant,
     }
     return render(request, 'checkout/checkout_address.html', context)
 
@@ -45,11 +49,6 @@ def checkout_time(request):
             'address_2': request.POST['address_2'],
         }
         request.session['address'] = form_data
-
-        # Add restuarant name to session
-        bag = request.session.get('bag', {})
-        restaurant = list(bag.keys())
-        request.session['restaurant'] = restaurant[0]
 
     # Get variables
     address_form = request.session.get('address')
@@ -78,7 +77,7 @@ def checkout_payment(request):
         elif 'delivery_time' not in request.POST:
             address_form = request.session.get('address')
             customer_profile = get_object_or_404(CustomerProfile, customer=request.user)
-            order_form = OrderForm(request.POST, initial={
+            order_form = OrderForm(request.POST, {
                 'customer_profile': customer_profile,
                 'full_name': address_form['full_name'],
                 'email': address_form['email'],
@@ -110,6 +109,7 @@ def checkout_payment(request):
                         messages.error(request, "Issue creating order line items.")
                         order.delete()
                         return redirect(reverse('view_bag'))
+                
                 return redirect(reverse('order_confirmation', args=[order.order_number]))
             # Else tell user about error
             else:
