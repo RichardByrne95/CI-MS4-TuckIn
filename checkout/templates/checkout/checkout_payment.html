@@ -33,7 +33,7 @@
                             <legend class="fieldset-label text-black w-auto">Delivery</legend>
                             {{ order_form.address_1 | as_crispy_field }}
                             {{ order_form.address_2 | as_crispy_field }}
-                            {{ order_form.city }}
+                            {{ order_form.city | as_crispy_field }}
                             {{ order_form.postcode | as_crispy_field }}
                             <div class="form-check form-check-inline px-3">
                                 {% if user.is_authenticated %}

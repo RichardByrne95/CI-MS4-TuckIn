@@ -21,12 +21,12 @@ class OrderForm(forms.ModelForm):
             'city': 'City',
         }
 
-
         # Set cursor to this input field upon loading
         self.fields['full_name'].widget.attrs['autofocus'] = True
 
-        # Make city and name readonly
+        # Make city and email readonly
         self.fields['city'].widget.attrs['readonly'] = True
+        self.fields['email'].widget.attrs['readonly'] = True
 
         for field in self.fields:
             if self.fields[field].required:

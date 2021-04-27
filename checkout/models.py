@@ -7,8 +7,8 @@ from restaurants.models import Restaurant, FoodItem
 from profiles.models import CustomerProfile
 
 class Order(models.Model):
-    order_number = models.CharField(max_length=32, null=False, editable=False)
-    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=False, blank=False, on_delete=RESTRICT, default='1')
+    order_number = models.CharField(max_length=16, null=False, editable=False)
+    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=False, blank=False, on_delete=RESTRICT)
     customer_profile = models.ForeignKey(CustomerProfile, on_delete=models.SET_NULL, null=True, blank=False, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
