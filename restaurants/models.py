@@ -21,6 +21,7 @@ class Restaurant(models.Model):
     address_2 = models.CharField(max_length=254, default="Please enter address 2", null=True, blank=True)
     post_code = models.CharField(max_length=254, default="Please enter post code")
     delivery_cost = models.DecimalField(max_digits=4, decimal_places=2, default="0.00")
+    phone_number = models.DecimalField(max_digits=10, decimal_places=0, blank=False, null=False, default=0)
 
     def __str__(self):
         return self.name
