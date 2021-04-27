@@ -99,6 +99,7 @@
                             <div class="col-7">
                                 <p class="my-0"><strong>{{ food.food.friendly_name }}</strong></p>
                                 <p class="my-0 small text-muted">Qty: {{ food.quantity }}</p>
+                                <p class="fst-italic my-0 small">{{ food.additional_details }}</p>
                             </div>
                             <div class="col-3 text-right">
                                 <p class="my-0 small text-muted">€{{ food.food.price | calc_subtotal:food.quantity }}</p>
@@ -110,11 +111,13 @@
                         <div class="col-7 offset-2">
                             <p class="my-0">Order Total:</p>
                             <p class="my-0">Delivery:</p>
+                            <br>
                             <p class="my-0"><strong>Grand Total:</strong></p>
                         </div>
                         <div class="col-3">
                             <p class="my-0">€{{ order_total | floatformat:2 }}</p>
                             <p class="my-0">€{{ delivery_cost | floatformat:2 }}</p>
+                            <br>
                             <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
                         </div>
                     </div>

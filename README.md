@@ -37,6 +37,7 @@ Django's built in "|json_script" template tag was used to [prevent code injectio
 
 -   Use restaurant names instead of id numbers in restaurant url.
 -   Ability to add multiple addresses to one account.
+-   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
 
 
 
