@@ -1,14 +1,16 @@
 from django import forms
 from .models import CustomerProfile
 
+
 class CustomerProfileForm(forms.ModelForm):
     class Meta:
         model = CustomerProfile
         exclude = ('customer',)
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
+            'email': 'Email',
             'full_name': 'Full Name',
             'default_phone_number': 'Phone Number',
             'default_address_1': 'Address 1',
