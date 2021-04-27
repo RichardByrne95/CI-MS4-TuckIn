@@ -1,9 +1,19 @@
-<a href="{% url 'restaurants' %}" class="btn btn-outline-dark rounded-0 btn-lg">
-    <span class="icon">
-        <i class="fas fa-chevron-left"></i>
-    </span>
-    <span class="text-uppercase">Keep Shopping</span>
-</a>
+{% if current_restaurant %}
+    <a href="{% url 'restaurant_menu' current_restaurant.id %}" class="btn btn-outline-dark rounded-0 btn-lg">
+        <span class="icon">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="text-uppercase">Keep Shopping</span>
+    </a>
+{% else %}
+    <a href="{% url 'restaurants' %}" class="btn btn-outline-dark rounded-0 btn-lg">
+        <span class="icon">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="text-uppercase">Keep Shopping</span>
+    </a>
+{% endif %}
+
 <a href="{% url 'checkout_address' %}" class="btn btn-dark rounded-0 btn-lg">
     <span class="text-uppercase">Secure Checkout</span>
     <span class="icon">

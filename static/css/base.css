@@ -576,10 +576,6 @@ label[for="delivery-time"] {
     margin: 0em 1rem 1rem 0;
 }
 
-.restaurant-info-container {
-
-}
-
 .restaurant-checkout-logo {
     height: 5.5rem;
     width: 5.5rem;
@@ -589,7 +585,7 @@ label[for="delivery-time"] {
     font-size: 1.4rem;
 }
 
-/* Stripe */
+/* ----------------------------------------- Stripe */
 
 .StripeElement,
 .stripe-style-input,
@@ -681,6 +677,10 @@ select option[value=""] {
 
 #order-confirmation-section {
     margin-top: 9rem;
+}
+
+.order-confirmation-subheader {
+    margin: 1rem 1rem 2rem 1rem;
 }
 
 /* ----------------------------------------- Footer Links */
