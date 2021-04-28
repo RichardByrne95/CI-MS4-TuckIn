@@ -562,29 +562,6 @@ label[for="delivery-time"] {
     font-size: 1.4rem;
 }
 
-/* ----------------------------------------- Order Summary */
-
-.order-summary-card {
-    padding: 2rem;
-    border: solid 1px #c5ccd3;
-    border-radius: 8px;
-}
-
-.restaurant-checkout-logo-container {
-    width: 5.5rem;
-    height: 5.5rem;
-    margin: 0em 1rem 1rem 0;
-}
-
-.restaurant-checkout-logo {
-    height: 5.5rem;
-    width: 5.5rem;
-}
-
-.checkout-view-menu {
-    font-size: 1.4rem;
-}
-
 /* ----------------------------------------- Stripe */
 
 .StripeElement,
@@ -681,6 +658,33 @@ select option[value=""] {
 
 .order-confirmation-subheader {
     margin: 1rem 1rem 2rem 1rem;
+}
+
+.order-summary-card,
+.delivery-info-card {
+    padding: 2rem;
+    border: solid 1px #c5ccd3;
+    border-radius: 8px;
+}
+
+.restaurant-checkout-logo-container,
+.delivery-checkout-marker-container {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0em 1rem 1rem 0;
+}
+
+.restaurant-checkout-logo {
+    height: 5.5rem;
+    width: 5.5rem;
+}
+
+.delivery-checkout-marker i {
+    font-size: 3rem;
+}
+
+.checkout-view-menu {
+    font-size: 1.4rem;
 }
 
 /* ----------------------------------------- Footer Links */

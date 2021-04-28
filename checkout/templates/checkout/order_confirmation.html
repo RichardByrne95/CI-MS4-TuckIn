@@ -40,9 +40,14 @@
                                             </figure>
                                         </a>
                                     </div>
-                                    <div class=" restaurant-info-container">
+                                    <div class=" restaurant-address-container">
                                         <h3 class="d-inline restaurant-checkout-name">{{ order.order_restaurant.friendly_name }}</h3>
-                                        <p class="restaurant-checkout-address m-0">{{ order.order_restaurant.address_1 }}, {{ order.order_restaurant.address_2 }}</p>
+                                        <p class="restaurant-checkout-address m-0">
+                                            {{ order.order_restaurant.address_1 }},
+                                            {% if order.order_restaurant.address_2 %}
+                                                <br>{{ order.order_restaurant.address_2 }}
+                                            {% endif %}
+                                        </p>
                                         <p class="restaurant-checkout-phone">{{ order.order_restaurant.phone_number }}</p>
                                         <a href="{% url 'restaurant_menu' order.order_restaurant.id %}" class="checkout-view-menu">View menu</a>
                                     </div>
@@ -74,7 +79,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 no-gutters"></div>
+                        <div class="col-md-6 no-gutters">
+                            <!-- Delivery Info Card -->
+                            <div class="delivery-info-card">
+                                <!-- Address Info -->
+                                <div class="delivery-info-container d-flex">
+                                    <!-- Marker Icon -->
+                                    <div class="delivery-checkout-marker-container d-flex justify-content-center">
+                                        <span class="delivery-checkout-marker"><i class="fas fa-map-marker-alt"></i></span>
+                                    </div>
+                                    <!-- Address -->
+                                    <div class="delivery-address-container">
+                                        <h3 class="restaurant-checkout-name">Delivering to</h3>
+                                        <p class="customer-checkout-address m-0">
+                                            <strong>{{ order.full_name }}</strong><br>
+                                            {{ order.address_1 }},<br>
+                                            {% if order.address_2 %}
+                                                {{ order.address_2 }},<br>
+                                            {% endif %}
+                                            {{ order.city }}
+                                            {% if order.postcode %}
+                                                <br>{{ order.postcode }}
+                                            {% endif %}
+                                        </p>
+                                        <p class="restaurant-checkout-phone">{{ order.phone_number }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-3 no-gutters"></div>
