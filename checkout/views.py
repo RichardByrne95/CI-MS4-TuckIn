@@ -75,11 +75,20 @@ def checkout_payment(request):
             delivery_time = request.POST.get('delivery_time')
             request.session['delivery_time'] = delivery_time
 
-        # Handle submitting order
+
         elif 'delivery_time' not in request.POST:
+            # Check if user changed delivery details on checkout page
+            for item in request.POST:
+                if item == "csrfmiddlewaretoken" or item == "city" or item =="save-info":
+                    pass
+                else:
+                    if request.POST[item] != request.session['address'][item]:
+                        request.session['address'][item] = request.POST[item]
+            
+            # Handle submitting order
             address_form = request.session.get('address')
-            customer_profile = get_object_or_404(CustomerProfile, customer=request.user)
-            order_form = OrderForm(request.POST, {
+            customer_profile = get_object_or_404(CustomerProfile, customer=request.user) if request.user.is_authenticated else None
+            order_form = OrderForm({
                 'customer_profile': customer_profile,
                 'full_name': address_form['full_name'],
                 'email': address_form['email'],
@@ -88,15 +97,22 @@ def checkout_payment(request):
                 'address_2': address_form['address_2'],
                 'city': 'Dublin',
                 'postcode': address_form['postcode'],
-                'order_restaurant': order_restaurant,
-                'delivery_cost': current_bag['delivery_cost'],
-                'order_total': current_bag['order_total'],
-                'grand_total': current_bag['grand_total'],
-                'original_bag': bag,
+                # 'order_restaurant': order_restaurant,
+                # 'delivery_cost': current_bag['delivery_cost'],
+                # 'order_total': current_bag['order_total'],
+                # 'grand_total': current_bag['grand_total'],
+                # 'original_bag': bag,
             })
-            # If valid, save order form
+
+            # If valid, add additional fields not in form model and save order form
             if order_form.is_valid():
-                order = order_form.save()
+                order = order_form.save(commit=False)
+                order.order_restaurant = order_restaurant
+                order.delivery_cost = current_bag['delivery_cost']
+                order.order_total  = current_bag['order_total']
+                order.grand_total = current_bag['grand_total']
+                order.original_bag = bag
+                order.save()
 
                 # Create line item for each food in bag
                 for data in bag_contents(request)['bag_contents']:
@@ -132,10 +148,8 @@ def checkout_payment(request):
             'postcode': profile.default_postcode,
             'order_restaurant': order_restaurant,
         })
-        if order_form.is_valid():
-            order_form.save()
-        else:
-            messages.error(request, "Order form is not accepting the inputted data.")
+        # Raise error if form is invalid
+        messages.error(request, "Order form is not accepting the inputted data.") if not order_form.is_valid() else None
     else:
         # Create order form using session data
         address_form = request.session.get('address')
@@ -147,12 +161,10 @@ def checkout_payment(request):
             'address_2': address_form['address_2'],
             'city': 'Dublin',
             'postcode': address_form['postcode'],
-            'order_restaurant': order_restaurant,
+            # 'order_restaurant': order_restaurant,
         })
-        if order_form.is_valid():
-            order_form.save()
-        else:
-            messages.error(request, "Order form is not accepting the inputted data.")
+        # Raise error if form is invalid
+        messages.error(request, "Order form is not accepting the inputted data.") if not order_form.is_valid() else None
 
     # Get variables
     delivery_time = request.POST.get('delivery_time')
