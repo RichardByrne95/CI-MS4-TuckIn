@@ -17,17 +17,17 @@ class OrderForm(forms.ModelForm):
             'phone_number': 'Phone Number',
             'address_1': 'Address 1',
             'address_2': 'Address 2',
-            'postcode': 'Postal Code',
             'city': 'City',
+            'postcode': 'Postal Code',
         }
 
         # Set cursor to this input field upon loading
         self.fields['full_name'].widget.attrs['autofocus'] = True
 
-        # Make city and email readonly
+        # Make city readonly
         self.fields['city'].widget.attrs['readonly'] = True
-        self.fields['email'].widget.attrs['readonly'] = True
 
+        # Field processing
         for field in self.fields:
             if self.fields[field].required:
                 # If the current field is required, add '*'

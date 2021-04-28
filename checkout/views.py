@@ -11,7 +11,7 @@ import stripe
 
 
 def checkout_address(request):
-    # Create instance of order form
+    # Create instance of order form with logged in user's details
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Put saved details into fields
@@ -19,11 +19,13 @@ def checkout_address(request):
             'full_name': profile.full_name,
             'email': profile.customer.email,
             'phone_number': profile.default_phone_number,
-            'postcode': profile.default_postcode,
             'address_1': profile.default_address_1,
             'address_2': profile.default_address_2,
+            'postcode': profile.default_postcode,
         })
-        address_form.save(commit=False)
+        # Make email field readonly
+        address_form.fields['email'].widget.attrs['readonly'] = True
+    # Otherwise, create blank order form
     else:
         address_form = OrderForm()
     
@@ -44,9 +46,9 @@ def checkout_time(request):
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            'postcode': request.POST['postcode'],
             'address_1': request.POST['address_1'],
             'address_2': request.POST['address_2'],
+            'postcode': request.POST['postcode'],
         }
         request.session['address'] = form_data
 
@@ -84,8 +86,8 @@ def checkout_payment(request):
                 'phone_number': address_form['phone_number'],
                 'address_1': address_form['address_1'],
                 'address_2': address_form['address_2'],
-                'postcode': address_form['postcode'],
                 'city': 'Dublin',
+                'postcode': address_form['postcode'],
                 'order_restaurant': order_restaurant,
                 'delivery_cost': current_bag['delivery_cost'],
                 'order_total': current_bag['order_total'],
@@ -126,8 +128,8 @@ def checkout_payment(request):
             'phone_number': profile.default_phone_number,
             'address_1': profile.default_address_1,
             'address_2': profile.default_address_2,
-            'postcode': profile.default_postcode,
             'city': 'Dublin',
+            'postcode': profile.default_postcode,
             'order_restaurant': order_restaurant,
         })
         if order_form.is_valid():
@@ -143,8 +145,8 @@ def checkout_payment(request):
             'phone_number': address_form['phone_number'],
             'address_1': address_form['address_1'],
             'address_2': address_form['address_2'],
-            'postcode': address_form['postcode'],
             'city': 'Dublin',
+            'postcode': address_form['postcode'],
             'order_restaurant': order_restaurant,
         })
         if order_form.is_valid():

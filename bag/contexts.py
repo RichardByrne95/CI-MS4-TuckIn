@@ -1,4 +1,3 @@
-from django.db.models.manager import BaseManager
 from restaurants.models import Restaurant
 from django.shortcuts import get_object_or_404
 from restaurants.views import FoodItem
@@ -9,11 +8,11 @@ def bag_contents(request):
     forloop_count = 0
     order_total = 0
     bag = request.session.get('bag', {})
+    current_restaurant = None
     
     # Add restuarant name to session
-    restaurant = list(bag.keys())[0]
     current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0]) if bag else None
-    request.session['restaurant'] = restaurant
+    request.session['restaurant'] = current_restaurant.name if bag else ''
     
     delivery_cost = current_restaurant.delivery_cost if bag else 0
 
