@@ -50,8 +50,7 @@ card.addEventListener('change', (event) => {
     }
 });
 
-// Form submission
-let form = $("#payment-form");
+// Handle Checkout Form Submission
 
 $("#submit-button").on("click", (e) => {
     // Prevent posting so that the below code can be executed
@@ -60,20 +59,21 @@ $("#submit-button").on("click", (e) => {
     card.update({ "disabled": true });
     $("#submit-button").attr("disabled", true);
     // Fade form and loading overlay
+    let form = $("#payment-form");
     form.fadeToggle(100);
     $("#loading-overlay").fadeToggle(100);
 
     // Get additional form details and cache them to payment intent
     let saveInfo = Boolean($("#save-info").attr('checked'));
     let csrfMiddlewareToken = $("input[name='csrfmiddlewaretoken']").val();
+    const url = '/checkout/cache_checkout_data/';
     let postData = {
         'csrfmiddlewaretoken': csrfMiddlewareToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-    const url = '/checkout/cache_checkout_data/';
 
-    // Post data to view
+    // Post additional form details to payment intent metadata
     $.post(url, postData).done(() => {
         // Send card details to Stripe
         stripe.confirmCardPayment(clientSecret, {
@@ -126,6 +126,9 @@ $("#submit-button").on("click", (e) => {
                     form.submit();
                 }
             }
-        })
+        });
+    }).fail(() => {
+        // Reload page, error displayed via messages
+        location.reload();
     })
 });
