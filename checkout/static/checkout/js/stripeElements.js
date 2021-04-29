@@ -1,4 +1,4 @@
-// From Stripe documentation
+// Referenced Stripe documentation
 let stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 let clientSecret = $("#id_client_secret").text().slice(1, -1);
 let stripe = Stripe(stripePublicKey);
@@ -24,7 +24,7 @@ const style = {
 let card = elements.create("card", { style: style });
 card.mount("#card-element");
 
-card.on('change', function (event) {
+card.on('change', (event) => {
     var displayError = document.getElementById('card-errors');
     if (event.error) {
         displayError.textContent = event.error.message;
@@ -52,7 +52,6 @@ card.addEventListener('change', (event) => {
 let form = $("#payment-form");
 
 $("#submit-button").on("click", (e) => {
-    console.log("Test")
     // Prevent posting so that the below code can be executed
     e.preventDefault();
     // Disable card and submit button to prevent multiple submissions
@@ -65,6 +64,27 @@ $("#submit-button").on("click", (e) => {
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
+            billing_details: {
+                name: $.trim(form.full_name.value),
+                phone_number: $.trim(form.phone_number.value),
+                email: $.trim(form.email.value),
+                address: {
+                    line1: $.trim(form.address_1.value),
+                    line2: $.trim(form.address_2.value),
+                    city: $.trim(form.city.value),
+                    postcode: $.trim(form.postcode.value),
+                }
+            }
+        },
+        shipping: {
+            name: $.trim(form.full_name.value),
+            phone_number: $.trim(form.phone_number.value),
+            address: {
+                line1: $.trim(form.address_1.value),
+                line2: $.trim(form.address_2.value),
+                city: $.trim(form.city.value),
+                postcode: $.trim(form.postcode.value),
+            }
         }
     }).then((result) => {
         if (result.error) {
@@ -76,12 +96,15 @@ $("#submit-button").on("click", (e) => {
             </span>
             <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
+
             // Fade form and loading overlay
             form.fadeToggle(100);
             $("#loading-overlay").fadeToggle(100);
+
             // Re-enable card and submit button to allow the user to try again
             card.update({ "disabled": false });
             $("#submit-button").attr("disabled", false);
+
         } else {
             // If payment has gone through, submit form
             if (result.paymentIntent.status === "succeeded") {
