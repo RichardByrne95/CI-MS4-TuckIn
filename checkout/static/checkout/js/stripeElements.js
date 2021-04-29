@@ -1,9 +1,10 @@
 // Referenced Stripe documentation
 let stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 let clientSecret = $("#id_client_secret").text().slice(1, -1);
+let cardElement = $("#card-element");
+let form = $("#payment-form");
 let stripe = Stripe(stripePublicKey);
 let elements = stripe.elements();
-let cardElement = $("#card-element");
 
 const style = {
     base: {
@@ -51,7 +52,6 @@ card.addEventListener('change', (event) => {
 });
 
 // Handle Checkout Form Submission
-
 $("#submit-button").on("click", (e) => {
     // Prevent posting so that the below code can be executed
     e.preventDefault();
@@ -59,10 +59,9 @@ $("#submit-button").on("click", (e) => {
     card.update({ "disabled": true });
     $("#submit-button").attr("disabled", true);
     // Fade form and loading overlay
-    let form = $("#payment-form");
     form.fadeToggle(100);
     $("#loading-overlay").fadeToggle(100);
-
+    
     // Get additional form details and cache them to payment intent
     let saveInfo = Boolean($("#save-info").attr('checked'));
     let csrfMiddlewareToken = $("input[name='csrfmiddlewaretoken']").val();
@@ -72,7 +71,7 @@ $("#submit-button").on("click", (e) => {
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-
+    
     // Post additional form details to payment intent metadata
     $.post(url, postData).done(() => {
         // Send card details to Stripe
@@ -80,25 +79,25 @@ $("#submit-button").on("click", (e) => {
             payment_method: {
                 card: card,
                 billing_details: {
-                    name: $.trim(form.full_name.value),
-                    phone_number: $.trim(form.phone_number.value),
-                    email: $.trim(form.email.value),
+                    name: $.trim(form.full_name),
+                    phone_number: $.trim(form.phone_number),
+                    email: $.trim(form.email),
                     address: {
-                        line1: $.trim(form.address_1.value),
-                        line2: $.trim(form.address_2.value),
-                        city: $.trim(form.city.value),
-                        postcode: $.trim(form.postcode.value),
+                        line1: $.trim(form.address_1),
+                        line2: $.trim(form.address_2),
+                        city: $.trim(form.city),
+                        postcode: $.trim(form.postcode),
                     }
                 }
             },
             shipping: {
-                name: $.trim(form.full_name.value),
-                phone_number: $.trim(form.phone_number.value),
+                name: $.trim(form.full_name),
+                phone_number: $.trim(form.phone_number),
                 address: {
-                    line1: $.trim(form.address_1.value),
-                    line2: $.trim(form.address_2.value),
-                    city: $.trim(form.city.value),
-                    postcode: $.trim(form.postcode.value),
+                    line1: $.trim(form.address_1),
+                    line2: $.trim(form.address_2),
+                    city: $.trim(form.city),
+                    postcode: $.trim(form.postcode),
                 }
             }
         }).then((result) => {
