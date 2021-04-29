@@ -1,13 +1,16 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
 from bag.contexts import bag_contents
 from django.urls import reverse
 from restaurants.models import FoodItem, Restaurant
 from profiles.models import CustomerProfile
 from .models import Order, OrderLineItem
 from .forms import OrderForm
+from django.http import HttpResponse
 from django.conf import settings
 from django.contrib import messages
 import stripe
+import json
 
 
 def checkout_address(request):
@@ -208,3 +211,19 @@ def order_confirmation(request, order_number):
         'bag': bag,
     }
     return render(request, 'checkout/order_confirmation.html', context)
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        payment_id = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(payment_id, metadata={
+            'user': request.user,
+            'save_info': request.POST.get('save_info'),
+            'bag': json.dumps(request.session.get('bag', {})),
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.', status=400)
+        return HttpResponse(content=e, status=400)
