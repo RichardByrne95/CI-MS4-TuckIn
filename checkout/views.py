@@ -167,7 +167,8 @@ def checkout_payment(request):
             # 'order_restaurant': order_restaurant,
         })
         # Raise error if form is invalid
-        messages.error(request, "Order form is not accepting the inputted data.") if not order_form.is_valid() else None
+        messages.error(
+            request, "Order form is not accepting the inputted data.") if not order_form.is_valid() else None
 
     # Get variables
     delivery_time = request.POST.get('delivery_time')
@@ -213,6 +214,8 @@ def order_confirmation(request, order_number):
     return render(request, 'checkout/order_confirmation.html', context)
 
 
+# Post additional order data (data that doesn't fit within the confirmCardPayment's 'payment_method') to the payment intent. 
+# This allows the order instance in the db to be created when Stripe sends back the payment succeeded webhook.
 @require_POST
 def cache_checkout_data(request):
     try:
