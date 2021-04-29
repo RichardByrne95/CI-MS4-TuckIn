@@ -10,7 +10,7 @@ const style = {
         color: "#000",
         fontFamily: "'Inter', sans-serif",
         fontSmoothing: "antialiased",
-        fontSize: "1.3rem",
+        fontSize: "13px",
         "::placeholder": {
             color: "#aab7c4"
         }
@@ -51,12 +51,16 @@ card.addEventListener('change', (event) => {
 // Form submission
 let form = $("#payment-form");
 
-form.addEventListener('submit', (e) => {
+$("#submit-button").on("click", (e) => {
+    console.log("Test")
     // Prevent posting so that the below code can be executed
     e.preventDefault();
     // Disable card and submit button to prevent multiple submissions
     card.update({ "disabled": true });
     $("#submit-button").attr("disabled", true);
+    // Fade form and loading overlay
+    form.fadeToggle(100);
+    $("#loading-overlay").fadeToggle(100);
     // Send card details to Stripe
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -72,6 +76,9 @@ form.addEventListener('submit', (e) => {
             </span>
             <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
+            // Fade form and loading overlay
+            form.fadeToggle(100);
+            $("#loading-overlay").fadeToggle(100);
             // Re-enable card and submit button to allow the user to try again
             card.update({ "disabled": false });
             $("#submit-button").attr("disabled", false);

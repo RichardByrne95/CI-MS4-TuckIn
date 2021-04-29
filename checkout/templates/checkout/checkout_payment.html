@@ -37,8 +37,8 @@
                             {{ order_form.postcode | as_crispy_field }}
                             <div class="form-check form-check-inline px-3">
                                 {% if user.is_authenticated %}
-                                <input type="checkbox" class="form-check-input" id="save-info" name="save-info" checked>
-                                <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
+                                    <input type="checkbox" class="form-check-input" id="save-info" name="save-info" checked>
+                                    <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
                                 {% else %}
                                     <label class="form-check-label" for="save-info">
                                         <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or 
@@ -125,6 +125,14 @@
                 <div class="col-2 no-gutters"></div>
             </div>
         </section>
+    </div>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <h1 class="text-light loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h1>
     </div>
 {% endblock %}
 
