@@ -2,7 +2,6 @@
 let stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 let clientSecret = $("#id_client_secret").text().slice(1, -1);
 let cardElement = $("#card-element");
-let form = $("#payment-form");
 let stripe = Stripe(stripePublicKey);
 let elements = stripe.elements();
 
@@ -52,25 +51,27 @@ card.addEventListener('change', (event) => {
 });
 
 // Handle Checkout Form Submission
-$("#submit-button").on("click", (e) => {
+let form = document.getElementById("payment-form");
+form.addEventListener("submit", (e) => {
     // Prevent posting so that the below code can be executed
     e.preventDefault();
     // Disable card and submit button to prevent multiple submissions
     card.update({ "disabled": true });
     $("#submit-button").attr("disabled", true);
     // Fade form and loading overlay
-    form.fadeToggle(100);
+    $("#payment-form").fadeToggle(100);
     $("#loading-overlay").fadeToggle(100);
     
     // Get additional form details and cache them to payment intent
+    const url = '/checkout/cache_checkout_data/';
     let saveInfo = Boolean($("#save-info").attr('checked'));
     let csrfMiddlewareToken = $("input[name='csrfmiddlewaretoken']").val();
-    const url = '/checkout/cache_checkout_data/';
     let postData = {
         'csrfmiddlewaretoken': csrfMiddlewareToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
+
     
     // Post additional form details to payment intent metadata
     $.post(url, postData).done(() => {
@@ -79,25 +80,25 @@ $("#submit-button").on("click", (e) => {
             payment_method: {
                 card: card,
                 billing_details: {
-                    name: $.trim(form.full_name),
-                    phone_number: $.trim(form.phone_number),
-                    email: $.trim(form.email),
+                    name: $.trim(form.full_name.value),
+                    phone: $.trim(form.phone_number.value),
+                    email: $.trim(form.email.value),
                     address: {
-                        line1: $.trim(form.address_1),
-                        line2: $.trim(form.address_2),
-                        city: $.trim(form.city),
-                        postcode: $.trim(form.postcode),
+                        line1: $.trim(form.address_1.value),
+                        line2: $.trim(form.address_2.value),
+                        city: $.trim(form.city.value),
+                        postal_code: $.trim(form.postcode.value),
                     }
                 }
             },
             shipping: {
-                name: $.trim(form.full_name),
-                phone_number: $.trim(form.phone_number),
+                name: $.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
                 address: {
-                    line1: $.trim(form.address_1),
-                    line2: $.trim(form.address_2),
-                    city: $.trim(form.city),
-                    postcode: $.trim(form.postcode),
+                    line1: $.trim(form.address_1.value),
+                    line2: $.trim(form.address_2.value),
+                    city: $.trim(form.city.value),
+                    postal_code: $.trim(form.postcode.value),
                 }
             }
         }).then((result) => {
@@ -112,7 +113,7 @@ $("#submit-button").on("click", (e) => {
                 $(errorDiv).html(html);
 
                 // Fade form and loading overlay
-                form.fadeToggle(100);
+                $("#payment-form").fadeToggle(100);
                 $("#loading-overlay").fadeToggle(100);
 
                 // Re-enable card and submit button to allow the user to try again
@@ -122,6 +123,7 @@ $("#submit-button").on("click", (e) => {
             } else {
                 // If payment has gone through, submit form
                 if (result.paymentIntent.status === "succeeded") {
+                    console.log("Submitted")
                     form.submit();
                 }
             }
