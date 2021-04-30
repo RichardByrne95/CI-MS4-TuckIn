@@ -82,7 +82,7 @@ def checkout_payment(request):
         elif 'delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
-                if item == "csrfmiddlewaretoken" or item == "city" or item =="save-info":
+                if item == "csrfmiddlewaretoken" or item == "city" or item == "save-info" or item == "client_secret":
                     pass
                 else:
                     if request.POST[item] != request.session['address'][item]:
@@ -100,11 +100,6 @@ def checkout_payment(request):
                 'address_2': address_form['address_2'],
                 'city': 'Dublin',
                 'postcode': address_form['postcode'],
-                # 'order_restaurant': order_restaurant,
-                # 'delivery_cost': current_bag['delivery_cost'],
-                # 'order_total': current_bag['order_total'],
-                # 'grand_total': current_bag['grand_total'],
-                # 'original_bag': bag,
             })
 
             # If valid, add additional fields not in form model and save order form
@@ -115,6 +110,7 @@ def checkout_payment(request):
                 order.order_total  = current_bag['order_total']
                 order.grand_total = current_bag['grand_total']
                 order.original_bag = bag
+                order.stripe_payment_id = request.POST.get('client_secret').split('_secret')[0]
                 order.save()
 
                 # Create line item for each food in bag
@@ -164,7 +160,6 @@ def checkout_payment(request):
             'address_2': address_form['address_2'],
             'city': 'Dublin',
             'postcode': address_form['postcode'],
-            # 'order_restaurant': order_restaurant,
         })
         # Raise error if form is invalid
         messages.error(

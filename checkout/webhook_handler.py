@@ -1,11 +1,8 @@
 import json
 import time
-from django.contrib import messages
-from stripe.api_resources import payment_intent
-from django.urls.base import reverse
-from django.shortcuts import get_object_or_404, redirect
-from restaurants.models import FoodItem
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from restaurants.models import FoodItem
 from checkout.models import Order, OrderLineItem
 
 
@@ -31,7 +28,7 @@ class StripeWH_Handler:
         save_info = intent.metadata.save_info
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
-        grand_total = round(intent.data.charges[0].amount / 100, 2)
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
 
         # Replace empty strings with Null for db compatibility
         for field, value in shipping_details.address.items():
@@ -51,9 +48,11 @@ class StripeWH_Handler:
                     address_2__iexact=shipping_details.line2,
                     city__iexact=shipping_details.city,
                     postcode__iexact=shipping_details.postcode,
-                    email__iexact=shipping_details.email,
+                    email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone_number,
                     grand_total=grand_total,
+                    original_bag=bag,
+                    stripe_payment_id=payment_intent_id,
                 )
                 order_exists = True
                 break
@@ -76,9 +75,11 @@ class StripeWH_Handler:
                     address_2=shipping_details.line2,
                     city=shipping_details.city,
                     postcode=shipping_details.postcode,
-                    email=shipping_details.email,
+                    email=billing_details.email,
                     phone_number=shipping_details.phone_number,
                     grand_total=grand_total,
+                    original_bag=bag,
+                    stripe_payment_id=payment_intent_id,
                 )
                 # Create line items (taken from contexts.py)
                 bag = json.loads(bag)

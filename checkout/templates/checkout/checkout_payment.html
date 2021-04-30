@@ -49,8 +49,12 @@
                         </fieldset>
                         <fieldset>
                             <legend class="fieldset-label text-black w-auto">Payment</legend>
+                            <!-- Stripe Card Element -->
                             <div id="card-element"></div>
+                            <!-- Card for Form Errors -->
                             <div class="text-danger" role="alert" id="card-errors"></div>
+                            <!-- Pass client secret to view to get payment intent id -->
+                            <input type="hidden" name="client_secret" value="{{ client_secret }}">
                         </fieldset>
                         <div class="submit-button text-right mt-4 mb-2">                    
                             <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
