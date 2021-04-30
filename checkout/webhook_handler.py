@@ -1,4 +1,5 @@
 import json
+import time
 from django.contrib import messages
 from stripe.api_resources import payment_intent
 from django.urls.base import reverse
@@ -38,25 +39,35 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         order_exists = False
+        attempt = 1
 
-        try:
-            # Check if order already exists in database
-            order = get_object_or_404(Order,
-                full_name__iexact=shipping_details.name,
-                address_1__iexact=shipping_details.line1,
-                address_2__iexact=shipping_details.line2,
-                city__iexact=shipping_details.city,
-                postcode__iexact=shipping_details.postcode,
-                email__iexact=shipping_details.email,
-                phone_number__iexact=shipping_details.phone_number,
-                grand_total=grand_total,
-            )
-            order_exists = True
+        # Attempt to find order in database 5 times
+        while attempt <= 5:
+            try:
+                # Check if order already exists in database
+                order = get_object_or_404(Order,
+                    full_name__iexact=shipping_details.name,
+                    address_1__iexact=shipping_details.line1,
+                    address_2__iexact=shipping_details.line2,
+                    city__iexact=shipping_details.city,
+                    postcode__iexact=shipping_details.postcode,
+                    email__iexact=shipping_details.email,
+                    phone_number__iexact=shipping_details.phone_number,
+                    grand_total=grand_total,
+                )
+                order_exists = True
+                break
+            except Order.DoesNotExist:
+                attempt += 1
+                time.sleep(1)
+        
+        if order_exists:
             return HttpResponse(
                 content=f'Webhook received: {event[type]} | SUCCESS: Verified order already in database',
                 status=200,
             )
-        except Order.DoesNotExist:
+        else:
+            order = None
             try:
                 # Create order
                 order = Order.objects.create(Order,
@@ -91,7 +102,7 @@ class StripeWH_Handler:
                 return HttpResponse(content=f'Webhook received: {event[type]} | ERROR: {e}', status=500)
                 
         return HttpResponse(
-            content=f'Webhook received: {event[type]}',
+            content=f'Webhook received: {event[type]} | SUCCESS: Created order via Webhook handler',
             status=200,
         )
 
