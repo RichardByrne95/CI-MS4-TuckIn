@@ -27,8 +27,9 @@
                             <p>Find restaurants near you, delivering right now</p>
                             <div class="row">
                                 <div class="col no-gutters">
-                                    <form action="" id="address-finder">
-                                        <input id="address" type="text" class="address align-middle" minlength="3" required>
+                                    <form action="{% url 'restaurants' %}" id="address-finder" method="POST">
+                                        {% csrf_token %}
+                                        <input id="address" name="maps_address" type="text" class="address align-middle" minlength="5" required>
                                         <button class="btn btn-lg align-middle find-button" type="submit">Find</button>
                                         <div class="error-message-div">
                                             <span class="error-message d-flex justify-content-center"></span>

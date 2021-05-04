@@ -78,7 +78,6 @@ def checkout_payment(request):
             delivery_time = request.POST.get('delivery_time')
             request.session['delivery_time'] = delivery_time
 
-
         elif 'delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:

@@ -9,6 +9,8 @@ def bag_contents(request):
     order_total = 0
     bag = request.session.get('bag', {})
     current_restaurant = None
+    maps_address = request.session.get('maps_address', None)
+    short_maps_address = request.session.get('short_maps_address', None)
     
     # Add restuarant name to session
     current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0]) if bag else None
@@ -43,6 +45,8 @@ def bag_contents(request):
         'order_total': order_total,
         'delivery_cost': delivery_cost,
         'grand_total': grand_total,
+        'maps_address': maps_address,
+        'short_maps_address': short_maps_address,
     }
 
     return context

@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib import messages
 from django.db.models import Q
 from .models import FoodItem, Restaurant, MenuSection, Cuisine
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
 
 
 def all_restaurants(request):
@@ -14,8 +14,19 @@ def all_restaurants(request):
     query_search = None
     cuisine = None
 
+    #  Handle inputting/changing delivery address
+    if request.method == "POST":
+        maps_address = request.POST['maps_address']
+
+        # Create address without city and country
+        short_maps_address_list = maps_address.split(',')
+        short_maps_address = f'{short_maps_address_list[0]}, {short_maps_address_list[1]}'
+        # Store in session
+        request.session['maps_address'] = maps_address
+        request.session['short_maps_address'] = short_maps_address
+
+    # Sorting (referenced Boutique Ado)
     if request.GET:
-        # Sorting (referenced Boutique Ado)
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             if sortkey == 'rating_high':
