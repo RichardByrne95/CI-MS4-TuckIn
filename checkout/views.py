@@ -28,6 +28,19 @@ def checkout_address(request):
         })
         # Make email field readonly
         address_form.fields['email'].widget.attrs['readonly'] = True
+    # If an address has been inputted via the homepage or location changer
+    elif request.session['maps_address']:
+        maps_address = request.session['maps_address'].split(',')
+        address_form = OrderForm(initial={
+            'full_name': "",
+            'email': "",
+            'phone_number': "",
+            'address_1': maps_address[0].lstrip(),
+            'address_2': maps_address[1].lstrip(),
+            'postcode': "",
+        })
+        # Make email field readonly
+        address_form.fields['email'].widget.attrs['readonly'] = False
     # Otherwise, create blank order form
     else:
         address_form = OrderForm()
