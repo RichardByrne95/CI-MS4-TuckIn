@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Restaurant, Cuisine, MenuSection, FoodItem
+from .models import OpeningHours, Restaurant, Cuisine, MenuSection, FoodItem
 
 class CuisineAdmin(admin.ModelAdmin):
     list_display = (
@@ -19,6 +19,16 @@ class RestaurantsAdmin(admin.ModelAdmin):
     )
 
     ordering = ('name',)
+
+class OpeningHoursAdmin(admin.ModelAdmin):
+    list_display = (
+        'restaurant',
+        'weekday',
+        'from_hour',
+        'to_hour',
+    )
+
+    ordering = ('restaurant', 'weekday',)
 
 class MenuSectionAdmin(admin.ModelAdmin):
     list_display = (
@@ -43,6 +53,7 @@ class FoodItemAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 admin.site.register(Restaurant, RestaurantsAdmin)
+admin.site.register(OpeningHours, OpeningHoursAdmin)
 admin.site.register(Cuisine, CuisineAdmin)
 admin.site.register(MenuSection, MenuSectionAdmin)
 admin.site.register(FoodItem, FoodItemAdmin)

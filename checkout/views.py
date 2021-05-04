@@ -47,6 +47,7 @@ def checkout_address(request):
     
     restaurant_name = request.session.get('restaurant')
     restaurant = get_object_or_404(Restaurant, name=restaurant_name)
+    restaurant.get_opening_hours()
 
     context = {
         'address_form': address_form,
