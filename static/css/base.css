@@ -237,6 +237,11 @@ footer a, footer span {
     border: rgba(255, 68, 0, 0.774) 1px solid;
 }
 
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+}
+
 .cuisines-section {
     margin-top: 10rem;
 }

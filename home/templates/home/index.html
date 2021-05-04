@@ -8,6 +8,7 @@
 {% block content %}
     <div class="container-fluid no-gutters">
         <section>
+            <!-- Background Image -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters">
                     <figure>
@@ -17,6 +18,7 @@
             </div>
             <div class="row no-gutters">
                 <div class="col-4 no-gutters"></div>
+                <!-- Jumbotron -->
                 <div class="col-4 no-gutters">
                     <div class="jumbotron jumbotron-fluid text-center shadow rounded">
                         <div class="container no-gutters">
@@ -25,8 +27,13 @@
                             <p>Find restaurants near you, delivering right now</p>
                             <div class="row">
                                 <div class="col no-gutters">
-                                    <input id="address" type="text" class="address align-middle">
-                                    <button class="btn btn-lg align-middle find-button" type="submit">Find</button>
+                                    <form action="" id="address-finder">
+                                        <input id="address" type="text" class="address align-middle" minlength="3" required>
+                                        <button class="btn btn-lg align-middle find-button" type="submit">Find</button>
+                                        <div class="error-message-div">
+                                            <span class="error-message d-flex justify-content-center"></span>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -37,6 +44,7 @@
         </section>
         <section class="row no-gutters text-center cuisines-section">
             <div class="col-3 no-gutters"></div>
+            <!-- Cuisines -->
             <div class="col-6 no-gutters">
                 <div class="row no-gutters cuisines-container">
                     {% for cuisine in cuisines %}
