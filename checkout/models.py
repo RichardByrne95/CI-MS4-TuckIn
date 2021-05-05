@@ -1,5 +1,4 @@
 import uuid
-from django.conf import settings
 from django.db import models
 from django.db.models import Sum
 from django.db.models.deletion import CASCADE, RESTRICT
@@ -18,6 +17,7 @@ class Order(models.Model):
     city = models.CharField(max_length=6, null=False, blank=False, default='Dublin')
     postcode = models.CharField(max_length=8, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    delivery_time = models.DateTimeField(null=True, blank=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
