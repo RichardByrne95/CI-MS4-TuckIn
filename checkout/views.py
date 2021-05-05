@@ -86,39 +86,47 @@ def checkout_time(request):
 
 
 def checkout_payment(request):
+    # Add selected delivery time to session
+    if request.method == "POST":
+        if 'from_delivery_time' in request.POST:
+            delivery_time = request.POST.get('delivery_time')
+            request.session['delivery_time'] = delivery_time
+    
+    # Get variables
     bag = request.session.get('bag')
     current_bag = bag_contents(request)
     now = timezone.now()
 
-    # Get delivery time as datetime object
+    # Format delivery time for processing
     session_delivery_time = str(request.session['delivery_time']).replace('.', '')
+
+    # Get delivery time as datetime object
     # Format differently based on whether delivery time has minutes or not e.g. 7:30 pm vs 7 pm
     if len(session_delivery_time) <= 5:
         format = '%Y-%m-%d %I %p'
     else:
         format = '%Y-%m-%d %I:%M %p'
-    delivery_time = datetime.datetime.strptime(f'{now.date()} {session_delivery_time}', format) 
-    
+    delivery_time = datetime.datetime.strptime(f'{now.date()} {session_delivery_time}', format)
+
+    # Make delivery time aware
+    delivery_time = delivery_time.replace(tzinfo=timezone.utc)
+
     # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)
 
-    if request.method == "POST":
-        # Add selected delivery time to session
-        if 'from_delivery_time' in request.POST:
-            delivery_time = request.POST.get('delivery_time')
-            request.session['delivery_time'] = delivery_time
 
-        elif 'from_delivery_page' not in request.POST:
+    # Handle submitting order
+    if request.method == "POST":
+        if 'from_delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
-                if item == "csrfmiddlewaretoken" or item == "city" or item == "save-info" or item == "client_secret":
+                if item == "csrfmiddlewaretoken" or item == "city" or item == "save-info" or item == "client_secret" or item == "delivery_time" or item == "from_delivery_time":
                     pass
                 else:
                     if request.POST[item] != request.session['address'][item]:
                         request.session['address'][item] = request.POST[item]
-            
-            # Handle submitting order
+            # Create order form
             address_form = request.session.get('address')
             customer_profile = get_object_or_404(CustomerProfile, customer=request.user) if request.user.is_authenticated else None
             order_form = OrderForm({

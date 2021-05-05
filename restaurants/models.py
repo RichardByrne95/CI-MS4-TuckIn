@@ -1,6 +1,7 @@
 import datetime
 from math import ceil
 from django.db import models
+from django.utils.timezone import utc
 from django.db.models.deletion import CASCADE, SET_NULL
 
 # Cuisine
@@ -38,21 +39,21 @@ class Restaurant(models.Model):
         # Get/set variables
         today = datetime.datetime.today().weekday()
         now = datetime.datetime.today()
-        first_delivery_time = now
         opening_hours = self.hours.all()
         todays_opening_hours = opening_hours.filter(weekday=today)
         opening_time = todays_opening_hours[0].from_hour
-        closing_time = todays_opening_hours[0].to_hour
+        closing_time = todays_opening_hours[0].to_hour        
+        first_delivery_time = now
+        delivery_times = []
 
         # If closing time is midnight, replace with 23:59:59
         if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
             closing_time = datetime.time(hour=23, minute=59, second=59)
 
+
         # Convert from datetime.time to datetime.datetime object
         closing_time = datetime.datetime.strptime(
             f'{now.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
-
-        delivery_times = []
 
         # If restaurant is open
         if now.time() > opening_time:
@@ -66,12 +67,20 @@ class Restaurant(models.Model):
             # Otherwise replace mintutes with next interval time
             else:
                 first_delivery_time = first_delivery_time.replace(minute=next_closest_15_minutes)
+            
+            # Add 30 minutes buffer for restaurant to cook food
+            first_delivery_time += datetime.timedelta(minutes=30)
+
+            # Make each datetime object aware for database
+            first_delivery_time.replace(tzinfo=utc)
+            closing_time.replace(tzinfo=utc)
 
             # Create list of 15 minute delivery times
             while first_delivery_time < closing_time:
                 first_delivery_time += datetime.timedelta(minutes=15)
                 delivery_times.append(first_delivery_time.time())
 
+            print(first_delivery_time, closing_time)
         return delivery_times if delivery_times else None
 
 
