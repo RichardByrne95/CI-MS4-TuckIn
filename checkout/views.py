@@ -1,16 +1,16 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from django.views.decorators.http import require_POST
-from bag.contexts import bag_contents
-from django.urls import reverse
-from restaurants.models import FoodItem, Restaurant
-from profiles.models import CustomerProfile
-from .models import Order, OrderLineItem
-from .forms import OrderForm
-from django.http import HttpResponse
-from django.conf import settings
-from django.contrib import messages
-import stripe
 import json
+import stripe
+from django.contrib import messages
+from django.conf import settings
+from django.http import HttpResponse
+from .forms import OrderForm
+from .models import Order, OrderLineItem
+from profiles.models import CustomerProfile
+from restaurants.models import FoodItem, Restaurant
+from django.urls import reverse
+from bag.contexts import bag_contents
+from django.views.decorators.http import require_POST
+from django.shortcuts import get_object_or_404, redirect, render
 
 
 def checkout_address(request):
@@ -47,7 +47,6 @@ def checkout_address(request):
     
     restaurant_name = request.session.get('restaurant')
     restaurant = get_object_or_404(Restaurant, name=restaurant_name)
-    restaurant.get_opening_hours()
 
     context = {
         'address_form': address_form,
@@ -69,11 +68,17 @@ def checkout_time(request):
         }
         request.session['address'] = form_data
 
-    # Get variables
+    # Get delivery times
+    bag = request.session.get('bag', {})
+    current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0])
+    delivery_times = current_restaurant.get_todays_delivery_times()
+
+    # Get address form
     address_form = request.session.get('address')
 
     context = {
         'address_form': address_form,
+        'delivery_times': delivery_times,
     }
     return render(request, 'checkout/checkout_time.html', context)
 

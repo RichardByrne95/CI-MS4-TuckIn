@@ -25,7 +25,9 @@
                             <label for="delivery-time">Choose a delivery time:</label>
                             <select name="delivery_time" id="delivery-time">
                                 <option value="none" default></option>
-                                <option value="test">test</option>
+                                {% for time in delivery_times %}
+                                    <option value="{{ time }}">{{ time }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="form-row form-buttons">

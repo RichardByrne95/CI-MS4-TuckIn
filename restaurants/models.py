@@ -1,8 +1,6 @@
-import time
 import datetime
 from math import ceil
 from django.db import models
-from functools import cached_property, lru_cache
 from django.db.models.deletion import CASCADE, SET_NULL
 
 # Cuisine
@@ -46,7 +44,7 @@ class Restaurant(models.Model):
         opening_time = todays_opening_hours[0].from_hour
         closing_time = todays_opening_hours[0].to_hour
 
-        # If closing time is midnight, replace with 23:59:59 (need strftime to covert from datetime.time to str)
+        # If closing time is midnight, replace with 23:59:59
         if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
             closing_time = datetime.time(hour=23, minute=59, second=59)
 
@@ -67,7 +65,7 @@ class Restaurant(models.Model):
                 first_delivery_time += datetime.timedelta(hours=1)
             # Otherwise replace mintutes with next interval time
             else:
-                first_delivery_time.replace(minute=next_closest_15_minutes)
+                first_delivery_time = first_delivery_time.replace(minute=next_closest_15_minutes)
 
             # Create list of 15 minute delivery times
             while first_delivery_time < closing_time:
