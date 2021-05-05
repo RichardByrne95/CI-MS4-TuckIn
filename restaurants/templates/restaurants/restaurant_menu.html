@@ -29,9 +29,7 @@
                 <div class="row restaurant-info-menu">
                     <div class="col-12">
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
-                        {% if restaurant.opening_hours %}
-                            <p class="opening-hours">Opening Hours: {{ restaurant.get_opening_hours }}</p>
-                        {% endif %}
+                        <p class="opening-hours">Opening Hours: {{ restaurant.get_opening_hours }}</p>
                         <p class="delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
                     </div>
                 </div>
