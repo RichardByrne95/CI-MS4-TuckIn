@@ -110,7 +110,6 @@ def checkout_payment(request):
             address_form = request.session.get('address')
             customer_profile = get_object_or_404(CustomerProfile, customer=request.user) if request.user.is_authenticated else None
             order_form = OrderForm({
-                'customer_profile': customer_profile,
                 'full_name': address_form['full_name'],
                 'email': address_form['email'],
                 'phone_number': address_form['phone_number'],
@@ -123,6 +122,7 @@ def checkout_payment(request):
             # If valid, add additional fields not in form model and save order form
             if order_form.is_valid():
                 order = order_form.save(commit=False)
+                order.customer_profile = customer_profile
                 order.order_restaurant = order_restaurant
                 order.delivery_cost = current_bag['delivery_cost']
                 order.order_total  = current_bag['order_total']
