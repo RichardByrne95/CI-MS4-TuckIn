@@ -21,6 +21,7 @@
                 <div class="col-4 no-gutters text-center">
                     <form action="{% url 'checkout_payment' %}" method="POST" class="form" id="delivery-time">
                         {% csrf_token %}
+                        <!-- Choose delivery time -->
                         <div class="form-row">
                             <label for="delivery-time">Choose a delivery time:</label>
                             <select name="delivery_time" id="delivery-time">
@@ -29,7 +30,9 @@
                                     <option value="{{ time }}">{{ time }}</option>
                                 {% endfor %}
                             </select>
+                            <input type="hidden" name="from_delivery_time" value="true">
                         </div>
+                        <!-- Buttons -->
                         <div class="form-row form-buttons">
                             <a href="{% url 'checkout_address' %}" class="btn btn-outline-dark rounded-0 btn-lg">
                                 <span class="icon">

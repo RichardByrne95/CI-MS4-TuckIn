@@ -1,5 +1,7 @@
 import json
 import stripe
+import datetime
+from django.utils import timezone
 from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
@@ -86,18 +88,28 @@ def checkout_time(request):
 def checkout_payment(request):
     bag = request.session.get('bag')
     current_bag = bag_contents(request)
+    now = timezone.now()
 
+    # Get delivery time as datetime object
+    session_delivery_time = str(request.session['delivery_time']).replace('.', '')
+    # Format differently based on whether delivery time has minutes or not e.g. 7:30 pm vs 7 pm
+    if len(session_delivery_time) <= 5:
+        format = '%Y-%m-%d %I %p'
+    else:
+        format = '%Y-%m-%d %I:%M %p'
+    delivery_time = datetime.datetime.strptime(f'{now.date()} {session_delivery_time}', format) 
+    
     # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)
 
     if request.method == "POST":
         # Add selected delivery time to session
-        if 'delivery_time' in request.POST:
+        if 'from_delivery_time' in request.POST:
             delivery_time = request.POST.get('delivery_time')
             request.session['delivery_time'] = delivery_time
 
-        elif 'delivery_time' not in request.POST:
+        elif 'from_delivery_page' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
                 if item == "csrfmiddlewaretoken" or item == "city" or item == "save-info" or item == "client_secret":
@@ -125,6 +137,7 @@ def checkout_payment(request):
                 order.customer_profile = customer_profile
                 order.order_restaurant = order_restaurant
                 order.delivery_cost = current_bag['delivery_cost']
+                order.delivery_time = delivery_time
                 order.order_total  = current_bag['order_total']
                 order.grand_total = current_bag['grand_total']
                 order.original_bag = bag
