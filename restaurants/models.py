@@ -1,5 +1,8 @@
+import time
 import datetime
+from math import ceil
 from django.db import models
+from functools import cached_property, lru_cache
 from django.db.models.deletion import CASCADE, SET_NULL
 
 # Cuisine
@@ -17,7 +20,6 @@ class Restaurant(models.Model):
     friendly_name = models.CharField(max_length=254, default="Please set friendly name")
     description = models.TextField()
     rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
-    opening_hours = models.TextField(max_length=254, null=True, blank=True, default="Please enter opening hours")
     logo = models.ImageField(null=True, blank=True)
     cover_image = models.ImageField(null=True, blank=True)
     address_1 = models.CharField(max_length=254, default="Please enter address 1")
@@ -34,11 +36,53 @@ class Restaurant(models.Model):
         closing_time = str(todays_opening_hours[0].to_hour)[:-3]
         return f'{opening_time} - {closing_time}'
 
+    def get_todays_delivery_times(self):
+        # Get/set variables
+        today = datetime.datetime.today().weekday()
+        now = datetime.datetime.today()
+        first_delivery_time = now
+        opening_hours = self.hours.all()
+        todays_opening_hours = opening_hours.filter(weekday=today)
+        opening_time = todays_opening_hours[0].from_hour
+        closing_time = todays_opening_hours[0].to_hour
+
+        # If closing time is midnight, replace with 23:59:59 (need strftime to covert from datetime.time to str)
+        if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
+            closing_time = datetime.time(hour=23, minute=59, second=59)
+
+        # Convert from datetime.time to datetime.datetime object
+        closing_time = datetime.datetime.strptime(
+            f'{now.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
+
+        delivery_times = []
+
+        # If restaurant is open
+        if now.time() > opening_time:
+            # Find next closest 15 minute interval (i.e. 15, 30, 45, 60)
+            next_closest_15_minutes = ceil(now.time().minute / 15) * 15
+
+            # If next interval is the next hour, remove minutes and add an hour
+            if next_closest_15_minutes == 60:
+                first_delivery_time = first_delivery_time.replace(minute=0)
+                first_delivery_time += datetime.timedelta(hours=1)
+            # Otherwise replace mintutes with next interval time
+            else:
+                first_delivery_time.replace(minute=next_closest_15_minutes)
+
+            # Create list of 15 minute delivery times
+            while first_delivery_time < closing_time:
+                first_delivery_time += datetime.timedelta(minutes=15)
+                delivery_times.append(first_delivery_time.time())
+
+        return delivery_times if delivery_times else None
+
+
+    def get_friendly_name(self):
+        return self.friendly_name
+    
     def __str__(self):
         return self.name
     
-    def get_friendly_name(self):
-        return self.friendly_name
 
 # Opening Hours
 # Referenced https://stackoverflow.com/questions/28450106/business-opening-hours-in-django
@@ -52,31 +96,36 @@ WEEKDAYS = [
     (7, ("Sunday")),
 ]
 
+
 class OpeningHours(models.Model):
     class Meta:
         ordering = ('weekday', 'from_hour')
         unique_together = ('weekday', 'from_hour', 'to_hour')
         verbose_name_plural = 'Opening Hours'
 
-    restaurant = models.ForeignKey("Restaurant", on_delete=CASCADE, related_name="hours")
+    restaurant = models.ForeignKey(
+        "Restaurant", on_delete=CASCADE, related_name="hours")
     weekday = models.IntegerField(choices=WEEKDAYS)
     from_hour = models.TimeField()
     to_hour = models.TimeField()
-    
+
+
 # Menu Section
 class MenuSection(models.Model):
     class Meta:
         verbose_name_plural = 'Menu Sections'
-    
+
     restaurant = models.ForeignKey('Restaurant', on_delete=CASCADE)
     name = models.CharField(max_length=254)
-    friendly_name = models.CharField(max_length=254, default="Please set friendly name")
+    friendly_name = models.CharField(
+        max_length=254, default="Please set friendly name")
 
     def __str__(self):
         return self.name
 
     def get_friendly_name(self):
         return self.friendly_name
+
 
 # Food Item
 class FoodItem(models.Model):
@@ -91,6 +140,6 @@ class FoodItem(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def get_friendly_name(self):
         return self.friendly_name
