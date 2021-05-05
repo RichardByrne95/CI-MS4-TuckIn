@@ -37,6 +37,12 @@ Custom template filters were written to aid in the creation and rendering of the
 
 Django's built in "json_script" template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
 
+### Delivery Time Timezone Issues
+
+Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. 
+
+However, it was discovered upon saving an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many timezones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class.
+
 ## Roadmap
 
 -   Use restaurant names instead of id numbers in restaurant url.
