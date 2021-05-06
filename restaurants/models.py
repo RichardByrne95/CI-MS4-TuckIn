@@ -50,7 +50,6 @@ class Restaurant(models.Model):
         if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
             closing_time = datetime.time(hour=23, minute=59, second=59)
 
-
         # Convert from datetime.time to datetime.datetime object
         closing_time = datetime.datetime.strptime(
             f'{now.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
@@ -80,7 +79,6 @@ class Restaurant(models.Model):
                 first_delivery_time += datetime.timedelta(minutes=15)
                 delivery_times.append(first_delivery_time.time())
 
-            print(first_delivery_time, closing_time)
         return delivery_times if delivery_times else None
 
 

@@ -23,10 +23,10 @@
                     <div class="jumbotron jumbotron-fluid text-center shadow rounded">
                         <div class="container no-gutters">
                             <h1>Tuck Into Some Goodness</h1>
-                            <p class="lead">Your One-Stop-Shop for Dublin's Best Restaurants</p>
-                            <p>Find restaurants near you, delivering right now</p>
-                            <div class="row">
-                                <div class="col no-gutters">
+                            <p class="lead mb-1">Your One-Stop-Shop for Dublin's Best Restaurants</p>
+                            <p class="mb-3">Find restaurants near you, delivering right now</p>
+                            <div class="row no-gutters">
+                                <div class="col no-gutters mt-3">
                                     <form action="{% url 'restaurants' %}" id="address-finder" method="POST">
                                         {% csrf_token %}
                                         <input id="address" name="maps_address" type="text" class="address align-middle" minlength="5" required>
