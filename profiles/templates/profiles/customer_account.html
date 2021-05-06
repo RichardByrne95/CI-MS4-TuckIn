@@ -2,6 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
 {% block extra_title %}
     | Profile
 {% endblock %}
@@ -13,20 +17,20 @@
                 <div class="col-2 d-none d-lg-block no-gutters"></div>
                 <div class="col-8 no-gutters">
                     <div class="row">
-                        <div class="col-3 no-gutters account-sidebar">
+                        <aside class="col-3 no-gutters account-sidebar">
                             <a href="{% url 'customer_profile' %}">
                                 <h3>Account</h3>
                             </a>
                             <a href="{% url 'customer_order_history' %}">
-                                <h3>Order History</h3>
+                                <h3>Order history</h3>
                             </a>
-                        </div>
-                        <div class="col-6 no-gutters account-info text-center">
+                        </aside>
+                        <div class="col-6 no-gutters account-info text-left">
                             <h1 class="account-heading">Account</h1>
                             <form action="{% url 'customer_profile' %}" method="POST" id="account-details-form">
                                 {% csrf_token %}
                                 {{ form | crispy }}
-                                <button type="submit" class="w-50 save-changes-button">Save Changes</button>
+                                <button type="submit" class="btn w-100 save-changes-button">Save Changes</button>
                             </form>
                         </div>
                     </div>

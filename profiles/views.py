@@ -1,9 +1,8 @@
+from django.contrib import messages
+from .forms import CustomerProfileForm
+from profiles.models import CustomerProfile
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.contrib.auth.models import User
-from profiles.models import CustomerProfile
-from .forms import CustomerProfileForm
 
 
 @login_required
@@ -20,20 +19,19 @@ def customer_profile(request):
     else:
         form = CustomerProfileForm(instance=profile)
 
-    # orders = profile.orders.all()
     context = {
         'form': form,
-        # 'orders': orders,
-        'on_profile_page': True,
     }
     return render(request, 'profiles/customer_account.html', context)
 
 
 @login_required
 def customer_order_history(request):
-    order = None
+    profile = get_object_or_404(CustomerProfile, customer=request.user)
+    orders = profile.orders.all()
+    
     context = {
-        'order': order,
-        'from_profile': True,
+        'orders': orders,
+        'on_profile_page': True,
     }
     return render(request, 'profiles/customer_order_history.html', context)

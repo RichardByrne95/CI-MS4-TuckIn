@@ -231,7 +231,7 @@ def checkout_payment(request):
 
 def order_confirmation(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
-    bag = request.session['bag']
+    bag = order.original_bag
 
     # Send success message to user
     messages.success(request, f'Order successfully sent to the restaurant! \

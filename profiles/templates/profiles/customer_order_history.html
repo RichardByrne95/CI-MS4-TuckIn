@@ -2,8 +2,12 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
 {% block extra_title %}
-    | Order History
+    | Your Orders
 {% endblock %}
 
 {% block content %}
@@ -12,23 +16,24 @@
             <div class="row no-gutters">
                 <div class="col-2 d-none d-lg-block no-gutters"></div>
                 <div class="col-8 no-gutters">
-                    <div class="row">
-                        <div class="col-3 no-gutters account-sidebar">
+                    <div class="row no-gutters">
+                        <aside class="col-2 no-gutters account-sidebar">
                             <a href="{% url 'customer_profile' %}">
                                 <h3>Account</h3>
                             </a>
                             <a href="{% url 'customer_order_history' %}">
-                                <h3>Order History</h3>
+                                <h3>Order history</h3>
                             </a>
-                        </div>
-                        <div class="col-6 no-gutters order-history text-center">
-                            <h1 class="account-heading">Order History</h1>
-                            <!-- Taken from Boutique Ado and modified -->
-                            <div class="order-history table-responsive">
+                        </aside>
+                        <div class="col-8 no-gutters order-history">
+                            <h1 class="account-heading">Previous orders</h1>
+                            <div class="col no-gutters"></div>
+                            <!-- <div class="order-history table-responsive">
                                 <table class="table table-sm table-borderless">
                                     <thead>
                                         <th>Order Number</th>
                                         <th>Date</th>
+                                        <th>Restaurant</th>
                                         <th>Items</th>
                                         <th>Order Total</th>
                                     </thead>
@@ -36,25 +41,73 @@
                                         {% for order in orders %}
                                             <tr>
                                                 <td>
-                                                    <a href="#" title="Order Number Here">Order Number Here</a>
+                                                    <a href="" title="{{ order.order_number }}">{{ order.order_number }}</a>
                                                 </td>
-                                                <td>Order Date</td>
+                                                <td>{{ order.date }}}</td>
+                                                <td>
+                                                    <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
+                                                        {{ order.order_restaurant.friendly_name }}
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <ul class="list-unstyled">
-                                                        <!-- For item in order here -->
-                                                        <li class="small">Item Name</li>
-                                                        <!-- endfor -->
+                                                        {% for item in order.lineitems.all %}
+                                                            <li class="small">{{ item.food_item.friendly_name }}</li>
+                                                        {% endfor %}
                                                     </ul>
                                                 </td>
-                                                <td>Grand Total</td>
+                                                <td>€{{ order.grand_total }}</td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                            </div> -->
+                            <div class="order-history-card">
+                                {% for order in orders %}
+                                    <div class="row no-gutters previous-order">
+                                        <!-- Restaurant Info -->
+                                        <div class="col-12 no-gutters d-flex justify-content-between">
+                                            <div class="d-flex align-items-center restaurant-info-container">
+                                                <!-- Restaurant Logo -->
+                                                <div class="d-inline-flex justify-content-start restaurant-logo-container">
+                                                    <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
+                                                        <figure class="restaurant-logo">
+                                                            <img src="{{ MEDIA_URL }}{{ order.order_restaurant.logo }}" alt="{{ order.order_restaurant.friendly_name }}"
+                                                                class="restaurant-logo">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+                                                <!-- Restaurant Address -->
+                                                <a href="{% url 'order_confirmation' order.order_number %}" class="d-inline restaurant-address-container">
+                                                    <h3>{{ order.order_restaurant.friendly_name }}</h3>
+                                                    <p>{{ order.date }}</p>
+                                                    <p>
+                                                        {{ order.order_restaurant.address_1 }},
+                                                        {% if order.order_restaurant.address_2 %}
+                                                            <br>{{ order.order_restaurant.address_2 }}
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if order.order_restaurant.phone_number and order.order_restaurant.phone_number != 0 %}
+                                                        <p>{{ order.order_restaurant.phone_number }}</p>
+                                                    {% endif %}
+                                                </a>
+                                            </div>
+                                            <!-- Order again button -->
+                                            <div class="d-inline-flex align-items-start order-again-container">
+                                                <a href="#" class="order-again-btn">Order again</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if not forloop.last %}
+                                        <hr>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
+                        <div class="col-2 no-gutters"></div>
                     </div>
                 </div>
+                <div class="col-2 no-gutters d-none d-lg-block"></div>
             </div>
         </section>
     </div>

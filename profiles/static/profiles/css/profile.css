@@ -1,0 +1,81 @@
+/* ----------------------------------------- Customer Account */
+
+#customer-account, #customer-orders {
+    margin-top: 16rem;
+}
+
+.account-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.save-changes-button {
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: orangered;
+    border-radius: .3rem;
+}
+
+.save-changes-button:hover,
+.save-changes-button:focus {
+    color: #fff;
+    background-color: rgb(202, 57, 4);
+}
+
+/* ----------------------------------------- Customer Order History */
+
+.previous-order {
+    padding: 1.6rem;
+}
+
+.order-history-card {
+    padding: 2.4rem;
+    border: .1rem solid #c8cfd6;
+    border-radius: .3rem;
+}
+
+.restaurant-logo-container{
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0em 1rem 1rem 0;
+}
+
+.restaurant-address-container {
+    color: black;
+}
+
+.restaurant-address-container:hover,
+.restaurant-address-container:focus {
+    color: grey;
+}
+
+.restaurant-address-container h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.restaurant-address-container p {
+    font-size: 1.4rem;
+}
+
+.restaurant-logo {
+    height: 5.5rem;
+    width: 5.5rem;
+}
+
+.order-again-btn {
+    font-size: 1.8rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: orangered;
+    font-weight: 600;
+    border-radius: .3rem;
+}
+
+.order-again-btn:hover, 
+.order-again-btn:focus {
+    color: #fff;
+    background-color: rgb(202, 57, 4);
+}
