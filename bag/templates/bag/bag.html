@@ -2,6 +2,10 @@
 {% load static %}
 {% load bag_tools %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}">
+{% endblock %}
+
 {% block extra_title %}
     | Bag
 {% endblock %}
@@ -9,6 +13,7 @@
 {% block content %}
     <div class="container-fluid no-gutters">
         <section id="shopping-bag-section">
+            <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
                     <hr>
@@ -20,8 +25,10 @@
                 <div class="col-3 no-gutters"></div>
                 <div class="col-6 no-gutters text-center">
                     {% if bag_contents %}
+                        <!-- Bag Contents -->
                         <div class="table-responsive rounded d-none d-md-block">
                             <table class="table table-sm table-borderless bag-table">
+                                <!-- Table Headers -->
                                 <thead class="text-black">
                                     <tr>
                                         <th scope="col">Food</th>
@@ -32,8 +39,9 @@
                                     </tr>
                                 </thead>
                                 {% for item in bag_contents %}
+                                    <!-- Display food info -->
                                     <tr>
-                                        <td class="p-3 w-25">
+                                        <td class="p-3 w-25 food-image-container">
                                             {% include 'bag/food-image.html' %}
                                         </td>
                                         <td class="p-3 w-25">
@@ -49,12 +57,18 @@
                                             <p class="my-0">€{{ item.food.price|calc_subtotal:item.quantity }}</p>
                                         </td>
                                     </tr>
+                                    <!-- Horizontal Rule Substitute - referenced https://stackoverflow.com/questions/17169094/how-to-add-horizontal-line-in-a-table -->
+                                    <tr class="horizontal-rule">
+                                        <td colspan="100%"></td>
+                                    </tr>
                                 {% endfor %}
+                                <!-- Bag total -->
                                 <tr>
                                     <td colspan="5" class="pt-5 text-right">
                                         {% include "bag/bag-total.html" %}
                                     </td>
                                 </tr>
+                                <!-- Buttons -->
                                 <tr>
                                     <td colspan="5" class="text-right">
                                         {% include "bag/checkout-buttons.html" %}
@@ -63,6 +77,7 @@
                             </table>
                         </div>
                     {% else %}
+                        <!-- Link to all_restaurants -->
                         <h4>Your bag is empty.</h4>
                         <a href="{% url 'restaurants' %}" class="btn btn-outline-black rounded-0 btn-lg" role="button">
                             <span><i class="fas fa-chevron-left"></i></span>

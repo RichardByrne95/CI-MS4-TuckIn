@@ -1,0 +1,44 @@
+/* ----------------------------------------- Shopping Bag */
+
+#shopping-bag-section {
+    margin-top: 9rem;
+}
+
+.bag-contents {
+    margin-top: 3rem;
+}
+
+.bag-table th {
+    font-size: 1.8rem;
+}
+
+.bag-food-name strong {
+    font-size: 1.6rem;
+}
+
+.bag-food-description {
+    font-size: 1.4rem;
+}
+
+.bag-total strong {
+    font-size: 1.5rem;
+}
+
+.bag-delivery {
+    font-size: 1.5rem;
+}
+
+.bag-grand-total strong {
+    font-size: 1.7rem;
+}
+
+.food-image {
+    width: 8.5rem;
+    height: 8.5rem;
+    /* flex-shrink: 0; */
+    object-fit: cover;
+}
+
+.horizontal-rule {
+    border-bottom: .1rem solid #c8cfd6;
+}
