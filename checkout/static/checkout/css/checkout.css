@@ -1,0 +1,14 @@
+/* ----------------------------------------- Checkout */
+
+#checkout-address-section,
+#checkout-time-section {
+    margin-top: 9rem;
+}
+
+label[for="delivery-time-select"] {
+    font-size: 1.4rem;
+}
+
+.save-info {
+    font-size: 1.4rem;
+}

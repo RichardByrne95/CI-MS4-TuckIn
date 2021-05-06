@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 {% block extra_title %}
     | Delivery Time
 {% endblock %}
@@ -24,7 +28,7 @@
                         <!-- Choose delivery time -->
                         <div class="form-row">
                             <label for="delivery-time">Choose a delivery time:</label>
-                            <select name="delivery_time" id="delivery-time" required>
+                            <select name="delivery_time" id="delivery-time-select" required>
                                 {% for time in delivery_times %}
                                     <option value="{{ time }}">{{ time }}</option>
                                 {% endfor %}
