@@ -14,6 +14,7 @@
 {% block content %}
     <div class="container-fluid no-gutters">
         <section id="shopping-bag-section">
+            <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
                     <hr>
@@ -24,17 +25,21 @@
             <div class="row no-gutters bag-contents">
                 <div class="col-2 no-gutters"></div>
                 <div class="col-3 no-gutterstext-left">
+                    <!-- Ensure details are correct note -->
                     <p class="px-3">Please ensure you details are correct before you complete your order.</p>
+                    <!-- Address and Payment Form -->
                     <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                         {% csrf_token %}
+                        <!-- Details -->
                         <fieldset class="rounded">
-                            <legend class="fieldset-label text-black w-auto">Details</legend>
+                            <legend class="fieldset-label text-black w-auto">Your Details</legend>
                             {{ order_form.full_name | as_crispy_field }}
                             {{ order_form.email | as_crispy_field }}
                             {{ order_form.phone_number | as_crispy_field }}
                         </fieldset>
+                        <!-- Address -->
                         <fieldset class="rounded">
-                            <legend class="fieldset-label text-black w-auto">Delivery</legend>
+                            <legend class="fieldset-label text-black w-auto">Delivery Address</legend>
                             {{ order_form.address_1 | as_crispy_field }}
                             {{ order_form.address_2 | as_crispy_field }}
                             {{ order_form.city | as_crispy_field }}
@@ -51,6 +56,7 @@
                                 {% endif %}
                             </div>
                         </fieldset>
+                        <!-- Payment -->
                         <fieldset>
                             <legend class="fieldset-label text-black w-auto">Payment</legend>
                             <!-- Stripe Card Element -->
@@ -60,6 +66,7 @@
                             <!-- Pass client secret to view to get payment intent id -->
                             <input type="hidden" name="client_secret" value="{{ client_secret }}">
                         </fieldset>
+                        <!--Form Buttons -->
                         <div class="submit-button text-right mt-4 mb-2">                    
                             <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
                                 <span class="icon">
@@ -83,7 +90,9 @@
                     </form>
                 </div>
                 <div class="col-1 no-gutters"></div>
+                <!-- Order Summary -->
                 <div class="col-4 no-gutters">
+                    <!-- Order Summary Headings -->
                     <p class="text-muted">Order Summary ({{ food_item_count }})</p>
                     <div class="row">
                         <div class="col-7 offset-2">
@@ -95,8 +104,9 @@
                     </div>
                     {% for food in bag_contents %}
                         <div class="row">
+                            <!-- Food Image -->
                             <div class="col-2 mb-1">
-                                <a href="">
+                                <a href="{% url 'restaurant_menu' food.food.menu_section.restaurant.id %}">
                                     {% if food.food.image %}
                                         <img class="w-100" src="{{ food.food.image.url }}" alt="{{ food.food.friendly_name }}">
                                     {% else %}
@@ -104,17 +114,20 @@
                                     {% endif %}
                                 </a>
                             </div>
+                            <!-- Food Details -->
                             <div class="col-7">
                                 <p class="my-0"><strong>{{ food.food.friendly_name }}</strong></p>
                                 <p class="my-0 small text-muted">Qty: {{ food.quantity }}</p>
                                 <p class="fst-italic my-0 small">{{ food.additional_details }}</p>
                             </div>
+                            <!-- Food Price -->
                             <div class="col-3 text-right">
                                 <p class="my-0 small text-muted">€{{ food.food.price | calc_subtotal:food.quantity }}</p>
                             </div>
                         </div>
                     {% endfor %}
                     <hr class="my-0">
+                    <!-- Order Totals -->
                     <div class="row text-black text-right">
                         <div class="col-7 offset-2">
                             <p class="my-0">Order Total:</p>

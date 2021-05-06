@@ -13,6 +13,7 @@
 {% block content %}
     <div class="container-fluid no-gutters">
         <section id="order-confirmation-section">
+            <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
                     <hr>
@@ -36,6 +37,7 @@
                             <div class="order-summary-card">
                                 <!-- Restaurant Info -->
                                 <div class="restaurant-info-container d-flex">
+                                    <!-- Restaurant Logo -->
                                     <div class="restaurant-checkout-logo-container d-flex">
                                         <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
                                             <figure class="restaurant-checkout-logo">
@@ -44,6 +46,7 @@
                                             </figure>
                                         </a>
                                     </div>
+                                    <!-- Restaurant Address and Phone -->
                                     <div class=" restaurant-address-container">
                                         <h3 class="d-inline restaurant-checkout-name">{{ order.order_restaurant.friendly_name }}</h3>
                                         <p class="restaurant-checkout-address m-0">
@@ -92,7 +95,7 @@
                                     <div class="delivery-checkout-marker-container d-flex justify-content-center">
                                         <span class="delivery-checkout-marker"><i class="fas fa-map-marker-alt"></i></span>
                                     </div>
-                                    <!-- Address -->
+                                    <!-- Address and Phone -->
                                     <div class="delivery-address-container">
                                         <h3 class="restaurant-checkout-name">Delivering to</h3>
                                         <p class="customer-checkout-address m-0">
