@@ -31,7 +31,7 @@ def checkout_address(request):
         # Make email field readonly
         address_form.fields['email'].widget.attrs['readonly'] = True
     # If an address has been inputted via the homepage or location changer
-    elif request.session['maps_address']:
+    elif 'maps_address' in request.session and request.session['maps_address']:
         maps_address = request.session['maps_address'].split(',')
         address_form = OrderForm(initial={
             'full_name': "",
@@ -47,6 +47,7 @@ def checkout_address(request):
     else:
         address_form = OrderForm()
     
+    # Get restaurant
     restaurant_name = request.session.get('restaurant')
     restaurant = get_object_or_404(Restaurant, name=restaurant_name)
 
