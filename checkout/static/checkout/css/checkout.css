@@ -1,12 +1,21 @@
 /* ----------------------------------------- Checkout */
 
 #checkout-address-section,
-#checkout-time-section {
+#checkout-time-section,
+#checkout-payment-section {
     margin-top: 9rem;
 }
 
 label[for="delivery-time-select"] {
-    font-size: 1.4rem;
+    display: block;
+    font-size: 1.8rem;
+    text-align: left;
+}
+
+#delivery-time-select {
+    padding: .7rem 1.1rem;
+    width: 100%;
+    border-color: #c8cfd6;
 }
 
 .save-info {
