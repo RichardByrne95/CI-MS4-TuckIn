@@ -15,7 +15,8 @@ label[for="delivery-time-select"] {
 #delivery-time-select {
     padding: .7rem 1.1rem;
     width: 100%;
-    border-color: #c8cfd6;
+    border-color: #c5ccd3;
+    border-radius: .3rem;
 }
 
 .save-info {

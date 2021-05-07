@@ -220,7 +220,7 @@ footer a, footer span {
 
 .address {
     padding: .45rem;
-    border: .1rem solid #c8cfd6;
+    border: .1rem solid #c5ccd3;
     border-radius: .3rem;
 }
 
@@ -409,11 +409,12 @@ footer a, footer span {
 .food-item-photo {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 1%;
     padding: 2rem;
     height: 100%;
     width: 40%;
     object-fit: cover;
+    border-radius: 2.2rem;
 }
 
 /* Modal */
@@ -523,7 +524,7 @@ footer a, footer span {
     height: 4rem;
     padding: 1rem 1rem;
     margin-bottom: 1rem;
-    border: .1rem solid #c8cfd6;
+    border: .1rem solid #c5ccd3;
     border-radius: .3rem;
     background-color: white;
     box-shadow: 0 .1rem .3rem 0 #e6ebf1;
@@ -536,7 +537,7 @@ footer a, footer span {
 .stripe-style-input:active,
 .profile-form-input:focus,
 .profile-form-input:active {
-    box-shadow: 0 1px 3px 0 #c8cfd6;
+    box-shadow: 0 1px 3px 0 #c5ccd3;
 }
 
 .StripeElement--webkit-autofill {

@@ -51,11 +51,12 @@
                         </div>
                         <!-- Buttons -->
                         <div class="form-row form-buttons">
-                            <a href="{% url 'restaurant_menu' restaurant.id %}" class="btn btn-outline-dark rounded-0 btn-lg">
+                            <!-- Edit Order -->
+                            <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
-                                <span class="text-uppercase">Keep Shopping</span>
+                                <span class="text-uppercase">Edit Order</span>
                             </a>
                             <button class="btn btn-outline-dark rounded-0 btn-lg" type="submit">
                                 <span class="text-uppercase">Next</span>

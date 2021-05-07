@@ -50,9 +50,10 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 -   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
 -   Add ability to add a note to the overall order for the restaurant.
 -   Add ability to edit notes/additional details
+-   Add flexible minimum order amount
 -   Allow restaurants delivery and collection times to be separate
 -   Allow restaurant to have delivery intervals other that 15 minutes (easily done via adding delivery_interval option to model and setting interval to self.delivery_interval in get_todays_delivery_times())
--   Implement minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules
+-   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules
 
 
 
