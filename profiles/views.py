@@ -22,7 +22,7 @@ def customer_profile(request):
     context = {
         'form': form,
     }
-    return render(request, 'profiles/customer_account.html', context)
+    return render(request, 'profiles/customer_profile.html', context)
 
 
 @login_required
