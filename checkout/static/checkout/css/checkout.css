@@ -30,6 +30,21 @@ label[for="delivery-time-select"] {
     padding: 2rem;
 }
 
+#submit-button {
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    background-color: orangered;
+}
+
+#submit-button .complete-order {
+    font-size: 1.8rem;
+}
+
+.charge-warning span {
+    font-size: 1.2rem;
+}
+
 .order-summary {
     padding: 0;
 }

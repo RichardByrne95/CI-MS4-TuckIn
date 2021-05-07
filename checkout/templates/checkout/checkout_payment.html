@@ -75,21 +75,18 @@
                                     <!-- Pass client secret to view to get payment intent id -->
                                     <input type="hidden" name="client_secret" value="{{ client_secret }}">
                                 </fieldset>
-                                <!--Form Buttons -->
-                                <div class="submit-button text-right mt-4 mb-2">                    
-                                    <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
-                                        <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
+                                <div class="submit-button p-3 mt-4 mb-2">                    
+                                    <!-- Submit Button -->
+                                    <button id="submit-button" type="submit">
+                                        <span class="complete-order">
+                                            <strong>Complete Order</strong>
                                         </span>
-                                        <span class="font-weight-bold">Adjust Order</span>
-                                    </a>
-                                    <button id="submit-button" class="btn btn-dark rounded-0 btn-lg" type="submit">
-                                        <span class="font-weight-bold">Complete Order </span>
-                                        <span class="icon">
+                                         <span class="icon">
                                             <i class="fas fa-lock"></i>
                                         </span>
                                     </button>
-                                    <p class="small text-danger my-0">
+                                    <!-- Charge Warning -->
+                                    <p class="d-flex justify-content-center text-danger mt-2 charge-warning">
                                         <span class="icon">
                                             <i class="fas fa-exclamation-circle"></i>
                                         </span>
@@ -105,7 +102,12 @@
                         <!-- Order Summary Headings -->
                         <div class="row no-gutters">
                             <div class="col-12 no-gutters">
-                                <p class="card-padding"><strong>Order Summary ({{ food_item_count }})</strong></p>
+                                <p class="card-padding">
+                                    <strong>Order Summary ({{ food_item_count }})</strong>
+                                    <a href="{% url 'view_bag' %}" class="">
+                                        <span class="font-weight-bold">Adjust Order</span>
+                                    </a>
+                                </p>
                                 <div class="row no-gutters card-padding">
                                     <div class="col-7 offset-2 no-padding">
                                         <p class="mb-1 mt-0 text-muted">Item</p>
