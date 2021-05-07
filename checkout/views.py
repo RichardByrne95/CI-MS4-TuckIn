@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from profiles.models import CustomerProfile
+from profiles.forms import CustomerProfileForm
 from restaurants.models import FoodItem, Restaurant
 from django.urls import reverse
 from bag.contexts import bag_contents
@@ -58,6 +59,7 @@ def checkout_address(request):
     return render(request, 'checkout/checkout_address.html', context)
 
 
+@require_POST
 def checkout_time(request):
     # Add address data to session
     if request.method == "POST":
@@ -86,6 +88,7 @@ def checkout_time(request):
     return render(request, 'checkout/checkout_time.html', context)
 
 
+@require_POST
 def checkout_payment(request):
     # Add selected delivery time to session
     if request.method == "POST":
@@ -127,6 +130,7 @@ def checkout_payment(request):
                 else:
                     if request.POST[item] != request.session['address'][item]:
                         request.session['address'][item] = request.POST[item]
+
             # Create order form
             address_form = request.session.get('address')
             customer_profile = get_object_or_404(CustomerProfile, customer=request.user) if request.user.is_authenticated else None
@@ -166,7 +170,9 @@ def checkout_payment(request):
                         messages.error(request, "Issue creating order line items.")
                         order.delete()
                         return redirect(reverse('view_bag'))
-                
+
+                # Save the info to the user's profile
+                request.session['save_info'] = 'save-info' in request.POST
                 return redirect(reverse('order_confirmation', args=[order.order_number]))
             # Else tell user about error
             else:
@@ -232,9 +238,29 @@ def checkout_payment(request):
 
 def order_confirmation(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    save_info = request.session.get('save_info')
     bag = order.original_bag
 
-    # Send success message to user
+    if request.user.is_authenticated:
+        profile = get_object_or_404(CustomerProfile, customer=request.user)
+        # Save the user's info
+        if save_info:
+            profile_data = {
+                'email': order.email,
+                'full_name': order.full_name,
+                'default_phone_number': order.phone_number,
+                'default_postcode': order.postcode,
+                'default_city': order.city,
+                'default_address_1': order.address_1,
+                'default_address_2': order.address_2,
+            }
+            customer_profile_form = CustomerProfileForm(profile_data, instance=profile)
+            if customer_profile_form.is_valid():
+                customer_profile_form.save()
+            
+            messages.success(request, 'Your details have been saved to your account.')
+
+    # # Send success message to user
     messages.success(request, f'Order successfully sent to the restaurant! \
         Your order number is {order_number}. A confirmation email will be sent to {order.email}')
     
@@ -249,8 +275,8 @@ def order_confirmation(request, order_number):
     return render(request, 'checkout/order_confirmation.html', context)
 
 
-# Post additional order data (data that doesn't fit within the confirmCardPayment's 'payment_method') to the payment intent. 
-# This allows the order instance in the db to be created when Stripe sends back the payment succeeded webhook.
+# Post additional order data (data that doesn't fit within Stripe's confirmCardPayment's 'payment_method') to the payment intent. 
+# This allows the order instance in the db to be created when Stripe sends back the payment succeeded webhook to confirm that everything has gone smoothly.
 @require_POST
 def cache_checkout_data(request):
     try:

@@ -46,6 +46,7 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 ## Roadmap
 
 -   Use restaurant names instead of id numbers in restaurant url.
+-   Allow users to change their email addresses
 -   Ability to add multiple addresses to one account.
 -   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
 -   Add ability to add a note to the overall order for the restaurant.
@@ -65,3 +66,5 @@ Why underscores were used in html files instead of hyphens
 Timezone for person marking this project. Some restaurants may not be open depending on what time of day the examiner is grading this project. Time is set to Dublin time.
 
 After completing circa 75% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented.
+
+For users, the user field was named 'customer' instead of 'user' to prevent confusion in the future, if user accounts for the restaurants themselves were to be set up to allow them to manage their menu.
