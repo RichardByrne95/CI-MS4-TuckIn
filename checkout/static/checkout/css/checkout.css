@@ -6,6 +6,8 @@
     margin-top: 9rem;
 }
 
+/* Delivery Time */
+
 label[for="delivery-time-select"] {
     display: block;
     font-size: 1.8rem;
@@ -19,6 +21,45 @@ label[for="delivery-time-select"] {
     border-radius: .3rem;
 }
 
+/* Payment */
+
+.customer-details,
+.order-summary {
+    border: .1rem solid #c8cfd6;
+    border-radius: .3rem;
+    padding: 2rem;
+}
+
+.order-summary {
+    padding: 0;
+}
+
 .save-info {
     font-size: 1.4rem;
+}
+
+.first-food-item {
+    padding-top: 1rem;
+}
+
+hr.divider {
+    margin-top: 2rem;
+}
+
+.subtotal {
+    font-weight: 600;
+}
+
+.delivery-time {
+    padding-bottom: 1.8rem;
+}
+
+.delivery-time strong,
+.delivery-time i {
+    font-size: 1.6rem;
+}
+
+.dotted-underline {
+    font-size: inherit;
+    border-bottom: .1rem black dotted;
 }

@@ -18,132 +18,172 @@
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
                     <hr>
-                    <h2>Your Order</h2>
+                    <h2>Complete Your Order</h2>
                     <hr>
                 </div>
             </div>
             <div class="row no-gutters bag-contents">
-                <div class="col-2 no-gutters"></div>
-                <div class="col-3 no-gutterstext-left">
-                    <!-- Ensure details are correct note -->
-                    <p class="px-3">Please ensure you details are correct before you complete your order.</p>
+                <div class="col-12 no-gutters">
+                    <div class="row no-gutters">
+                        <div class="col-2 no-gutters"></div>
+                        <div class="col-3 no-gutters d-flex justify-content-start">
+                            <!-- Ensure details are correct note -->
+                            <p class="pb-3">Please ensure your details are correct before you complete your order.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-2 no-gutters"></div>
                     <!-- Address and Payment Form -->
-                    <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
-                        {% csrf_token %}
-                        <!-- Details -->
-                        <fieldset class="rounded">
-                            <legend class="fieldset-label text-black w-auto">Your Details</legend>
-                            {{ order_form.full_name | as_crispy_field }}
-                            {{ order_form.email | as_crispy_field }}
-                            {{ order_form.phone_number | as_crispy_field }}
-                        </fieldset>
-                        <!-- Address -->
-                        <fieldset class="rounded">
-                            <legend class="fieldset-label text-black w-auto">Delivery Address</legend>
-                            {{ order_form.address_1 | as_crispy_field }}
-                            {{ order_form.address_2 | as_crispy_field }}
-                            {{ order_form.city | as_crispy_field }}
-                            {{ order_form.postcode | as_crispy_field }}
-                            <div class="form-check form-check-inline px-3">
-                                {% if user.is_authenticated %}
-                                    <input type="checkbox" class="form-check-input" id="save-info" name="save-info" checked>
-                                    <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
-                                {% else %}
-                                    <label class="form-check-label" for="save-info">
-                                        <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or 
-                                        <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this information.
-                                    </label>
-                                {% endif %}
-                            </div>
-                        </fieldset>
-                        <!-- Payment -->
-                        <fieldset>
-                            <legend class="fieldset-label text-black w-auto">Payment</legend>
-                            <!-- Stripe Card Element -->
-                            <div id="card-element"></div>
-                            <!-- Card for Form Errors -->
-                            <div class="text-danger" role="alert" id="card-errors"></div>
-                            <!-- Pass client secret to view to get payment intent id -->
-                            <input type="hidden" name="client_secret" value="{{ client_secret }}">
-                        </fieldset>
-                        <!--Form Buttons -->
-                        <div class="submit-button text-right mt-4 mb-2">                    
-                            <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
-                                <span class="icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span class="font-weight-bold">Adjust Order</span>
-                            </a>
-                            <button id="submit-button" class="btn btn-dark rounded-0 btn-lg" type="submit">
-                                <span class="font-weight-bold">Complete Order </span>
-                                <span class="icon">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </button>
-                            <p class="small text-danger my-0">
-                                <span class="icon">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                </span>
-                                <span>Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong></span>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-1 no-gutters"></div>
-                <!-- Order Summary -->
-                <div class="col-4 no-gutters">
-                    <!-- Order Summary Headings -->
-                    <p class="text-muted">Order Summary ({{ food_item_count }})</p>
-                    <div class="row">
-                        <div class="col-7 offset-2">
-                            <p class="mb-1 mt-0 small text-muted">Item</p>
-                        </div>
-                        <div class="col-3 text-right">
-                            <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                    <div class="col-3 no-gutters">
+                        <div class="customer-details">
+                            <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
+                                {% csrf_token %}
+                                <!-- Details -->
+                                <fieldset class="rounded">
+                                    <legend class="fieldset-label text-black w-auto">Your Details</legend>
+                                    {{ order_form.full_name | as_crispy_field }}
+                                    {{ order_form.email | as_crispy_field }}
+                                    {{ order_form.phone_number | as_crispy_field }}
+                                </fieldset>
+                                <!-- Address -->
+                                <fieldset class="rounded">
+                                    <legend class="fieldset-label text-black w-auto">Delivery Address</legend>
+                                    {{ order_form.address_1 | as_crispy_field }}
+                                    {{ order_form.address_2 | as_crispy_field }}
+                                    {{ order_form.city | as_crispy_field }}
+                                    {{ order_form.postcode | as_crispy_field }}
+                                    <div class="form-check form-check-inline px-3">
+                                        {% if user.is_authenticated %}
+                                            <input type="checkbox" class="form-check-input" id="save-info" name="save-info" checked>
+                                            <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
+                                        {% else %}
+                                            <label class="form-check-label" for="save-info">
+                                                <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or 
+                                                <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this information.
+                                            </label>
+                                        {% endif %}
+                                    </div>
+                                </fieldset>
+                                <!-- Payment -->
+                                <fieldset>
+                                    <legend class="fieldset-label text-black w-auto">Payment</legend>
+                                    <!-- Stripe Card Element -->
+                                    <div id="card-element"></div>
+                                    <!-- Card for Form Errors -->
+                                    <div class="text-danger" role="alert" id="card-errors"></div>
+                                    <!-- Pass client secret to view to get payment intent id -->
+                                    <input type="hidden" name="client_secret" value="{{ client_secret }}">
+                                </fieldset>
+                                <!--Form Buttons -->
+                                <div class="submit-button text-right mt-4 mb-2">                    
+                                    <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="font-weight-bold">Adjust Order</span>
+                                    </a>
+                                    <button id="submit-button" class="btn btn-dark rounded-0 btn-lg" type="submit">
+                                        <span class="font-weight-bold">Complete Order </span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </button>
+                                    <p class="small text-danger my-0">
+                                        <span class="icon">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </span>
+                                        <span>Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong></span>
+                                    </p>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    {% for food in bag_contents %}
-                        <div class="row">
-                            <!-- Food Image -->
-                            <div class="col-2 mb-1">
-                                <a href="{% url 'restaurant_menu' food.food.menu_section.restaurant.id %}">
-                                    {% if food.food.image %}
-                                        <img class="w-100" src="{{ food.food.image.url }}" alt="{{ food.food.friendly_name }}">
-                                    {% else %}
-                                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ food.food.friendly_name }}">
+                    <div class="col-1 no-gutters"></div>
+                    <!-- Order Summary -->
+                    <div class="col-4 no-gutters order-summary">
+                        <!-- Order Summary Headings -->
+                        <div class="row no-gutters">
+                            <div class="col-12 no-gutters">
+                                <p class="card-padding"><strong>Order Summary ({{ food_item_count }})</strong></p>
+                                <div class="row no-gutters card-padding">
+                                    <div class="col-7 offset-2 no-padding">
+                                        <p class="mb-1 mt-0 text-muted">Item</p>
+                                    </div>
+                                    <div class="col-3 no-gutters text-right">
+                                        <p class="mb-1 text-muted">Subtotal</p>
+                                    </div>
+                                </div>
+                                {% for food in bag_contents %}
+                                    <div class="row no-gutters card-padding {% if forloop.first %}first-food-item{% endif %}">
+                                        <!-- Food Image -->
+                                        <div class="col-2 no-gutters mb-1 px-3">
+                                            <a href="{% url 'restaurant_menu' food.food.menu_section.restaurant.id %}">
+                                                {% if food.food.image %}
+                                                    <img class="w-100" src="{{ food.food.image.url }}" alt="{{ food.food.friendly_name }}">
+                                                {% else %}
+                                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ food.food.friendly_name }}">
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                        <!-- Food Details -->
+                                        <div class="col-7 no-gutters">
+                                            <p class="my-0"><strong>{{ food.food.friendly_name }}</strong></p>
+                                            <p class="my-0 text-muted">Qty: {{ food.quantity }}</p>
+                                            <p class="fst-italic my-0">{{ food.additional_details }}</p>
+                                        </div>
+                                        <!-- Food Price -->
+                                        <div class="col-3 no-gutters text-right">
+                                            <p class="my-0 text-muted">€{{ food.food.price | calc_subtotal:food.quantity }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <hr class="divider">
+                                <!-- Order Totals -->
+                                <div class="row no-gutters card-padding">
+                                    <div class="col-7 offset-2 no-padding">
+                                        <p class="my-0 subtotal">Subtotal:</p>
+                                        <p class="my-0">Delivery:</p>
+                                        <br>
+                                        <p class="my-0"><strong>Grand Total:</strong></p>
+                                    </div>
+                                    <div class="col-3 no-gutters">
+                                        <p class="my-0 subtotal">€{{ order_total | floatformat:2 }}</p>
+                                        <p class="my-0">€{{ delivery_cost | floatformat:2 }}</p>
+                                        <br>
+                                        <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
+                                    </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- Order Message and Restaurant Adderss -->
+                                <div class="row no-gutters justify-content-center text-center card-padding additional-details">
+                                    {% if order_message %}
+                                        <!-- Order Message -->
+                                        <div class="col-7 offset-2 order-message">
+                                            <hr class="my-0">
+                                            <p class="fst-italic py-3">{{ order_message }}</p>
+                                            <hr class="my-0">
+                                        </div>
                                     {% endif %}
-                                </a>
+                                    <!-- Restaurant Address -->
+                                    <div class="col-7 no-gutters restaurant-address">
+                                        <p class="d-inline-block">{{ order_restaurant.friendly_name }}, {{ order_restaurant.address_1 }}, {{ order_restaurant.address_2 }}</p>
+                                    </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- Delivery Time -->
+                                <div class="row no-gutters justify-content-center text-center card-padding delivery-time">
+                                    <div class="col-7 no-gutters">
+                                        <span><strong>
+                                            <i class="fas fa-route"></i> Delivery <span class="dotted-underline">estimated for</span> {{ delivery_time }}
+                                        </strong></span>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Food Details -->
-                            <div class="col-7">
-                                <p class="my-0"><strong>{{ food.food.friendly_name }}</strong></p>
-                                <p class="my-0 small text-muted">Qty: {{ food.quantity }}</p>
-                                <p class="fst-italic my-0 small">{{ food.additional_details }}</p>
-                            </div>
-                            <!-- Food Price -->
-                            <div class="col-3 text-right">
-                                <p class="my-0 small text-muted">€{{ food.food.price | calc_subtotal:food.quantity }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    <hr class="my-0">
-                    <!-- Order Totals -->
-                    <div class="row text-black text-right">
-                        <div class="col-7 offset-2">
-                            <p class="my-0">Order Total:</p>
-                            <p class="my-0">Delivery:</p>
-                            <br>
-                            <p class="my-0"><strong>Grand Total:</strong></p>
-                        </div>
-                        <div class="col-3">
-                            <p class="my-0">€{{ order_total | floatformat:2 }}</p>
-                            <p class="my-0">€{{ delivery_cost | floatformat:2 }}</p>
-                            <br>
-                            <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
                         </div>
                     </div>
+                    <div class="col-2 no-gutters"></div>
                 </div>
-                <div class="col-2 no-gutters"></div>
             </div>
         </section>
     </div>

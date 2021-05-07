@@ -58,8 +58,17 @@ option {
     font-size: 1.6rem;
 }
 
+hr {
+    color: #c5ccd3;
+}
+
 strong {
     font-size: inherit;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
 }
 
 .btn span {
@@ -68,6 +77,14 @@ strong {
 
 .font-weight-bold {
     font-weight: bold;
+}
+
+.card-padding {
+    padding: 1.8rem 2rem 0 2rem;
+}
+
+.no-padding {
+    padding: 0;
 }
 
 /* ----------------------------------------- Messages & Toasts */

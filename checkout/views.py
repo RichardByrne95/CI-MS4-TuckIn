@@ -229,6 +229,7 @@ def checkout_payment(request):
 
     context = {
         'order_form': order_form,
+        'order_restaurant': order_restaurant,
         'delivery_time': delivery_time,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
