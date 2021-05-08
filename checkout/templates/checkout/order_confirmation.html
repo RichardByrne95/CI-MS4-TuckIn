@@ -31,10 +31,11 @@
                             <h5>You should be contacted by the restaurant in a few moments to confirm your order.</h4>
                         </div>
                     </div>
+                    <!-- Order Details -->
                     <div class="row no-gutters">
                         <div class="col-md-6 no-gutters">
                             <!-- Order Summary Card -->
-                            <div class="order-summary-card">
+                            <div class="m-3 order-summary-card">
                                 <!-- Restaurant Info -->
                                 <div class="restaurant-info-container d-flex">
                                     <!-- Restaurant Logo -->
@@ -61,7 +62,7 @@
                                 </div>
                                 <hr>
                                 <!-- Order Summary -->
-                                <div class="order-summary">
+                                <div class="order-summary-confirmation">
                                     <h3 class="order-summary-heading">Order Summary</h3>
                                     <p class="d-inline-block small float-right order-number">Ref: {{ order.order_number }}</p>
                                     {% for food in bag_contents %}
@@ -88,7 +89,7 @@
                         </div>
                         <div class="col-md-6 no-gutters">
                             <!-- Delivery Info Card -->
-                            <div class="delivery-info-card">
+                            <div class="m-3 delivery-info-card">
                                 <!-- Address Info -->
                                 <div class="delivery-info-container d-flex">
                                     <!-- Marker Icon -->
@@ -98,7 +99,7 @@
                                     <!-- Address and Phone -->
                                     <div class="delivery-address-container">
                                         <h3 class="restaurant-checkout-name">Delivering to</h3>
-                                        <p class="customer-checkout-address m-0">
+                                        <p class="customer-checkout-address mt-3">
                                             <strong>{{ order.full_name }}</strong><br>
                                             {{ order.address_1 }},<br>
                                             {% if order.address_2 %}
@@ -110,6 +111,28 @@
                                             {% endif %}
                                         </p>
                                         <p class="restaurant-checkout-phone">{{ order.phone_number }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Order Note -->
+                            <div class="m-3 delivery-info-card">
+                                <!-- Order Note Container -->
+                                <div class="d-flex delivery-info-container">
+                                    <!-- Icon -->
+                                    <div class="d-flex justify-content-center delivery-checkout-marker-container">
+                                        <span class="delivery-checkout-marker"><i class="fas fa-store"></i></span>
+                                    </div>
+                                    <!-- Note Text -->
+                                    <div class="delivery-address-container">
+                                        <h3 class="restaurant-checkout-name">Your Note</h3>
+                                        <p class="customer-checkout-address mt-3">
+                                            <strong>Contactless Delivery</strong>
+                                        </p>
+                                        <p class="customer-checkout-address mt-3">
+                                            {% if order.order_note %}
+                                                {{ order.order_note }}
+                                            {% endif %}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
