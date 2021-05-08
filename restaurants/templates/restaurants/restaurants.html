@@ -3,6 +3,10 @@
 {% load mathfilters %}
 {% load restaurants_extra %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'restaurants/css/restaurants.css' %}">
+{% endblock %}
+
 {% block extra_title %}
     | Restaurants
 {% endblock %}
