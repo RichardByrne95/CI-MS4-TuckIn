@@ -78,10 +78,10 @@
                         </div>
                     {% else %}
                         <!-- Link to all_restaurants -->
-                        <h4>Your bag is empty.</h4>
-                        <a href="{% url 'restaurants' %}" class="btn btn-outline-black rounded-0 btn-lg" role="button">
-                            <span><i class="fas fa-chevron-left"></i></span>
-                            <span class="text-uppercase">Keep Shopping</span>
+                        <h4>Whoops!</h4>
+                        <p>Looks like haven't added any food to your order yet...</p>
+                        <a href="{% url 'restaurants' %}" class="btn btn-info browse-restaurants-btn" role="button">
+                            <span>Browse restaurants</span>
                         </a>
                     {% endif %}
                 </div>

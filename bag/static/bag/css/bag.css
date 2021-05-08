@@ -4,6 +4,21 @@
     margin-top: 9rem;
 }
 
+.browse-restaurants-btn {
+    color: #fff;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    margin-top: 2rem;
+}
+
+.browse-restaurants-btn span {
+    font-size: 1.8rem;
+}
+
+.browse-restaurants-btn:hover,
+.browse-restaurants-btn:focus {
+    color: #fff;
+}
+
 .bag-contents {
     margin-top: 3rem;
 }
