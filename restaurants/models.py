@@ -28,59 +28,61 @@ class Restaurant(models.Model):
     phone_number = models.DecimalField(max_digits=10, decimal_places=0, blank=False, null=False, default=0)
 
     def get_opening_hours(self):
-        today = datetime.datetime.today().weekday()
-        opening_hours = self.hours.all()
-        todays_opening_hours = opening_hours.filter(weekday=today)
-        opening_time = str(todays_opening_hours[0].from_hour)[:-3]
-        closing_time = str(todays_opening_hours[0].to_hour)[:-3]
-        return f'{opening_time} - {closing_time}'
+        if self.is_open_today():
+            today = datetime.datetime.today().weekday() + 1
+            opening_hours = self.hours.all()
+            todays_opening_hours = opening_hours.filter(weekday=today)
+            opening_time = str(todays_opening_hours[0].from_hour)[:-3]
+            closing_time = str(todays_opening_hours[0].to_hour)[:-3]
+            return f'{opening_time} - {closing_time}'
+        else:
+            return f'Closed today'
 
     def get_opening_time(self):
-        today = datetime.datetime.today().weekday()
+        today = datetime.datetime.today().weekday() + 1
         todays_opening_hours = self.hours.all().filter(weekday=today)
         opening_time = todays_opening_hours[0].from_hour
         return opening_time
 
     def is_open_today(self):
-        today = datetime.datetime.today().weekday()
+        today = datetime.datetime.today().weekday() + 1
         todays_opening_hours = self.hours.all().filter(weekday=today)
         return True if todays_opening_hours else False
 
     def is_open_now(self):
         now = datetime.datetime.today()
-        today = datetime.datetime.today().weekday()
+        today = datetime.datetime.today().weekday() + 1
         todays_opening_hours = self.hours.all().filter(weekday=today)
         opening_time = todays_opening_hours[0].from_hour
         return True if self.is_open_today() and now.time() > opening_time else False
 
     def get_todays_delivery_times(self):
-        # Get/set variables
-        today = datetime.datetime.today().weekday()
-        now = datetime.datetime.today()
-        todays_opening_hours = self.hours.all().filter(weekday=today)
-        opening_time = todays_opening_hours[0].from_hour
-        closing_time = todays_opening_hours[0].to_hour        
-        delivery_times = []
-
-        # If restaurant is open today
-        if todays_opening_hours:
-            opening_time = datetime.time(hour=12, minute=0, second=0)
-
-        # If closing time is midnight, replace with 23:59:59
-        if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
-            closing_time = datetime.time(hour=23, minute=59, second=59)
-
-        # Convert from datetime.time to datetime.datetime object
-        closing_time = datetime.datetime.strptime(
-            f'{now.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
-        opening_time = datetime.datetime.strptime(
-            f'{now.date()} {opening_time}', "%Y-%m-%d %H:%M:%S")
-        first_delivery_time = opening_time
-
-        # If restaurant is open today
         if self.is_open_today():
+            # Get/set variables
+            today = datetime.datetime.today().weekday() + 1
+            now = datetime.datetime.today()
+            todays_opening_hours = self.hours.all().filter(weekday=today)
+            opening_time = todays_opening_hours[0].from_hour
+            closing_time = todays_opening_hours[0].to_hour        
+            delivery_times = []
+
+            # If closing time is midnight, replace with 23:59:59 for processing
+            if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
+                closing_time = datetime.time(hour=23, minute=59, second=59)
+
+            # Convert from datetime.time to datetime.datetime object
+            closing_time = datetime.datetime.strptime(
+                f'{now.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
+            opening_time = datetime.datetime.strptime(
+                f'{now.date()} {opening_time}', "%Y-%m-%d %H:%M:%S")
+            first_delivery_time = opening_time
+
+
             # Find next closest 15 minute interval (i.e. 15, 30, 45, 60)
-            next_closest_15_minutes = ceil(opening_time.minute / 15) * 15
+            if opening_time < now < closing_time:
+                next_closest_15_minutes = ceil(now.time().minute / 15 * 15)
+            else:
+                next_closest_15_minutes = ceil(opening_time.minute / 15) * 15
 
             # If next 15 minute interval is on the next hour, remove minutes and add an hour
             if next_closest_15_minutes == 60:
