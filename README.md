@@ -54,6 +54,7 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 -   Add flexible minimum order amount
 -   Allow restaurants delivery and collection times to be separate
 -   Allow restaurant to have delivery intervals other that 15 minutes (easily done via adding delivery_interval option to model and setting interval to self.delivery_interval in get_todays_delivery_times())
+-   Allow restaurant opening times to span over 2 days
 -   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules
 
 

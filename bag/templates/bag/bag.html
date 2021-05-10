@@ -47,14 +47,14 @@
                                         <td class="p-3 w-25">
                                             {% include 'bag/food-info.html' %}
                                         </td>
-                                        <td class="p-3 w-25">
+                                        <td class="p-3 w-25 food-price">
                                             <p class="my-0">€{{ item.food.price }}</p>
                                         </td>
-                                        <td class="p-3 w-25">
+                                        <td class="p-3 w-25 qty-form">
                                             {% include 'bag/quantity-form.html' %}
                                         </td>
-                                        <td class="p-3 w-25">
-                                            <p class="my-0">€{{ item.food.price|calc_subtotal:item.quantity }}</p>
+                                        <td class="p-3 w-25 food-subtotal">
+                                            <p class="my-0 subtotal">€{{ item.food.price|calc_subtotal:item.quantity }}</p>
                                         </td>
                                     </tr>
                                     <!-- Horizontal Rule Substitute - referenced https://stackoverflow.com/questions/17169094/how-to-add-horizontal-line-in-a-table -->
@@ -93,4 +93,5 @@
 
 {% block footer_js %} 
     <script src="{% static 'js/quantitySelection.js' %}"></script>
+    <script src="{% static 'js/updateTotals.js' %}"></script>
 {% endblock %}

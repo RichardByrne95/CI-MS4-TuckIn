@@ -30,7 +30,7 @@ def add_to_bag(request):
             # If the same food exists in the bag, update quantity
             if food_id in list(bag[restaurant.name].keys()):
                 bag[restaurant.name][food_id]['quantity'] += quantity
-                # If new food has additional details
+                # If food being added has additional details
                 if additional_details:
                     # If same food in bag already has additional details, add comma to separate
                     if bag[restaurant.name][food_id]['additional_details']:
