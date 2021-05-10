@@ -30,7 +30,14 @@ def add_to_bag(request):
             # If the same food exists in the bag, update quantity
             if food_id in list(bag[restaurant.name].keys()):
                 bag[restaurant.name][food_id]['quantity'] += quantity
-                bag[restaurant.name][food_id]['additional_details'] += ", " + additional_details
+                # If new food has additional details
+                if additional_details:
+                    # If same food in bag already has additional details, add comma to separate
+                    if bag[restaurant.name][food_id]['additional_details']:
+                        bag[restaurant.name][food_id]['additional_details'] += ", " + additional_details
+                    # Else add additional details
+                    else:
+                        bag[restaurant.name][food_id]['additional_details'] += additional_details
                 messages.success(request, f"Updated quantity of {food.friendly_name} to {bag[restaurant.name][food_id]['quantity']}")
             # Else add food and set quantity
             else:
