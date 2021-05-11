@@ -20,7 +20,9 @@
 }
 
 .bag-contents {
-    margin-top: 3rem;
+    border: .1rem solid #c8cfd6;
+    border-radius: .3rem;
+    padding: 2rem;
 }
 
 .bag-table th {
@@ -50,10 +52,18 @@
 .food-image {
     width: 8.5rem;
     height: 8.5rem;
-    /* flex-shrink: 0; */
     object-fit: cover;
+}
+
+.fa-trash-alt {
+    font-size: 1.5rem;
 }
 
 .horizontal-rule {
     border-bottom: .1rem solid #c8cfd6;
+}
+
+.secure-checkout-button {
+    background-color: orangered;
+    color: #fff;
 }
