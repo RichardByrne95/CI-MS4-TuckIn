@@ -1,6 +1,8 @@
-from restaurants.models import FoodItem, MenuSection, Restaurant
-from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
+from django.urls.base import reverse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.http.response import HttpResponse
+from restaurants.models import FoodItem, MenuSection, Restaurant
 
 
 def view_bag(request):
@@ -59,3 +61,20 @@ def add_to_bag(request):
     request.session['bag'] = bag
 
     return redirect(redirect_url)
+
+
+def remove_from_bag(request, food_id):
+    try:
+        bag = request.session.get('bag', {})
+        food = get_object_or_404(FoodItem, pk=food_id)
+        menu_section = get_object_or_404(MenuSection, fooditem__name=food.name)
+        restaurant = get_object_or_404(Restaurant, menusection__name=menu_section.name)
+        bag[restaurant.name].pop(food_id)
+        request.session['bag'] = bag
+        if not bag[restaurant.name]:
+            del request.session['bag']
+        messages.info(request, f'{food.friendly_name} has been removed from your order')
+        return redirect(reverse('view_bag'))
+        
+    except Exception as e:
+        return HttpResponse(status=500)

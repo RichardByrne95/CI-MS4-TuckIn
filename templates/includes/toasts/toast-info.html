@@ -1,3 +1,5 @@
+{% load bag_tools %}
+
 <!-- Referenced Bootstrap documentation -->
 <div class="toast-container">
     <div class="toast custom-toast text-white bg-info" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
@@ -16,7 +18,7 @@
                 </div>
             </div>
             <hr class="bag-hr">
-            {% if grand_total %}
+            {% if order_total %}
                 <p class="py-1">Your Order</p>
                 <!-- Order Details -->
                 <div class="bag-notification-wrapper">

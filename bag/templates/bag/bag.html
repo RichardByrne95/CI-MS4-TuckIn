@@ -21,9 +21,9 @@
                     <hr>
                 </div>
             </div>
-            <div class="row no-gutters bag-contents">
+            <div class="row no-gutters mt-5">
                 <div class="col-3 no-gutters"></div>
-                <div class="col-6 no-gutters text-center">
+                <div class="col-6 no-gutters text-center bag-contents">
                     {% if bag_contents %}
                         <!-- Bag Contents -->
                         <div class="table-responsive rounded d-none d-md-block">
@@ -38,7 +38,7 @@
                                         <th scope="col">Subtotal</th>
                                     </tr>
                                 </thead>
-                                {% for item in bag_contents %}
+                                {% for food in bag_contents %}
                                     <!-- Display food info -->
                                     <tr>
                                         <td class="p-3 w-25 food-image-container">
@@ -48,13 +48,14 @@
                                             {% include 'bag/food-info.html' %}
                                         </td>
                                         <td class="p-3 w-25 food-price">
-                                            <p class="my-0">€{{ item.food.price }}</p>
+                                            <p class="my-0">€{{ food.food.price }}</p>
                                         </td>
                                         <td class="p-3 w-25 qty-form">
                                             {% include 'bag/quantity-form.html' %}
                                         </td>
-                                        <td class="p-3 w-25 food-subtotal">
-                                            <p class="my-0 subtotal">€{{ item.food.price|calc_subtotal:item.quantity }}</p>
+                                        <td class="p-3 d-flex justify-content-center align-items-center food-subtotal">
+                                            <a href="{% url 'remove_from_bag' food.food.id %}" class="d-inline-flex p-2"><i class="fas fa-trash-alt d-inline-flex"></i></a>
+                                            <p class="my-0 d-inline-flex subtotal">€{{ food.food.price|calc_subtotal:food.quantity }}</p>
                                         </td>
                                     </tr>
                                     <!-- Horizontal Rule Substitute - referenced https://stackoverflow.com/questions/17169094/how-to-add-horizontal-line-in-a-table -->
