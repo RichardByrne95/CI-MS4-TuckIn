@@ -7,11 +7,13 @@ $(document).ready(() => {
         deliveryCost = parseFloat(deliveryCost);
         let allSubtotals = $(".subtotal").contents().text().split("€");
         allSubtotals.shift();
+        // Update bag total
         let bagTotal = 0.00;
         for (i = 0; i < allSubtotals.length; i++) {
             bagTotal += parseFloat(allSubtotals[i]);
         }
         bagTotalElement.html(`Bag Total: €${bagTotal.toFixed(2)}`);
+        // Update grand total
         let grandTotal = bagTotal + deliveryCost;
         grandTotalElement.html(`Grand Total: €${grandTotal.toFixed(2)}`);
     }

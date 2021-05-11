@@ -104,7 +104,15 @@ strong {
 }
 
 .toast-capper {
-    height: .2rem;
+    height: .25rem;
+}
+
+.toast-header strong {
+    font-size: 1.6rem;
+}
+
+.bag-hr {
+    color: #9da1a5;
 }
 
 /* Referenced: https://css-tricks.com/snippets/css/css-triangle/ */
@@ -133,6 +141,12 @@ strong {
 
 .arrow-info {
     border-bottom-color: #17a2b8 !important;
+}
+
+.bag-notification-wrapper {
+    height: 10rem;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* ----------------------------------------- Navbar */
