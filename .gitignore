@@ -1,9 +1,0 @@
-*.sqlite3
-*.pyc
-__pycahce__
-workspace.code-workspace
-settings.py
-.gitignore
-food-images.zip
-.jshintrc
-.vscode
