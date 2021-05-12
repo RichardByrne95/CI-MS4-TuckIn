@@ -32,9 +32,9 @@ function OnPlaceChanged () {
             };
             service.findPlaceFromQuery(request, function (results, status) {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    let hasDublin = results[0]['formatted_address'].indexOf('Dublin');
-                    let hasBaile = results[0]['formatted_address'].indexOf('Baile Átha Cliath');
-                    let hasContae = results[0]['formatted_address'].indexOf('Contae Bhaile Átha Cliath');
+                    let hasDublin = results[0].formatted_address.indexOf('Dublin');
+                    let hasBaile = results[0].formatted_address.indexOf('Baile Átha Cliath');
+                    let hasContae = results[0].formatted_address.indexOf('Contae Bhaile Átha Cliath');
                     if (hasDublin != -1 || hasBaile != -1 || hasContae != -1) {
                         $(".find-button").attr('disabled', false);
                         $(".error-message").html('');
@@ -44,7 +44,7 @@ function OnPlaceChanged () {
                     }
                 }
             });
-        }
+        };
         addressVerification(document.getElementById('address'));
     }
 }

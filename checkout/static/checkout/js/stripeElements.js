@@ -123,7 +123,6 @@ $(document).ready(() => {
                 } else {
                     // If payment has gone through, submit form
                     if (result.paymentIntent.status === "succeeded") {
-                        console.log("Submitted")
                         form.submit();
                     }
                 }
