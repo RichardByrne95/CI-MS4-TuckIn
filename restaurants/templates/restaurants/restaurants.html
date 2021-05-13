@@ -46,12 +46,12 @@
                                 <div class="col-6 no-gutters">
                                     <div class="dropdown d-flex justify-content-end">
                                         <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                                            Refine:
+                                            Refine: {% if refine_key %}{{ refine_key }}{% endif %}
                                         </a>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                             <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest Rated</a></li>
                                             <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=open_now&direction=asc">Open Now</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=free_delivery&direction=asc">Free delivery</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=free_delivery&direction=asc">Delivery Cost</a></li>
                                         </ul>
                                     </div>
                                 </div>
