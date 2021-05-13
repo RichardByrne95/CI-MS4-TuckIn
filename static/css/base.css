@@ -179,9 +179,40 @@ strong {
 /* ----------------------------------------- Navbar */
 
 header {
-    background-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0));
     padding-bottom: 5rem;
 }
+
+/* Dynamic Navbar - Classes that get added when user scrolls down from top of page */
+
+.transparent-gradient {
+    background-image: -o-linear-gradient() !important;
+    background-image: -moz-linear-gradient() !important;
+    background-image: -webkit-linear-gradient() !important;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
+}
+
+.block-colour {
+    background-image: none !important;
+}
+
+.navbar-block-colour {
+    background-color: #fafafa !important;
+}
+
+.navbar-brand-block-colour {
+    color: orangered !important;
+}
+
+.search-icon-block-colour {
+    color: #000 !important;
+}
+
+.nav-link-colour,
+.fa-shopping-bag-block-colour {
+    color: #00baff !important;
+}
+
+/* End of Dynamic Navbar */
 
 .navbar-brand {
     font-size: 3.1rem;
@@ -194,10 +225,6 @@ header {
 .nav-link {
     font-size: 1.7rem;
     color: #fafafa;
-}
-
-.nav-link i {
-    color: orangered;
 }
 
 #desktop-search-button {
