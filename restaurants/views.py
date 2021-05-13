@@ -1,3 +1,4 @@
+import datetime
 from django.db.models import Q
 from .models import FoodItem, Restaurant, MenuSection, Cuisine
 from django.contrib import messages
@@ -9,7 +10,7 @@ def all_restaurants(request):
     all_cuisines = None
     sort = None
     sortkey = None
-    refine_key = None
+    refine_text = None
     direction = None
     query_cuisine = None
     query_search = None
@@ -33,10 +34,10 @@ def all_restaurants(request):
             if sortkey != 'open_now':
                 if sortkey == 'rating_high':
                     sortkey = 'rating'
-                    refine_key = "Rating"
+                    refine_text = "Rating"
                 elif sortkey == 'free_delivery':
                     sortkey = 'delivery_cost'
-                    refine_key = "Delivery Cost"
+                    refine_text = "Delivery Cost"
 
                 if 'direction' in request.GET:
                     direction = request.GET['direction']
@@ -46,7 +47,7 @@ def all_restaurants(request):
                 restaurants = restaurants.order_by(sortkey)
 
             elif sortkey == 'open_now':
-                refine_key = "Open Now"
+                refine_text = "Open Now"
                 restaurants_open_now = [
                     restaurant.id for restaurant in Restaurant.objects.all() if restaurant.is_open_now()]
                 restaurants = Restaurant.objects.filter(
@@ -82,7 +83,7 @@ def all_restaurants(request):
 
     context =  {
         'restaurants': restaurants,
-        'refine_key': refine_key,
+        'refine_text': refine_text,
         'search_term': query_search,
         'all_cuisines': all_cuisines,
         'current_cuisine': cuisine,
@@ -93,7 +94,7 @@ def all_restaurants(request):
 def restaurant_menu(request, restaurant_id):
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
     menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
-
+    
     food_items = []
     for section in menu_sections:
         food_items += FoodItem.objects.all().filter(menu_section=section)
