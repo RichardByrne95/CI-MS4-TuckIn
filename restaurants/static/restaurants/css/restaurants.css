@@ -35,6 +35,10 @@
     font-size: 1.5rem;
 }
 
+.opaque-image-overlay {
+    opacity: .3;
+}
+
 .card-body {
     padding: 0;
     margin: 7% 14%;
@@ -52,6 +56,19 @@
 
 .restaurant-rating i {
     font-size: 1.4rem;
+}
+
+#restaurants-opening-later {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#restaurants-opening-later-text {
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: #354555;
+    color: #fafafa;
 }
 
 .restaurant-cuisine i {
