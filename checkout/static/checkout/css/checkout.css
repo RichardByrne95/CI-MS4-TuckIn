@@ -3,7 +3,7 @@
 #checkout-address-section,
 #checkout-time-section,
 #checkout-payment-section {
-    margin-top: 9rem;
+    padding-top: 13rem;
 }
 
 /* ----------------------------------------- Delivery Time */
@@ -22,6 +22,10 @@ label[for="delivery-time-select"] {
 }
 
 /* ----------------------------------------- Payment */
+
+main {
+    padding-bottom: 12.5rem;
+}
 
 .customer-details,
 .order-summary {
@@ -83,7 +87,6 @@ label[for="delivery-time-select"] {
 
 .order-again-btn:hover,
 .order-again-btn:focus {
-    background-color: ;
     color: #fff;
 }
 

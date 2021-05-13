@@ -54,39 +54,39 @@
 </head>
 
 <body>
-    <header class="fixed-top">
+    <header class="fixed-top navbar-scroll-transition">
         {% block page_header %}
         {% endblock %}
-        <div id="topnav" class="row d-none d-lg-flex">
-            <div class="col-12">
-                <nav class="navbar navbar-expand-lg">
+        <div id="topnav" class="row no-gutters d-none d-lg-flex">
+            <div class="col-12 no-gutters">
+                <nav class="navbar navbar-expand-lg navbar-scroll-transition">
                     <div class="container-fluid justify-content-evenly align-items-center">
-                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand">TUCKIN - Dublin</a></h2>
+                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand navbar-scroll-transition">TUCKIN - Dublin</a></h2>
                         <div class="search-bar-container d-flex justify-content-end">
                             <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
                                     placeholder="Favourite Restaurant?">
                                 <button id="desktop-search-button" class="form-control btn rounded-0" type="submit">
-                                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                                    <span class="search-icon navbar-scroll-transition"><i class="fas fa-search"></i></span>
                                 </button>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </form>
                         </div>
                         <ul class="navbar-nav d-flex justify-content-end">
-                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
+                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active navbar-scroll-transition">Home</a></li>
                             {% if request.user.is_authenticated %}    
-                                <li class="nav-item"><a href="{% url 'customer_profile' %}" class="nav-link">Account</a></li>
-                                <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Log Out</a></li>
+                                <li class="nav-item"><a href="{% url 'customer_profile' %}" class="nav-link navbar-scroll-transition">Account</a></li>
+                                <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link navbar-scroll-transition">Log Out</a></li>
                             {% else %}
-                                <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>
-                                <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Register</a></li>
+                                <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link navbar-scroll-transition">Login</a></li>
+                                <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link navbar-scroll-transition">Register</a></li>
                             {% endif %}
-                            <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link navbar-scroll-transition">Help</a></li>
                         </ul>
                         <div class="shopping-bag d-flex justify-content-end">
                             <span class="nav-item bag-icon">
-                                <a class="nav-link" href="{% url 'view_bag' %}">
-                                    <i class="fas fa-shopping-bag"></i>
+                                <a class="nav-link navbar-scroll-transition" href="{% url 'view_bag' %}">
+                                    <i class="fas fa-shopping-bag navbar-scroll-transition"></i>
                                 </a>
                             </span>
                         </div>
@@ -170,6 +170,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     
     {% block footer_js %}
+        <script src="{% static 'js/navbarScroll.js' %}"></script>
     {% endblock %}
 
 </body>

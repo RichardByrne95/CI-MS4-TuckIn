@@ -1,7 +1,7 @@
 /* ----------------------------------------- All Restaurants */
 
 #restaurants {
-    margin-top: 13rem;
+    padding-top: 13rem;
 }
 
 .restaurant-card-cover-image-container {
@@ -70,7 +70,7 @@
 
 .restaurant-name-menu {
     position: absolute;
-    top: 18%;
+    top: 11.5%;
     left: 50%;
     transform: translateX(-50%);
     color: #fafafa;
@@ -87,7 +87,7 @@
 }
 
 .restaurant-menu-section {
-    margin-top: 5rem;
+    padding-top: 5rem;
 }
 
 .menu-nav-container {
@@ -145,7 +145,11 @@
 }
 
 .form-row {
-    margin: 1rem 1rem 0 1rem;
+    margin: 1rem 1.5rem 0 1.5rem;
+}
+
+.modal-header {
+    padding: 1rem 2.5rem;
 }
 
 .modal-body {
@@ -153,7 +157,7 @@
     margin: 1rem;
 }
 
-/* Image */
+/* Modal Image */
 
 .modal-image {
     height: 15rem;
@@ -167,7 +171,7 @@
     object-fit: cover;
 }
 
-/* Quantity */
+/* Modal Quantity */
 
 #quantity-title strong,
 #additional-details-title strong {

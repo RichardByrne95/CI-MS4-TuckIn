@@ -29,10 +29,10 @@
         <!-- Menu -->
         <section class="row no-gutters restaurant-menu-section">
             <div class="col-1 d-none d-lg-block no-gutters"></div>
-            <div class="col-9 no-gutters">
+            <div class="col-10 no-gutters">
                 <!-- Restaurant Info -->
                 <div class="row restaurant-info-menu">
-                    <div class="col-12">
+                    <div class="col-12 no-gutters">
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
                         <p class="opening-hours">Opening Hours: {{ restaurant.get_opening_hours }}</p>
                         <p class="delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
@@ -109,7 +109,7 @@
                                     <!-- Quantity Selector -->
                                     <div class="form-row">
                                         <div class="col-12">
-                                            <p class="mt-3" id="quantity-title"><strong>Quantity:</strong></p>
+                                            <p class="mt-3 mb-2" id="quantity-title"><strong>Quantity:</strong></p>
                                             <div class="form-group quantity-selector">
                                                 <div class="input-group">
                                                     <!-- Minus Button -->
@@ -141,7 +141,7 @@
                                     <!-- Additional Details -->
                                     <div class="form-row">
                                         <div class="col-12">
-                                            <p class="mt-3" id="additional-details-title"><strong>Additional Details:</strong></p>
+                                            <p class="mt-3 mb-2" id="additional-details-title"><strong>Additional Details:</strong></p>
                                             <textarea name="additional-details" cols="30" rows="4" class="form-control additional-details-input" placeholder="e.g. no mayo"></textarea>
                                         </div>
                                     </div>
