@@ -32,7 +32,7 @@ class StripeWH_Handler:
 
         # Replace empty strings with Null for db compatibility
         for field, value in shipping_details.address.items():
-            if value == "":
+            if value == '':
                 shipping_details.address[field] = None
 
         order_exists = False

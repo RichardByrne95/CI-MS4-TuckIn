@@ -17,7 +17,7 @@ def all_restaurants(request):
     cuisine = None
 
     #  Handle inputting/changing delivery address
-    if request.method == "POST":
+    if request.method == 'POST':
         maps_address = request.POST['maps_address']
 
         # Create address without city and country
@@ -33,10 +33,10 @@ def all_restaurants(request):
             sortkey = request.GET['sort']
             if sortkey == 'rating_high':
                 sortkey = 'rating'
-                refine_text = "Rating"
+                refine_text = 'Rating'
             elif sortkey == 'free_delivery':
                 sortkey = 'delivery_cost'
-                refine_text = "Delivery Cost"
+                refine_text = 'Delivery Cost'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']

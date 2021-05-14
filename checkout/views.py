@@ -35,12 +35,12 @@ def checkout_address(request):
     elif 'maps_address' in request.session and request.session['maps_address']:
         maps_address = request.session['maps_address'].split(',')
         address_form = OrderForm(initial={
-            'full_name': "",
-            'email': "",
-            'phone_number': "",
+            'full_name': '',
+            'email': '',
+            'phone_number': '',
             'address_1': maps_address[0].lstrip(),
             'address_2': maps_address[1].lstrip(),
-            'postcode': "",
+            'postcode': '',
         })
         # Make email field readonly
         address_form.fields['email'].widget.attrs['readonly'] = False
@@ -62,7 +62,7 @@ def checkout_address(request):
 @require_POST
 def checkout_time(request):
     # Add address data to session
-    if request.method == "POST":
+    if request.method == 'POST':
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -91,7 +91,7 @@ def checkout_time(request):
 @require_POST
 def checkout_payment(request):
     # Add selected delivery time to session
-    if request.method == "POST":
+    if request.method == 'POST':
         if 'from_delivery_time' in request.POST:
             delivery_time = request.POST.get('delivery_time')
             request.session['delivery_time'] = delivery_time
@@ -121,11 +121,11 @@ def checkout_payment(request):
 
 
     # Handle submitting order
-    if request.method == "POST":
+    if request.method == 'POST':
         if 'from_delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
-                if item == "csrfmiddlewaretoken" or item == "city" or item == "save-info" or item == "client_secret" or item == "delivery_time" or item == "from_delivery_time":
+                if item == 'csrfmiddlewaretoken' or item == 'city' or item == 'save-info' or item == 'client_secret' or item == 'delivery_time' or item == 'from_delivery_time':
                     pass
                 else:
                     if request.POST[item] != request.session['address'][item]:
@@ -164,10 +164,11 @@ def checkout_payment(request):
                             order=order,
                             food_item=data['food'],
                             quantity=data['quantity'],
+                            additional_details=data['additional_details'],
                         )
                         order_line_item.save()
                     except FoodItem.DoesNotExist:
-                        messages.error(request, "Issue creating order line items.")
+                        messages.error(request, 'Issue creating order line items.')
                         order.delete()
                         return redirect(reverse('view_bag'))
 
@@ -177,7 +178,7 @@ def checkout_payment(request):
             # Else tell user about error
             else:
                 messages.error(
-                    request, "Order form either received incorrect data or did not receive all necessary fields.")
+                    request, 'Order form either received incorrect data or did not receive all necessary fields.')
     
     # Generate Order Form
     if request.user.is_authenticated:
@@ -194,7 +195,7 @@ def checkout_payment(request):
             'order_restaurant': order_restaurant,
         })
         # Raise error if form is invalid
-        messages.error(request, "Order form is not accepting the inputted data.") if not order_form.is_valid() else None
+        messages.error(request, 'Order form is not accepting the inputted data.') if not order_form.is_valid() else None
     else:
         # Create order form using session data
         address_form = request.session.get('address')
@@ -209,7 +210,7 @@ def checkout_payment(request):
         })
         # Raise error if form is invalid
         messages.error(
-            request, "Order form is not accepting the inputted data.") if not order_form.is_valid() else None
+            request, 'Order form is not accepting the inputted data.') if not order_form.is_valid() else None
 
     # Get variables
     delivery_time = request.POST.get('delivery_time')
@@ -240,7 +241,6 @@ def checkout_payment(request):
 def order_confirmation(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     save_info = request.session.get('save_info')
-    bag = order.original_bag
 
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
@@ -266,17 +266,16 @@ def order_confirmation(request, order_number):
         Your order number is {order_number}. A confirmation email will be sent to {order.email}')
     
     # Remove the bag from the session
-    # if 'bag' in request.session:
-    #     del request.session['bag']
+    if 'bag' in request.session:
+        del request.session['bag']
 
     context = {
         'order': order,
-        'bag': bag,
     }
     return render(request, 'checkout/order_confirmation.html', context)
 
 
-# Post additional order data (data that doesn't fit within Stripe's confirmCardPayment's 'payment_method') to the payment intent. 
+# Post additional order data (data that doesn't fit within Stripe's confirmCardPayment's 'payment_method') to the payment intent via the intent's metadata. 
 # This allows the order instance in the db to be created when Stripe sends back the payment succeeded webhook to confirm that everything has gone smoothly.
 @require_POST
 def cache_checkout_data(request):

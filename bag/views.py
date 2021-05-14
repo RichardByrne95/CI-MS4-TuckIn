@@ -36,26 +36,26 @@ def add_to_bag(request):
                 if additional_details:
                     # If same food in bag already has additional details, add comma to separate
                     if bag[restaurant.name][food_id]['additional_details']:
-                        bag[restaurant.name][food_id]['additional_details'] += ", " + additional_details
+                        bag[restaurant.name][food_id]['additional_details'] += ', ' + additional_details
                     # Else add additional details
                     else:
                         bag[restaurant.name][food_id]['additional_details'] += additional_details
-                messages.success(request, f"Updated quantity of {food.friendly_name} to {bag[restaurant.name][food_id]['quantity']}")
+                messages.success(request, f'Updated quantity of {food.friendly_name} to {bag[restaurant.name][food_id]["quantity"]}')
             # Else add food and set quantity
             else:
-                bag[restaurant.name][food_id] = {"quantity": quantity, "additional_details": additional_details}
-                messages.success(request, f"Added {bag[restaurant.name][food_id]['quantity']} {food.friendly_name} to your cart")
+                bag[restaurant.name][food_id] = {'quantity': quantity, 'additional_details': additional_details}
+                messages.success(request, f'Added {bag[restaurant.name][food_id]["quantity"]} {food.friendly_name} to your cart')
         # Else if there is food from another restaurant in the bag, throw error (elif used for extra verification)
         elif bag_keys[0] != restaurant.name:
-            messages.error(request, "There is already food from another restaurant in your cart.")
+            messages.error(request, 'There is already food from another restaurant in your cart.')
     # Else add food to bag
     else:
-        bag[restaurant.name] = {food_id: {"quantity": quantity, "additional_details": additional_details}}
+        bag[restaurant.name] = {food_id: {'quantity': quantity, 'additional_details': additional_details}}
         # If quantity being added is more than 1, say quantity in toast
         if quantity > 1:
-            messages.success(request, f"Added {quantity} of {food.friendly_name} to your cart")
+            messages.success(request, f'Added {quantity} of {food.friendly_name} to your cart')
         else:
-            messages.success(request, f"Added {food.friendly_name} to your cart")
+            messages.success(request, f'Added {food.friendly_name} to your cart')
         
 
     request.session['bag'] = bag

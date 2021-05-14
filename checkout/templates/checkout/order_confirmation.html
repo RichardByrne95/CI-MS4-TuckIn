@@ -54,7 +54,9 @@
                                                     <br>{{ order.order_restaurant.address_2 }}
                                                 {% endif %}
                                             </p>
-                                            <p class="restaurant-checkout-phone">{{ order.order_restaurant.phone_number }}</p>
+                                            {% if order.order_restaurant.phone_number %}
+                                                <p class="restaurant-checkout-phone">{{ order.order_restaurant.phone_number }}</p>
+                                            {% endif %}
                                             <a href="{% url 'restaurant_menu' order.order_restaurant.id %}" class="checkout-view-menu">View menu</a>
                                         </div>
                                     </div>
