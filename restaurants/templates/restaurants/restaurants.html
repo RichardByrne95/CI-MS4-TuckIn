@@ -39,11 +39,11 @@
                     <div class="row no-gutters">
                         <div class="col-12 no-gutters">
                             <div class="row no-gutters">
-                                <div class="col-6 no-gutters">
-                                    <h4 class="d-inline-block nearby-restaurants">{{ restaurants|count }} Restaurants Near {{ short_maps_address }}</h4>
-                                    <span class="change-location"><a href="#">change location</a></span>
+                                <div class="col-9 no-gutters">
+                                    <h4 class="d-inline-block nearby-restaurants">{{ restaurants|count }} restaurants delivering to {{ short_maps_address }}</h4>
+                                    <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">change location</a></p>
                                 </div>
-                                <div class="col-6 no-gutters">
+                                <div class="col-3 no-gutters">
                                     <div class="dropdown d-flex justify-content-end">
                                         <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
                                             Refine: {% if refine_text %}{{ refine_text }}{% endif %}
