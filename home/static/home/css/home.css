@@ -50,28 +50,32 @@
 
 .cuisines-section {
     margin-top: 10rem;
+    display: flex;
+    justify-content: center;
 }
 
 .cuisines-container {
-    -webkit-box-shadow: 0px 4px 17px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 17px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 17px -4px rgba(0,0,0,0.75);
+    min-width: 28.2rem;
+    max-width: 110rem;
 }
 
 .cuisine-col {
-    background-color: rgba(255, 68, 0, 0.808);
+    background-color: #f6f0ea;
     padding: 1.25rem 0 1rem 0;
     transition: text-decoration .05s ease-in-out, box-shadow .05s ease-in-out;
+    min-width: 9.5rem;
 }
 
 .cuisine i {
     font-size: 3.4rem;
     padding: 1rem;
+    color: rgba(255, 68, 0, 0.808);
 }
 
 .cuisine a {
     color: #fafafa;
     font-weight: 500;
+    color: rgba(255, 68, 0, 0.808);
 }
 
 .cuisine-col:hover {
