@@ -46,6 +46,7 @@ class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=CASCADE, related_name='lineitems')
     food_item = models.ForeignKey(FoodItem, null=False, blank=False, on_delete=RESTRICT)
     quantity = models.IntegerField(null=False, blank=False, default=0)
+    additional_details = models.CharField(max_length=256, null=True, blank=True)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):

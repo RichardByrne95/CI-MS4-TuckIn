@@ -68,13 +68,13 @@
                                         </div>
                                         <!-- Food Line Items -->
                                         <div class="food-line-item-container">
-                                            {% for food in bag_contents %}
+                                            {% for food in order.lineitems.all %}
                                                 <div class="d-flex justify-content-between align-items-center food-info">
-                                                    <p class="food-line-item"><strong>{{ food.food.friendly_name }}</strong> x {{ food.quantity }}</p>
-                                                    <p class="food-price">{{ food.food.price }}</p>
+                                                    <p class="food-line-item"><strong>{{ food.food_item.friendly_name }}</strong> x {{ food.quantity }}</p>
+                                                    <p class="food-price">{{ food.lineitem_total }}</p>
                                                 </div>
                                                 {% if food.additional_details %}
-                                                    <p class="food-additional-details">{{ food.additional_details }}</p>
+                                                    <p class="fst-italic food-additional-details">{{ food.additional_details }}</p>
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
@@ -84,7 +84,7 @@
                                     <div class="order-fees">
                                         <div class="d-flex justify-content-between align-items-center subtotal-container">
                                             <p class="subtotal-heading">Subtotal</p>
-                                            <p class="subtotal">{{ order_total }}</p>
+                                            <p class="subtotal">{{ order.order_total }}</p>
                                         </div>
                                         <br>
                                         <div class="d-flex justify-content-between align-items-center delivery-cost-container">
@@ -96,7 +96,7 @@
                                     <!-- Order Total -->
                                     <div class="d-flex justify-content-between align-items-center order-total">
                                         <h3 class="total-paid">Total paid</h3>
-                                        <h2 class="grand-total d-inline">€{{ grand_total }}</h2>
+                                        <h2 class="grand-total d-inline">€{{ order.grand_total }}</h2>
                                     </div>
                                 </div>
                             </div>
