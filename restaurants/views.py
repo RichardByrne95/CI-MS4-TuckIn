@@ -31,27 +31,19 @@ def all_restaurants(request):
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
-            if sortkey != 'open_now':
-                if sortkey == 'rating_high':
-                    sortkey = 'rating'
-                    refine_text = "Rating"
-                elif sortkey == 'free_delivery':
-                    sortkey = 'delivery_cost'
-                    refine_text = "Delivery Cost"
+            if sortkey == 'rating_high':
+                sortkey = 'rating'
+                refine_text = "Rating"
+            elif sortkey == 'free_delivery':
+                sortkey = 'delivery_cost'
+                refine_text = "Delivery Cost"
 
-                if 'direction' in request.GET:
-                    direction = request.GET['direction']
-                    if direction == 'desc':
-                        sortkey = f'-{sortkey}'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
 
-                restaurants = restaurants.order_by(sortkey)
-
-            elif sortkey == 'open_now':
-                refine_text = "Open Now"
-                restaurants_open_now = [
-                    restaurant.id for restaurant in Restaurant.objects.all() if restaurant.is_open_now()]
-                restaurants = Restaurant.objects.filter(
-                    id__in=restaurants_open_now)
+            restaurants = restaurants.order_by(sortkey)
 
         # Sorting by Cuisine (referenced Boutique Ado)
         if 'cuisine' in request.GET:

@@ -48,13 +48,12 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest Rated</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=open_now&direction=asc">Open Now</a></li>
                                     <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=free_delivery&direction=asc">Delivery Cost</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <!-- Restaurant Cards -->
+                    <!-- Open Restaurant Cards -->
                     <div class="row restaurant-list d-flex">
                         {% for restaurant in restaurants %}
                             {% if restaurant.is_open_now %}
@@ -102,11 +101,13 @@
                             {% endif %}
                         {% endfor %}
                         <hr class="text-dark">
+                        <!-- Opening Later Dividing Banner -->
                         <div class="row no-gutters">
                             <div class="col-12 no-gutters" id="restaurants-opening-later">
                                 <h3 id="restaurants-opening-later-text">Restaurants Opening Later</h3>
                             </div>
                         </div>
+                        <!-- Closed Restaurant Cards -->
                         {% for restaurant in restaurants %}
                             {% if not restaurant.is_open_now %}
                                 <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
