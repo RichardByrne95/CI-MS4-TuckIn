@@ -50,12 +50,12 @@ class Restaurant(models.Model):
         return True if todays_opening_hours else False
 
     def is_open_now(self):
-        now = datetime.datetime.today()
+        now = datetime.datetime.now().time().replace(microsecond=0)
         today = datetime.datetime.today().weekday() + 1
         todays_opening_hours = self.hours.all().filter(weekday=today)
         opening_time = todays_opening_hours[0].from_hour
         closing_time = todays_opening_hours[0].to_hour
-        return True if self.is_open_today() and closing_time > now.time() > opening_time else False
+        return True if self.is_open_today() and (closing_time > now > opening_time) else False
 
     def get_todays_delivery_times(self):
         if self.is_open_today():

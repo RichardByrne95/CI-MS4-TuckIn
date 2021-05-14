@@ -34,7 +34,11 @@
                 <div class="row restaurant-info-menu">
                     <div class="col-12 no-gutters">
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
-                        <p class="opening-hours">Opening Hours: {{ restaurant.get_opening_hours }}</p>
+                        {% if restaurant.is_open_now %}
+                            <p class="opening-hours">Opening Hours: {{ restaurant.get_opening_hours }}</p>
+                        {% else %}
+                            <p class="opening-hours"><strong>CURRENTLY CLOSED</strong> Opens at: {{ restaurant.get_opening_hours }}</p>
+                        {% endif %}
                         <p class="delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
                     </div>
                 </div>
@@ -147,7 +151,11 @@
                                     </div>
                                     <!-- Modal Footer -->
                                     <div class="modal-footer text-center">
-                                        <button class="btn btn-secondary food-form-btn" type="submit">Add to Basket</button>
+                                        {% if restaurant.is_open_now %}
+                                            <button class="btn btn-secondary food-form-btn" type="submit">Add to Basket</button>
+                                        {% else %}
+                                            <p class="btn btn-secondary food-form-btn">Restaurant Currently Closed</p>
+                                        {% endif %}
                                     </div>
                                 </form>
                             </div>

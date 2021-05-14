@@ -19,6 +19,8 @@ body {
 
 main {
     padding-bottom: 8.5rem;
+    /* max-width: 127.2rem;
+    margin: 0 auto; */
 }
 
 .no-gutters, figure {
