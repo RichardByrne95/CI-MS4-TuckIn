@@ -1,7 +1,9 @@
+import json
 from django.contrib import messages
 from django.urls.base import reverse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http.response import HttpResponse
+from checkout.models import Order
 from restaurants.models import FoodItem, MenuSection, Restaurant
 
 
@@ -57,7 +59,7 @@ def add_to_bag(request):
         else:
             messages.success(request, f'Added {food.friendly_name} to your cart')
         
-
+    
     request.session['bag'] = bag
 
     return redirect(redirect_url)
@@ -78,3 +80,60 @@ def remove_from_bag(request, food_id):
         
     except Exception as e:
         return HttpResponse(status=500)
+
+
+def order_again(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    bag = json.loads(order.original_bag)
+    bag_keys = list(bag.keys())
+
+    if 'bag' in request.session:
+        del request.session['bag']
+    
+    for item in order.lineitems.all():
+        # Get data
+        food_object = item.food_item
+        food_id = food_object.id
+        menu_section = get_object_or_404(MenuSection, fooditem__name=food_object.name)
+        restaurant = get_object_or_404(Restaurant, menusection__name=menu_section.name)
+        restaurant_name = restaurant.name
+        quantity = int(item.quantity)
+        additional_details = item.additional_details
+
+        # If bag has something in it
+        if bag_keys:
+            # If food from this restaurant is already in the bag
+            if bag_keys[0] == restaurant_name:
+                # If the same food exists in the bag, update quantity
+                if food_id in list(bag[restaurant_name].keys()):
+                    bag[restaurant_name][food_id]['quantity'] += quantity
+                    # If food being added has additional details
+                    if additional_details:
+                        # If same food in bag already has additional details, add comma to separate
+                        if bag[restaurant_name][food_id]['additional_details']:
+                            bag[restaurant_name][food_id]['additional_details'] += ', ' + additional_details
+                        # Else add additional details
+                        else:
+                            bag[restaurant_name][food_id]['additional_details'] += additional_details
+                    messages.success(request, f'Updated quantity of {food_object.friendly_name} to {bag[restaurant_name][food_id]["quantity"]}')
+                # Else add food and set quantity
+                else:
+                    bag[restaurant_name][food_id] = {'quantity': quantity, 'additional_details': additional_details}
+                    messages.success(request, f'Added {bag[restaurant_name][food_id]["quantity"]} {food_object.friendly_name} to your cart')
+            # Else if there is food from another restaurant in the bag, throw error (elif used for extra verification)
+            elif bag[0] != restaurant_name:
+                messages.error(request, 'There is already food from another restaurant in your cart.')
+        # Else add food to bag
+        else:
+            bag[restaurant_name] = {food_id: {'quantity': quantity, 'additional_details': additional_details}}
+            # If quantity being added is more than 1, say quantity in toast
+            if quantity > 1:
+                messages.success(request, f'Added {quantity} of {food_object.friendly_name} to your cart')
+            else:
+                messages.success(request, f'Added {food_object.friendly_name} to your cart')
+            
+
+        request.session['bag'] = bag
+
+        return redirect('/bag')
+
