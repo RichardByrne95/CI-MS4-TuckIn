@@ -153,7 +153,7 @@ def checkout_payment(request):
                 order.delivery_time = delivery_time
                 order.order_total  = current_bag['order_total']
                 order.grand_total = current_bag['grand_total']
-                order.original_bag = bag
+                order.original_bag = json.dumps(bag)
                 order.stripe_payment_id = request.POST.get('client_secret').split('_secret')[0]
                 order.save()
 
@@ -268,6 +268,12 @@ def order_confirmation(request, order_number):
     # Remove the bag from the session
     if 'bag' in request.session:
         del request.session['bag']
+    if 'restaurant' in request.session:
+        del request.session['restaurant']
+    if 'delivery_time' in request.session:
+        del request.session['delivery_time']
+    if 'save_info' in request.session:
+        del request.session['save_info']
 
     context = {
         'order': order,
