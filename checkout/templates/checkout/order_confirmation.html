@@ -22,7 +22,7 @@
                             <h3>Delivery estimate: {{ order.delivery_time }}</h3>
                             <p class="lead">Your order has been submitted to the restaurant!</p>
                             <p>You should be contacted by the restaurant in a few moments to confirm your order.</p>
-                            <a href="" class="btn order-again-btn">Order again</a>
+                            <a href="{% url 'order_again' order.order_number %}" class="btn order-again-btn">Order again</a>
                         </div>
                     </div>
                 </section>
