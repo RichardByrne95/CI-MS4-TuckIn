@@ -290,9 +290,9 @@ footer a, footer span {
     font-size: 1.8rem;
 }
 
-/* ----------------------------------------- Login/Signup */
+/* ----------------------------------------- Login/Signup/Signout */
 
-#login, #signup {
+#login, #signup, #sign-out {
     margin-top: 16rem;
 }
 
@@ -321,6 +321,10 @@ footer a, footer span {
 
 #signup button {
     margin-top: 1rem;
+}
+
+#log-out-button {
+    font-size: 1.6rem;
 }
 
 #login a, #signup a {

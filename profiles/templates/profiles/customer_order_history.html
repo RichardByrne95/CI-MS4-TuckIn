@@ -13,8 +13,7 @@
 {% block content %}
     <div class="container-fluid no-gutters">
         <section id="customer-orders">
-            <div class="row no-gutters">
-                <div class="col-2 d-none d-lg-block no-gutters"></div>
+            <div class="row no-gutters justify-content-center">
                 <div class="col-8 no-gutters">
                     <div class="row no-gutters">
                         <aside class="col-2 no-gutters account-sidebar">
@@ -27,41 +26,6 @@
                         </aside>
                         <div class="col-8 no-gutters order-history">
                             <h1 class="account-heading">Previous orders</h1>
-                            <div class="col no-gutters"></div>
-                            <!-- <div class="order-history table-responsive">
-                                <table class="table table-sm table-borderless">
-                                    <thead>
-                                        <th>Order Number</th>
-                                        <th>Date</th>
-                                        <th>Restaurant</th>
-                                        <th>Items</th>
-                                        <th>Order Total</th>
-                                    </thead>
-                                    <tbody>
-                                        {% for order in orders %}
-                                            <tr>
-                                                <td>
-                                                    <a href="" title="{{ order.order_number }}">{{ order.order_number }}</a>
-                                                </td>
-                                                <td>{{ order.date }}}</td>
-                                                <td>
-                                                    <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
-                                                        {{ order.order_restaurant.friendly_name }}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <ul class="list-unstyled">
-                                                        {% for item in order.lineitems.all %}
-                                                            <li class="small">{{ item.food_item.friendly_name }}</li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </td>
-                                                <td>€{{ order.grand_total }}</td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div> -->
                             <div class="order-history-card">
                                 {% for order in orders %}
                                     <div class="row no-gutters previous-order">
@@ -104,10 +68,8 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="col-2 no-gutters"></div>
                     </div>
                 </div>
-                <div class="col-2 no-gutters d-none d-lg-block"></div>
             </div>
         </section>
     </div>

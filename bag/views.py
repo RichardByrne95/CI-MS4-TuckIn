@@ -136,4 +136,3 @@ def order_again(request, order_number):
         request.session['bag'] = bag
 
         return redirect('/bag')
-
