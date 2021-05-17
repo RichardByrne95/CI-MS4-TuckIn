@@ -35,8 +35,16 @@
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
                         {% if restaurant.is_open_now %}
                             <p class="opening-hours">Opening Hours: {{ restaurant.get_opening_hours }}</p>
-                        {% else %}
-                            <p class="opening-hours"><strong>CURRENTLY CLOSED</strong> Opens at: {{ restaurant.get_opening_hours }}</p>
+                        {% elif restaurant.is_open_later_today %}
+                            <p class="opening-hours"><strong>CURRENTLY CLOSED</strong> Opens later at: {{ restaurant.get_opening_hours }}</p>
+                        {% elif not restaurant.is_open_today %}
+                            <p class="opening-hours"><strong>CURRENTLY CLOSED</strong>
+                                {% if restaurant.get_opening_time %}
+                                    Opens at: {{ restaurant.get_opening_time }}
+                                {% else %}
+                                    Closed today
+                                {% endif %}
+                            </p>
                         {% endif %}
                         <p class="delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
                     </div>

@@ -17,6 +17,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 
 def checkout_address(request):
+    if request.method == 'POST' and 'restaurant_closed' in request.POST:
+        messages.error(request, 'The restaurant is currently closed today.')
+        return redirect(reverse('view_bag'))
+    
     # Create instance of order form with logged in user's details
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)

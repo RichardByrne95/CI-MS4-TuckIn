@@ -28,44 +28,74 @@ class Restaurant(models.Model):
     phone_number = models.DecimalField(max_digits=10, decimal_places=0, blank=False, null=False, default=0)
 
     def get_opening_hours(self):
-        if self.is_open_today():
-            today = datetime.datetime.today().weekday() + 1
+        try:
+            weekday = datetime.datetime.today().weekday()
             opening_hours = self.hours.all()
-            todays_opening_hours = opening_hours.filter(weekday=today)
+            todays_opening_hours = opening_hours.filter(weekday=weekday)
             opening_time = str(todays_opening_hours[0].from_hour)[:-3]
             closing_time = str(todays_opening_hours[0].to_hour)[:-3]
             return f'{opening_time} - {closing_time}'
-        else:
-            return f'Closed today'
+        except Exception:
+            return None
 
     def get_opening_time(self):
-        today = datetime.datetime.today().weekday() + 1
-        todays_opening_hours = self.hours.all().filter(weekday=today)
-        opening_time = todays_opening_hours[0].from_hour
-        return opening_time
+        weekday = datetime.datetime.today().weekday()
+        try:
+            todays_opening_hours = self.hours.all().filter(weekday=weekday)
+            opening_time = todays_opening_hours[0].from_hour
+            return opening_time
+        except Exception:
+            return None
 
     def is_open_today(self):
-        today = datetime.datetime.today().weekday() + 1
-        todays_opening_hours = self.hours.all().filter(weekday=today)
+        weekday = datetime.datetime.today().weekday()
+        todays_opening_hours = self.hours.all().filter(weekday=weekday)
         return True if todays_opening_hours else False
 
     def is_open_now(self):
         now = datetime.datetime.now().time().replace(microsecond=0)
-        today = datetime.datetime.today().weekday() + 1
-        todays_opening_hours = self.hours.all().filter(weekday=today)
-        opening_time = todays_opening_hours[0].from_hour
-        closing_time = todays_opening_hours[0].to_hour
-        return True if self.is_open_today() and (closing_time > now > opening_time) else False
+        weekday = datetime.datetime.today().weekday()
+        try:
+            todays_opening_hours = self.hours.all().filter(weekday=weekday)
+            opening_time = todays_opening_hours[0].from_hour
+            closing_time = todays_opening_hours[0].to_hour
+            return True if self.is_open_today() and (closing_time > now >= opening_time) else False
+        except Exception:
+            return False
+
+    def is_open_later_today(self):
+        if self.is_open_today():
+            # If restaurant currently open, then it will be open later (presuming it's not the final minute)
+            if self.is_open_now():
+                return True
+            # Get/set variables
+            now = datetime.datetime.now()
+            weekday = datetime.datetime.today().weekday()
+            today = datetime.datetime.today()
+            opening_hours = self.hours.all()
+            todays_opening_hours = opening_hours.filter(weekday=weekday)
+            closing_time = str(todays_opening_hours[0].to_hour)
+            # Convert to datetime
+            closing_time = datetime.datetime.strptime(
+                f'{today.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
+            # If restaurant was open today, but has now closed, return False
+            if now >= closing_time:
+                return False
+            # Else must be before restaurant is opening for the day, therefore true
+            return True
+        # Restaurant not open today at all
+        return False
 
     def get_todays_delivery_times(self):
+        delivery_times = []
+
         if self.is_open_today():
             # Get/set variables
-            today = datetime.datetime.today().weekday() + 1
-            now = datetime.datetime.today()
-            todays_opening_hours = self.hours.all().filter(weekday=today)
+            today = datetime.datetime.today()
+            weekday = datetime.datetime.today().weekday()
+            todays_opening_hours = self.hours.all().filter(weekday=weekday)
             opening_time = todays_opening_hours[0].from_hour
-            closing_time = todays_opening_hours[0].to_hour        
-            delivery_times = []
+            closing_time = todays_opening_hours[0].to_hour
 
             # If closing time is midnight, replace with 23:59:59 for processing
             if datetime.time.strftime(closing_time, "%H:%M:%S") == "00:00:00":
@@ -73,28 +103,28 @@ class Restaurant(models.Model):
 
             # Convert from datetime.time to datetime.datetime object
             closing_time = datetime.datetime.strptime(
-                f'{now.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
+                f'{today.date()} {closing_time}', "%Y-%m-%d %H:%M:%S")
             opening_time = datetime.datetime.strptime(
-                f'{now.date()} {opening_time}', "%Y-%m-%d %H:%M:%S")
-            first_delivery_time = opening_time
-
+                f'{today.date()} {opening_time}', "%Y-%m-%d %H:%M:%S")
 
             # Find next closest 15 minute interval (i.e. 15, 30, 45, 60)
-            if opening_time < now < closing_time:
-                next_closest_15_minutes = ceil(now.time().minute / 15 * 15)
+            if self.is_open_now():
+                first_delivery_time = today.now()
+                next_closest_15_minutes = ceil(today.time().minute / 15) * 15
             else:
+                first_delivery_time = opening_time
                 next_closest_15_minutes = ceil(opening_time.minute / 15) * 15
 
             # If next 15 minute interval is on the next hour, remove minutes and add an hour
             if next_closest_15_minutes == 60:
                 first_delivery_time = first_delivery_time.replace(minute=0)
                 first_delivery_time += datetime.timedelta(hours=1)
-            # Otherwise replace mintutes with next interval time
+            # Otherwise replace minutes with next interval time
             else:
                 first_delivery_time = first_delivery_time.replace(minute=next_closest_15_minutes)
             
-            # Add 30 minutes buffer for restaurant to cook food
-            first_delivery_time += datetime.timedelta(minutes=30)
+            # Add 45 minutes buffer for restaurant to cook food etc.
+            first_delivery_time += datetime.timedelta(minutes=45)
 
             # Make each datetime object aware for database
             first_delivery_time.replace(tzinfo=utc)
@@ -102,10 +132,10 @@ class Restaurant(models.Model):
 
             # Create list of 15 minute delivery times
             while first_delivery_time < closing_time:
-                first_delivery_time += datetime.timedelta(minutes=15)
                 delivery_times.append(first_delivery_time.time())
+                first_delivery_time += datetime.timedelta(minutes=15)
 
-        return delivery_times if delivery_times else None
+        return delivery_times
 
 
     def get_friendly_name(self):
@@ -118,13 +148,13 @@ class Restaurant(models.Model):
 # Opening Hours
 # Referenced https://stackoverflow.com/questions/28450106/business-opening-hours-in-django
 WEEKDAYS = [
-    (1, ("Monday")),
-    (2, ("Tuesday")),
-    (3, ("Wednesday")),
-    (4, ("Thursday")),
-    (5, ("Friday")),
-    (6, ("Saturday")),
-    (7, ("Sunday")),
+    (0, ("Monday")),
+    (1, ("Tuesday")),
+    (2, ("Wednesday")),
+    (3, ("Thursday")),
+    (4, ("Friday")),
+    (5, ("Saturday")),
+    (6, ("Sunday")),
 ]
 
 

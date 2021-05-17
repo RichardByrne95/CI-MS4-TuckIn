@@ -14,9 +14,22 @@
     </a>
 {% endif %}
 
-<a href="{% url 'checkout_address' %}" class="btn rounded-0 btn-lg secure-checkout-button">
-    <span class="text-uppercase">Secure Checkout</span>
-    <span class="icon">
-        <i class="fas fa-lock"></i>
-    </span>
-</a>
+{% if current_restaurant.is_open_today %}
+    <a href="{% url 'checkout_address' %}" class="btn rounded-0 btn-lg secure-checkout-button">
+        <span class="text-uppercase">Secure Checkout</span>
+        <span class="icon">
+            <i class="fas fa-lock"></i>
+        </span>
+    </a>
+{% else %}
+    <form class="d-inline" action="{% url 'view_bag' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="restaurant_closed">
+        <button type="submit" class="btn rounded-0 btn-lg secure-checkout-button">
+            <span class="text-uppercase">Secure Checkout</span>
+            <span class="icon">
+                <i class="fas fa-lock"></i>
+            </span>
+        </button>
+    </form>
+{% endif %}

@@ -53,11 +53,10 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 -   Add ability to edit notes/additional details
 -   Add flexible minimum order amount
 -   Allow restaurants delivery and collection times to be separate
--   Allow restaurant to have delivery intervals other that 15 minutes (easily done via adding delivery_interval option to model and setting interval to self.delivery_interval in get_todays_delivery_times())
--   Allow restaurant opening times to span over 2 days
+-   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions)
+-   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00
 -   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules
-
-
+-   Allow customers to pre-order with a restaurant if it's not open today
 
 
 
