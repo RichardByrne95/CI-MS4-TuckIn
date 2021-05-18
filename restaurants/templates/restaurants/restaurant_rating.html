@@ -22,4 +22,5 @@
     {% else %}
         <span><i class="fas fa-star"></i></span>
     {% endif %}
+    ({{ restaurant.orders.all|count }})
 </p>
