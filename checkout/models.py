@@ -7,7 +7,7 @@ from profiles.models import CustomerProfile
 
 class Order(models.Model):
     order_number = models.CharField(max_length=16, null=False, editable=False)
-    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=False, blank=False, on_delete=RESTRICT)
+    order_restaurant = models.ForeignKey(Restaurant, max_length=128, null=False, blank=False, on_delete=RESTRICT, related_name='orders')
     customer_profile = models.ForeignKey(CustomerProfile, on_delete=models.SET_NULL, null=True, blank=False, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
@@ -23,6 +23,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_bag = models.JSONField(null=False, blank=False, default=dict)
     stripe_payment_id = models.CharField(max_length=254, null=False, blank=False, default='')
+    rating = models.IntegerField(null=True, blank=True)
 
     def _generate_order_number(self):
         number = uuid.uuid4().hex

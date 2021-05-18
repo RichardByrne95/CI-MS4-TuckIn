@@ -1,5 +1,6 @@
 import datetime
 from math import ceil
+from statistics import mean
 from django.db import models
 from django.utils.timezone import utc
 from django.db.models.deletion import CASCADE, SET_NULL
@@ -26,6 +27,13 @@ class Restaurant(models.Model):
     post_code = models.CharField(max_length=254, default="Please enter post code")
     delivery_cost = models.DecimalField(max_digits=4, decimal_places=2, default="0.00")
     phone_number = models.DecimalField(max_digits=10, decimal_places=0, blank=False, null=False, default=0)
+
+    def update_rating(self):
+        orders = self.orders.all().exclude(rating__isnull=True)
+        ratings = [order.rating for order in orders]
+        average_rating = mean(ratings)
+        self.rating = round(average_rating, 2)
+        self.save()
 
     def get_opening_hours(self):
         try:
@@ -137,7 +145,6 @@ class Restaurant(models.Model):
 
         return delivery_times
 
-
     def get_friendly_name(self):
         return self.friendly_name
     
@@ -146,27 +153,26 @@ class Restaurant(models.Model):
     
 
 # Opening Hours
-# Referenced https://stackoverflow.com/questions/28450106/business-opening-hours-in-django
-WEEKDAYS = [
-    (0, ("Monday")),
-    (1, ("Tuesday")),
-    (2, ("Wednesday")),
-    (3, ("Thursday")),
-    (4, ("Friday")),
-    (5, ("Saturday")),
-    (6, ("Sunday")),
-]
-
-
 class OpeningHours(models.Model):
     class Meta:
         ordering = ('weekday', 'from_hour')
         unique_together = ('weekday', 'from_hour', 'to_hour')
         verbose_name_plural = 'Opening Hours'
 
+    # Referenced https://stackoverflow.com/questions/28450106/business-opening-hours-in-django
+    weekdays = [
+        (0, ("Monday")),
+        (1, ("Tuesday")),
+        (2, ("Wednesday")),
+        (3, ("Thursday")),
+        (4, ("Friday")),
+        (5, ("Saturday")),
+        (6, ("Sunday")),
+    ]
+
     restaurant = models.ForeignKey(
         "Restaurant", on_delete=CASCADE, related_name="hours")
-    weekday = models.IntegerField(choices=WEEKDAYS)
+    weekday = models.IntegerField(choices=weekdays)
     from_hour = models.TimeField()
     to_hour = models.TimeField()
 
