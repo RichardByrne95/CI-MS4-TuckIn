@@ -76,10 +76,16 @@ main {
     border-radius: .3rem;
 }
 
+#order-confirmed-jumbotron {
+    padding: 2rem;
+    background-color: #fff;
+}
+
 .order-again-btn {
     color: #fff;
     background-color: orangered;
     font-size: 1.5rem;
+    font-weight: 500;
     margin-top: 1rem;
     padding: 1rem 4rem;
     border-radius: .3rem;
@@ -88,6 +94,16 @@ main {
 .order-again-btn:hover,
 .order-again-btn:focus {
     color: #fff;
+}
+
+#rating-heading {
+    font-size: 1.9rem;
+    font-weight: 600;
+}
+
+#rating-stars i {
+    color: orangered;
+    font-size: 2rem;
 }
 
 .restaurant-checkout-logo-container,
@@ -105,8 +121,8 @@ main {
 .order-summary-card,
 .delivery-info-card {
     padding: 2rem;
-    border: solid 1px #c8cfd6;
-    border-radius: 8px;
+    border: solid .1rem #c8cfd6;
+    border-radius: .8rem;
 }
 
 .order-number {

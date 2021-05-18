@@ -15,21 +15,35 @@
         <div class="row no-gutters page-wrapper">
             <div class="col-12 no-gutters">
                 <!-- Order Confirmed Jumbotron -->
-                <section class="row no-gutters jumbotron-container" id="order-confirmation-jumbotron-section">
-                    <div class="col-6 offset-3 order-confirm-jumbotron">
-                        <div class="jumbotron">
+                <section class="row no-gutters justify-content-center jumbotron-container" id="order-confirmation-jumbotron-section">
+                    <div class="col-6 order-confirm-jumbotron">
+                        <div class="jumbotron" id="order-confirmed-jumbotron">
                             <h2>Order confirmed!</h2>
-                            <h3>Delivery estimate: {{ order.delivery_time }}</h3>
-                            <p class="lead">Your order has been submitted to the restaurant!</p>
-                            <p>You should be contacted by the restaurant in a few moments to confirm your order.</p>
+                            <h3 class="mb-3">Delivery estimate: {{ order.delivery_time }}</h3>
+                            <p>Your order has been submitted to the restaurant!</p>
+                            <p class="mb-3">You should be <strong>contacted by the restaurant</strong> in a few moments confirming your order.</p>
                             <a href="{% url 'order_again' order.order_number %}" class="btn order-again-btn">Order again</a>
                         </div>
                     </div>
                 </section>
                 <!-- Order Details -->
-                <section class="row no-gutters" id="order-details-section">
-                    <div class="col-3 no-gutters"></div>
+                <section class="row no-gutters justify-content-center" id="order-details-section">
                     <div class="col-6 no-gutters">
+                        <!-- Customer Rating -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-12 no-gutters">
+                                <div class="card m-3 p-5 text-center rating-card">
+                                    <h3 class="mb-3" id="rating-heading">How was your meal?</h3>
+                                    <div id="rating-stars">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row no-gutters">
                             <div class="col-md-6 no-gutters">
                                 <!-- Order Summary Card -->
@@ -130,7 +144,7 @@
                                     </div>
                                 </div>
                                 <!-- Order Note -->
-                                <div class="m-3 delivery-info-card">
+                                <div class="m-3 mt-4 delivery-info-card">
                                     <!-- Order Note Container -->
                                     <div class="d-flex delivery-info-container">
                                         <!-- Icon -->
@@ -154,7 +168,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 no-gutters"></div>
                 </section>
             </div>
         </div>

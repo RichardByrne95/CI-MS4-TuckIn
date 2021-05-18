@@ -66,6 +66,12 @@ option {
     font-size: 1.6rem;
 }
 
+.card {
+    padding: 2rem;
+    border: solid .1rem #c8cfd6;
+    border-radius: .8rem;
+}
+
 hr {
     color: #c5ccd3;
 }
