@@ -37,14 +37,34 @@
                         <div class="row no-gutters justify-content-center">
                             <div class="col-12 no-gutters">
                                 <div class="card m-3 p-5 text-center rating-card">
-                                    <h3 class="mb-3" id="rating-heading">How was your meal?</h3>
-                                    <div id="rating-stars">
-                                        <i class="far fa-star" id="star-1"></i>
-                                        <i class="far fa-star" id="star-2"></i>
-                                        <i class="far fa-star" id="star-3"></i>
-                                        <i class="far fa-star" id="star-4"></i>
-                                        <i class="far fa-star" id="star-5"></i>
-                                    </div>
+                                    {% if not order.rating %}
+                                        <h3 class="mb-3" id="rating-heading">How was your meal?</h3>
+                                        <div id="rating-stars">
+                                            <form id="rating-form" action="{% url 'order_confirmation' order.order_number %}" method="POST">
+                                                {% csrf_token %}
+                                                <i class="far fa-star" id="1"></i>
+                                                <i class="far fa-star" id="2"></i>
+                                                <i class="far fa-star" id="3"></i>
+                                                <i class="far fa-star" id="4"></i>
+                                                <i class="far fa-star" id="5"></i>
+                                                <input type="hidden" name="rating" value="">
+                                            </form>
+                                        </div>
+                                    {% else %}
+                                        <span class="hidden d-none" id="order-rating-value" aria-hidden="true">{{ order.rating }}</span>
+                                        <h3 class="mb-3" id="rating-heading">Thanks for your rating!</h3>
+                                        <div id="rating-stars">
+                                            <form id="rating-form" action="{% url 'order_confirmation' order.order_number %}" method="POST">
+                                                {% csrf_token %}
+                                                <i class="far fa-star" id="1"></i>
+                                                <i class="far fa-star" id="2"></i>
+                                                <i class="far fa-star" id="3"></i>
+                                                <i class="far fa-star" id="4"></i>
+                                                <i class="far fa-star" id="5"></i>
+                                                <input type="hidden" name="rating" value="">
+                                            </form>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

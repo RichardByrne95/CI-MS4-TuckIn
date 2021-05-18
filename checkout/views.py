@@ -246,6 +246,16 @@ def order_confirmation(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     save_info = request.session.get('save_info')
 
+    if request.method == 'POST':
+        try:
+            rating = request.POST.get('rating')
+            order.rating = rating
+            order.save()
+            order.order_restaurant.update_rating()
+            messages.success(request, "Your rating has been saved!")
+        except Exception:
+            messages.error(request, "Could not save rating. Please try again later.")
+
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Save the user's info
