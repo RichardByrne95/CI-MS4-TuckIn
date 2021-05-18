@@ -106,6 +106,10 @@ main {
     font-size: 2rem;
 }
 
+.fa-star:hover {
+    cursor: pointer;
+}
+
 .restaurant-checkout-logo-container,
 .delivery-checkout-marker-container {
     width: 5.5rem;
