@@ -38,8 +38,31 @@
                     <!-- Restaurants Near You Header -->
                     <div class="row no-gutters">
                         <div class="col-9 no-gutters">
-                            <h4 class="d-inline-block nearby-restaurants">{{ restaurants|count }} restaurants delivering to {{ short_maps_address }}</h4>
-                            <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">change location</a></p>
+                            <!-- If address has been inputted -->
+                            {% if not short_maps_address == 'None' %}
+                                <!-- If there is more than 1 or no restaurants open -->
+                                <h4 class="d-inline-block nearby-restaurants">
+                                    {{ restaurants|count }}
+                                    {% if restaurants|count > 1 and restaurants|count != 0 %}
+                                        restaurants 
+                                    {% else %} 
+                                         restaurant 
+                                    {% endif %}
+                                    delivering to {{ short_maps_address }}
+                                </h4>
+                                <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">change location</a></p>
+                            {% else %}
+                                <h4 class="d-inline-block nearby-restaurants">
+                                    {{ restaurants|count }}
+                                    {% if restaurants|count > 1 and restaurants|count != 0 %}
+                                        restaurants 
+                                    {% else %} 
+                                        restaurant 
+                                    {% endif %}
+                                    delivering in Dublin
+                                </h4>
+                                <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">set location</a></p>
+                            {% endif %}
                         </div>
                         <div class="col-3 no-gutters">
                             <div class="dropdown d-flex justify-content-end">
