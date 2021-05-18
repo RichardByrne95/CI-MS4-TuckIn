@@ -65,8 +65,7 @@
                 <!-- Food Items List -->
                 {% for menu_section in menu_sections %}
                     <div class="menu-section-food-items">
-                        <a href="#"></a>
-                        <h2 class="menu-section-heading" id="{{ menu_section.friendly_name }}">{{ menu_section.friendly_name }}</h2>
+                        <h2 class="anchor menu-section-heading" id="{{ menu_section.friendly_name }}">{{ menu_section.friendly_name }}</h2>
                         <div class="row food-items-container">
                             <!-- Food Item Cards -->
                             {% for food in food_items %}

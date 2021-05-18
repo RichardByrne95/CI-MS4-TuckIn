@@ -68,3 +68,5 @@ Timezone for person marking this project. Some restaurants may not be open depen
 After completing circa 75% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented.
 
 For users, the user field was named 'customer' instead of 'user' to prevent confusion in the future, if user accounts for the restaurants themselves were to be set up to allow them to manage their menu.
+
+Used https://webformatter.com/javascript for JavaScript formatting
