@@ -63,6 +63,10 @@
     border-bottom: .1rem solid #c8cfd6;
 }
 
+.fa-chevron-left {
+    font-size: 1.3rem;
+}
+
 .secure-checkout-button {
     background-color: orangered;
     color: #fff;
