@@ -54,39 +54,39 @@
 </head>
 
 <body>
-    <header class="fixed-top navbar-scroll-transition transparent-gradient">
+    <header class="fixed-top {% if dynamic_navbar %}navbar-scroll-transition transparent-gradient{% else %}block-colour{% endif %}">
         {% block page_header %}
         {% endblock %}
         <div id="topnav" class="row no-gutters d-none d-lg-flex">
             <div class="col-12 no-gutters">
-                <nav class="navbar navbar-expand-lg navbar-scroll-transition">
+                <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-block-colour{% endif %}">
                     <div class="container-fluid justify-content-evenly align-items-center">
-                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand navbar-scroll-transition">TUCKIN - Dublin</a></h2>
+                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-brand-block-colour{% endif %}">TUCKIN - Dublin</a></h2>
                         <div class="search-bar-container d-flex justify-content-end">
                             <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
                                     placeholder="Favourite Restaurant?">
                                 <button id="desktop-search-button" class="form-control btn rounded-0" type="submit">
-                                    <span class="search-icon navbar-scroll-transition"><i class="fas fa-search"></i></span>
+                                    <span class="search-icon {% if dynamic_navbar %}navbar-scroll-transition{% else %}search-icon-block-colour{% endif %}"><i class="fas fa-search"></i></span>
                                 </button>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </form>
                         </div>
                         <ul class="navbar-nav d-flex justify-content-end">
-                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active navbar-scroll-transition">Home</a></li>
+                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Home</a></li>
                             {% if request.user.is_authenticated %}    
-                                <li class="nav-item"><a href="{% url 'customer_profile' %}" class="nav-link navbar-scroll-transition">Account</a></li>
-                                <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link navbar-scroll-transition">Log Out</a></li>
+                                <li class="nav-item"><a href="{% url 'customer_profile' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Account</a></li>
+                                <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Log Out</a></li>
                             {% else %}
-                                <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link navbar-scroll-transition">Login</a></li>
-                                <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link navbar-scroll-transition">Register</a></li>
+                                <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Login</a></li>
+                                <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Register</a></li>
                             {% endif %}
-                            <li class="nav-item"><a href="#" class="nav-link navbar-scroll-transition">Help</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Help</a></li>
                         </ul>
                         <div class="shopping-bag d-flex justify-content-end">
                             <span class="nav-item bag-icon">
-                                <a class="nav-link navbar-scroll-transition" href="{% url 'view_bag' %}">
-                                    <i class="fas fa-shopping-bag navbar-scroll-transition"></i>
+                                <a class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}" href="{% url 'view_bag' %}">
+                                    <i class="fas fa-shopping-bag {% if dynamic_navbar %}navbar-scroll-transition{% else %}fa-shopping-bag-block-colour{% endif %}"></i>
                                 </a>
                             </span>
                         </div>
@@ -169,9 +169,11 @@
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     
-    {% block footer_js %}
-        <script src="{% static 'js/navbarScroll.js' %}"></script>
-    {% endblock %}
+    {% if dynamic_navbar %}
+        {% block footer_js %}
+            <script src="{% static 'js/navbarScroll.js' %}"></script>
+        {% endblock %}
+    {% endif %}
 
 </body>
 

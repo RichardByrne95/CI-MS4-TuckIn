@@ -21,10 +21,14 @@
 }
 
 .address {
-    padding: .45rem;
+    padding: .45rem .8rem;
     border: .1rem solid #c5ccd3;
     border-right: none;
     border-radius: .3rem 0 0 .3rem;
+}
+
+.address:focus-visible {
+    outline: none;
 }
 
 .find-button {

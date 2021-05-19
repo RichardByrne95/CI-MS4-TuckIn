@@ -291,6 +291,7 @@ def order_confirmation(request, order_number):
 
     context = {
         'order': order,
+        'dynamic_navbar': True,
     }
     return render(request, 'checkout/order_confirmation.html', context)
 

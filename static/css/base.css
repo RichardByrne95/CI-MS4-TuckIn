@@ -190,13 +190,17 @@ header {
     padding-bottom: 5rem;
 }
 
-/* Dynamic Navbar - Classes that get added when user scrolls down from top of page */
+/* Dynamic Navbar - Classes that change when user scrolls down from top of page */
 
 .transparent-gradient {
-    background-image: -o-linear-gradient() !important;
-    background-image: -moz-linear-gradient() !important;
-    background-image: -webkit-linear-gradient() !important;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
+    background-image: -o-linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
+    background-image: -moz-linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
+    background-image: -webkit-linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)) !important;
+}
+
+.navbar-scroll-transition {
+    transition: all .45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .block-colour {
@@ -204,7 +208,7 @@ header {
 }
 
 .navbar-block-colour {
-    background-color: #fafafa !important;
+    background-color: #f0f0f0 !important;
 }
 
 .navbar-brand-block-colour {
@@ -270,10 +274,6 @@ header {
     color: orangered;
 }
 
-.navbar-scroll-transition {
-    transition: all .45s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-}
-
 /* ----------------------------------------- Footer */
 
 footer {
@@ -296,7 +296,7 @@ footer a, footer span {
     font-size: 1.8rem;
 }
 
-/* ----------------------------------------- Login/Signup/Signout */
+/* ----------------------------------------- Login/Signup/Sign Out */
 
 #login, #signup, #sign-out {
     margin-top: 16rem;

@@ -95,5 +95,6 @@ def restaurant_menu(request, restaurant_id):
         'restaurant': restaurant,
         'menu_sections': menu_sections,
         'food_items': food_items,
+        'dynamic_navbar': True,
     }
     return render(request, 'restaurants/restaurant_menu.html', context)
