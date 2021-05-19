@@ -34,23 +34,23 @@
                     {% endfor %}
                 </aside>
                 <!-- Restaurants Column -->
-                <div class="col-9 no-gutters">
+                <div class="col-9 no-gutters" id="restaurants-column">
                     <!-- Restaurants Near You Header -->
                     <div class="row no-gutters">
-                        <div class="col-9 no-gutters">
+                        <div class="col-10 no-gutters">
                             <!-- If address has been inputted -->
                             {% if short_maps_address %}
                                 <h4 class="d-inline-block nearby-restaurants">
                                 {{ open_restaurants|count }}
                                 <!-- If there is more than 1 or no restaurants open -->
-                                    {% if open_restaurants|count > 1 and open_restaurants|count != 0 %}
+                                    {% if open_restaurants|count > 1 %}
                                         restaurants 
                                     {% else %} 
                                          restaurant 
                                     {% endif %}
                                     delivering to {{ short_maps_address }}
                                 </h4>
-                                <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">change location</a></p>
+                                <p class="ms-3 d-inline text-nowrap change-location"><a href="{% url 'home' %}">change location</a></p>
                             {% else %}
                                 <h4 class="d-inline-block nearby-restaurants">
                                     {{ open_restaurants|count }}
@@ -61,10 +61,10 @@
                                     {% endif %}
                                     delivering in Dublin
                                 </h4>
-                                <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">set location</a></p>
+                                <p class="ms-5 d-inline text-nowrap change-location"><a href="{% url 'home' %}">set location</a></p>
                             {% endif %}
                         </div>
-                        <div class="col-3 no-gutters">
+                        <div class="col-2 no-gutters">
                             <div class="dropdown d-flex justify-content-end">
                                 <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
                                     Refine: {% if refine_text %}{{ refine_text }}{% endif %}
@@ -126,7 +126,7 @@
                         <div class="row no-gutters">
                             <div class="col-12 no-gutters" id="restaurants-opening-later">
                                 <h3 id="restaurants-opening-later-text">{{ closed_restaurants|count }}
-                                    {% if closed_restaurants|count > 1 and closed_restaurants|count != 0 %}
+                                    {% if closed_restaurants|count != 1 %}
                                         restaurants 
                                     {% else %} 
                                          restaurant 

@@ -246,8 +246,17 @@ header {
     padding: 0 1rem 2rem 1rem;
 }
 
+#desktop-search-button:hover {
+    color: orangered;
+}
+
 .search-icon {
     transition: all 0s ease-in-out;
+}
+
+.search-icon i {
+    font-size: 1.7rem;
+    font-weight: 600;
 }
 
 .search-bar-container {
@@ -258,10 +267,6 @@ header {
     font-size: 1.6rem;
     width: 24rem;
     height: 65%;
-}
-
-#desktop-search-button:hover {
-    color: orangered;
 }
 
 .bag-icon a i {
