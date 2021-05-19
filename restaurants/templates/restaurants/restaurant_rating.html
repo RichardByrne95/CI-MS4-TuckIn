@@ -22,5 +22,5 @@
     {% else %}
         <span><i class="fas fa-star"></i></span>
     {% endif %}
-    ({{ restaurant.orders.all|count }})
+    ({{ restaurant.orders.all|get_number_of_orders_with_rating }})
 </p>

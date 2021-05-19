@@ -1,5 +1,7 @@
-from django import template
 import math
+from django import template
+from django.shortcuts import get_object_or_404
+from restaurants.models import Restaurant
 
 register = template.Library()
 
@@ -20,6 +22,13 @@ def remove_whole_number(value):
     num = math.floor(value)
     return value - num
 
+
 @register.filter(name='count')
 def count(object):
     return len(object)
+
+
+@register.filter(name='get_number_of_orders_with_rating')
+def get_number_of_orders_with_rating(orders):
+    orders = orders.exclude(rating__isnull=True)
+    return len(orders)
