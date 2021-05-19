@@ -25,7 +25,8 @@
                             <h2>Order confirmed!</h2>
                             <h3 class="mb-3">Delivery estimate: {{ order.delivery_time }}</h3>
                             <p>Your order has been submitted to the restaurant!</p>
-                            <p class="mb-3">You should be <strong>contacted by the restaurant</strong> in a few moments confirming your order.</p>
+                            <p class="mb-3">You should be <strong>contacted by the restaurant</strong> in a few moments confirming your
+                                order.</p>
                             <a href="{% url 'order_again' order.order_number %}" class="btn order-again-btn">Order again</a>
                         </div>
                     </div>
@@ -47,7 +48,7 @@
                                                 <i class="far fa-star" id="3"></i>
                                                 <i class="far fa-star" id="4"></i>
                                                 <i class="far fa-star" id="5"></i>
-                                                <input type="hidden" name="rating" value="">
+                                                <input type="hidden" name="rating" value=""> <!-- Value filled via rating.js -->
                                             </form>
                                         </div>
                                     {% else %}

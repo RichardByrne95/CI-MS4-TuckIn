@@ -17,8 +17,13 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 
 def checkout_address(request):
-    if request.method == 'POST' and 'restaurant_closed' in request.POST:
-        messages.error(request, 'The restaurant is currently closed today.')
+    # Get restaurant
+    restaurant_name = request.session.get('restaurant')
+    restaurant = get_object_or_404(Restaurant, name=restaurant_name)
+
+    # Prevent user checking out when restaurant is closed
+    if not restaurant.is_open_now():
+        messages.error(request, 'The restaurant is currently closed.')
         return redirect(reverse('view_bag'))
     
     # Create instance of order form with logged in user's details
@@ -51,10 +56,6 @@ def checkout_address(request):
     # Otherwise, create blank order form
     else:
         address_form = OrderForm()
-    
-    # Get restaurant
-    restaurant_name = request.session.get('restaurant')
-    restaurant = get_object_or_404(Restaurant, name=restaurant_name)
 
     context = {
         'address_form': address_form,
@@ -65,6 +66,16 @@ def checkout_address(request):
 
 @require_POST
 def checkout_time(request):
+    # Get delivery times
+    bag = request.session.get('bag', {})
+    current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0])
+    delivery_times = current_restaurant.get_todays_delivery_times()
+
+    # Prevent user checking out when restaurant is closed
+    if not current_restaurant.is_open_now():
+        messages.error(request, 'The restaurant is currently closed.')
+        return redirect(reverse('view_bag'))
+
     # Add address data to session
     if request.method == 'POST':
         form_data = {
@@ -77,10 +88,6 @@ def checkout_time(request):
         }
         request.session['address'] = form_data
 
-    # Get delivery times
-    bag = request.session.get('bag', {})
-    current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0])
-    delivery_times = current_restaurant.get_todays_delivery_times()
 
     # Get address form
     address_form = request.session.get('address')
@@ -94,6 +101,15 @@ def checkout_time(request):
 
 @require_POST
 def checkout_payment(request):
+    # Get restaurant associated with order
+    restaurant = request.session.get('restaurant')
+    order_restaurant = get_object_or_404(Restaurant, name=restaurant)
+
+    # Prevent user checking out when restaurant is closed
+    if not order_restaurant.is_open_now():
+        messages.error(request, 'The restaurant is currently closed.')
+        return redirect(reverse('view_bag'))
+    
     # Add selected delivery time to session
     if request.method == 'POST':
         if 'from_delivery_time' in request.POST:
@@ -118,10 +134,6 @@ def checkout_payment(request):
 
     # Make delivery time aware
     delivery_time = delivery_time.replace(tzinfo=timezone.utc)
-
-    # Get restaurant associated with order
-    restaurant = request.session.get('restaurant')
-    order_restaurant = get_object_or_404(Restaurant, name=restaurant)
 
 
     # Handle submitting order
