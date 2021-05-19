@@ -21,16 +21,33 @@
                     {% else %}
                         <img src="{{ MEDIA_URL }}noimage.png" class="background-image menu-background-image" alt="{{ restaurant.friendly_name }} cover image">
                     {% endif %}
-                    <div class="background-image shadow-overlay"></div>
+                    <div class="background-image {% if restaurant.is_open_now %}shadow-overlay{% else %}closed-overlay{% endif %} d-flex justify-content-center align-items-center">
+                        <div class="row no-gutters">
+                            <div class="col-12 no-gutters text-center">
+                                <h1 class="restaurant-name-menu">{{ restaurant.friendly_name }}</h1>
+                            </div>
+                            {% if not restaurant.is_open_now %}
+                                <div class="col-12 no-gutters text-center">
+                                    <h2 class="restaurant-closed-banner">
+                                        {% if restaurant.get_opening_time %}
+                                            Opens at 
+                                            {{ restaurant.get_opening_time }}
+                                        {% else %}
+                                            Closed today
+                                        {% endif %}
+                                    </h2>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
                 </figure>
-                <h1 class="restaurant-name-menu">{{ restaurant.friendly_name }}</h1>
             </div>
         </section>
         <!-- Menu -->
         <section class="row no-gutters justify-content-center restaurant-menu-section">
             <div class="col-10 no-gutters">
                 <!-- Restaurant Info -->
-                <div class="row restaurant-info-menu">
+                <div class="row no-gutters restaurant-info-menu">
                     <div class="col-12 no-gutters">
                         <p class="d-inline-block">{{ restaurant.address_1 }}, {{ restaurant.address_2 }}</p>
                         {% if restaurant.is_open_now %}

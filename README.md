@@ -70,3 +70,5 @@ After completing circa 75% of the project, I received feedback regarding my prev
 For users, the user field was named 'customer' instead of 'user' to prevent confusion in the future, if user accounts for the restaurants themselves were to be set up to allow them to manage their menu.
 
 Used https://webformatter.com/javascript for JavaScript formatting
+
+Phone number purposely excluded from restaurant menu to encourage the user to order through tuckin. Phone number is provided on order confirmation page.
