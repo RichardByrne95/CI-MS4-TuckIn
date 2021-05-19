@@ -6,15 +6,17 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 
 def all_restaurants(request):
-    restaurants = Restaurant.objects.all()
     all_cuisines = None
-    sort = None
     sortkey = None
     refine_text = None
     direction = None
-    query_cuisine = None
     query_search = None
     cuisine = None
+
+    # Get restaurants
+    restaurants = Restaurant.objects.all()
+    open_restaurants = [restaurant for restaurant in restaurants if restaurant.is_open_now()]
+    closed_restaurants = [restaurant for restaurant in restaurants if not restaurant.is_open_now()]
 
     #  Handle inputting/changing delivery address
     if request.method == 'POST':
@@ -75,6 +77,8 @@ def all_restaurants(request):
 
     context =  {
         'restaurants': restaurants,
+        'open_restaurants': open_restaurants,
+        'closed_restaurants': closed_restaurants,
         'refine_text': refine_text,
         'search_term': query_search,
         'all_cuisines': all_cuisines,

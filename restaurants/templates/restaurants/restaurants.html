@@ -42,8 +42,8 @@
                             {% if not short_maps_address == 'None' %}
                                 <!-- If there is more than 1 or no restaurants open -->
                                 <h4 class="d-inline-block nearby-restaurants">
-                                    {{ restaurants|count }}
-                                    {% if restaurants|count > 1 and restaurants|count != 0 %}
+                                    {{ open_restaurants|count }}
+                                    {% if open_restaurants|count > 1 and open_restaurants|count != 0 %}
                                         restaurants 
                                     {% else %} 
                                          restaurant 
@@ -53,8 +53,8 @@
                                 <p class="ms-5 d-inline change-location"><a href="{% url 'home' %}">change location</a></p>
                             {% else %}
                                 <h4 class="d-inline-block nearby-restaurants">
-                                    {{ restaurants|count }}
-                                    {% if restaurants|count > 1 and restaurants|count != 0 %}
+                                    {{ open_restaurants|count }}
+                                    {% if open_restaurants|count > 1 and open_restaurants|count != 0 %}
                                         restaurants 
                                     {% else %} 
                                         restaurant 
@@ -78,105 +78,108 @@
                     </div>
                     <!-- Restaurant Cards -->
                     <div class="row restaurant-list d-flex">
-                        {% for restaurant in restaurants %}
-                            {% if restaurant.is_open_now %}
-                                <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
-                                    <!-- Card -->
-                                    <div class="card h-100 border-0">
-                                        <a href="{% url 'restaurant_menu' restaurant.id %}" class="card-body">
-                                            <div class="restaurant-card-cover-image-container">
-                                                <!-- Cover Image -->
-                                                {% if restaurant.cover_image %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
-                                                    </figure>
-                                                {% else %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
-                                                    </figure>
-                                                {% endif %}
-                                                <!-- Logo -->
-                                                {% if restaurant.logo %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
-                                                    </figure>
-                                                {% else %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
-                                                    </figure>
-                                                {% endif %}
-                                            </div>
-                                            <!-- Name -->
-                                            <p class="card-title">{{ restaurant.friendly_name }}</p>
-                                            <!-- Rating -->
-                                            {% if restaurant.rating %}
-                                                {% include 'restaurants/restaurant_rating.html' %}
-                                            {% endif %}
-                                            <!-- Delivery Cost -->
-                                            {% if restaurant.delivery_cost and restaurant.delivery_cost > 0 %}
-                                                <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
+                        {% for restaurant in open_restaurants %}
+                            <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
+                                <!-- Card -->
+                                <div class="card h-100 border-0">
+                                    <a href="{% url 'restaurant_menu' restaurant.id %}" class="card-body">
+                                        <div class="restaurant-card-cover-image-container">
+                                            <!-- Cover Image -->
+                                            {% if restaurant.cover_image %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                </figure>
                                             {% else %}
-                                                <p class="card-text delivery-cost">Free Delivery</p>
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                </figure>
                                             {% endif %}
-                                        </a>
-                                    </div>
+                                            <!-- Logo -->
+                                            {% if restaurant.logo %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                </figure>
+                                            {% else %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                </figure>
+                                            {% endif %}
+                                        </div>
+                                        <!-- Name -->
+                                        <p class="card-title">{{ restaurant.friendly_name }}</p>
+                                        <!-- Rating -->
+                                        {% if restaurant.rating %}
+                                            {% include 'restaurants/restaurant_rating.html' %}
+                                        {% endif %}
+                                        <!-- Delivery Cost -->
+                                        {% if restaurant.delivery_cost and restaurant.delivery_cost > 0 %}
+                                            <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
+                                        {% else %}
+                                            <p class="card-text delivery-cost">Free Delivery</p>
+                                        {% endif %}
+                                    </a>
                                 </div>
-                            {% endif %}
+                            </div>
                         {% endfor %}
                         <hr class="text-dark">
                         <!-- Opening Later Dividing Banner -->
                         <div class="row no-gutters">
                             <div class="col-12 no-gutters" id="restaurants-opening-later">
-                                <h3 id="restaurants-opening-later-text">Restaurants Opening Later</h3>
+                                <h3 id="restaurants-opening-later-text">{{ closed_restaurants|count }}
+                                    {% if closed_restaurants|count > 1 and closed_restaurants|count != 0 %}
+                                        restaurants 
+                                    {% else %} 
+                                         restaurant 
+                                    {% endif %}
+                                     opening later
+                                </h3>
                             </div>
                         </div>
                         <!-- Closed Restaurant Cards -->
-                        {% for restaurant in restaurants %}
-                            {% if not restaurant.is_open_now %}
-                                <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
-                                    <!-- Card -->
-                                    <div class="card h-100 border-0">
-                                        <a href="{% url 'restaurant_menu' restaurant.id %}" class="card-body">
-                                            <div class="restaurant-card-cover-image-container">
-                                                <!-- Cover Image -->
-                                                {% if restaurant.cover_image %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image"
-                                                            class="img-fluid card-image-top opaque-image-overlay restaurant-card-cover-image">
-                                                    </figure>
-                                                {% else %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image"
-                                                            class="img-fluid card-image-top opaque-image-overlay restaurant-card-cover-image">
-                                                    </figure>
-                                                {% endif %}
-                                                <!-- Logo -->
-                                                {% if restaurant.logo %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
-                                                    </figure>
-                                                {% else %}
-                                                    <figure>
-                                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
-                                                    </figure>
-                                                {% endif %}
-                                            </div>
-                                            <!-- Name -->
-                                            <p class="card-title">{{ restaurant.friendly_name }}</p>
-                                            <!-- Rating -->
-                                            {% if restaurant.rating %}
-                                                {% include 'restaurants/restaurant_rating.html' %}
-                                            {% endif %}
-                                            <!-- Delivery Cost -->
-                                            {% if restaurant.delivery_cost and restaurant.delivery_cost > 0 %}
-                                                <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
+                        {% for restaurant in closed_restaurants %}
+                            <div class="col-12 col-md-6 col-lg-4 no-gutters d-inline-block">
+                                <!-- Card -->
+                                <div class="card h-100 border-0">
+                                    <a href="{% url 'restaurant_menu' restaurant.id %}" class="card-body">
+                                        <div class="restaurant-card-cover-image-container">
+                                            <!-- Cover Image -->
+                                            {% if restaurant.cover_image %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image"
+                                                        class="img-fluid card-image-top opaque-image-overlay restaurant-card-cover-image">
+                                                </figure>
                                             {% else %}
-                                                <p class="card-text delivery-cost">Free Delivery</p>
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image"
+                                                        class="img-fluid card-image-top opaque-image-overlay restaurant-card-cover-image">
+                                                </figure>
                                             {% endif %}
-                                        </a>
-                                    </div>
+                                            <!-- Logo -->
+                                            {% if restaurant.logo %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                </figure>
+                                            {% else %}
+                                                <figure>
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                </figure>
+                                            {% endif %}
+                                        </div>
+                                        <!-- Name -->
+                                        <p class="card-title">{{ restaurant.friendly_name }}</p>
+                                        <!-- Rating -->
+                                        {% if restaurant.rating %}
+                                            {% include 'restaurants/restaurant_rating.html' %}
+                                        {% endif %}
+                                        <!-- Delivery Cost -->
+                                        {% if restaurant.delivery_cost and restaurant.delivery_cost > 0 %}
+                                            <p class="card-text delivery-cost">Delivery: €{{ restaurant.delivery_cost }}</p>
+                                        {% else %}
+                                            <p class="card-text delivery-cost">Free Delivery</p>
+                                        {% endif %}
+                                    </a>
                                 </div>
-                            {% endif %}
+                            </div>
                         {% endfor %}
                     </div>
                 </div>
