@@ -156,6 +156,10 @@
     margin-bottom: 1rem;
 }
 
+.food-item-card {
+    padding: 0;
+}
+
 .food-item-card-body {
     color: black;
     margin: 0;
