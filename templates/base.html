@@ -42,9 +42,6 @@
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <!-- Google Maps API -->
-        <script defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKX0cNXg4pRdmLccqb9CJVeHBX3kSAh4o&libraries=places&callback=initAutocomplete"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -169,6 +166,7 @@
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     
+    <!-- Dynamic navbar -->
     {% if dynamic_navbar %}
         {% block footer_js %}
             <script src="{% static 'js/navbarScroll.js' %}"></script>
