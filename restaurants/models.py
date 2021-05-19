@@ -13,6 +13,7 @@ class Cuisine(models.Model):
     def __str__(self):
         return self.name
 
+
 # Restaurant
 class Restaurant(models.Model):
     cuisine = models.ForeignKey('Cuisine', null=True, blank=True, on_delete=SET_NULL)

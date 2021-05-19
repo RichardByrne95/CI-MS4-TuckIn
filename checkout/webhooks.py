@@ -8,8 +8,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 # Referenced https://stripe.com/docs/webhooks/build#example-code
-@csrf_exempt # Stripe doesn't send CSRF tokens
-@require_POST # Only react to post requests, reject GET requests
+
+
+@csrf_exempt  # Stripe doesn't send CSRF tokens
+@require_POST  # Only react to post requests, reject GET requests
 def webhook(request):
     # Set variables
     wh_secret = settings.STRIPE_WH_SECRET

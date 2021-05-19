@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import OpeningHours, Restaurant, Cuisine, MenuSection, FoodItem
 
+
 class CuisineAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -8,6 +9,7 @@ class CuisineAdmin(admin.ModelAdmin):
     )
 
     ordering = ('name',)
+
 
 class RestaurantsAdmin(admin.ModelAdmin):
     list_display = (
@@ -20,6 +22,7 @@ class RestaurantsAdmin(admin.ModelAdmin):
 
     ordering = ('name',)
 
+
 class OpeningHoursAdmin(admin.ModelAdmin):
     list_display = (
         'restaurant',
@@ -30,6 +33,7 @@ class OpeningHoursAdmin(admin.ModelAdmin):
 
     ordering = ('restaurant', 'weekday',)
 
+
 class MenuSectionAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -38,6 +42,7 @@ class MenuSectionAdmin(admin.ModelAdmin):
     )
 
     ordering = ('name',)
+
 
 class FoodItemAdmin(admin.ModelAdmin):
     list_display = (
@@ -51,6 +56,7 @@ class FoodItemAdmin(admin.ModelAdmin):
     )
 
     ordering = ('name',)
+
 
 admin.site.register(Restaurant, RestaurantsAdmin)
 admin.site.register(OpeningHours, OpeningHoursAdmin)

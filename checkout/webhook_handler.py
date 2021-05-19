@@ -43,23 +43,23 @@ class StripeWH_Handler:
             try:
                 # Check if order already exists in database
                 order = get_object_or_404(Order,
-                    full_name__iexact=shipping_details.name,
-                    address_1__iexact=shipping_details.line1,
-                    address_2__iexact=shipping_details.line2,
-                    city__iexact=shipping_details.city,
-                    postcode__iexact=shipping_details.postcode,
-                    email__iexact=billing_details.email,
-                    phone_number__iexact=shipping_details.phone_number,
-                    grand_total=grand_total,
-                    original_bag=bag,
-                    stripe_payment_id=payment_intent_id,
-                )
+                                          full_name__iexact=shipping_details.name,
+                                          address_1__iexact=shipping_details.line1,
+                                          address_2__iexact=shipping_details.line2,
+                                          city__iexact=shipping_details.city,
+                                          postcode__iexact=shipping_details.postcode,
+                                          email__iexact=billing_details.email,
+                                          phone_number__iexact=shipping_details.phone_number,
+                                          grand_total=grand_total,
+                                          original_bag=bag,
+                                          stripe_payment_id=payment_intent_id,
+                                          )
                 order_exists = True
                 break
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
-        
+
         if order_exists:
             return HttpResponse(
                 content=f'Webhook received: {event[type]} | SUCCESS: Verified order already in database',
@@ -70,17 +70,17 @@ class StripeWH_Handler:
             try:
                 # Create order
                 order = Order.objects.create(Order,
-                    full_name=shipping_details.name,
-                    address_1=shipping_details.line1,
-                    address_2=shipping_details.line2,
-                    city=shipping_details.city,
-                    postcode=shipping_details.postcode,
-                    email=billing_details.email,
-                    phone_number=shipping_details.phone_number,
-                    grand_total=grand_total,
-                    original_bag=bag,
-                    stripe_payment_id=payment_intent_id,
-                )
+                                             full_name=shipping_details.name,
+                                             address_1=shipping_details.line1,
+                                             address_2=shipping_details.line2,
+                                             city=shipping_details.city,
+                                             postcode=shipping_details.postcode,
+                                             email=billing_details.email,
+                                             phone_number=shipping_details.phone_number,
+                                             grand_total=grand_total,
+                                             original_bag=bag,
+                                             stripe_payment_id=payment_intent_id,
+                                             )
                 # Create line items (taken from contexts.py)
                 bag = json.loads(bag)
                 forloop_count = 0
@@ -101,7 +101,7 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
                 return HttpResponse(content=f'Webhook received: {event[type]} | ERROR: {e}', status=500)
-                
+
         return HttpResponse(
             content=f'Webhook received: {event[type]} | SUCCESS: Created order via Webhook handler',
             status=200,

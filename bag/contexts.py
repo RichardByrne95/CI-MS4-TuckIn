@@ -13,9 +13,10 @@ def bag_contents(request):
     short_maps_address = request.session.get('short_maps_address', None)
     
     # Add restuarant name to session
-    current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0]) if bag else None
+    current_restaurant = get_object_or_404(
+        Restaurant, name=list(bag)[0]) if bag else None
     request.session['restaurant'] = current_restaurant.name if bag else ''
-    
+
     delivery_cost = current_restaurant.delivery_cost if bag else 0
 
     for restaurant, food_items in bag.items():

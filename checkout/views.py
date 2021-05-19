@@ -25,7 +25,7 @@ def checkout_address(request):
     if not restaurant.is_open_now():
         messages.error(request, 'The restaurant is currently closed.')
         return redirect(reverse('view_bag'))
-    
+
     # Create instance of order form with logged in user's details
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
@@ -88,7 +88,6 @@ def checkout_time(request):
         }
         request.session['address'] = form_data
 
-
     # Get address form
     address_form = request.session.get('address')
 
@@ -109,20 +108,21 @@ def checkout_payment(request):
     if not order_restaurant.is_open_now():
         messages.error(request, 'The restaurant is currently closed.')
         return redirect(reverse('view_bag'))
-    
+
     # Add selected delivery time to session
     if request.method == 'POST':
         if 'from_delivery_time' in request.POST:
             delivery_time = request.POST.get('delivery_time')
             request.session['delivery_time'] = delivery_time
-    
+
     # Get variables
     bag = request.session.get('bag')
     current_bag = bag_contents(request)
     now = timezone.now()
 
     # Format delivery time for processing
-    session_delivery_time = str(request.session['delivery_time']).replace('.', '')
+    session_delivery_time = str(
+        request.session['delivery_time']).replace('.', '')
 
     # Get delivery time as datetime object
     # Format differently based on whether delivery time has minutes or not e.g. 7:30 pm vs 7 pm
@@ -130,11 +130,11 @@ def checkout_payment(request):
         format = '%Y-%m-%d %I %p'
     else:
         format = '%Y-%m-%d %I:%M %p'
-    delivery_time = datetime.datetime.strptime(f'{now.date()} {session_delivery_time}', format)
+    delivery_time = datetime.datetime.strptime(
+        f'{now.date()} {session_delivery_time}', format)
 
     # Make delivery time aware
     delivery_time = delivery_time.replace(tzinfo=timezone.utc)
-
 
     # Handle submitting order
     if request.method == 'POST':
@@ -149,7 +149,8 @@ def checkout_payment(request):
 
             # Create order form
             address_form = request.session.get('address')
-            customer_profile = get_object_or_404(CustomerProfile, customer=request.user) if request.user.is_authenticated else None
+            customer_profile = get_object_or_404(
+                CustomerProfile, customer=request.user) if request.user.is_authenticated else None
             order_form = OrderForm({
                 'full_name': address_form['full_name'],
                 'email': address_form['email'],
@@ -167,10 +168,11 @@ def checkout_payment(request):
                 order.order_restaurant = order_restaurant
                 order.delivery_cost = current_bag['delivery_cost']
                 order.delivery_time = delivery_time
-                order.order_total  = current_bag['order_total']
+                order.order_total = current_bag['order_total']
                 order.grand_total = current_bag['grand_total']
                 order.original_bag = json.dumps(bag)
-                order.stripe_payment_id = request.POST.get('client_secret').split('_secret')[0]
+                order.stripe_payment_id = request.POST.get(
+                    'client_secret').split('_secret')[0]
                 order.save()
 
                 # Create line item for each food in bag
@@ -184,7 +186,8 @@ def checkout_payment(request):
                         )
                         order_line_item.save()
                     except FoodItem.DoesNotExist:
-                        messages.error(request, 'Issue creating order line items.')
+                        messages.error(
+                            request, 'Issue creating order line items.')
                         order.delete()
                         return redirect(reverse('view_bag'))
 
@@ -195,7 +198,7 @@ def checkout_payment(request):
             else:
                 messages.error(
                     request, 'Order form either received incorrect data or did not receive all necessary fields.')
-    
+
     # Generate Order Form
     if request.user.is_authenticated:
         # Create order form with saved profile details
@@ -211,7 +214,8 @@ def checkout_payment(request):
             'order_restaurant': order_restaurant,
         })
         # Raise error if form is invalid
-        messages.error(request, 'Order form is not accepting the inputted data.') if not order_form.is_valid() else None
+        messages.error(
+            request, 'Order form is not accepting the inputted data.') if not order_form.is_valid() else None
     else:
         # Create order form using session data
         address_form = request.session.get('address')
@@ -234,7 +238,8 @@ def checkout_payment(request):
     total = current_bag['grand_total']
 
     # Stripe
-    stripe_total = round(total * 100) # Stripe requires an integer when charging
+    # Stripe requires an integer when charging
+    stripe_total = round(total * 100)
     stripe.api_key = settings.STRIPE_SECRET_KEY
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
@@ -266,7 +271,8 @@ def order_confirmation(request, order_number):
             order.order_restaurant.update_rating()
             messages.success(request, "Your rating has been saved!")
         except Exception:
-            messages.error(request, "Could not save rating. Please try again later.")
+            messages.error(
+                request, "Could not save rating. Please try again later.")
 
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
@@ -281,16 +287,18 @@ def order_confirmation(request, order_number):
                 'default_address_1': order.address_1,
                 'default_address_2': order.address_2,
             }
-            customer_profile_form = CustomerProfileForm(profile_data, instance=profile)
+            customer_profile_form = CustomerProfileForm(
+                profile_data, instance=profile)
             if customer_profile_form.is_valid():
                 customer_profile_form.save()
-            
-            messages.success(request, 'Your details have been saved to your account.')
+
+            messages.success(
+                request, 'Your details have been saved to your account.')
 
     # # Send success message to user
     messages.success(request, f'Order successfully sent to the restaurant! \
         Your order number is {order_number}. A confirmation email will be sent to {order.email}')
-    
+
     # Remove the bag from the session
     if 'bag' in request.session:
         del request.session['bag']
@@ -308,7 +316,7 @@ def order_confirmation(request, order_number):
     return render(request, 'checkout/order_confirmation.html', context)
 
 
-# Post additional order data (data that doesn't fit within Stripe's confirmCardPayment's 'payment_method') to the payment intent via the intent's metadata. 
+# Post additional order data (data that doesn't fit within Stripe's confirmCardPayment's 'payment_method') to the payment intent via the intent's metadata.
 # This allows the order instance in the db to be created when Stripe sends back the payment succeeded webhook to confirm that everything has gone smoothly.
 @require_POST
 def cache_checkout_data(request):
@@ -322,5 +330,6 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.', status=400)
+        messages.error(
+            request, 'Sorry, your payment cannot be processed right now. Please try again later.', status=400)
         return HttpResponse(content=e, status=400)

@@ -10,7 +10,7 @@ class OrderForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
+
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email Address',
@@ -41,4 +41,3 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             # Remove the label for each field
             self.fields[field].label = False
-        

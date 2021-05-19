@@ -1,7 +1,7 @@
-from restaurants.models import Cuisine
 from django.shortcuts import render
+from restaurants.models import Cuisine
 
-# Create your views here.
+
 def home(request):
     cuisines = Cuisine.objects.all()
     context = {

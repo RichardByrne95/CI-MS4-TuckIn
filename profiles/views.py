@@ -15,7 +15,8 @@ def customer_profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure the form is valid.')
     else:
         form = CustomerProfileForm(instance=profile)
 
@@ -29,7 +30,7 @@ def customer_profile(request):
 def customer_order_history(request):
     profile = get_object_or_404(CustomerProfile, customer=request.user)
     orders = profile.orders.all()
-    
+
     context = {
         'orders': orders,
         'on_profile_page': True,

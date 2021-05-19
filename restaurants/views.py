@@ -1,7 +1,6 @@
-import datetime
+from django.contrib import messages
 from django.db.models import Q
 from .models import FoodItem, Restaurant, MenuSection, Cuisine
-from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 
 
@@ -15,8 +14,10 @@ def all_restaurants(request):
 
     # Get restaurants
     restaurants = Restaurant.objects.all()
-    open_restaurants = [restaurant for restaurant in restaurants if restaurant.is_open_now()]
-    closed_restaurants = [restaurant for restaurant in restaurants if not restaurant.is_open_now()]
+    open_restaurants = [
+        restaurant for restaurant in restaurants if restaurant.is_open_now()]
+    closed_restaurants = [
+        restaurant for restaurant in restaurants if not restaurant.is_open_now()]
 
     #  Handle inputting/changing delivery address
     if request.method == 'POST':
@@ -50,7 +51,8 @@ def all_restaurants(request):
         # Sorting by Cuisine (referenced Boutique Ado)
         if 'cuisine' in request.GET:
             cuisine = request.GET['cuisine']
-            restaurants = restaurants.filter(Q(cuisine__name__icontains=cuisine))
+            restaurants = restaurants.filter(
+                Q(cuisine__name__icontains=cuisine))
             # Turns list of strings from url to cuisine object for use in template
             cuisine = Cuisine.objects.filter(Q(name=cuisine))
 
@@ -75,7 +77,7 @@ def all_restaurants(request):
     current_sorting = f'{sortkey}_{direction}'
     all_cuisines = Cuisine.objects.all()
 
-    context =  {
+    context = {
         'restaurants': restaurants,
         'open_restaurants': open_restaurants,
         'closed_restaurants': closed_restaurants,
@@ -90,7 +92,7 @@ def all_restaurants(request):
 def restaurant_menu(request, restaurant_id):
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
     menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
-    
+
     food_items = []
     for section in menu_sections:
         food_items += FoodItem.objects.all().filter(menu_section=section)
