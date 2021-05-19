@@ -39,10 +39,10 @@
                     <div class="row no-gutters">
                         <div class="col-9 no-gutters">
                             <!-- If address has been inputted -->
-                            {% if not short_maps_address == 'None' %}
-                                <!-- If there is more than 1 or no restaurants open -->
+                            {% if short_maps_address %}
                                 <h4 class="d-inline-block nearby-restaurants">
-                                    {{ open_restaurants|count }}
+                                {{ open_restaurants|count }}
+                                <!-- If there is more than 1 or no restaurants open -->
                                     {% if open_restaurants|count > 1 and open_restaurants|count != 0 %}
                                         restaurants 
                                     {% else %} 
