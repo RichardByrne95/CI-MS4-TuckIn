@@ -72,3 +72,5 @@ For users, the user field was named 'customer' instead of 'user' to prevent conf
 Used https://webformatter.com/javascript for JavaScript formatting
 
 Phone number purposely excluded from restaurant menu to encourage the user to order through tuckin. Phone number is provided on order confirmation page.
+
+Used https://www.cookiepolicygenerator.com/ to generate cookie and privacy policies.
