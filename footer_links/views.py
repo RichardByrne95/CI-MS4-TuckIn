@@ -12,7 +12,9 @@ def list_your_restaurant(request):
 
 
 def cookies_policy(request):
-    context = {}
+    context = {
+        'dynamic_navbar': True,
+    }
     return render(request, 'footer_links/cookies_policy.html', context)
 
 
