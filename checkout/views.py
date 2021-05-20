@@ -125,6 +125,10 @@ def checkout_payment(request):
         request.session['delivery_time']).replace('.', '')
 
     # Get delivery time as datetime object
+    if session_delivery_time == 'noon':
+        session_delivery_time = '12 pm'
+    elif session_delivery_time == 'midnight':
+        session_delivery_time = '12 am'
     # Format differently based on whether delivery time has minutes or not e.g. 7:30 pm vs 7 pm
     if len(session_delivery_time) <= 5:
         format = '%Y-%m-%d %I %p'

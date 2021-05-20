@@ -133,7 +133,7 @@ strong {
 .custom-toast {
     z-index: 9999999;
     overflow: visible;
-    position: absolute;
+    position: fixed;
     top:7.5rem;
     right: 2rem;
 }

@@ -16,9 +16,7 @@
             <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
-                    <hr>
                     <h2>Your Order</h2>
-                    <hr>
                 </div>
             </div>
             <div class="row no-gutters mt-5">
@@ -92,7 +90,8 @@
     </div>
 {% endblock %}
 
-{% block footer_js %} 
+{% block footer_js %}
+    {{ block.super }}
     <script src="{% static 'js/quantitySelection.js' %}"></script>
     <script src="{% static 'js/updateTotals.js' %}"></script>
 {% endblock %}

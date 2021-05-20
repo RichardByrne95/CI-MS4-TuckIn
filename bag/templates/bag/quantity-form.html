@@ -5,7 +5,7 @@
             <div class="form-group quantity-selector">
                 <div class="input-group">
                     <!-- Minus Button -->
-                    <div class="input-group-prepend">
+                    <div class="d-flex justify-content-center align-item-center input-group-prepend">
                         <button class="decrement-qty btn btn-black rounded-0" type="button">
                             <span class="icon">
                                 <i class="fas fa-minus"></i>
@@ -13,9 +13,9 @@
                         </button>
                     </div>
                     <!-- Quantity Input -->
-                    <input class="form-control qty-input" type="number" name="quantity" value="{{ food.quantity }}" min="1" max="15">
+                    <input class="form-control text-center qty-input" type="number" name="quantity" value="{{ food.quantity }}" min="1" max="15">
                     <!-- Plus Button -->
-                    <div class="input-group-append">
+                    <div class="d-flex justify-content-center align-item-center input-group-append">
                         <button class="increment-qty btn btn-black rounded-0" type="button">
                             <span class="icon">
                                 <i class="fas fa-plus"></i>

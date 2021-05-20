@@ -167,11 +167,11 @@
     <script src="https://js.stripe.com/v3/"></script>
     
     <!-- Dynamic navbar -->
-    {% if dynamic_navbar %}
-        {% block footer_js %}
+    {% block footer_js %}
+        {% if dynamic_navbar %}
             <script src="{% static 'js/navbarScroll.js' %}"></script>
-        {% endblock %}
-    {% endif %}
+        {% endif %}
+    {% endblock %}
 
 </body>
 
