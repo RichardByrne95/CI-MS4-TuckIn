@@ -2,6 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'footer_links/css/footer_links.css' %}">
+{% endblock %}
+
 {% block extra_title %}
     | List Your Restaurant
 {% endblock %}
