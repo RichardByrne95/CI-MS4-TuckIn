@@ -74,3 +74,5 @@ Used https://webformatter.com/javascript for JavaScript formatting
 Phone number purposely excluded from restaurant menu to encourage the user to order through tuckin. Phone number is provided on order confirmation page.
 
 Used https://www.cookiepolicygenerator.com/ to generate cookie and privacy policies.
+Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
+Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/

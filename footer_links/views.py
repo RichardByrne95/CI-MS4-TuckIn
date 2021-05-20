@@ -19,5 +19,7 @@ def cookies_policy(request):
 
 
 def privacy_policy(request):
-    context = {}
+    context = {
+        'dynamic_navbar': True,
+    }
     return render(request, 'footer_links/privacy_policy.html', context)

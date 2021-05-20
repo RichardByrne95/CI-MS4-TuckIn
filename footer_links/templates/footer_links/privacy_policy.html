@@ -10,19 +10,19 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-        <section class="row no-gutters" id="banner-image">
+    <div class="container-fluid no-gutters">
+        <section class="row mb-3" id="banner-image">
             <div class="col-12 no-gutters">
-                <figure>
-                    <img src="{{ MEDIA_URL }}privacy_policy.jpg" class="background-image"
-                        alt="privacy policy background image">
+                <figure class="d-flex justify-content-center align-items-center">
+                    <img src="{{ MEDIA_URL }}privacy_policy.jpg" class="background-image" alt="privacy policy background image">
+                    <div class="shadow-overlay"></div>
+                    <h1 class="position-absolute text-white mt-5">Privacy Policy for TuckIn</h1>
                 </figure>
             </div>
         </section>
         <section class="row no-gutters d-flex justify-content-center" id="privacy-policy">
-            <div class="col-8 no-gutters">
-                <h1>Privacy Policy for TuckIn</h1>
-                <p>At TuckIn, accessible from tuckin.ie, one of our main priorities is the privacy of our visitors. This
+            <div class="col-6 no-gutters">
+                <p class="mt-5">At TuckIn, accessible from tuckin.ie, one of our main priorities is the privacy of our visitors. This
                     Privacy Policy document contains types of information that is collected and recorded by TuckIn and how
                     we use it.
                 </p>
@@ -137,14 +137,16 @@
                     under certain conditions.
                 </p>
                 <p>The right to data portability – You have the right to request that we transfer the data that we have
-                    collected to another organization, or directly to you, under certain conditions.</p>
+                    collected to another organization, or directly to you, under certain conditions.
+                </p>
                 <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these
                     rights, please contact us.
                 </p>
                 <h2>Children's Information</h2>
                 <p>Another part of our priority is adding protection for children while using the internet. We encourage
-                    parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
-                <p>TuckIn does not knowingly collect any Personal Identifiable Information from children under the age of
+                    parents and guardians to observe, participate in, and/or monitor and guide their online activity.
+                </p>
+                <p class="mb-5">TuckIn does not knowingly collect any Personal Identifiable Information from children under the age of
                     13. If you think that your child provided this kind of information on our website, we strongly encourage
                     you to contact us immediately and we will do our best efforts to promptly remove such information from
                     our records.
