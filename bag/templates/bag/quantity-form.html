@@ -1,9 +1,9 @@
-<form action="" method="POST" class="form update-form">
+<div class="form update-form">
     {% csrf_token %}
     <div class="form-row">
-        <div class="col-12">
+        <div class="col-12 no-gutters">
             <div class="form-group quantity-selector">
-                <div class="input-group">
+                <div class="d-flex justify-content-center input-group">
                     <!-- Minus Button -->
                     <div class="d-flex justify-content-center align-item-center input-group-prepend">
                         <button class="decrement-qty btn btn-black rounded-0" type="button">
@@ -13,7 +13,8 @@
                         </button>
                     </div>
                     <!-- Quantity Input -->
-                    <input class="form-control text-center qty-input" type="number" name="quantity" value="{{ food.quantity }}" min="1" max="15">
+                    <input class="form-control text-center qty-input" type="number" name="{{ food.food.name }}_quantity"
+                        value="{{ food.quantity }}" min="1" max="15">
                     <!-- Plus Button -->
                     <div class="d-flex justify-content-center align-item-center input-group-append">
                         <button class="increment-qty btn btn-black rounded-0" type="button">
@@ -25,9 +26,5 @@
                 </div>
             </div>
         </div>
-        <!-- Redirect URL -->
-        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-        <!-- Current Food ID, valued filled via 'foodModal.js' -->
-        <input type="hidden" name="this_food" id="this-food" value="">
     </div>
-</form>
+</div>

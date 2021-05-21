@@ -1,12 +1,12 @@
 {% if current_restaurant %}
-    <a href="{% url 'restaurant_menu' current_restaurant.id %}" class="btn btn-outline-dark rounded-0 btn-lg">
+    <a href="{% url 'restaurant_menu' current_restaurant.id %}" class="btn btn-outline-dark btn-lg">
         <span class="d-inline-flex align-items-center icon">
             <i class="fas fa-chevron-left"></i>
         </span>
         <span class="d-inline-flex align-items-center text-uppercase">Back to restaurant</span>
     </a>
 {% else %}
-    <a href="{% url 'restaurants' %}" class="btn btn-outline-dark rounded-0 btn-lg">
+    <a href="{% url 'restaurants' %}" class="btn btn-outline-dark btn-lg">
         <span class="icon">
             <i class="fas fa-chevron-left"></i>
         </span>
@@ -15,14 +15,14 @@
 {% endif %}
 
 {% if current_restaurant.is_open_now %}
-    <a href="{% url 'checkout_address' %}" class="btn rounded-0 btn-lg secure-checkout-button">
+    <button type="submit" class="btn btn-lg secure-checkout-button">
         <span class="text-uppercase">Secure Checkout</span>
         <span class="icon">
             <i class="fas fa-lock"></i>
         </span>
-    </a>
+    </button>
 {% else %}
-    <button class="btn rounded-0 btn-lg secure-checkout-button" disabled aria-disabled="true">
+    <button class="btn btn-lg secure-checkout-button" disabled aria-disabled="true">
         <span class="text-uppercase">Restaurant Closed</span>
     </button>
 {% endif %}

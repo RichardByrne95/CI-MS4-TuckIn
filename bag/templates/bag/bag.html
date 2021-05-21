@@ -19,12 +19,11 @@
                     <h2>Your Order</h2>
                 </div>
             </div>
-            <div class="row no-gutters mt-5">
-                <div class="col-3 no-gutters"></div>
+            <div class="row no-gutters my-5 justify-content-center">
                 <div class="col-6 no-gutters text-center bag-contents">
                     {% if bag_contents %}
                         <!-- Bag Contents -->
-                        <div class="table-responsive rounded d-none d-md-block">
+                        <form action="{% url 'checkout_address' %}" method="POST" class="table-responsive rounded d-none d-md-block">
                             <table class="table table-sm table-borderless bag-table">
                                 <!-- Table Headers -->
                                 <thead class="text-black">
@@ -37,7 +36,7 @@
                                     </tr>
                                 </thead>
                                 {% for food in bag_contents %}
-                                    <!-- Display food info -->
+                                    <!-- Food info row -->
                                     <tr>
                                         <td class="p-3 w-25 food-image-container">
                                             {% include 'bag/food-image.html' %}
@@ -69,12 +68,12 @@
                                 </tr>
                                 <!-- Buttons -->
                                 <tr>
-                                    <td colspan="5" class="text-right">
+                                    <td colspan="5" class="">
                                         {% include "bag/bag-buttons.html" %}
                                     </td>
                                 </tr>
                             </table>
-                        </div>
+                        </form>
                     {% else %}
                         <!-- Link to all_restaurants -->
                         <h4>Whoops!</h4>
@@ -84,7 +83,6 @@
                         </a>
                     {% endif %}
                 </div>
-                <div class="col-3 no-gutters"></div>
             </div>
         </section>
     </div>

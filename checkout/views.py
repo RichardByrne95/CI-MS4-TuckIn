@@ -16,7 +16,10 @@ from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404, redirect, render
 
 
+@require_POST
 def checkout_address(request):
+    
+
     # Get restaurant
     restaurant_name = request.session.get('restaurant')
     restaurant = get_object_or_404(Restaurant, name=restaurant_name)
