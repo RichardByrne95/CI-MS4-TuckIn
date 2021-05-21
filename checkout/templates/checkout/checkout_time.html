@@ -15,40 +15,38 @@
             <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
-                    <hr>
                     <h2>Delivery Time</h2>
-                    <hr>
                 </div>
             </div>
-            <div class="row no-gutters bag-contents">
-                <div class="col-4 no-gutters"></div>
-                <!-- Delivery Time Form -->
+            <div class="row no-gutters justify-content-center bag-contents">
                 <div class="col-4 no-gutters">
-                    <div class="row no-gutters">
-                        <div class="col-2 no-gutters"></div>
-                        <div class="col-8 no-gutters">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-12 no-gutters">
+                            <!-- Delivery Time Form -->
                             <form action="{% url 'checkout_payment' %}" method="POST" class="form" id="delivery-time">
                                 {% csrf_token %}
                                 <!-- Choose delivery time -->
-                                <div class="form-row">
-                                    <label for="delivery-time-select">Choose a delivery time:</label>
-                                    <select name="delivery_time" id="delivery-time-select" required>
-                                        {% for time in delivery_times %}
-                                            <option value="{{ time }}">{{ time }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <input type="hidden" name="from_delivery_time" value="true">
+                                <div class="form-row d-flex justify-content-center pb-4" id="delivery-time-row">
+                                    <div class="col-8">
+                                        <label class="pb-3" for="delivery-time-select">Choose a delivery time:</label>
+                                        <select name="delivery_time" id="delivery-time-select" required>
+                                            {% for time in delivery_times %}
+                                                <option value="{{ time }}">{{ time }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <input type="hidden" name="from_delivery_time" value="true">
+                                    </div>
                                 </div>
                                 <!-- Buttons -->
-                                <div class="row no-gutters form-row form-buttons">
-                                    <div class="col-12 d-flex justify-content-around">
-                                        <a href="{% url 'checkout_address' %}" class="btn btn-outline-dark rounded-0 btn-lg">
+                                <div class="row no-gutters form-row justify-content-center form-buttons">
+                                    <div class="col-10 d-flex justify-content-center">
+                                        <a href="{% url 'checkout_address' %}" class="btn btn-outline-dark btn-lg me-2">
                                             <span class="icon">
                                                 <i class="fas fa-chevron-left"></i>
                                             </span>
                                             <span class="text-uppercase">Edit Address</span>
                                         </a>
-                                        <button class="btn btn-outline-dark rounded-0 btn-lg" type="submit">
+                                        <button class="btn btn-outline-dark btn-lg ms-2" type="submit">
                                             <span class="text-uppercase">Continue to Payment</span>
                                             <span class="icon">
                                                 <i class="fas fa-chevron-right"></i>
@@ -58,10 +56,8 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-2 no-gutters"></div>
                     </div>
                 </div>
-                <div class="col-4 no-gutters"></div>
             </div>
         </section>
     </div>

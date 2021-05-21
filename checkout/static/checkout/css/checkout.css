@@ -3,7 +3,7 @@
 #checkout-address-section,
 #checkout-time-section,
 #checkout-payment-section {
-    padding-top: 13rem;
+    padding-top: 12rem;
 }
 
 /* ----------------------------------------- Delivery Time */
@@ -25,6 +25,20 @@ label[for="delivery-time-select"] {
 
 main {
     padding-bottom: 12.5rem;
+}
+
+.bag-contents {
+    min-width: 125rem;
+}
+
+.customer-details {
+    min-width: 40rem;
+    max-width: 42rem;
+}
+
+.order-summary{
+    min-width: 42rem;
+    max-width: 53rem;
 }
 
 .customer-details,
