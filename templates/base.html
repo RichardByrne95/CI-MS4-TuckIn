@@ -103,8 +103,8 @@
     </header>
 
     {% if messages %}
-        {% for message in messages %}
-            <div class="message-container">
+        <div class="toast-container">
+            {% for message in messages %}
                 {% with message.level as level %}
                     {% if level == 40 %}
                         {% include 'includes/toasts/toast-error.html' %}
@@ -116,8 +116,8 @@
                         {% include 'includes/toasts/toast-info.html' %}
                     {% endif %}
                 {% endwith %}
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     {% endif %}
     
     <main>

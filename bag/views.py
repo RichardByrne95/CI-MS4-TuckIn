@@ -152,6 +152,6 @@ def order_again(request, order_number):
                 messages.success(
                     request, f'Added {food_object.friendly_name} to your cart')
             
-        request.session['bag'] = bag
+    request.session['bag'] = bag
 
-        return redirect('/bag')
+    return redirect('/bag')
