@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <!-- Menu Sections -->
-                <div class="row menu-nav-container">
+                <nav class="row menu-nav-container">
                     <div class="col-12 no-gutters">
                         {% for menu_section in menu_sections %}
                             <a href="#{{ menu_section.friendly_name }}">
@@ -77,7 +77,7 @@
                             </a>
                         {% endfor %}
                     </div>
-                </div>
+                </nav>
                 <hr id="menu-divider">
                 <!-- Food Items List -->
                 {% for menu_section in menu_sections %}

@@ -15,9 +15,11 @@ def all_restaurants(request):
     # Get restaurants
     restaurants = Restaurant.objects.all()
     open_restaurants = [
-        restaurant for restaurant in restaurants if restaurant.is_open_now()]
+        restaurant.name for restaurant in restaurants if restaurant.is_open_now()]
+    open_restaurants = restaurants.filter(name__in=open_restaurants)
     closed_restaurants = [
         restaurant for restaurant in restaurants if not restaurant.is_open_now()]
+    closed_restaurants = restaurants.filter(name__in=closed_restaurants)
 
     #  Handle inputting/changing delivery address
     if request.method == 'POST':
@@ -47,11 +49,17 @@ def all_restaurants(request):
                     sortkey = f'-{sortkey}'
 
             restaurants = restaurants.order_by(sortkey)
+            open_restaurants = open_restaurants.order_by(sortkey)
+            closed_restaurants = closed_restaurants.order_by(sortkey)
 
         # Sorting by Cuisine (referenced Boutique Ado)
         if 'cuisine' in request.GET:
             cuisine = request.GET['cuisine']
             restaurants = restaurants.filter(
+                Q(cuisine__name__icontains=cuisine))
+            open_restaurants = open_restaurants.filter(
+                Q(cuisine__name__icontains=cuisine))
+            closed_restaurants = closed_restaurants.filter(
                 Q(cuisine__name__icontains=cuisine))
             # Turns list of strings from url to cuisine object for use in template
             cuisine = Cuisine.objects.filter(Q(name=cuisine))
