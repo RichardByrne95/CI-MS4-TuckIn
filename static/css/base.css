@@ -131,7 +131,7 @@ strong {
     position: fixed;
     top:7.5rem;
     right: 2rem;
-    border-radius: .8rem;
+    border-radius: .3rem;
 }
 
 .toast-container>:not(:last-child) {
@@ -139,11 +139,20 @@ strong {
 }
 
 .toast-capper {
-    height: .25rem;
+    height: .3rem;
+    border-radius: .3rem .3rem 0 0;
+}
+
+.toast {
+    border-radius: .3rem;
 }
 
 .toast-header strong {
     font-size: 1.6rem;
+}
+
+.toast-header .btn-close {
+    margin-right: 0;
 }
 
 .bag-hr {
@@ -151,9 +160,15 @@ strong {
 }
 
 .bag-notification-wrapper {
-    height: 10rem;
+    max-height: 10rem;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+#mini-bag-checkout-btn {
+    color: #fff;
+    background-color: orangered;
+    border-color: orangered;
 }
 
 /* ----------------------------------------- Navbar */
