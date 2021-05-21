@@ -2,15 +2,38 @@
 
 If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
 
-#### Food Images Source
+### Food Images Source
+
+#### Ezio Pizza
 
 Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
-https://www.kaggle.com/kmader/food41
 
-#### Logo Images Sources
+#### McDoogle's
+
+Quarter Kilo - https://www.pexels.com/photo/ham-and-bacon-burger-2983098/
+
+#### Tomato King
+
+-   MASSIVE Burger - https://www.pexels.com/photo/photo-of-burger-beside-fires-3616956/
+-   MightyMeaty - https://www.pexels.com/photo/person-holding-a-double-patty-cheese-burger-3826273/
+-   MiniMeaty - https://www.pexels.com/photo/close-up-photo-of-a-cheeseburger-1556698/
+-   MiniMeaty Meal - https://www.pexels.com/photo/tomato-burger-and-fried-fries-1600727/
+-   Cheez Burger - https://www.pexels.com/photo/close-up-photo-of-hamburger-1893557/
+-   Classic Hamburger - https://www.pexels.com/photo/photo-of-burger-and-fries-3219547/
+-   Classic Hamburger Meal - https://www.pexels.com/photo/plate-of-fries-and-burger-3219483/
+-   Crispy Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-6896379/
+-   Classic Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-7963144/
+-   Bean Burger - https://www.pexels.com/photo/close-up-photo-of-burger-1639562/
+-   Classic Chips - https://www.pexels.com/photo/fries-on-brown-table-2271110/
+-   Onion Rings - https://pixabay.com/photos/food-restaurant-cafe-dining-dinner-3669928/
+-   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
+-   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
+
+### Logo Images Sources
 
 Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
-McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/)
+McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
+Ezio Pizza's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
 
 ### Django Secret Key Exposure
 
@@ -57,6 +80,9 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 -   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00
 -   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules
 -   Allow customers to pre-order with a restaurant if it's not open today
+-   Add prompt to remove everything from order when food from another restaurant is in the bag
+-   Allow the user to store a bag for each restaurant
+-   Add choices to food modal e.g. select toppings
 
 
 
