@@ -87,27 +87,31 @@
                             <!-- Food Item Cards -->
                             {% for food in food_items %}
                                 {% if food.menu_section == menu_section %}
-                                    <div class="col-12 col-md-6 col-lg-4 card h-100 border-0 food-item-card">
-                                        <a href="#" id="food-item-card-link" class="card-body food-item-card-body" data-bs-toggle="modal" data-bs-target="#food-item-modal" data-food-item="{{ food.friendly_name }}">
-                                            <div class="food-item-card-text">
-                                                <p class="font-weight-bold food-item-card-name">{{ food.friendly_name }}</p>
-                                                <p class="food-item-card-description">{{ food.description }}</p>
-                                                <p class="food-id d-none" aria-hidden="true">{{ food.id }}</p>
-                                            </div>
-                                            <div class="food-item-price-container">
-                                                <p class="font-weight-bold food-item-card-price">€{{ food.price }}</p>
-                                            </div>
-                                            <div class="food-item-photo-container">
-                                                <figure>
-                                                    {% if food.image %}
-                                                        <img src="{{ food.image.url }}" alt="{{ food.friendly_name }}" class="food-item-photo">
-                                                    {% else %}
-                                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ food.friendly_name }}" class="food-item-photo">
-                                                    {% endif %}
-                                                </figure>
-                                            </div>
-                                        </a>
+                                <div class="col-12 col-md-6 col-lg-4 no-gutters food-item-col">
+                                    <div class="row no-gutters h-100">
+                                        <div class="col-12 card border-0 food-item-card">
+                                            <a href="#" id="food-item-card-link" class="card-body food-item-card-body" data-bs-toggle="modal" data-bs-target="#food-item-modal" data-food-item="{{ food.friendly_name }}">
+                                                <div class="food-item-card-text">
+                                                    <p class="font-weight-bold food-item-card-name">{{ food.friendly_name }}</p>
+                                                    <p class="food-item-card-description">{{ food.description }}</p>
+                                                    <p class="food-id d-none" aria-hidden="true">{{ food.id }}</p>
+                                                </div>
+                                                <div class="food-item-price-container">
+                                                    <p class="font-weight-bold food-item-card-price">€{{ food.price }}</p>
+                                                </div>
+                                                <div class="food-item-photo-container">
+                                                    <figure>
+                                                        {% if food.image %}
+                                                            <img src="{{ food.image.url }}" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                        {% else %}
+                                                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                        {% endif %}
+                                                    </figure>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
+                                </div>
                                 {% endif %}
                             {% endfor %}
                         </div>

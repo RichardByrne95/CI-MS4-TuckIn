@@ -36,6 +36,7 @@
     padding: 2rem 2rem 0 2rem;
     background-color: #f6f0ea;
     border-radius: .8rem;
+    max-width: 12.5rem;
 }
 
 .restaurant-cuisines-col h4 {
@@ -159,6 +160,10 @@
     padding: 0;
 }
 
+.food-item-col {
+    padding: 1rem;
+}
+
 .food-item-card-body {
     color: black;
     margin: 0;
@@ -171,19 +176,21 @@
     color: black;
 }
 
-.food-item-card-text {
+.food-item-card-text,
+.food-item-price-container {
     max-width: 50%;
 }
 
 .food-item-photo {
     position: absolute;
     top: 0;
-    right: 1%;
+    right: 0;
     padding: 2rem;
     height: 100%;
     width: 40%;
     object-fit: cover;
     border-radius: 2.2rem;
+    min-width: 40%;
 }
 
 /* Modal */
