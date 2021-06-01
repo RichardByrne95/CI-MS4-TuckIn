@@ -43,6 +43,10 @@
     margin-bottom: 3rem;
 }
 
+. {
+
+}
+
 #sort-by, .dropdown-item, .dropdown-toggle {
     font-size: 1.5rem;
 }
@@ -88,7 +92,8 @@
 }
 
 .restaurant-cuisine-name {
-    padding-bottom: 1.7rem;
+    font-size: 1.5rem;
+    padding: .55rem 0 1.7rem 0;
 }
 
 /* ----------------------------------------- Restaurant Menu */
