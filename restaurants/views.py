@@ -62,7 +62,8 @@ def all_restaurants(request):
             closed_restaurants = closed_restaurants.filter(
                 Q(cuisine__name__icontains=cuisine))
             # Turns list of strings from url to cuisine object for use in template
-            cuisine = Cuisine.objects.filter(Q(name=cuisine))
+            cuisine = Cuisine.objects.filter(Q(name=cuisine))[0]
+
 
         # Search Request (referenced Boutique Ado)
         if 'q' in request.GET:

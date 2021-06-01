@@ -41,8 +41,12 @@
                             <!-- If address has been inputted -->
                             {% if short_maps_address %}
                                 <h4 class="d-inline-block nearby-restaurants">
-                                {{ open_restaurants|count }}
-                                <!-- If there is more than 1 or no restaurants open -->
+                                    {{ open_restaurants|count }}
+                                    <!-- Add cuisine type if refining by cuisine -->
+                                    {% if current_cuisine %}
+                                        {{ current_cuisine|title }}
+                                    {% endif %}
+                                    <!-- If there is more than 1 or no restaurants open -->
                                     {% if open_restaurants|count > 1 %}
                                         restaurants 
                                     {% else %} 
