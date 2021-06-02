@@ -125,36 +125,36 @@
         {% endblock %}
     </main>
 
-    <footer class="footer">
-        {% block footer %}
-        {% endblock %}
-        <div class="d-flex justify-content-center">
-            <div class="row w-100">
-                <div class="col-4 footer-col d-flex justify-content-center">
-                    <div class="footer-links">
-                        <h4>Partner With Us</h3>
-                        <a href="{% url 'list_your_restaurant' %}">List your restaurant</a>
+    {% block footer %}
+        <footer class="footer">
+            <div class="d-flex justify-content-center">
+                <div class="row w-100">
+                    <div class="col-4 footer-col d-flex justify-content-center">
+                        <div class="footer-links">
+                            <h4>Partner With Us</h3>
+                            <a href="{% url 'list_your_restaurant' %}">List your restaurant</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4 footer-col d-flex justify-content-center">
-                    <div class="footer-icons">
-                        <h4>Follow Us</h3>
-                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <div class="col-4 footer-col d-flex justify-content-center">
+                        <div class="footer-icons">
+                            <h4>Follow Us</h3>
+                            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4 footer-col d-flex justify-content-center">
-                    <div class="footer-links">
-                        <h4>The Legal Stuff</h3>
-                        <a href="{% url 'cookies_policy' %}">Cookies Policy</a>
-                        <span>|</span>
-                        <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                    <div class="col-4 footer-col d-flex justify-content-center">
+                        <div class="footer-links">
+                            <h4>The Legal Stuff</h3>
+                            <a href="{% url 'cookies_policy' %}">Cookies Policy</a>
+                            <span>|</span>
+                            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    {% endblock %}
 
     <!-- Toasts JS -->
     <script>

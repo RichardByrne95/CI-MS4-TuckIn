@@ -6,6 +6,23 @@
     padding-top: 12rem;
 }
 
+
+
+/* ----------------------------------------- Delivery Address */
+
+.address-form-buttons,
+.delivery-time-form-buttons {
+    margin: 1rem 2rem;
+}
+
+.address-form-buttons .btn,
+.delivery-time-form-buttons .btn,
+.address-form-buttons a,
+.delivery-time-form-buttons a {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
 /* ----------------------------------------- Delivery Time */
 
 label[for="delivery-time-select"] {
@@ -27,8 +44,9 @@ main {
     padding-bottom: 12.5rem;
 }
 
-.bag-contents {
-    min-width: 125rem;
+.gap {
+    max-width: 5rem;
+    min-width: 1rem;
 }
 
 .customer-details {

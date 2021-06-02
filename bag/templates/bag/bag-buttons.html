@@ -15,14 +15,14 @@
 {% endif %}
 
 {% if current_restaurant.is_open_now %}
-    <button type="submit" class="btn btn-lg secure-checkout-button">
-        <span class="text-uppercase">Secure Checkout</span>
+    <button type="submit" class="btn btn-lg continue-checkout-button">
+        <span class="text-uppercase">Go to Checkout</span>
         <span class="icon">
             <i class="fas fa-lock"></i>
         </span>
     </button>
 {% else %}
-    <button class="btn btn-lg secure-checkout-button" disabled aria-disabled="true">
+    <button class="btn btn-lg continue-checkout-button" disabled aria-disabled="true">
         <span class="text-uppercase">Restaurant Closed</span>
     </button>
 {% endif %}

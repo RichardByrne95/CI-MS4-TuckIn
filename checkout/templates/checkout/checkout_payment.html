@@ -17,7 +17,7 @@
             <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
-                    <h2>Complete Your Order</h2>
+                    <h2>Order Payment</h2>
                 </div>
             </div>
             <div class="row no-gutters">
@@ -28,9 +28,9 @@
                             <p class="pb-3">Please ensure your details are correct before you complete your order.</p>
                         </div>
                     </div>
-                    <div class="row no-gutters justify-content-center">
-                        <!-- Address and Payment Form -->
-                        <div class="col-3 no-gutters">
+                    <!-- Address and Payment Form -->
+                    <div class="row no-gutters justify-content-center" id="address-and-payment-form">
+                        <div class="col-3 no-gutters d-flex justify-content-end">
                             <div class="customer-details">
                                 <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                                     {% csrf_token %}
@@ -85,13 +85,13 @@
                                             <span class="d-flex justify-content-center align-items-center icon">
                                                 <i class="fas fa-exclamation-circle"></i>
                                             </span>
-                                            Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong>
+                                            Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong>
                                         </p>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-1 no-gutters"></div>
+                        <div class="col-1 no-gutters gap"></div>
                         <!-- Order Summary -->
                         <div class="col-4 no-gutters">
                             <!-- Order Summary Headings -->
@@ -192,6 +192,9 @@
             </span>
         </h1>
     </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
 
 {% block footer_js %}

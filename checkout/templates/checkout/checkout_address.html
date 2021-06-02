@@ -47,17 +47,17 @@
                             </div>
                         </div>
                         <!-- Buttons -->
-                        <div class="form-row form-buttons">
+                        <div class="form-row address-form-buttons">
                             <!-- Adjust Order -->
-                            <a href="{% url 'view_bag' %}" class="btn btn-outline-dark rounded-0 btn-lg">
-                                <span class="icon">
+                            <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg" id="adjust-order-button">
+                                <span class=" d-inline-flex align-items-center icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Adjust Order</span>
                             </a>
-                            <!-- Next -->
-                            <button class="btn btn-outline-dark rounded-0 btn-lg" type="submit">
-                                <span class="text-uppercase">Next</span>
+                            <!-- Continue to Delivery Time -->
+                            <button class="btn btn-lg continue-checkout-button" type="submit">
+                                <span class="d-inline-flex align-items-center text-uppercase">Continue</span>
                                 <span class="icon">
                                     <i class="fas fa-chevron-right"></i>
                                 </span>
@@ -68,6 +68,9 @@
             </div>
         </section>
     </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
 
 {% block footer_js %} 

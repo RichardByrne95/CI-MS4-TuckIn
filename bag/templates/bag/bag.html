@@ -62,7 +62,7 @@
                                 {% endfor %}
                                 <!-- Bag total -->
                                 <tr>
-                                    <td colspan="5" class="pt-5 text-right">
+                                    <td colspan="5" class="pt-5 pb-2 text-right">
                                         {% include "bag/bag-total.html" %}
                                     </td>
                                 </tr>
@@ -86,6 +86,9 @@
             </div>
         </section>
     </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
 
 {% block footer_js %}
