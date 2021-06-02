@@ -48,6 +48,10 @@ main {
     padding: 2rem;
 }
 
+.form-check {
+    padding: 1rem 0;
+}
+
 #submit-button {
     width: 100%;
     padding: 1rem;
@@ -59,8 +63,14 @@ main {
     font-size: 1.8rem;
 }
 
+#submit-button i {
+    font-size: 1.6rem;
+    padding-left: .8rem;
+}
+
+.charge-warning,
 .charge-warning span {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .order-summary {
@@ -164,7 +174,8 @@ hr.divider {
 }
 
 .delivery-time {
-    padding-bottom: 1.8rem;
+    padding-bottom: 2.8rem;
+    /* margin-bottom: 1rem; */
 }
 
 .delivery-time strong,

@@ -110,6 +110,7 @@ input[type=number] {
 .btn-lg > *,
 .secure-checkout-button > * {
     font-size: 1.4rem !important;
+    font-weight: 500;
 }
 
 .secure-checkout-button .icon i {

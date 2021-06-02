@@ -23,7 +23,7 @@
             <div class="row no-gutters">
                 <div class="col-12 no-gutters bag-contents">
                     <!-- Ensure details are correct note -->
-                    <div class="row no-gutters justify-content-center">
+                    <div class="row no-gutters justify-content-center pb-3">
                         <div class="col-8 no-gutters d-flex justify-content-center">
                             <p class="pb-3">Please ensure your details are correct before you complete your order.</p>
                         </div>
@@ -48,13 +48,13 @@
                                         {{ order_form.address_2 | as_crispy_field }}
                                         {{ order_form.city | as_crispy_field }}
                                         {{ order_form.postcode | as_crispy_field }}
-                                        <div class="form-check form-check-inline px-3">
+                                        <div class="form-check form-check-inline pe-3 d-flex justify-content-start align-items-center">
                                             {% if user.is_authenticated %}
                                                 <input type="checkbox" class="form-check-input" id="save-info" name="save-info" checked>
                                                 <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
                                             {% else %}
                                                 <label class="form-check-label" for="save-info">
-                                                    <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or 
+                                                    <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or
                                                     <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this information.
                                                 </label>
                                             {% endif %}
@@ -72,20 +72,20 @@
                                     </fieldset>
                                     <div class="submit-button p-3 mt-4 mb-2">                    
                                         <!-- Submit Button -->
-                                        <button id="submit-button" class="btn" type="submit">
+                                        <button id="submit-button" class="btn d-flex justify-content-center align-items-center" type="submit">
                                             <span class="complete-order">
-                                                <strong>Complete Order</strong>
+                                                <strong>Complete Order </strong>
                                             </span>
                                             <span class="icon">
                                                 <i class="fas fa-lock"></i>
                                             </span>
                                         </button>
                                         <!-- Charge Warning -->
-                                        <p class="d-flex justify-content-center text-danger mt-2 charge-warning">
-                                            <span class="icon">
+                                        <p class="d-flex justify-content-center align-items-center text-danger mt-2 charge-warning">
+                                            <span class="d-flex justify-content-center align-items-center icon">
                                                 <i class="fas fa-exclamation-circle"></i>
                                             </span>
-                                            <span>Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong></span>
+                                            Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong>
                                         </p>
                                     </div>
                                 </form>
