@@ -43,12 +43,13 @@
     margin-bottom: 3rem;
 }
 
-. {
-
-}
-
 #sort-by, .dropdown-item, .dropdown-toggle {
     font-size: 1.5rem;
+}
+
+.restaurant-card-cover-image,
+.restaurant-card-logo {
+    border-radius: .3rem;
 }
 
 .opaque-image-overlay {
@@ -150,11 +151,18 @@
 }
 
 #menu-divider {
-    margin-bottom: 4rem;
+    margin: 1rem 1rem 4rem 1rem;
 }
 
 .menu-section-food-items {
     margin-bottom: 5rem;
+}
+
+.restaurant-info-menu,
+.menu-section-heading,
+.menu-nav-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .menu-section-heading {
