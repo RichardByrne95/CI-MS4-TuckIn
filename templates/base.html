@@ -54,6 +54,7 @@
     <header class="fixed-top {% if dynamic_navbar %}navbar-scroll-transition transparent-gradient{% else %}block-colour{% endif %}">
         {% block page_header %}
         {% endblock %}
+        <!-- Desktop Nav -->
         <div id="topnav" class="row no-gutters d-none d-lg-flex">
             <div class="col-12 no-gutters">
                 <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-block-colour{% endif %}">
@@ -91,12 +92,9 @@
                 </nav>
             </div>
         </div>
+        <!-- Mobile Nav -->
         <div class="row bg-white d-flex d-lg-none">
-            <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
-                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <nav class="navbar navbar-expand-lg navbar-light w-100" id="mobile-nav">
                 {% include 'includes/mobile-top-header.html' %}
             </nav>
         </div>

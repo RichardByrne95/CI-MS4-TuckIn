@@ -8,6 +8,7 @@ def bag_contents(request):
     forloop_count = 0
     order_total = 0
     bag = request.session.get('bag', {})
+    food_item_count = 0
     current_restaurant = None
     maps_address = request.session.get('maps_address', None)
     short_maps_address = request.session.get('short_maps_address', None)
@@ -17,8 +18,9 @@ def bag_contents(request):
         Restaurant, name=list(bag)[0]) if bag else None
     request.session['restaurant'] = current_restaurant.name if bag else ''
 
+    # Get delivery cost from current restaurant
     delivery_cost = current_restaurant.delivery_cost if bag else 0
-
+    
     for restaurant, food_items in bag.items():
         list_of_food_keys_in_bag = list(food_items.keys())
 
@@ -36,7 +38,11 @@ def bag_contents(request):
                 'additional_details': additional_details,
             })
 
-    food_item_count = len(bag_contents) if bag_contents else 0
+    # Get food item count
+    for food in bag_contents:
+        food_item_count += food['quantity']
+
+    # food_item_count = len(bag_contents) if bag_contents else 0
     grand_total = order_total + delivery_cost
 
     context = {

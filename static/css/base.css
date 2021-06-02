@@ -207,6 +207,32 @@ strong {
 
 /* ----------------------------------------- Navbar */
 
+/* Mobile Nav */
+
+#mobile-nav {
+    height: 6.5rem;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    font-size: 1.45rem;
+    border: 0;
+    padding: .5rem 1rem;
+}
+
+.navbar-toggler-icon {
+    font-size: 2.4rem;
+}
+
+/* Shopping bag icon */
+.fa-stack-2x {
+    font-size: 3.2rem !important;
+}
+
+.fa-stack-1x {
+    font-size: 1.45rem !important;
+}
+
 header {
     padding-bottom: 5rem;
 }
