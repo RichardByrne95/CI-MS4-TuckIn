@@ -3,10 +3,17 @@
     <span class="navbar-toggler-icon"></span>
 </button>
 <li class="list-inline-item">
-    <a class="{% if food_item_count %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
+    <h2 class="logo mobile-logo">
+        <a class="font-italic navbar-brand" href="{% url 'home' %}">
+            TUCKIN
+        </a>
+    </h2>
+</li>
+<li class="list-inline-item">
+    <a class="{% if food_item_count %}font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
         href="{% url 'view_bag' %}">
         <div class="text-center">
-            <i class="fa-stack-2x fas fa-shopping-bag fa-lg position-relative">
+            <i class="fa-stack-2x fas fa-shopping-bag fa-lg position-relative text-dark">
                 <span class="fa-stack-1x my-2 text-white">
                     {% if food_item_count %}
                         {{ food_item_count }}
