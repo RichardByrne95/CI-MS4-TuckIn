@@ -5,19 +5,20 @@ h2 {
 }
 
 .background-image {
-    min-width: 100%;
+    width: 100%;
     max-height: 60vh;
     object-fit: cover;
 }
 
 .jumbotron {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 35%;
+    /* left: -50%; */
+    /* transform: translate(-50%, -50%); */
     background-color: white;
-    padding: 6.5rem 9rem;
-    max-height: 30rem;
+    padding: 2.5rem 4rem;
+    max-height: 30vh;
+    width: 100vw;
 }
 
 .lead {
@@ -91,4 +92,17 @@ h2 {
     -webkit-box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
     -moz-box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
     box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
+}
+
+/* ----------------------------------------- >=1200px */
+@media screen and (min-width: 1200px) {
+    .jumbotron {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 6.5rem 9rem;
+        max-height: 30rem;
+    }
 }

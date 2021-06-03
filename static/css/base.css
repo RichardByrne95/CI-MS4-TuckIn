@@ -13,14 +13,17 @@
 }
 
 body {
+    width: 100%;
     min-height: 100vh;
     position: relative;
 }
 
+header {
+    width: 100vw;
+}
+
 main {
     padding-bottom: 8.5rem;
-    /* max-width: 127.2rem;
-    margin: 0 auto; */
 }
 
 .no-gutters, figure {
@@ -29,7 +32,7 @@ main {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.2rem;
 }
 
 h2 {
@@ -481,4 +484,11 @@ select option[value=""] {
     justify-content: center;
     margin: 0;
     height: 100%;
+}
+
+/* ----------------------------------------- >=1200px */
+@media screen and (min-width: 1200px) {
+    h1 {
+        font-size: 4rem;
+    }
 }
