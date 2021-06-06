@@ -32,7 +32,7 @@ main {
 }
 
 h1 {
-    font-size: 3.2rem;
+    font-size: 2.5rem;
 }
 
 h2 {
@@ -61,7 +61,7 @@ a:hover {
 }
 
 input {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
 }
 
 select,
@@ -213,7 +213,7 @@ strong {
 /* Mobile Nav */
 
 #mobile-nav {
-    height: 6.5rem;
+    height: 5.5rem;
 }
 
 /* Navbar Toggler */
@@ -224,7 +224,7 @@ strong {
 }
 
 .navbar-toggler-icon {
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 
 /* Logo */
@@ -235,11 +235,11 @@ strong {
 
 /* Shopping bag icon */
 .fa-stack-2x {
-    font-size: 3.5rem !important;
+    font-size: 3.2rem !important;
 }
 
 .fa-stack-1x {
-    font-size: 1.45rem !important;
+    font-size: 1.15rem !important;
     font-weight: 700;
 }
 
@@ -284,7 +284,8 @@ header {
 /* End of Dynamic Navbar */
 
 .navbar-brand {
-    font-size: 3.1rem;
+    margin-right: 0;
+    font-size: 2.6rem;
     color: #fafafa;
     font-family: 'Baloo 2', cursive;
     font-style: italic;
@@ -490,5 +491,17 @@ select option[value=""] {
 @media screen and (min-width: 1200px) {
     h1 {
         font-size: 4rem;
+    }
+
+    input {
+        font-size: 1.9rem;
+    }
+
+    .navbar-brand {
+        font-size: 3.1rem;
+        color: #fafafa;
+        font-family: 'Baloo 2', cursive;
+        font-style: italic;
+        font-weight: 500;
     }
 }
