@@ -36,6 +36,10 @@ h3 {
     font-size: 1.6rem;
 }
 
+.lead-2 {
+    font-weight: 300;
+}
+
 .address {
     padding: .45rem .8rem;
     border: .1rem solid #c5ccd3;
@@ -148,8 +152,34 @@ h3 {
 
 /* ----------------------------------------- >=992px */
 @media screen and (min-width: 992px) {
+    .background-image {
+        height: 40rem;
+    }
+
     .jumbotron {
+        top: 35rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 5rem 7.5rem;
         width: 50vw;
+        height: none;
+        max-width: none;
+        min-width: 67rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .lead {
+        font-size: 1.8rem;
+        font-weight: 400;
+    }
+
+    .lead-2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #5e6877;
     }
 
     .cuisines-section {
@@ -161,7 +191,7 @@ h3 {
 @media screen and (min-width: 1200px) {
     .background-image {
         width: 100%;
-        height: 60vh;
+        height: 60rem;
         object-fit: cover;
     }
 
@@ -170,7 +200,6 @@ h3 {
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 5.5rem 8rem;
-        height: 30vh;
         width: 40vw;
         max-width: none;
         min-width: 67rem;
@@ -190,7 +219,8 @@ h3 {
         margin-top: 10rem;
     }
 
-    .cuisines-container {
+    .cuisines-container,
+    .popular-cuisines {
         min-width: 28.2rem;
         max-width: 110rem;
     }

@@ -30,7 +30,7 @@
                         <div class="container no-gutters">
                             <h1>Tuck Into Some Goodness</h1>
                             <p class="lead mb-1 d-none d-lg-block">Your One-Stop-Shop for Dublin's Best Restaurants</p>
-                            <p class="mb-3 lead-2">Find restaurants near you, delivering right now</p>
+                            <p class="mx-3 lead-2">Find restaurants near you, delivering right now</p>
                             <div class="row no-gutters">
                                 <div class="col no-gutters mt-3">
                                     <form action="{% url 'restaurants' %}" id="address-finder" method="POST">
@@ -56,10 +56,10 @@
         </section>
         <section class="row no-gutters text-center cuisines-section">
             <!-- Cuisines -->
-            <div class="col-10 no-gutters d-block d-xl-none mb-3">
+            <div class="col-9 no-gutters d-block d-xl-flex justify-content-xl-start mb-3 popular-cuisines">
                 <h3>Popular cuisines</h3>
             </div>
-            <div class="col-10 no-gutters cuisines-container">
+            <div class="col-9 no-gutters cuisines-container">
                 <div class="row no-gutters shadow">
                     {% for cuisine in cuisines %}
                         <div class="col no-gutters cuisine-col">
