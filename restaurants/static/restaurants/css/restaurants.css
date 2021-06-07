@@ -1,14 +1,20 @@
 /* ----------------------------------------- All Restaurants */
 header {
     padding-bottom: 0;
+    border-bottom: #c8cfd6 solid .1rem;
 }
 
 #restaurants {
-    padding-top: 9rem;
+    margin-top: 6rem;
 }
 
 #restaurants-column {
     padding: 0;
+}
+
+.fa-filter,
+.fa-sort-amount-down {
+    font-size: 1.5rem;
 }
 
 .nearby-restaurants {
@@ -37,20 +43,23 @@ header {
     position: relative;
 }
 
+.restaurant-card-cover-image,
+.restaurant-card-logo {
+    border-radius: .3rem;
+}
+
+.restaurant-card-cover-image {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+}
+
 .restaurant-card-logo {
     position: absolute;
     left: 5%;
     bottom: 6%;
     max-width: 33%;
-}
-
-.restaurant-cuisines-col {
-    margin-right: 0rem;
-    padding: 2rem 2rem 0 2rem;
-    background-color: #f6f0ea;
-    border-radius: .8rem;
-    max-width: 12.5rem;
-    min-width: 12.5rem;
+    height: 10rem;
 }
 
 .restaurant-cuisines-col h4 {
@@ -59,12 +68,18 @@ header {
 }
 
 #sort-by, .dropdown-item, .dropdown-toggle {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
-.restaurant-card-cover-image,
-.restaurant-card-logo {
-    border-radius: .3rem;
+.dropdown-toggle {
+    background-color: #00baff;
+    border-color: #00baff;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+    background-color: #00baff;
+    border-color: #00baff;
 }
 
 .opaque-image-overlay {
@@ -290,17 +305,53 @@ header {
     justify-content: center;
 }
 
+
+/* ----------------------------------------- <=335px */
+@media screen and (max-width: 335px) {
+    .dropdown-toggle {
+        font-size: 1.2rem;
+    }
+
+    .fa-sort-amount-down,
+    .fa-filter {
+        display: none !important;
+    }
+}
+
 /* ----------------------------------------- >=768px */
 @media screen and (min-width: 768px) {
     .card {
         padding: 2rem;
+    }
+
+    .restaurant-card-cover-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .restaurant-card-logo {
+        position: absolute;
+        left: 5%;
+        bottom: 6%;
+        max-width: 33%;
+        height: auto;
+    }
+
+    .restaurant-cuisines-col {
+        margin-right: 0rem;
+        padding: 2rem 2rem 0 2rem;
+        background-color: #f6f0ea;
+        border-radius: .8rem;
+        max-width: 12.5rem;
+        min-width: 12.5rem;
     }
 }
 
 /* ----------------------------------------- >=992px */
 @media screen and (min-width: 992px) {
     #restaurants {
-        padding-top: 13rem;
+        margin-top: 13rem;
     }
 
     #restaurants-column {

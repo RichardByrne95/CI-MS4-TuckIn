@@ -39,6 +39,56 @@
                 </aside>
                 <!-- Restaurants Column -->
                 <div class="col-11 col-lg-9 no-gutters" id="restaurants-column">
+                    <!-- Mobile Refine/Sort Buttons -->
+                    <div class="row no-gutters d-block d-lg-none py-4 py-md-5">
+                        <div class="col-12 no-gutters d-flex" id="mobile-buttons">
+                            <!-- Refine -->
+                            <div class="col-6 no-gutters pe-3">
+                                <div class="dropdown d-flex">
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                        type="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter"></i> Cuisines
+                                    </a>
+                                    <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+                                        <li>
+                                            <a href="{% url 'restaurants' %}" class="dropdown-item">
+                                                All
+                                            </a>
+                                        </li>
+                                        {% for cuisine in all_cuisines %}
+                                            <li>
+                                                <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}" class="dropdown-item">
+                                                    {{ cuisine.name|title }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Sort -->
+                            <div class="col-6 no-gutters ps-3">
+                                <div class="dropdown d-flex">
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-sort-amount-down"></i>
+                                        Sort{% if refine_text %}: {{ refine_text }}{% endif %}
+                                    </a>
+                                    <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
+                                                Rated
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'restaurants' %}?sort=free_delivery&direction=asc">Delivery
+                                                Cost
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Restaurants Near You Header -->
                     <div class="row no-gutters">
                         <div class="col-12 col-lg-11 no-gutters">
@@ -72,6 +122,7 @@
                                 <p class="ms-5 d-inline text-nowrap change-location"><a href="{% url 'home' %}">set location</a></p>
                             {% endif %}
                         </div>
+                        <!-- Sort Button -->
                         <div class="col-1 no-gutters d-none d-lg-block">
                             <div class="dropdown d-none d-lg-flex justify-content-lg-end">
                                 <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"

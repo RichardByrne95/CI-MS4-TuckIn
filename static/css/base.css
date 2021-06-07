@@ -239,7 +239,7 @@ strong {
 }
 
 .fa-stack-1x {
-    font-size: 1.15rem !important;
+    font-size: 1.2rem !important;
     font-weight: 700;
 }
 
@@ -492,6 +492,13 @@ select option[value=""] {
     height: 100%;
 }
 
+/* ----------------------------------------- >=992px */
+@media screen and (min-width: 992px) {
+    .navbar-brand {
+        font-size: 3.1rem;
+    }
+}
+
 /* ----------------------------------------- >=1200px */
 @media screen and (min-width: 1200px) {
     h1 {
@@ -500,13 +507,5 @@ select option[value=""] {
 
     input {
         font-size: 1.9rem;
-    }
-
-    .navbar-brand {
-        font-size: 3.1rem;
-        color: #fafafa;
-        font-family: 'Baloo 2', cursive;
-        font-style: italic;
-        font-weight: 500;
     }
 }
