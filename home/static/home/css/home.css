@@ -1,4 +1,8 @@
 /* ----------------------------------------- Homepage */
+main {
+    padding-bottom: 35rem;
+}
+
 h1 {
     font-weight: 600;
 }
@@ -110,10 +114,6 @@ h3 {
     box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
 }
 
-footer {
-    position: relative;
-}
-
 /* ----------------------------------------- <=257px Galaxy Fold */
 @media screen and (max-width: 257px) {
     .cuisines-section {
@@ -121,8 +121,8 @@ footer {
     }
 }
 
-/* ----------------------------------------- >=383px */
-@media screen and (min-width: 385px) {
+/* ----------------------------------------- >=388px */
+@media screen and (min-width: 388px) {
     .cuisines-section {
         margin-top: 15rem;
     }
@@ -136,6 +136,13 @@ footer {
 
     .cuisines-container {
         max-width: 47.3rem;
+    }
+}
+
+/* ----------------------------------------- >=576px */
+@media screen and (min-width: 576px) {
+    main {
+        padding-bottom: 25rem;
     }
 }
 
@@ -159,7 +166,7 @@ footer {
     }
 
     .jumbotron {
-        top: 50%;
+        top: 50rem;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 5.5rem 8rem;
@@ -199,9 +206,5 @@ footer {
 
     .address {
         font-size: 1.6rem;
-    }
-
-    footer {
-        position: absolute;
     }
 }

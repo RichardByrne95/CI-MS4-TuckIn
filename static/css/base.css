@@ -352,11 +352,16 @@ footer {
 footer a, footer span {
     font-size: 1.6rem;
     text-decoration: none;
+    color: #7e7e7e;
 }
 
 .footer-icons a i {
     padding-right: .9rem;
     font-size: 1.8rem;
+}
+
+.footer-col {
+    padding: 1.1rem 3rem;
 }
 
 /* ----------------------------------------- Login/Signup/Sign Out */
