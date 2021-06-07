@@ -19,7 +19,7 @@
             <div class="row no-gutters">
                 <div class="col-12 no-gutters">
                     <figure>
-                        <img src="{{ MEDIA_URL }}pan.jpg" class="background-image" alt="tuckin main background prepared take away food">
+                        <img src="{{ MEDIA_URL }}takeaway.jpg" class="background-image" alt="tuckin main background prepared take away food">
                     </figure>
                 </div>
             </div>
@@ -28,11 +28,10 @@
                 <div class="col-10 col-lg-4 no-gutters d-flex justify-content-center">
                     <div class="jumbotron jumbotron-fluid text-center shadow rounded d-flex justify-content-center">
                         <div class="container no-gutters">
-                            <h1>Tuck Into Some Goodness</h1>
-                            <p class="lead mb-1 d-none d-lg-block">Your One-Stop-Shop for Dublin's Best Restaurants</p>
-                            <p class="mx-3 lead-2">Find restaurants near you, delivering right now</p>
+                            <h1>Tuck into some goodness</h1>
+                            <p class="lead">Find restaurants in Dublin, delivering right now</p>
                             <div class="row no-gutters">
-                                <div class="col no-gutters mt-3">
+                                <div class="col no-gutters">
                                     <form action="{% url 'restaurants' %}" id="address-finder" method="POST">
                                         <div class="d-flex justify-content-center search-field-wrapper">
                                             {% csrf_token %}
