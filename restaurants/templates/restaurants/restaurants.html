@@ -16,28 +16,32 @@
         <section id="restaurants">
             <div class="row no-gutters justify-content-center">
                 <!-- Cuisines Column -->
-                <aside class="col-1 no-gutters d-none d-lg-block text-center restaurant-cuisines-col">
-                    <h4>Cuisines</h4>
-                    <div class="restaurant-cuisine">
-                        <a href="{% url 'restaurants' %}">
-                            <p class="restuarant-cuisine-name">All</p>
-                        </a>
+                <aside class="col-1 no-gutters d-none d-lg-block text-center">
+                    <div class="row no-gutters">
+                        <div class="col-12 no-gutters restaurant-cuisines-col">
+                            <h4>Cuisines</h4>
+                            <div class="restaurant-cuisine">
+                                <a href="{% url 'restaurants' %}">
+                                    <p class="restuarant-cuisine-name">All</p>
+                                </a>
+                            </div>
+                            <hr class="text-dark mb-4">
+                            {% for cuisine in all_cuisines %}
+                                <div class="restaurant-cuisine">
+                                    <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}">
+                                        <i class="{{ cuisine.icon_html }}"></i>
+                                        <p class="restaurant-cuisine-name">{{ cuisine.name|title }}</p>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <hr class="text-dark mb-4">
-                    {% for cuisine in all_cuisines %}
-                    <div class="restaurant-cuisine">
-                        <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}">
-                            <i class="{{ cuisine.icon_html }}"></i>
-                            <p class="restaurant-cuisine-name">{{ cuisine.name|title }}</p>
-                        </a>
-                    </div>
-                    {% endfor %}
                 </aside>
                 <!-- Restaurants Column -->
-                <div class="col-9 no-gutters" id="restaurants-column">
+                <div class="col-11 col-lg-9 no-gutters" id="restaurants-column">
                     <!-- Restaurants Near You Header -->
                     <div class="row no-gutters">
-                        <div class="col-10 no-gutters">
+                        <div class="col-12 col-lg-11 no-gutters">
                             <!-- If address has been inputted -->
                             {% if short_maps_address %}
                                 <h4 class="d-inline-block nearby-restaurants">
@@ -54,7 +58,7 @@
                                     {% endif %}
                                     delivering to {{ short_maps_address }}
                                 </h4>
-                                <p class="ms-3 d-inline text-nowrap change-location"><a href="{% url 'home' %}">change location</a></p>
+                                <p class="d-inline text-nowrap change-location"><a href="{% url 'home' %}">change location</a></p>
                             {% else %}
                                 <h4 class="d-inline-block nearby-restaurants">
                                     {{ open_restaurants|count }}
@@ -68,8 +72,8 @@
                                 <p class="ms-5 d-inline text-nowrap change-location"><a href="{% url 'home' %}">set location</a></p>
                             {% endif %}
                         </div>
-                        <div class="col-2 no-gutters">
-                            <div class="dropdown d-flex justify-content-end">
+                        <div class="col-1 no-gutters d-none d-lg-block">
+                            <div class="dropdown d-none d-lg-flex justify-content-lg-end">
                                 <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                     type="button" aria-haspopup="true" aria-expanded="false">
                                     Sort{% if refine_text %}: {{ refine_text }}{% endif %}
