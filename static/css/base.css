@@ -1,5 +1,4 @@
 /* ----------------------------------------- General */
-
 * {
     margin: 0;
     padding: 0;
@@ -64,8 +63,7 @@ input {
     font-size: 1.8rem;
 }
 
-select,
-option {
+select, option {
     font-size: 1.6rem;
 }
 
@@ -104,8 +102,7 @@ strong {
     padding: 0;
 }
 
-.fa-chevron-left,
-.fa-chevron-right {
+.fa-chevron-left, .fa-chevron-right {
     font-size: 1.3rem;
 }
 
@@ -121,8 +118,7 @@ strong {
     padding: 1rem 2rem;
 }
 
-.btn-lg > *,
-.continue-checkout-button > * {
+.btn-lg>*, .continue-checkout-button>* {
     font-size: 1.3rem !important;
     font-weight: 500;
 }
@@ -140,33 +136,31 @@ strong {
 
 /* ----------------------------------------- Scrollbar */
 /* Referenced https://css-tricks.com/the-current-state-of-styling-scrollbars/ */
-
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 .6rem rgba(0,0,0,0.3);
-  -webkit-box-shadow: inset 0 0 .6rem rgba(0,0,0,0.3);
-  border-radius: 3rem;
-  background-color: #acacac;
+    box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.3);
+    border-radius: 3rem;
+    background-color: #acacac;
 }
 
 ::-webkit-scrollbar {
-  width: 1.2rem;
-  background-color: #c8cfd6;
+    width: 1.2rem;
+    background-color: #c8cfd6;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 3rem;
-  box-shadow: inset 0 0 .6rem rgba(0,0,0,.3);
-  -webkit-box-shadow: inset 0 0 .6rem rgba(0,0,0,.3);
-  background-color: #555;
+    border-radius: 3rem;
+    box-shadow: inset 0 0 .6rem rgba(0, 0, 0, .3);
+    -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, .3);
+    background-color: #555;
 }
 
 /* ----------------------------------------- Messages & Toasts */
-
 .toast-container {
     z-index: 9999999;
     overflow: visible;
     position: fixed;
-    top:7.5rem;
+    top: 7.5rem;
     right: 2rem;
     border-radius: .3rem;
 }
@@ -209,9 +203,7 @@ strong {
 }
 
 /* ----------------------------------------- Navbar */
-
 /* Mobile Nav */
-
 #mobile-nav {
     height: 5.5rem;
 }
@@ -225,6 +217,7 @@ strong {
 
 .navbar-toggler-icon {
     font-size: 2rem;
+    color: #fafafa;
 }
 
 /* Logo */
@@ -235,7 +228,7 @@ strong {
 
 /* Shopping bag icon */
 .fa-stack-2x {
-    font-size: 3.2rem !important;
+    font-size: 3rem !important;
 }
 
 .fa-stack-1x {
@@ -248,16 +241,20 @@ header {
 }
 
 /* Dynamic Navbar - Classes that change when user scrolls down from top of page */
-
 .transparent-gradient {
-    background-image: -o-linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
-    background-image: -moz-linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
-    background-image: -webkit-linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,0)) !important;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)) !important;
+    background-image: -o-linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)) !important;
+    background-image: -moz-linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)) !important;
+    background-image: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)) !important;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)) !important;
 }
 
 .navbar-scroll-transition {
     transition: all .45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Referenced https://codecorns.com/bootstrap-4-navbar-toggle-color-change/ */
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .block-colour {
@@ -268,6 +265,10 @@ header {
     background-color: #f0f0f0 !important;
 }
 
+.navbar-toggler-block-colour {
+    color: #000;
+}
+
 .navbar-brand-block-colour {
     color: orangered !important;
 }
@@ -276,14 +277,22 @@ header {
     color: #000 !important;
 }
 
-.nav-link-colour,
-.fa-shopping-bag-block-colour {
+.nav-link-colour, .fa-shopping-bag-block-colour {
     color: #00baff !important;
 }
 
 /* End of Dynamic Navbar */
 
-.navbar-brand {
+.navbar-dark .navbar-brand {
+    margin-right: 0;
+    font-size: 2.6rem;
+    color: #fafafa;
+    font-family: 'Baloo 2', cursive;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.navbar-light .navbar-brand {
     margin-right: 0;
     font-size: 2.6rem;
     color: #fafafa;
@@ -338,7 +347,6 @@ header {
 }
 
 /* ----------------------------------------- Footer */
-
 footer {
     position: absolute;
     padding-bottom: 2rem;
@@ -365,7 +373,6 @@ footer a, footer span {
 }
 
 /* ----------------------------------------- Login/Signup/Sign Out */
-
 #login, #signup, #sign-out {
     margin-top: 16rem;
 }
@@ -406,10 +413,7 @@ footer a, footer span {
 }
 
 /* ----------------------------------------- Stripe */
-
-.StripeElement,
-.stripe-style-input,
-.profile-form-input {
+.StripeElement, .stripe-style-input, .profile-form-input {
     box-sizing: border-box;
     height: 4rem;
     padding: 1rem 1rem;
@@ -422,11 +426,7 @@ footer a, footer span {
     transition: box-shadow 150ms ease;
 }
 
-.StripeElement--focus,
-.stripe-style-input:focus,
-.stripe-style-input:active,
-.profile-form-input:focus,
-.profile-form-input:active {
+.StripeElement--focus, .stripe-style-input:focus, .stripe-style-input:active, .profile-form-input:focus, .profile-form-input:active {
     box-shadow: 0 1px 3px 0 #c5ccd3;
 }
 
@@ -434,8 +434,7 @@ footer a, footer span {
     background-color: #fefde5 !important;
 }
 
-.stripe-style-input::placeholder,
-.profile-form-input::placeholder {
+.stripe-style-input::placeholder, .profile-form-input::placeholder {
     color: #aab7c4;
 }
 
@@ -443,8 +442,7 @@ fieldset {
     padding: 1rem;
 }
 
-.stripe-style-input,
-.profile-form-input {
+.stripe-style-input, .profile-form-input {
     width: 100%;
 }
 
@@ -453,8 +451,7 @@ fieldset {
     left: 0;
 }
 
-#payment-form .form-control,
-#card-element {
+#payment-form .form-control, #card-element {
     color: #000;
     border: 1px solid #c8cfd6;
 }
@@ -463,13 +460,11 @@ fieldset {
     margin: .25rem;
 }
 
-select,
-select option {
+select, select option {
     color: #000;
 }
 
-select:invalid,
-select option[value=""] {
+select:invalid, select option[value=""] {
     color: #aab7c4 !important;
 }
 
@@ -504,7 +499,6 @@ select option[value=""] {
     h1 {
         font-size: 4rem;
     }
-
     input {
         font-size: 1.9rem;
     }

@@ -1,10 +1,10 @@
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
+<button class="navbar-toggler {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-toggler-block-colour{% endif %}" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
 <li class="list-inline-item">
     <h2 class="logo mobile-logo">
-        <a class="font-italic navbar-brand" href="{% url 'home' %}">
+        <a class="font-italic navbar-brand {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-brand-block-colour{% endif %}" href="{% url 'home' %}">
             TUCKIN
         </a>
     </h2>
@@ -13,8 +13,8 @@
     <a class="{% if food_item_count %}font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
         href="{% url 'view_bag' %}">
         <div class="text-center">
-            <i class="fa-stack-2x fas fa-shopping-bag fa-lg position-relative text-dark">
-                <span class="fa-stack-1x my-2 text-white">
+            <i class="fa-stack-2x fas fa-shopping-bag fa-lg position-relative {% if dynamic_navbar %}text-white{% else %}text-dark{% endif %}">
+                <span class="fa-stack-1x my-2 {% if dynamic_navbar %}text-dark{% else %}text-white{% endif %}">
                     {% if food_item_count %}
                         {{ food_item_count }}
                     {% endif %}

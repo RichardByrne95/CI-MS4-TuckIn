@@ -1,6 +1,9 @@
 /* ----------------------------------------- All Restaurants */
 header {
     padding-bottom: 0;
+}
+
+.header-border-bottom {
     border-bottom: #c8cfd6 solid .1rem;
 }
 
@@ -79,6 +82,7 @@ header {
 .dropdown-toggle {
     background-color: #00baff;
     border-color: #00baff;
+    font-weight: 600;
 }
 
 .dropdown-toggle:hover,
@@ -97,7 +101,7 @@ header {
 }
 
 .card-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: bold;
     margin-top: 1rem;
     margin-bottom: 0;
@@ -107,6 +111,11 @@ header {
 .delivery-cost {
     color: #333;
     font-weight: 300;
+    font-size: 1.4rem;
+}
+
+.restaurant-rating {
+    font-size: 1.5rem;
 }
 
 .restaurant-rating i {
