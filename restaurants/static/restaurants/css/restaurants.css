@@ -22,6 +22,11 @@ header {
     margin-right: 1rem;
 }
 
+#nearby-restaurants-cuisine {
+    font-size: inherit;
+    font-weight: 500;
+}
+
 .change-location a {
     margin: 0;
     font-size: 1.4rem;
@@ -31,8 +36,8 @@ header {
 
 /* Referenced https://calvinke.com/seo/fixed-header-anchor-css/ */
 .anchor {
-    padding-top: 100px;
-    margin-top: -100px;
+    padding-top: 12rem;
+    margin-top: -12rem;
 }
 
 .card {
@@ -181,6 +186,7 @@ header {
 
 .menu-section {
     display: inline-block;
+    font-size: 2.2rem;
     padding-right: 6rem;
 }
 
@@ -232,7 +238,7 @@ header {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 2rem;
+    padding: 4rem;
     height: 100%;
     width: 40%;
     object-fit: cover;
@@ -350,6 +356,10 @@ header {
 
 /* ----------------------------------------- >=992px */
 @media screen and (min-width: 992px) {
+    header {
+        border: none;
+    }
+
     #restaurants {
         margin-top: 13rem;
     }
@@ -366,11 +376,6 @@ header {
         font-weight: 500;
         color: #00baff;
         margin-left: 1rem;
-    }
-
-    .card-body {
-        padding: 0;
-        margin: 7%;
     }
 
     #restaurants-opening-later-text {

@@ -95,18 +95,22 @@
                             <!-- If address has been inputted -->
                             {% if short_maps_address %}
                                 <h4 class="d-inline-block nearby-restaurants">
-                                    {{ open_restaurants|count }}
                                     <!-- Add cuisine type if refining by cuisine -->
                                     {% if current_cuisine %}
-                                        {{ current_cuisine|title }}
+                                        <span id="nearby-restaurants-cuisine">
+                                            {{ open_restaurants|count }}
+                                            {{ current_cuisine|title }}
+                                        </span>
+                                    {% else %}    
+                                        {{ open_restaurants|count }}
                                     {% endif %}
                                     <!-- If there is more than 1 or no restaurants open -->
-                                    {% if open_restaurants|count > 1 %}
+                                    {% if open_restaurants|count > 1 or open_restaurants|count == 0 %}
                                         restaurants 
                                     {% else %} 
                                          restaurant 
                                     {% endif %}
-                                    delivering to {{ short_maps_address }}
+                                    currently delivering to {{ short_maps_address }}
                                 </h4>
                                 <p class="d-inline text-nowrap change-location"><a href="{% url 'home' %}">change location</a></p>
                             {% else %}
@@ -117,7 +121,7 @@
                                     {% else %} 
                                         restaurant 
                                     {% endif %}
-                                    delivering in Dublin
+                                    currently delivering in Dublin
                                 </h4>
                                 <p class="ms-5 d-inline text-nowrap change-location"><a href="{% url 'home' %}">set location</a></p>
                             {% endif %}
@@ -132,7 +136,7 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
                                             Rated</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=free_delivery&direction=asc">Delivery
+                                    <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
                                             Cost</a></li>
                                 </ul>
                             </div>

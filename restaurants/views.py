@@ -39,9 +39,8 @@ def all_restaurants(request):
             if sortkey == 'rating_high':
                 sortkey = 'rating'
                 refine_text = 'Rating'
-            elif sortkey == 'free_delivery':
-                sortkey = 'delivery_cost'
-                refine_text = 'Delivery Cost'
+            elif sortkey == 'delivery_cost':
+                refine_text = 'Delivery'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
