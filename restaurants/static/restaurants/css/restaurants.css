@@ -151,6 +151,7 @@ header {
     max-height: 40vh;
     min-width: 100%;
     object-fit: cover;
+    height: 25rem;
 }
 
 .background-image .row {
@@ -159,7 +160,7 @@ header {
 
 .restaurant-name-menu {
     color: #fafafa;
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .restaurant-closed-banner {
@@ -173,7 +174,7 @@ header {
     max-height: 40vh;
     background-color: rgba(0,0,0,.3);
     width: 100%;
-    height: 100%;
+    height: 25rem;
 }
 
 .closed-overlay {
@@ -182,11 +183,11 @@ header {
     max-height: 40vh;
     background-color: rgba(66, 65, 65, 0.5);
     width: 100%;
-    height: 100%;
+    height: 25rem;
 }
 
 .restaurant-menu-section {
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 .menu-delivery-cost {
@@ -206,22 +207,31 @@ header {
 }
 
 #menu-divider {
-    margin: 1rem 1rem 4rem 1rem;
+    color: #333;
+    margin: 1rem 0 3rem 0;
 }
 
 .menu-section-food-items {
     margin-bottom: 5rem;
 }
 
-.restaurant-info-menu,
-.menu-section-heading,
+.restaurant-info-menu {
+    padding-left: 0;
+    padding-right: 0;
+}
+.menu-section-heading {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .menu-nav-container {
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
 .menu-section-heading {
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: .5rem;
 }
 
 .food-item-card {
@@ -257,7 +267,7 @@ header {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 3rem;
+    padding: 2rem;
     height: 100%;
     width: 40%;
     object-fit: cover;
@@ -266,7 +276,6 @@ header {
 }
 
 /* Modal */
-
 .food-item-form {
     margin-top: 3rem;
 }
@@ -345,13 +354,40 @@ header {
 
 /* ----------------------------------------- >=768px */
 @media screen and (min-width: 768px) {
+    .restaurant-info-menu {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .menu-section-heading {
+        font-size: 2.8rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 0;
+    }
+
+    #menu-divider {
+        margin: 1rem 1rem 4rem 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .card {
         margin: 2rem;
     }
+
+    .restaurant-card {
+        margin: 0;
+        padding: 2rem;
+    }
     
     .food-item-card {
-        margin: 1rem;
+        margin: 0;
         padding: 1rem;
+    }
+
+    .food-item-photo {
+        padding: 3rem;
     }
 
     .restaurant-card-cover-image {
@@ -376,6 +412,10 @@ header {
         max-width: 12.5rem;
         min-width: 12.5rem;
     }
+
+    .restaurant-name-menu {
+        font-size: 4.5rem;
+    }
 }
 
 /* ----------------------------------------- >=992px */
@@ -390,6 +430,20 @@ header {
 
     #restaurants-column {
         padding: 0 0 0 5rem;
+    }
+
+    .menu-background-image,
+    .shadow-overlay,
+    .closed-overlay {
+        height: 40rem;
+    }
+
+    .restaurant-menu-section {
+        padding-top: 5rem;
+    }
+
+    .restaurant-name-menu {
+        font-size: 5rem;
     }
 }
 
