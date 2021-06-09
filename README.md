@@ -106,3 +106,5 @@ Phone number purposely excluded from restaurant menu to encourage the user to or
 Used https://www.cookiepolicygenerator.com/ to generate cookie and privacy policies.
 Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
 Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
+
+Footer was removed from bag and checkout pages so as to minimise potential distractions that could prevent the user from completing an order.
