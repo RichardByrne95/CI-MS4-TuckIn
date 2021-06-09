@@ -189,13 +189,19 @@ header {
     padding-top: 5rem;
 }
 
+.menu-delivery-cost {
+    color: black;
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
 .menu-nav-container {
     margin: 3rem 0 1.5rem 0;
 }
 
 .menu-section {
     display: inline-block;
-    font-size: 2.2rem;
+    font-size: 2rem;
     padding-right: 6rem;
 }
 
@@ -223,7 +229,7 @@ header {
 }
 
 .food-item-col {
-    padding: 1rem;
+    padding: 1rem 0 0;
 }
 
 .food-item-card-body {
@@ -243,11 +249,15 @@ header {
     max-width: 50%;
 }
 
+.food-item-card-description {
+    font-size: 1.4rem;
+}
+
 .food-item-photo {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 4rem;
+    padding: 3rem;
     height: 100%;
     width: 40%;
     object-fit: cover;
@@ -336,7 +346,12 @@ header {
 /* ----------------------------------------- >=768px */
 @media screen and (min-width: 768px) {
     .card {
-        padding: 2rem;
+        margin: 2rem;
+    }
+    
+    .food-item-card {
+        margin: 1rem;
+        padding: 1rem;
     }
 
     .restaurant-card-cover-image {
