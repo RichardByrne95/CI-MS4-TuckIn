@@ -119,13 +119,13 @@ strong {
 }
 
 .btn-lg>*, .continue-checkout-button>* {
-    font-size: 1.3rem !important;
+    font-size: 1.3rem;
     font-weight: 500;
 }
 
 .continue-checkout-button .icon i {
     vertical-align: middle;
-    font-size: 1.3rem !important;
+    font-size: 1.3rem;
 }
 
 .continue-checkout-button:hover {
