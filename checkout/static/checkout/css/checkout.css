@@ -3,7 +3,7 @@
 #checkout-address-section,
 #checkout-time-section,
 #checkout-payment-section {
-    padding-top: 12rem;
+    padding-top: 7rem;
 }
 
 
@@ -204,4 +204,13 @@ hr.divider {
 .dotted-underline {
     font-size: inherit;
     border-bottom: .1rem black dotted;
+}
+
+/* ----------------------------------------- >=992px */
+@media screen and (min-width: 992px) {
+    #checkout-address-section,
+    #checkout-time-section,
+    #checkout-payment-section {
+        padding-top: 12rem;
+}
 }
