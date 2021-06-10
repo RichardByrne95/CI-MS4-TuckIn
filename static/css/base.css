@@ -25,7 +25,7 @@ main {
     padding-bottom: 8.5rem;
 }
 
-.no-gutters, figure {
+.no-gutters {
     padding: 0;
     margin: 0;
 }
@@ -57,6 +57,11 @@ a {
 
 a:hover {
     color: rgba(255, 68, 0, 0.774);
+}
+
+figure {
+    margin: 0;
+    padding: 0;
 }
 
 input {
@@ -203,6 +208,10 @@ strong {
 }
 
 /* ----------------------------------------- Navbar */
+.navbar {
+    min-width: 20.4rem;
+}
+
 /* Mobile Nav */
 #mobile-nav {
     height: 5.5rem;

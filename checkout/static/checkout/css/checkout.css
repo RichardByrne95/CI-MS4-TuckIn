@@ -101,6 +101,19 @@ label[for="delivery-time-select"] {
     font-size: 1.4rem;
 }
 
+.food-image {
+    border-radius: .3rem;
+}
+
+.food-name {
+    font-weight: 500;
+}
+
+.grand-total {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 /* ----------------------------------------- Order Confirmation */
 
 .order-confirmation-subheader {

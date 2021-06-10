@@ -17,7 +17,7 @@
             <!-- Page Heading -->
             <div class="row no-gutters">
                 <div class="col-12 no-gutters text-center">
-                    <h2>Order Payment</h2>
+                    <h2>Order payment</h2>
                 </div>
             </div>
             <div class="row no-gutters">
@@ -28,7 +28,7 @@
                             <p class="pb-3">Please ensure your details are correct before you complete your order.</p>
                         </div>
                     </div>
-                    <!-- Address and Payment Form -->
+                    <!-- Payment Form and Order Summary -->
                     <div class="row no-gutters justify-content-center" id="address-and-payment-form">
                         <div class="col-11 col-md-5 col-xl-3 no-gutters d-flex justify-content-center justify-content-lg-end">
                             <div class="customer-details">
@@ -98,17 +98,17 @@
                             <div class="row no-gutters order-summary">
                                 <div class="col-12 no-gutters">
                                     <p class="card-padding order-summary-heading">
-                                        <strong>Order Summary ({{ food_item_count }})</strong>
+                                        <strong>Order summary ({{ food_item_count }})</strong>
                                         <a href="{% url 'view_bag' %}" class="">
-                                            <span class="font-weight-bold">Adjust Order</span>
+                                            <span class="font-weight-bold">adjust order</span>
                                         </a>
                                     </p>
                                     <div class="row no-gutters card-padding">
                                         <div class="col-7 offset-md-2 no-padding">
                                             <p class="mb-1 mt-0 text-muted">Item</p>
                                         </div>
-                                        <div class="col-3 no-gutters text-right">
-                                            <p class="mb-1 text-muted">Subtotal</p>
+                                        <div class="col-3 offset-2 offset-md-0 p-0">
+                                            <p class="mb-1 text-muted text-end">Subtotal</p>
                                         </div>
                                     </div>
                                     {% for food in bag_contents %}
@@ -117,7 +117,7 @@
                                             <div class="col-2 no-gutters mb-1 px-3 ps-md-0 pe-md-3 px-lg-3 d-none d-md-block">
                                                 <a href="{% url 'restaurant_menu' food.food.menu_section.restaurant.id %}">
                                                     {% if food.food.image %}
-                                                        <img class="w-100" src="{{ food.food.image.url }}" alt="{{ food.food.friendly_name }}">
+                                                        <img class="w-100 food-image" src="{{ food.food.image.url }}" alt="{{ food.food.friendly_name }}">
                                                     {% else %}
                                                         <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ food.food.friendly_name }}">
                                                     {% endif %}
@@ -125,13 +125,13 @@
                                             </div>
                                             <!-- Food Details -->
                                             <div class="col-7 no-gutters">
-                                                <p class="my-0"><strong>{{ food.food.friendly_name }}</strong></p>
+                                                <p class="my-0 food-name">{{ food.food.friendly_name }}</p>
                                                 <p class="my-0 text-muted">Qty: {{ food.quantity }}</p>
                                                 <p class="fst-italic my-0">{{ food.additional_details }}</p>
                                             </div>
                                             <!-- Food Price -->
-                                            <div class="col-3 no-gutters text-right">
-                                                <p class="my-0 text-muted">€{{ food.food.price | calc_subtotal:food.quantity }}</p>
+                                            <div class="col-3 offset-2 offset-md-0 p-0">
+                                                <p class="my-0 text-muted text-end">{{ food.food.price | calc_subtotal:food.quantity }}</p>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -142,13 +142,13 @@
                                             <p class="my-0 subtotal">Subtotal:</p>
                                             <p class="my-0">Delivery:</p>
                                             <br>
-                                            <p class="my-0"><strong>Grand Total:</strong></p>
+                                            <p class="my-0 grand-total">Grand total:</p>
                                         </div>
-                                        <div class="col-3 no-gutters">
-                                            <p class="my-0 subtotal">€{{ order_total | floatformat:2 }}</p>
-                                            <p class="my-0">€{{ delivery_cost | floatformat:2 }}</p>
+                                        <div class="col-3 offset-2 offset-md-0 p-0">
+                                            <p class="my-0 text-end subtotal">{{ order_total | floatformat:2 }}</p>
+                                            <p class="my-0 text-end">{{ delivery_cost | floatformat:2 }}</p>
                                             <br>
-                                            <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
+                                            <p class="my-0 text-end grand-total">€{{ grand_total | floatformat:2 }}</p>
                                         </div>
                                     </div>
                                     <hr class="divider">

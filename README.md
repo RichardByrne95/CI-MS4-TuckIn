@@ -87,6 +87,7 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 -   Add prompt to remove everything from order when food from another restaurant is in the bag
 -   Allow the user to store a bag for each restaurant
 -   Add choices to food modal e.g. select toppings
+-   Add ability for restaurants to issue discount codes
 
 
 
