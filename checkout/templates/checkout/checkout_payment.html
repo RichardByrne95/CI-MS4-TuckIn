@@ -24,13 +24,13 @@
                 <div class="col-12 no-gutters bag-contents">
                     <!-- Ensure details are correct note -->
                     <div class="row no-gutters justify-content-center pb-3">
-                        <div class="col-8 no-gutters d-flex justify-content-center">
+                        <div class="col-10 col-lg-8 no-gutters d-flex justify-content-center">
                             <p class="pb-3">Please ensure your details are correct before you complete your order.</p>
                         </div>
                     </div>
                     <!-- Address and Payment Form -->
                     <div class="row no-gutters justify-content-center" id="address-and-payment-form">
-                        <div class="col-3 no-gutters d-flex justify-content-end">
+                        <div class="col-11 col-md-5 col-xl-3 no-gutters d-flex justify-content-center justify-content-lg-end">
                             <div class="customer-details">
                                 <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                                     {% csrf_token %}
@@ -81,7 +81,7 @@
                                             </span>
                                         </button>
                                         <!-- Charge Warning -->
-                                        <p class="d-flex justify-content-center align-items-center text-danger mt-2 charge-warning">
+                                        <p class="d-flex justify-content-center align-items-center text-danger mt-3 charge-warning">
                                             <span class="d-flex justify-content-center align-items-center icon">
                                                 <i class="fas fa-exclamation-circle"></i>
                                             </span>
@@ -91,20 +91,20 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-1 no-gutters gap"></div>
+                        <div class="col-1 no-gutters gap d-none d-md-block"></div>
                         <!-- Order Summary -->
-                        <div class="col-4 no-gutters">
+                        <div class="col-11 col-md-5 col-xl-4 no-gutters d-flex d-md-block justify-content-center justify-content-md-none">
                             <!-- Order Summary Headings -->
                             <div class="row no-gutters order-summary">
                                 <div class="col-12 no-gutters">
-                                    <p class="card-padding">
+                                    <p class="card-padding order-summary-heading">
                                         <strong>Order Summary ({{ food_item_count }})</strong>
                                         <a href="{% url 'view_bag' %}" class="">
                                             <span class="font-weight-bold">Adjust Order</span>
                                         </a>
                                     </p>
                                     <div class="row no-gutters card-padding">
-                                        <div class="col-7 offset-2 no-padding">
+                                        <div class="col-7 offset-md-2 no-padding">
                                             <p class="mb-1 mt-0 text-muted">Item</p>
                                         </div>
                                         <div class="col-3 no-gutters text-right">
@@ -114,7 +114,7 @@
                                     {% for food in bag_contents %}
                                         <div class="row no-gutters card-padding {% if forloop.first %}first-food-item{% endif %}">
                                             <!-- Food Image -->
-                                            <div class="col-2 no-gutters mb-1 px-3">
+                                            <div class="col-2 no-gutters mb-1 px-3 ps-md-0 pe-md-3 px-lg-3 d-none d-md-block">
                                                 <a href="{% url 'restaurant_menu' food.food.menu_section.restaurant.id %}">
                                                     {% if food.food.image %}
                                                         <img class="w-100" src="{{ food.food.image.url }}" alt="{{ food.food.friendly_name }}">
@@ -138,7 +138,7 @@
                                     <hr class="divider">
                                     <!-- Order Totals -->
                                     <div class="row no-gutters card-padding">
-                                        <div class="col-7 offset-2 no-padding">
+                                        <div class="col-7 offset-md-2 no-padding">
                                             <p class="my-0 subtotal">Subtotal:</p>
                                             <p class="my-0">Delivery:</p>
                                             <br>
@@ -152,11 +152,11 @@
                                         </div>
                                     </div>
                                     <hr class="divider">
-                                    <!-- Order Message and Restaurant Adderss -->
+                                    <!-- Order Message and Restaurant Address -->
                                     <div class="row no-gutters justify-content-center text-center card-padding additional-details">
                                         {% if order_message %}
                                             <!-- Order Message -->
-                                            <div class="col-7 offset-2 order-message">
+                                            <div class="col-7 offset-md-2 order-message">
                                                 <hr class="my-0">
                                                 <p class="fst-italic py-3">{{ order_message }}</p>
                                                 <hr class="my-0">
@@ -178,8 +178,34 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Need Help Prompt Desktop -->
+                            <aside class="row no-gutters d-none d-md-block order-summary border-0">
+                                <div class="col-12 no-gutters">
+                                    <div class="row no-gutters need-help">
+                                        <div class="col-12 no-gutters d-flex justify-content-center">
+                                            <p>Need help? Visit the 
+                                                <a href="#">help section</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
                         </div>
                     </div>
+                    <!-- Need Help Prompt Mobile -->
+                    <aside class="row no-gutters d-flex d-md-none">
+                        <div class="col-12 no-gutters">
+                            <div class="col-11 col-md-6 offset-md-6 col-lg-4 offset-lg-none no-gutters">
+                                <div class="row no-gutters need-help">
+                                    <div class="col-12 no-gutters d-flex justify-content-center">
+                                        <p>Need help? Visit the 
+                                            <a href="#">help section</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </section>

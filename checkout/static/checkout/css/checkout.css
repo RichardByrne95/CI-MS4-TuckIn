@@ -1,4 +1,7 @@
 /* ----------------------------------------- Checkout */
+main {
+    padding-bottom: 2rem;
+}
 
 #checkout-address-section,
 #checkout-time-section,
@@ -40,23 +43,13 @@ label[for="delivery-time-select"] {
 
 /* ----------------------------------------- Payment */
 
-main {
-    padding-bottom: 12.5rem;
-}
-
 .gap {
     max-width: 5rem;
     min-width: 1rem;
 }
 
-.customer-details {
-    min-width: 40rem;
-    max-width: 42rem;
-}
-
 .order-summary{
-    min-width: 42rem;
-    max-width: 53rem;
+    padding: 0;
 }
 
 .customer-details,
@@ -64,10 +57,23 @@ main {
     border: .1rem solid #c8cfd6;
     border-radius: .3rem;
     padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.order-summary-heading {
+    font-size: 2rem;
+}
+
+.order-summary-heading span {
+    font-size: 1.15rem;
 }
 
 .form-check {
     padding: 1rem 0;
+}
+
+.form-check-input {
+    min-width: 1.8rem;
 }
 
 #submit-button {
@@ -89,10 +95,6 @@ main {
 .charge-warning,
 .charge-warning span {
     font-size: 1.4rem;
-}
-
-.order-summary {
-    padding: 0;
 }
 
 .save-info {
@@ -206,11 +208,61 @@ hr.divider {
     border-bottom: .1rem black dotted;
 }
 
+.need-help p,
+.need-help a {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.need-help a {
+    color: black;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* ----------------------------------------- <=360px */
+@media screen and (max-width: 360px) {
+    .customer-details,
+    .order-summary {
+        padding: 1rem;
+    }
+}
+
+/* ----------------------------------------- >=768px */
+@media screen and (min-width: 768px) {
+    #payment-form {
+        display: inline-block;
+    }
+
+    .customer-details,
+    .order-summary {
+        padding: 1rem;
+    }
+
+    .card-padding {
+        padding: 1.5rem 1.7rem 0 1.7rem;
+    }
+}
+
 /* ----------------------------------------- >=992px */
 @media screen and (min-width: 992px) {
+    main {
+        padding-bottom: 12.5rem;
+    }
+
     #checkout-address-section,
     #checkout-time-section,
     #checkout-payment-section {
         padding-top: 12rem;
-}
+    }
+
+    .customer-details {
+        min-width: 40rem;
+        max-width: 42rem;
+    }
+    
+    .order-summary{
+        min-width: 42rem;
+        max-width: 53rem;
+    }
 }
