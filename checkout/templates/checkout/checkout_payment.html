@@ -156,21 +156,21 @@
                                     <div class="row no-gutters justify-content-center text-center card-padding additional-details">
                                         {% if order_message %}
                                             <!-- Order Message -->
-                                            <div class="col-7 offset-md-2 order-message">
+                                            <div class="col-12 col-md-7 offset-md-2 order-message">
                                                 <hr class="my-0">
                                                 <p class="fst-italic py-3">{{ order_message }}</p>
                                                 <hr class="my-0">
                                             </div>
                                         {% endif %}
                                         <!-- Restaurant Address -->
-                                        <div class="col-7 no-gutters restaurant-address">
+                                        <div class="col-12 col-md-7 no-gutters restaurant-address">
                                             <p class="d-inline-block">{{ order_restaurant.friendly_name }}, {{ order_restaurant.address_1 }}, {{ order_restaurant.address_2 }}</p>
                                         </div>
                                     </div>
                                     <hr class="divider">
                                     <!-- Delivery Time -->
                                     <div class="row no-gutters justify-content-center text-center card-padding delivery-time">
-                                        <div class="col-7 no-gutters">
+                                        <div class="col-12 col-md-7 no-gutters">
                                             <span><strong>
                                                 <i class="fas fa-route"></i> Delivery <span class="dotted-underline">estimated for</span> {{ delivery_time }}
                                             </strong></span>
