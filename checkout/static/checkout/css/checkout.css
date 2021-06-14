@@ -121,8 +121,10 @@ label[for="delivery-time-select"] {
 }
 
 .jumbotron-container {
-    padding: 15rem 0 4.5rem 0;
+    padding: 9rem 0 4.5rem 0;
     background-color: #00baff;
+    min-width: none;
+    max-width: none;
 }
 
 .jumbotron {
@@ -131,11 +133,17 @@ label[for="delivery-time-select"] {
     left: 0;
     transform: translate(0);
     border-radius: .3rem;
+    margin: 2rem;
 }
 
 #order-confirmed-jumbotron {
     padding: 2rem;
     background-color: #fff;
+    width: 100%;
+}
+
+#order-confirmed-heading {
+    margin: 1rem 2rem 1rem 0;
 }
 
 .order-again-btn {
@@ -165,6 +173,10 @@ label[for="delivery-time-select"] {
 
 .fa-star:hover {
     cursor: pointer;
+}
+
+#order-details-section {
+    padding-bottom: 28rem;
 }
 
 .restaurant-checkout-logo-container,
@@ -233,6 +245,13 @@ hr.divider {
     text-decoration: underline;
 }
 
+/* ----------------------------------------- <=280px */
+@media screen and (max-width: 280px) {
+    .order-number {
+        font-size: 1.2rem;
+    }
+}
+
 /* ----------------------------------------- <=360px */
 @media screen and (max-width: 360px) {
     .customer-details,
@@ -255,6 +274,14 @@ hr.divider {
     .card-padding {
         padding: 1.5rem 1.7rem 0 1.7rem;
     }
+
+    .jumbotron-container {
+        padding-bottom: 2rem;
+    }
+
+    #order-details-section {
+        padding-bottom: 15rem;
+    }
 }
 
 /* ----------------------------------------- >=992px */
@@ -267,6 +294,14 @@ hr.divider {
     #checkout-time-section,
     #checkout-payment-section {
         padding-top: 12rem;
+    }
+
+    .jumbotron-container {
+        padding: 15rem 0 4.5rem 0;
+    }
+
+    .jumbotron {
+        margin: 0;
     }
 
     .customer-details {
