@@ -64,16 +64,31 @@
 /* ----------------------------------------- Cookies Policy */
 
 .background-image {
-    max-height: 50vh;
+    max-height: 30vh;
+    height: 30vh;
 }
 
 .shadow-overlay {
     position:absolute;
     top: 0;
-    max-height: 50vh;
+    max-height: 30vh;
     background-color: rgba(0,0,0,.4);
     width: 100%;
     height: 100%;
+}
+
+#cookies-policy-heading {
+    font-size: 2.5rem;
+}
+
+#cookies-policy h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin: 3rem 0 1rem;
+}
+
+#cookies-policy h3 {
+    font-weight: 500;
 }
 
 h3 {
@@ -93,4 +108,47 @@ li {
 h2 {
     margin: 2rem 0;
     font-weight: bold;
+}
+
+/* ----------------------------------------- >=768px */
+@media screen and (min-width: 768px) {
+    #cookies-policy-heading {
+        font-size: 3.5rem;
+    }
+}
+
+/* ----------------------------------------- >=992px */
+@media screen and (min-width: 992px) {
+    #cookies-policy-heading {
+        font-size: 4.5rem;
+    }
+
+    #cookies-policy h2 {
+        font-size: 2.8rem;
+    }
+
+    .background-image {
+        max-height: 40vh;
+        height: 40vh;
+    }
+
+    .shadow-overlay {
+        max-height: 40vh;
+    }
+}
+
+/* ----------------------------------------- >=1200px */
+@media screen and (min-width: 1200px) {
+    .background-image {
+        max-height: 50vh;
+        height: 50vh;
+    }
+
+    .shadow-overlay {
+        max-height: 50vh;
+    }
+
+    #cookies-policy h2 {
+        font-size: 3rem;
+    }
 }
