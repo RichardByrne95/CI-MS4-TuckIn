@@ -14,8 +14,9 @@
     <div class="container-fluid no-gutters">
         <section id="customer-account">
             <div class="row no-gutters">
-                <div class="col-12 col-lg-8 offset-lg-2 p-0">
+                <div class="col-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 p-0">
                     <div class="row no-gutters">
+                        <!-- Nav Sidebar -->
                         <nav class="col-3 d-none d-lg-block no-gutters account-sidebar">
                             <a href="{% url 'customer_profile' %}">
                                 <h3 class="sidebar-active">Account</h3>
@@ -24,6 +25,7 @@
                                 <h3>Order history</h3>
                             </a>
                         </nav>
+                        <!-- Account Details -->
                         <div class="col-12 col-lg-6 no-gutters text-left p-4 p-lg-0 account-info">
                             <h1 class="account-heading">Account</h1>
                             <form action="{% url 'customer_profile' %}" method="POST" id="account-details-form">

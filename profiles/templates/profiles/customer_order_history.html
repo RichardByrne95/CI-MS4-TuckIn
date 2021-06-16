@@ -13,18 +13,19 @@
 {% block content %}
     <div class="container-fluid no-gutters">
         <section id="customer-orders">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-8 no-gutters">
+            <div class="row no-gutters">
+                <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 p-0">
                     <div class="row no-gutters">
-                        <aside class="col-3 no-gutters account-sidebar">
+                        <!-- Nav Sidebar -->
+                        <nav class="col-lg-3 d-none d-lg-block no-gutters account-sidebar">
                             <a href="{% url 'customer_profile' %}">
                                 <h3>Account</h3>
                             </a>
                             <a href="{% url 'customer_order_history' %}">
-                                <h3>Order history</h3>
+                                <h3 class="sidebar-active">Order history</h3>
                             </a>
-                        </aside>
-                        <div class="col-6 no-gutters order-history">
+                        </nav>
+                        <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-0 p-4 p-lg-0 order-history">
                             <h1 class="account-heading">Previous orders</h1>
                             <!-- Order History List -->
                             {% if orders %}
@@ -59,13 +60,13 @@
                                                     </a>
                                                 </div>
                                                 <!-- Order again button -->
-                                                <div class="d-inline-flex align-items-start order-again-container">
-                                                    <a href="{% url 'order_again' order.order_number %}" class="order-again-btn">Order again</a>
+                                                <div class="d-inline-flex align-items-center order-again-container">
+                                                    <a href="{% url 'order_again' order.order_number %}" class="text-center order-again-btn">Order again</a>
                                                 </div>
                                             </div>
                                         </div>
                                         {% if not forloop.last %}
-                                            <hr>
+                                            <hr class="order-divider">
                                         {% endif %}
                                     {% endfor %}
                                 </div>

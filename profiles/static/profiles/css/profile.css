@@ -16,9 +16,10 @@ main {
 
 .account-sidebar h3 {
     font-size: 2rem;
+    font-weight: 300;
 }
 
-.sidebar-active {
+h3.sidebar-active {
     font-weight: 600;
 }
 
@@ -39,20 +40,24 @@ main {
 
 /* ----------------------------------------- Customer Order History */
 
-.previous-order {
-    padding: 1.6rem;
+.order-history-card {
+    padding: 0;
+    border: none;
+    border-radius: .3rem;
 }
 
-.order-history-card {
-    padding: 2.4rem;
-    border: .1rem solid #c8cfd6;
-    border-radius: .3rem;
+.previous-order {
+    padding: 1.6rem 0;
+}
+
+.order-divider {
+    color: #333;
 }
 
 .restaurant-logo-container{
     width: 5.5rem;
     height: 5.5rem;
-    margin: 0em 1rem 1rem 0;
+    margin: 0em 1rem 0 0;
 }
 
 .restaurant-address-container {
@@ -80,7 +85,7 @@ main {
 }
 
 .order-again-btn {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     padding: 1rem;
     color: #fff;
     background-color: orangered;
@@ -109,9 +114,36 @@ main {
     padding: 1.1rem;
 }
 
+/* ----------------------------------------- >=768px */
+@media screen and (min-width: 768px) {
+    main {
+        padding-bottom: 18rem;
+    }
+
+    .order-history-card {
+        padding: 2.4rem;
+        border: .1rem solid #c8cfd6;
+    }
+}
+
 /* ----------------------------------------- >=992px */
 @media screen and (min-width: 992px) {
     #customer-account, #customer-orders {
         margin-top: 16rem;
+    }
+
+    .order-history-card {
+        padding: 2.4rem;
+    }
+
+    .previous-order {
+        padding: 1.6rem;
+    }
+
+    .order-again-btn {
+        font-size: 1.8rem;
+        padding: 1rem;
+        font-weight: 600;
+        border-radius: .3rem;
     }
 }
