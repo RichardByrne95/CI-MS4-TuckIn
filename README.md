@@ -79,6 +79,7 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 -   Add ability to add a note to the overall order for the restaurant.
 -   Add ability to edit notes/additional details
 -   Add flexible minimum order amount
+-   Add restaurant accounts so that they can manage their inventory.
 -   Allow restaurants delivery and collection times to be separate
 -   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions)
 -   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00

@@ -1,13 +1,25 @@
 /* ----------------------------------------- Customer Account */
 
+main {
+    padding-bottom: 32rem;
+}
+
 #customer-account, #customer-orders {
-    margin-top: 16rem;
+    margin-top: 7rem;
 }
 
 .account-heading {
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 2rem;
+}
+
+.account-sidebar h3 {
+    font-size: 2rem;
+}
+
+.sidebar-active {
+    font-weight: 600;
 }
 
 .save-changes-button {
@@ -16,6 +28,7 @@
     color: #fff;
     background-color: #00baff;
     border-radius: .3rem;
+    padding: 1rem;
 }
 
 .save-changes-button:hover,
@@ -94,4 +107,11 @@
 #find-next-takeaway {
     font-size: 1.75rem;
     padding: 1.1rem;
+}
+
+/* ----------------------------------------- >=992px */
+@media screen and (min-width: 992px) {
+    #customer-account, #customer-orders {
+        margin-top: 16rem;
+    }
 }
