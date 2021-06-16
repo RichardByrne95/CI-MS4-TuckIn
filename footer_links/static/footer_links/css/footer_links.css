@@ -2,28 +2,26 @@
 
 #list-your-restaurant-heading {
     position: absolute;
-    top: 9%;
+    top: 8%;
     left: 50%;
     transform: translateX(-50%);
     color: #fafafa;
     font-size: 5rem;
+    min-width: 22rem;
 }
 
 #list-your-restaurant-tagline {
     position: absolute;
-    top: 13%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
     color: #fafafa;
     font-size: 1.8rem;
-}
-
-.footer-background-image {
-    max-height: 39vh;
+    min-width: 22rem;
 }
 
 .footer-link-form {
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .list-restaurant-fields {
@@ -31,11 +29,11 @@
 }
 
 .form-col-left {
-    padding-right: 5rem;
+    padding-right: 0;
 }
 
 .form-col-right {
-    padding-left: 5rem;
+    padding-left: 0;
 }
 
 .list-restaurant-fields input,
@@ -43,7 +41,7 @@
 .list-restaurant-fields select,
 .list-restaurant-fields option {
     display: flex;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: .3rem 1rem .3rem .3rem;
 }
 
@@ -64,17 +62,19 @@
 /* ----------------------------------------- Cookies Policy */
 
 .background-image {
-    max-height: 30vh;
-    height: 30vh;
+    /* max-height: 30vh; */
+    /* min-height: 20.5rem; */
+    height: 30rem;
 }
 
 .shadow-overlay {
     position:absolute;
     top: 0;
-    max-height: 30vh;
+    /* max-height: 30vh; */
+    /* min-height: 20.5rem; */
     background-color: rgba(0,0,0,.4);
     width: 100%;
-    height: 100%;
+    height: 30rem;
 }
 
 #cookies-policy-heading,
@@ -117,17 +117,25 @@ h2 {
 /* ----------------------------------------- >=768px */
 @media screen and (min-width: 768px) {
     #list-your-restaurant-heading {
-        top: 9%;
+        top: 11%;
     }
 
     #list-your-restaurant-tagline {
-        top: 14%;
+        top: 16%;
     }
 
     #cookies-policy-heading,
     #privacy-policy-heading,
     #list-your-restaurant-heading {
         font-size: 3.5rem;
+    }
+
+    .form-col-left {
+        padding-right: 2.5rem;
+    }
+    
+    .form-col-right {
+        padding-left: 2.5rem;
     }
 }
 
@@ -153,24 +161,49 @@ h2 {
     }
 
     .background-image {
-        max-height: 40vh;
-        height: 40vh;
+        /* max-height: 40vh; */
+        /* min-height: 28rem; */
+        height: 40rem;
     }
 
     .shadow-overlay {
-        max-height: 40vh;
+        height: 40rem;
+        /* max-height: 40vh; */
+        /* min-height: 28rem; */
+    }
+
+    .form-col-left {
+        padding-right: 3rem;
+    }
+    
+    .form-col-right {
+        padding-left: 3rem;
+    }
+
+    .list-restaurant-fields input,
+    .list-restaurant-fields label, 
+    .list-restaurant-fields select,
+    .list-restaurant-fields option {
+        display: flex;
+        font-size: 2rem;
+        padding: .3rem 1rem .3rem .3rem;
     }
 }
 
 /* ----------------------------------------- >=1200px */
 @media screen and (min-width: 1200px) {
+    main {
+        padding-bottom: 15rem;
+    }
+
     .background-image {
-        max-height: 50vh;
-        height: 50vh;
+        /* max-height: 50vh; */
+        height: 50rem;
     }
 
     .shadow-overlay {
-        max-height: 50vh;
+        /* max-height: 50vh; */
+        height: 50rem;
     }
 
     #list-your-restaurant-heading {
@@ -179,10 +212,23 @@ h2 {
 
     #list-your-restaurant-tagline {
         top: 26%;
+        font-size: 2rem;
     }
 
     #cookies-policy h2,
     #privacy-policy h2 {
         font-size: 3rem;
+    }
+
+    .footer-link-form {
+        margin-top: 4rem;
+    }
+
+    .form-col-left {
+        padding-right: 5rem;
+    }
+    
+    .form-col-right {
+        padding-left: 5rem;
     }
 }
