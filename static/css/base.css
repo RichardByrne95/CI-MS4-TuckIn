@@ -501,6 +501,10 @@ select:invalid, select option[value=""] {
     .navbar-brand {
         font-size: 3.1rem;
     }
+
+    #login, #signup, #sign-out {
+        margin-top: 16rem;
+    }
 }
 
 /* ----------------------------------------- >=1200px */
