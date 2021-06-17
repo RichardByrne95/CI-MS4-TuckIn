@@ -17,6 +17,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 
 def checkout_address(request):
+    # Handle no food in bag
+    if 'bag' not in request.session:
+        messages.warning(request, 'You have no food in your basket.')
+        return redirect(reverse('restaurants'))
+
     # Get restaurant
     restaurant_name = request.session.get('restaurant')
     restaurant = get_object_or_404(Restaurant, name=restaurant_name)
@@ -66,6 +71,11 @@ def checkout_address(request):
 
 @require_POST
 def checkout_time(request):
+    # Handle no food in bag
+    if 'bag' not in request.session:
+        messages.warning(request, 'You have no food in your basket.')
+        return redirect(reverse('restaurants'))
+
     # Get delivery times
     bag = request.session.get('bag', {})
     current_restaurant = get_object_or_404(Restaurant, name=list(bag)[0])
@@ -100,6 +110,11 @@ def checkout_time(request):
 
 @require_POST
 def checkout_payment(request):
+    # Handle no food in bag
+    if 'bag' not in request.session:
+        messages.warning(request, 'You have no food in your basket.')
+        return redirect(reverse('restaurants'))
+    
     # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)
