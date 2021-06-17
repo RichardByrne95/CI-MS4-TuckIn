@@ -59,7 +59,9 @@
             <div class="col-12 no-gutters">
                 <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark navbar-scroll-transition{% else %}navbar-light navbar-block-colour{% endif %}">
                     <div class="container-fluid justify-content-evenly align-items-center">
+                        <!-- Logo -->
                         <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-brand-block-colour{% endif %}">TUCKIN - Dublin</a></h2>
+                        <!-- Search Bar -->
                         <div class="search-bar-container d-flex justify-content-end">
                             <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
                                 <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
@@ -70,6 +72,7 @@
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </form>
                         </div>
+                        <!-- Nav Links -->
                         <ul class="navbar-nav d-flex justify-content-end">
                             <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Home</a></li>
                             {% if request.user.is_authenticated %}    
@@ -81,6 +84,7 @@
                             {% endif %}
                             <li class="nav-item"><a href="#" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Help</a></li>
                         </ul>
+                        <!-- Bag -->
                         <div class="shopping-bag d-flex justify-content-end">
                             <span class="nav-item bag-icon">
                                 <a class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}" href="{% url 'view_bag' %}">

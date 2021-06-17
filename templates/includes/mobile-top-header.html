@@ -1,7 +1,9 @@
+<!-- Sidebar Menu Toggler -->
 <button class="navbar-toggler {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-toggler-block-colour{% endif %}" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
+<!-- Logo -->
 <li class="list-inline-item">
     <h2 class="logo mobile-logo">
         <a class="font-italic navbar-brand {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-brand-block-colour{% endif %}" href="{% url 'home' %}">
@@ -9,6 +11,7 @@
         </a>
     </h2>
 </li>
+<!-- Bag -->
 <li class="list-inline-item">
     <a class="{% if food_item_count %}font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
         href="{% url 'view_bag' %}">
