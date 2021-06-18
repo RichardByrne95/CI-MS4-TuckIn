@@ -355,6 +355,22 @@ header {
     color: orangered;
 }
 
+/* Mobile Sidebar */
+
+#sidebar-nav {
+    background-color: #fafafa;
+    height: 100vh;
+}
+
+#sidebar-logo,
+#sidebar-logo a {
+    padding: .5rem 1rem;
+}
+
+#sidebar-close {
+    font-size: 2rem;
+}
+
 /* ----------------------------------------- Footer */
 footer {
     position: absolute;
