@@ -70,6 +70,21 @@ Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 
 
 However, it was discovered upon saving an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class.
 
+## Deployment
+
+This project was deployed using Heroku and AWS, with a postgres database, via the following steps:
+
+1.  A new app was created on Heroku for the project, with the region set as Europe.
+2.  Once the app was created, the Heroku Postgres addon was installed in the Heroku resources tab.
+3.  A backup of the database was created in a file called 'db.json' using the command 'python -m django dumpdata exclude auth.permission --exclude contenttypes > db.json' (this allows the database to be imported into the new Postgres database).
+4.  dj_database_url was installed using pip in order to direct the database url to Heroku.
+5.  psychopg2-binary was also installed using pip to facilitate the adaptation of the Postgres database by this Python application.
+6.  dj_database_url was imported into the project's 'settings.py' and the default 'DATABASES' variable was replaced with "{'default': dj_database_url.parse()}".
+7.  The Config Vars were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
+8.  The command 'python -m django loaddata db.json' was then used to load the database backup created in step 3 into the new Postgres database.
+9.  As a new database was now being used, the project's migrations needed to be applied by using 'python manage.py migrate'.
+10. 
+
 ## Roadmap
 
 -   Use restaurant names instead of id numbers in restaurant url.
