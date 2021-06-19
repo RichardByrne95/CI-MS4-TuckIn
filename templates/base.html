@@ -82,7 +82,7 @@
                                 <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Login</a></li>
                                 <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Register</a></li>
                             {% endif %}
-                            <li class="nav-item"><a href="#" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Help</a></li>
+                            <li class="nav-item"><a href="{% url 'help' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Help</a></li>
                         </ul>
                         <!-- Bag -->
                         <div class="shopping-bag d-flex justify-content-end">

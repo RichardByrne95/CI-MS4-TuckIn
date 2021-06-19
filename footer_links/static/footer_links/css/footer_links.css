@@ -114,6 +114,13 @@ h2 {
     font-weight: bold;
 }
 
+/* ----------------------------------------- Help */
+
+#help-details p,
+#help-details a {
+    font-size: 2rem;
+}
+
 /* ----------------------------------------- >=768px */
 @media screen and (min-width: 768px) {
     #list-your-restaurant-heading {
