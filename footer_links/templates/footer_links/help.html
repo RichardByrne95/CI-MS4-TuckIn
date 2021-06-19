@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'footer_links/css/footer_links.css' %}">
+{% endblock %}
+
+{% block extra_title %}
+    | Help
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid no-gutters">
+    <!-- Banner Image and Heading -->
+    <div class="row mb-3" id="banner-image">
+        <div class="col-12 no-gutters">
+            <figure class="d-flex justify-content-center align-items-center">
+                <img src="{{ MEDIA_URL }}help.webp" class="background-image" alt="help page background image">
+                <div class="shadow-overlay"></div>
+                <h1 class="position-absolute text-white text-center mt-5 mx-3" id="help-heading">Need Help?</h1>
+            </figure>
+        </div>
+    </div>
+    <!-- Page Content -->
+    <section class="row no-gutters d-flex justify-content-center" id="help-details">
+        <div class="col-10 col-lg-8 col-xl-6 no-gutters">
+            
+        </div>
+    </section>
+</div>
+{% endblock %}

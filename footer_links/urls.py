@@ -8,4 +8,6 @@ urlpatterns = [
          name='cookies_policy'),
     path('privacy_policy/', views.privacy_policy,
          name='privacy_policy'),
+    path('help/', views.help,
+         name='help'),
 ]

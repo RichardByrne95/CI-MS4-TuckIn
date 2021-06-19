@@ -23,3 +23,9 @@ def privacy_policy(request):
         'dynamic_navbar': True,
     }
     return render(request, 'footer_links/privacy_policy.html', context)
+
+def help(request):
+    context = {
+        'dynamic_navbar': True,
+    }
+    return render(request, 'footer_links/help.html', context)
