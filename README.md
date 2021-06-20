@@ -74,6 +74,8 @@ However, it was discovered upon saving an order after submission, that the 'Euro
 
 This project was deployed using Heroku and AWS, with a postgres database, via the following steps:
 
+### Heroku Deployment
+
 1.  A new app was created on Heroku for the project, with the region set as Europe.
 2.  Once the app was created, the Heroku Postgres addon was installed in the Heroku resources tab.
 3.  A backup of the database was created in a file called 'db.json' using the command 'python -m django dumpdata exclude auth.permission --exclude contenttypes > db.json' (this allows the database to be imported into the new Postgres database).
@@ -83,7 +85,58 @@ This project was deployed using Heroku and AWS, with a postgres database, via th
 7.  The Config Vars were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
 8.  The command 'python -m django loaddata db.json' was then used to load the database backup created in step 3 into the new Postgres database.
 9.  As a new database was now being used, the project's migrations needed to be applied by using 'python manage.py migrate'.
-10. 
+10. An if statement was added to settings.py so that the application could detect whether it should be using the hosted database or the local development database.
+11. Gunicorn was then installed via pip which acts as the webserver in this project.
+12. A Procfile was created in the project's root in order to tell Heroku to create a web dyno and run Gunicorn to server our Django app.
+13. 'heroku login' was used to login into the Heroku CLI.
+14. In order to temporarily prevent Heroku from collecting the static files upon deployment, the command 'heroku config:set DISABLE_COLLECTSTATIC=1 --app=APP_NAME' was used.
+15. The Heroku app hostname was added to ALLOWED_HOSTS in settings.py as 'HEROKU-APP-NAME.herokuapp.com'. 'localhost' and '127.0.0.1' were also added for local development.
+16. A Heroku git remote was initialised using 'heroku git:remote -a HEROKU_APP_NAME'.
+17. The project was then deployed to the Heroku master via 'git push heroku main'.
+18. The application was set up to automatically deploy from GitHub via Heroku's deployment settings.
+18. In settings.py, 'DEBUG' was set to be true only if an environment variable called 'DEVELOPMENT' was present.
+
+### AWS S3 Bucket Setup
+
+1.  A new AWS S3 bucket was created with the same name as the Heroku app for this application.
+2.  During setup of the bucket, 'Block all public access' was disabled in order to allow users to access the static files.
+3.  'Static website hosting' was enabled for the bucket via the bucket's properties, and 'Host a static website' was chosen with document values set as 'index.html' and 'error.html' respectively.
+4.  Under the bucket's permissions, a JSON 'CORS' configuration was added to set up the required access between the Heroku app and the S3 bucket.
+5.  A bucket policy was generated using the policy generator. The 'Principal' field was set to allow all principles using '*', and the action was set to 'Get object'. The ARN (Amazon Resource Number) was then copied from the bucket policy page and pasted into the policy generator. 
+6.  Once generated, the policy was pasted into the policy editor. The 'Resource' key of the policy was edited by adding '/*' to the end of the ARN to allow access to all resources in this bucket.
+7.  The Access Control List was edited to allow public access to 'List' the objects in the bucket.
+
+### AWS Group and User Access Setup
+
+1.  Next, a new group was created in IAM (Identity and Access Management) called 'manage-HEROKU-APP-NAME'.
+2.  Once created, a new Access management policy was created from the Policies section in IAM, by importing the 'AmazonS3FullAccess' policy.
+3. The policy's 'Resource' key was changed to a list containing two strings, one being the S3 bucket's ARN, and the other being the ARN with '/*' at the end. This allows access to both the bucket and the content of the bucket.
+4. The policy was named 'HEROKU-APP-NAME-policy' and a brief description of the policy was added.
+5. The policy was then attached to the group created a few steps ago.
+6. Lastly, a user was created called 'HEROKU-APP-NAME-staticfiles-user', programmatic access was given, and then user was then added to the group.
+7. Once the user was created, the .csv file was downloaded that contained the user's Access key and Secret Access key.
+
+### Connecting Django to AWS
+
+1.  'boto3' and 'django-storages' were installed using pip, and 'storages' was added to the project's installed apps.
+2.  'USE_AWS' environment variable was added to Heroku, and if statement was added so that if it existed, the following variables were assigned:
+    -   AWS_STORAGE_BUCKET_NAME = 'S3_BUCKET_NAME'
+    -   AWS_S3_REGION_NAME = 'eu-west-1'
+    -   AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+    -   AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+3.  The relevant variables and values from the last step were added to Heroku, and the 'DISABLE_COLLECTSTATIC' variable was removed to allow Django to collect our static files and upload them to S3.
+4.  In order to tell Django where our static files will be coming from in production, another variable was added in settings.py called 'AWS_S3_CUSTOM_DOMAIN' with a value of 'BUCKET-NAME.s3.amazonaws.com'.
+5.  Next, in order to tell Django that we want to use S3 to store the static files whenever 'collectstatic' is run, a new file at the root level called 'custom_storages.py' was created.
+6.  Inside this file, 'settings' was imported from 'django.conf' and 'S3Boto3Storage' was imported from 'storages.backends.s3boto3'.
+7.  Then a StaticStorage class was created, which inherited the 'S3Boto3Storage' class. A 'location' property was added with a value of 'settings.STATICFILES_LOCATION'. A copy of this class was then pasted below and its names adjusted for the media storage.
+8.  Back in settings.py the following variables and relevant values were created and assigned:
+    -   STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    -   STATICFILES_LOCATION = 'static'
+    -   DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    -   MEDIAFILES_LOCATION = 'media'
+9.  In order to override and explicitly set the urls for static and media files, the following variables were created in settings.py:
+    -   STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
+    -   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
 
 ## Roadmap
 
