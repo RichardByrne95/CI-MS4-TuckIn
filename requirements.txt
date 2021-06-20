@@ -5,8 +5,8 @@ astroid==2.4.2
 astunparse==1.6.3
 attrs==21.2.0
 autopep8==1.5.4
-boto3==1.17.8
-botocore==1.20.8
+boto3==1.17.97
+botocore==1.20.97
 cachetools==4.2.1
 certifi==2020.12.5
 cffi==1.14.4
@@ -36,6 +36,7 @@ google-pasta==0.2.0
 grpcio==1.34.1
 gunicorn==20.0.4
 h5py==3.1.0
+heroku==0.1.4
 idna==2.10
 ipython-genutils==0.2.0
 isort==5.6.4
@@ -71,11 +72,10 @@ pytz==2021.1
 requests==2.25.0
 requests-oauthlib==1.3.0
 rsa==4.7.2
-s3transfer==0.3.4
+s3transfer==0.4.2
 six==1.15.0
 sqlparse==0.4.1
 stripe==2.56.0
-tensorboard==2.5.0
 termcolor==1.1.0
 toml==0.10.2
 traitlets==5.0.5
