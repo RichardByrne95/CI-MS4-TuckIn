@@ -11,22 +11,17 @@ from django.views.decorators.http import require_POST
 @csrf_exempt  # Stripe doesn't send CSRF tokens
 @require_POST  # Only react to post requests, reject GET requests
 def webhook(request):
-    print('Webhook received')
-
     # Set variables
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    print(wh_secret, stripe.api_key)
-
     # Get webhook data and verify its signature
-    payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    payload = request.data
     event = None
 
     try:
         # Get webhook from Stripe
-        event = stripe.Webhook.construct_event(payload, sig_header, wh_secret)
+        event = json.loads(payload)
     except ValueError as e:
         # Invalid payload exception handler
         return HttpResponse(content=e, status=400)
