@@ -1,3 +1,4 @@
+import json
 import stripe
 from django.conf import settings
 from django.http import HttpResponse
@@ -15,14 +16,13 @@ def webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     # Get webhook data and verify its signature
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     payload = request.body
     event = None
 
     try:
         # Get webhook from Stripe
-        event = stripe.Event.construct_event(
-            payload, sig_header, wh_secret
+        event = stripe.Event.construct_from(
+            json.loads(payload), stripe.api_key
         )
     except ValueError as e:
         # Invalid payload exception handler
