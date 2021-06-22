@@ -137,6 +137,12 @@ This project was deployed using Heroku and AWS, with a postgres database, via th
 9.  In order to override and explicitly set the urls for static and media files, the following variables were created in settings.py:
     -   STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
     -   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
+10. A cache control section was added to 'setting.py' in order to improve performance for users by caching static files for a long time. This was done by addin the following variable:
+    -   AWS_S3_OBJECT_PARAMETERS = {
+            'Expires': 'Thu 31 Dec 2099 20:00:00 GMT',
+            'CacheControl': 'max-age=94608000',
+        }
+11. In order to add media files to S3, a new folder was created in the S3 bucket called 'media' and the media files were uploaded to it.
 
 ## Roadmap
 
