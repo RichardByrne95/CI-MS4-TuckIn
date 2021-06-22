@@ -209,7 +209,7 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 # AWS Variables
 if 'USE_AWS' in os.environ:
     # Debug
-    DEBUG = True
+    DEBUG = False
 
     # Cache Control
     AWS_S3_OBJECT_PARAMETERS = {
