@@ -260,6 +260,7 @@ def checkout_payment(request):
     # Stripe requires an integer when charging
     stripe_total = round(total * 100)
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    stripe.api_version = '2020-08-27'
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,

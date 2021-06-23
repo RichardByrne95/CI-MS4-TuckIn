@@ -9,11 +9,12 @@ from django.views.decorators.http import require_POST
 
 # Referenced https://stripe.com/docs/webhooks/build#example-code
 @csrf_exempt  # Stripe doesn't send CSRF tokens
-@require_POST  # Only react to post requests, reject GET requests
+# @require_POST  # Only react to post requests, reject GET requests
 def webhook(request):
     # Set variables
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    stripe.api_version = '2020-08-27'
     signature = request.headers.get('stripe-signature')
 
     # Get webhook data and verify its signature
