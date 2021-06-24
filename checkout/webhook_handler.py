@@ -6,7 +6,7 @@ from restaurants.models import FoodItem
 from checkout.models import Order, OrderLineItem
 
 
-# Class to handle stripe webhooks
+# Class to handle the different stripe webhooks
 class StripeWH_Handler:
     # Add current request object as attribute of class
     def __init__(self, request):
@@ -24,11 +24,12 @@ class StripeWH_Handler:
         # Get order data from payment intent
         intent = event.data.object
         payment_intent_id = intent.id
-        bag = intent.metadata.bag
-        save_info = intent.metadata.save_info
-        billing_details = intent.charges.data[0].billing_details
-        shipping_details = intent.shipping
+        bag = intent.metadata.bag if intent.metadata.bag else None
+        save_info = intent.metadata.save_info if intent.metadata.save_info else None
+        billing_details = intent.charges.data[0].billing_details if intent.charges.data[0].billing_details else None
+        shipping_details = intent.shipping if intent.shipping else None
         grand_total = round(intent.charges.data[0].amount / 100, 2)
+        print('Testy test')
 
         # Replace empty strings with Null for db compatibility
         for field, value in shipping_details.address.items():
