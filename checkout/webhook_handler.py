@@ -15,7 +15,7 @@ class StripeWH_Handler:
     # Unhandled webhook event handler
     def handle_event(self, event):
         return HttpResponse(
-            content=f'Webhook received: {event[type]}',
+            content='Webhook received: {}'.format(event.type),
             status=200,
         )
 
@@ -29,7 +29,6 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details if intent.charges.data[0].billing_details else None
         shipping_details = intent.shipping if intent.shipping else None
         grand_total = round(intent.charges.data[0].amount / 100, 2)
-        print('Testy test')
 
         # Replace empty strings with Null for db compatibility
         for field, value in shipping_details.address.items():
@@ -63,7 +62,8 @@ class StripeWH_Handler:
 
         if order_exists:
             return HttpResponse(
-                content=f'Webhook received: {event[type]} | SUCCESS: Verified order already in database',
+                content='Webhook received: {} | SUCCESS: Verified order already in database'.format(
+                    event.type),
                 status=200,
             )
         else:
@@ -101,16 +101,20 @@ class StripeWH_Handler:
             except Exception as e:
                 if order:
                     order.delete()
-                return HttpResponse(content=f'Webhook received: {event[type]} | ERROR: {e}', status=500)
+                return HttpResponse(
+                    content='Webhook received: {} | ERROR: {}'.format(event.type, e),
+                    status=500
+                )
 
         return HttpResponse(
-            content=f'Webhook received: {event[type]} | SUCCESS: Created order via Webhook handler',
+            content='Webhook received: {} | SUCCESS: Created order via Webhook handler'.format(
+                event.type),
             status=200,
         )
 
     # Payment Intent Payment Failed webhook event handler
     def handle_payment_intent_payment_failed(self, event):
         return HttpResponse(
-            content=f'Payment Failed Webhook received: {event[type]}',
+            content='Payment Failed Webhook received: {}'.format(event.type),
             status=200,
         )
