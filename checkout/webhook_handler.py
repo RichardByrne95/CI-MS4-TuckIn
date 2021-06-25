@@ -24,11 +24,32 @@ class StripeWH_Handler:
         # Get order data from payment intent
         intent = event.data.object
         payment_intent_id = intent.id
-        bag = intent.metadata.bag if intent.metadata.bag else None
-        save_info = intent.metadata.save_info if intent.metadata.save_info else None
+        bag = intent.metadata.bag if intent.metadata and intent.metadata.bag else None
+        save_info = intent.metadata.save_info if intent.metadata and intent.metadata.save_info else None
         billing_details = intent.charges.data[0].billing_details if intent.charges.data[0].billing_details else None
         shipping_details = intent.shipping if intent.shipping else None
         grand_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # If no bag in metadata
+        if not bag:
+            return HttpResponse(
+                content='No bag or items associated with this order',
+                status=400
+            )
+        
+        # If no billing details
+        if not billing_details:
+            return HttpResponse(
+                content='No billing details associated with this order',
+                status=400
+            )
+        
+        # If no shipping details
+        if not shipping_details:
+            return HttpResponse(
+                content='No shipping details associated with this order',
+                status=400
+            )
 
         # Replace empty strings with Null for db compatibility
         for field, value in shipping_details.address.items():
