@@ -81,57 +81,7 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
 
-        if order_exists:
-            return HttpResponse(
-                content='Webhook received: {} | SUCCESS: Verified order already in database'.format(
-                    event.type),
-                status=200,
-            )
-        else:
-            order = None
-            try:
-                # Create order
-                order = Order.objects.create(Order,
-                                             full_name=shipping_details.name,
-                                             address_1=shipping_details.line1,
-                                             address_2=shipping_details.line2,
-                                             city=shipping_details.city,
-                                             postcode=shipping_details.postcode,
-                                             email=billing_details.email,
-                                             phone_number=shipping_details.phone_number,
-                                             grand_total=grand_total,
-                                             original_bag=bag,
-                                             stripe_payment_id=payment_intent_id,
-                                             )
-                # Create line items (taken from contexts.py)
-                if bag:
-                    bag = json.loads(bag)
-                    forloop_count = 0
-                    for restaurant, food_items in bag.items():
-                        list_of_food_keys_in_bag = list(food_items.keys())
-                        food_id = list_of_food_keys_in_bag[forloop_count]
-                        food_object = get_object_or_404(FoodItem, pk=food_id)
-                        quantity = bag[restaurant][food_id]['quantity']
-                        for food in bag[restaurant]:
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                food_item=food_object,
-                                quantity=bag[restaurant][food_id]['quantity'],
-                            )
-                            order_line_item.save()
-                            forloop_count += 1
-                else:
-                    return HttpResponse(
-                        content='Bag does not exist',
-                        status=400
-                    )
-            except Exception as e:
-                if order:
-                    order.delete()
-                return HttpResponse(
-                    content='Webhook received: {} | ERROR: {}'.format(event.type, e),
-                    status=500
-                )
+        
 
         return HttpResponse(
             content='Webhook received: {} | SUCCESS: Created order via Webhook handler'.format(
