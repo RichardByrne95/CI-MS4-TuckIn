@@ -104,21 +104,27 @@ class StripeWH_Handler:
                                              stripe_payment_id=payment_intent_id,
                                              )
                 # Create line items (taken from contexts.py)
-                bag = json.loads(bag)
-                forloop_count = 0
-                for restaurant, food_items in bag.items():
-                    list_of_food_keys_in_bag = list(food_items.keys())
-                    food_id = list_of_food_keys_in_bag[forloop_count]
-                    food_object = get_object_or_404(FoodItem, pk=food_id)
-                    quantity = bag[restaurant][food_id]['quantity']
-                    for food in bag[restaurant]:
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            food_item=food_object,
-                            quantity=bag[restaurant][food_id]['quantity'],
-                        )
-                        order_line_item.save()
-                        forloop_count += 1
+                if bag:
+                    bag = json.loads(bag)
+                    forloop_count = 0
+                    for restaurant, food_items in bag.items():
+                        list_of_food_keys_in_bag = list(food_items.keys())
+                        food_id = list_of_food_keys_in_bag[forloop_count]
+                        food_object = get_object_or_404(FoodItem, pk=food_id)
+                        quantity = bag[restaurant][food_id]['quantity']
+                        for food in bag[restaurant]:
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                food_item=food_object,
+                                quantity=bag[restaurant][food_id]['quantity'],
+                            )
+                            order_line_item.save()
+                            forloop_count += 1
+                else:
+                    return HttpResponse(
+                        content='Bag does not exist',
+                        status=400
+                    )
             except Exception as e:
                 if order:
                     order.delete()
