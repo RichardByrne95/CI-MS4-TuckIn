@@ -33,21 +33,21 @@ class StripeWH_Handler:
         # If no bag in metadata
         if not bag:
             return HttpResponse(
-                content='No bag or items associated with this order',
+                content='No bag or items associated with this order | {}'.format(intent),
                 status=400
             )
         
         # If no billing details
         if not billing_details:
             return HttpResponse(
-                content='No billing details associated with this order',
+                content='No billing details associated with this order | {}'.format(intent),
                 status=400
             )
         
         # If no shipping details
         if not shipping_details:
             return HttpResponse(
-                content='No shipping details associated with this order',
+                content='No shipping details associated with this order | {}'.format(intent),
                 status=400
             )
 
