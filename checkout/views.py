@@ -160,9 +160,7 @@ def checkout_payment(request):
         if 'from_delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
-                if item == 'csrfmiddlewaretoken' or item == 'city' or item == 'save-info' or item == 'client_secret' or item == 'delivery_time' or item == 'from_delivery_time':
-                    pass
-                else:
+                if item != 'csrfmiddlewaretoken' or item != 'city' or item != 'save-info' or item != 'client_secret' or item != 'delivery_time' or item != 'from_delivery_time':
                     if request.POST[item] != request.session['address'][item]:
                         request.session['address'][item] = request.POST[item]
 
@@ -194,7 +192,7 @@ def checkout_payment(request):
                     'client_secret').split('_secret')[0]
                 order.save()
 
-                # Create line item for each food in bag
+                # Create line item for each food in bag (gotten from bag/contexts.py)
                 for data in bag_contents(request)['bag_contents']:
                     try:
                         order_line_item = OrderLineItem(
@@ -216,7 +214,7 @@ def checkout_payment(request):
             # Else tell user about error
             else:
                 messages.error(
-                    request, 'Order form either received incorrect data or did not receive all necessary fields.')
+                    request, 'Order form invalid.')
 
     # Generate Order Form
     if request.user.is_authenticated:
@@ -232,9 +230,6 @@ def checkout_payment(request):
             'postcode': profile.default_postcode,
             'order_restaurant': order_restaurant,
         })
-        # Raise error if form is invalid
-        messages.error(
-            request, 'Order form is not accepting the inputted data.') if not order_form.is_valid() else None
     else:
         # Create order form using session data
         address_form = request.session.get('address')
@@ -247,9 +242,6 @@ def checkout_payment(request):
             'city': 'Dublin',
             'postcode': address_form['postcode'],
         })
-        # Raise error if form is invalid
-        messages.error(
-            request, 'Order form is not accepting the inputted data.') if not order_form.is_valid() else None
 
     # Get variables
     delivery_time = request.POST.get('delivery_time')
@@ -267,7 +259,7 @@ def checkout_payment(request):
     )
     # Warning if stripe public key has not been set in environment variables
     if not settings.STRIPE_PUBLIC_KEY:
-        messages.warning(request, 'Stripe public key is missing.')
+        messages.warning(request, 'Stripe pkey is missing.')
 
     context = {
         'order_form': order_form,

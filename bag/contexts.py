@@ -1,6 +1,6 @@
+from restaurants.views import FoodItem
 from restaurants.models import Restaurant
 from django.shortcuts import get_object_or_404
-from restaurants.views import FoodItem
 
 
 def bag_contents(request):
