@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://tuckin-ms4.herokuapp.com/', 'tuckin-ms4.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -209,7 +209,7 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 # AWS Variables
 if 'USE_AWS' in os.environ:
     # Debug
-    DEBUG = False
+    DEBUG = True
 
     # Cache Control
     AWS_S3_OBJECT_PARAMETERS = {

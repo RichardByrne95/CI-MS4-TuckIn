@@ -160,7 +160,9 @@ def checkout_payment(request):
         if 'from_delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
-                if item != 'csrfmiddlewaretoken' or item != 'city' or item != 'save-info' or item != 'client_secret' or item != 'delivery_time' or item != 'from_delivery_time':
+                if item == 'csrfmiddlewaretoken' or item == 'city' or item == 'save-info' or item == 'client_secret' or item == 'delivery_time' or item == 'from_delivery_time':
+                    pass
+                else:
                     if request.POST[item] != request.session['address'][item]:
                         request.session['address'][item] = request.POST[item]
 
