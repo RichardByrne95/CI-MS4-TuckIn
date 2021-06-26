@@ -135,6 +135,9 @@ class Restaurant(models.Model):
             # Add 45 minutes buffer for restaurant to cook food etc.
             first_delivery_time += datetime.timedelta(minutes=45)
 
+            #Add 45 minutes after restaurant stops taking orders for delivery time selection
+            closing_time += datetime.timedelta(minutes=45)
+
             # Make each datetime object aware for database
             first_delivery_time.replace(tzinfo=utc)
             closing_time.replace(tzinfo=utc)
