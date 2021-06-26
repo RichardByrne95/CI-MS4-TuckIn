@@ -61,22 +61,23 @@ class StripeWH_Handler:
 
         # Attempt to find order in database 5 times
         while attempt <= 5:
+            # Check if order already exists in database
             try:
-                # Check if order already exists in database
                 order = get_object_or_404(Order,
                                           full_name__iexact=shipping_details.name,
                                           address_1__iexact=shipping_details.line1,
                                           address_2__iexact=shipping_details.line2,
                                           city__iexact=shipping_details.city,
                                           postcode__iexact=shipping_details.postcode,
+                                          phone_number__iexact=billing_details.phone_number,
                                           email__iexact=billing_details.email,
-                                          phone_number__iexact=shipping_details.phone_number,
                                           grand_total=grand_total,
                                           original_bag=json.dumps(bag),
                                           stripe_payment_id=payment_intent_id,
                                           )
                 order_exists = True
                 break
+            # Increase attempt, sleep 1 second
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
@@ -98,14 +99,13 @@ class StripeWH_Handler:
                                              city=shipping_details.city,
                                              postcode=shipping_details.postcode,
                                              email=billing_details.email,
-                                             phone_number=shipping_details.phone_number,
+                                             phone_number=billing_details.phone_number,
                                              grand_total=grand_total,
                                              original_bag=bag,
                                              stripe_payment_id=payment_intent_id,
                                              )
                 # Create line items (taken from contexts.py)
                 if bag:
-                    bag = json.loads(bag)
                     forloop_count = 0
                     for restaurant, food_items in bag.items():
                         list_of_food_keys_in_bag = list(food_items.keys())
