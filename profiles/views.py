@@ -41,9 +41,10 @@ def customer_order_history(request):
 
 @login_required
 def order_confirmation_from_profile(request, order_number):
+    # Get order
     order = get_object_or_404(Order, order_number=order_number)
 
-    # Message notifying that this is from a past order.
+    # Message notifying that this confirmation is from a past order.
     messages.info(
         request,
         f'This is a past confirmation for order number {order_number}. '
@@ -53,6 +54,7 @@ def order_confirmation_from_profile(request, order_number):
     context = {
         'order': order,
         'from_profile': True,
+        'dynamic_navbar': True,
     }
 
     return render(request, 'checkout/order_confirmation.html', context)
