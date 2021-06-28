@@ -186,3 +186,5 @@ Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-2748
 Footer was removed from bag and checkout pages so as to minimise potential distractions that could prevent the user from completing an order.
 
 f-strings were replaced with the .format method for Stripe's webhook handlers, as 500 errors were frequently occurring when using f-strings. Stripe also us the .format method in their example code in the [Stripe Docs](https://stripe.com/docs/webhooks/build).
+
+The 'payment_intent.succeeded' webhook from Stripe kept failing due to being unable to get anything except the payment id from the intent (an Attribute error kept occurring, Stripe support recommended removing the code causing the issue). As each payment intent is unique, the decision was made to simply use the payment intent to search for the order in the webhook handler.
