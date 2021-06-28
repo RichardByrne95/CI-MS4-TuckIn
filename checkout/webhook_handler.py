@@ -63,16 +63,7 @@ class StripeWH_Handler:
         while attempt <= 5:
             # Check if order already exists in database
             try:
-                order = get_object_or_404(Order,
-                                          full_name__iexact=shipping_details.name,
-                                          address_1__iexact=shipping_details.line1,
-                                          address_2__iexact=shipping_details.line2,
-                                          city__iexact=shipping_details.city,
-                                          postcode__iexact=shipping_details.postcode,
-                                          phone_number__iexact=billing_details.phone_number,
-                                          email__iexact=billing_details.email,
-                                          grand_total=grand_total,
-                                          original_bag=json.dumps(bag),
+                order = get_object_or_404(Order,                   
                                           stripe_payment_id=payment_intent_id,
                                           )
                 order_exists = True
