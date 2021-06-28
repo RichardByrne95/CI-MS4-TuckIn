@@ -45,7 +45,7 @@
                                                         </a>
                                                     </div>
                                                     <!-- Restaurant Address -->
-                                                    <a href="{% url 'order_confirmation' order.order_number %}" class="d-inline restaurant-address-container">
+                                                    <a href="{% url 'order_confirmation_from_profile' order.order_number %}" class="d-inline restaurant-address-container">
                                                         <h3>{{ order.order_restaurant.friendly_name }}</h3>
                                                         <p>{{ order.date }}</p>
                                                         <p>

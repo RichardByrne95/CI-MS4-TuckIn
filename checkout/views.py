@@ -309,7 +309,7 @@ def order_confirmation(request, order_number):
             messages.success(
                 request, 'Your details have been saved to your account.')
 
-    # # Send success message to user
+    # Send success message to user
     messages.success(request, f'Order successfully sent to the restaurant! \
         Your order number is {order_number}. A confirmation email will be sent to {order.email}')
 
