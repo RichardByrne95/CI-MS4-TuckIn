@@ -32,11 +32,22 @@ function OnPlaceChanged () {
             };
             service.findPlaceFromQuery(request, function (results, status) {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    // Check to see if Dublin is in the address
                     let hasDublin = results[0].formatted_address.indexOf('Dublin');
                     let hasCountyDublin = results[0].formatted_address.indexOf('County Dublin');
                     let hasBaile = results[0].formatted_address.indexOf('Baile Átha Cliath');
                     let hasContae = results[0].formatted_address.indexOf('Contae Bhaile Átha Cliath');
                     if (hasDublin != -1 || hasCountyDublin != -1 || hasBaile != -1 || hasContae != -1) {
+                        $(".find-button").attr('disabled', false);
+                        $(".error-message").html('');
+                    } else {
+                        $(".find-button").attr('disabled', true);
+                        $(".error-message").html('Your address must be inside Dublin');
+                    }
+
+                    // Check to see if at least one comma in address (needed for maps_address var in bag/contexts.py/bag_contents())
+                    let hasComma = results[0].formatted_address.indexOf(',');
+                    if (hasComma != -1) {
                         $(".find-button").attr('disabled', false);
                         $(".error-message").html('');
                     } else {
