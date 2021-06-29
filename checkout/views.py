@@ -22,11 +22,18 @@ def checkout_address(request):
         messages.warning(request, 'You have no food in your basket.')
         return redirect(reverse('restaurants'))
 
-    # Get restaurant
+    # Update food quantity
     restaurant_name = request.session.get('restaurant')
-    restaurant = get_object_or_404(Restaurant, name=restaurant_name)
+    bag = request.session.get('bag')
+
+    for item in request.POST:
+        if item != 'csrfmiddlewaretoken':
+            food_id = item
+            quantity = int(request.POST.get(item))
+            bag[restaurant_name][food_id]['quantity'] = quantity
 
     # Prevent user checking out when restaurant is closed
+    restaurant = get_object_or_404(Restaurant, name=restaurant_name)
     if not restaurant.is_open_now():
         messages.error(request, 'The restaurant is currently closed.')
         return redirect(reverse('view_bag'))
