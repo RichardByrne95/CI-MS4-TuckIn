@@ -19,7 +19,7 @@ function OnPlaceChanged () {
     // Handle selecting address from autocomplete
     let place = autocomplete.getPlace();
     if (!place.geometry) {
-        document.getElementById('address').placeholder = 'Enter a place';
+        document.getElementById('address').placeholder = 'Start typing an address';
     } else {
         document.getElementById('address').innerHTML = place.name;
         

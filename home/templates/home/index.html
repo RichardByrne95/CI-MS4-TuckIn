@@ -36,7 +36,7 @@
                                         <div class="d-flex justify-content-center search-field-wrapper">
                                             {% csrf_token %}
                                             <input id="address" name="maps_address" {% if maps_address %}value="{{ maps_address }}"{% endif %} 
-                                                type="text" class="address align-middle" minlength="5" required>
+                                                type="text" class="address align-middle" minlength="5" placeholder="Start typing an address" required>
                                             <button class="btn btn-lg align-middle find-button" type="submit" {% if not maps_address %}disabled{% endif %}>
                                                 <i class="fas fa-search d-inline-block d-lg-none"></i>
                                                 <span class="d-none d-lg-inline-block">Find</span>
