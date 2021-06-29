@@ -135,7 +135,7 @@
                                     </figure>
                                 </div>
                                 <!-- Modal Form -->
-                                <form class="form food-item-form" method="POST" action="{% url 'add_to_bag' %}">
+                                <form class="form food-item-form" id="food-modal-form" method="POST" action="{% url 'add_to_bag' %}">
                                     {% csrf_token %}
                                     <!-- Quantity Selector -->
                                     <div class="form-row">
@@ -179,7 +179,7 @@
                                     <!-- Modal Footer -->
                                     <div class="modal-footer text-center">
                                         {% if restaurant.is_open_now %}
-                                            <button class="btn btn-secondary food-form-btn" type="submit">Add to Basket</button>
+                                            <button class="btn btn-secondary food-form-btn" id="add-to-basket-btn" type="submit">Add to Basket</button>
                                         {% else %}
                                             <p class="btn btn-secondary food-form-btn">Restaurant Currently Closed</p>
                                         {% endif %}
@@ -198,4 +198,5 @@
     {{ block.super }}
     <script src="{% static 'js/foodModal.js' %}"></script>
     <script src="{% static 'js/quantitySelection.js' %}"></script>
+    <script src="{% static 'restaurants/js/addToBag.js' %}"></script>
 {% endblock %}
