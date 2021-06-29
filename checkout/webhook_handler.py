@@ -25,7 +25,6 @@ class StripeWH_Handler:
         intent = event.data.object
         payment_intent_id = intent.id
         bag = json.loads(intent.metadata.bag) if intent.metadata and intent.metadata.bag else None
-        save_info = intent.metadata.save_info if intent.metadata and intent.metadata.save_info else None
         billing_details = intent.charges.data[0].billing_details if intent.charges.data[0].billing_details else None
         shipping_details = intent.shipping if intent.shipping else None
         grand_total = round(intent.charges.data[0].amount / 100, 2)

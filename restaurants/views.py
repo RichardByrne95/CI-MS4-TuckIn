@@ -95,8 +95,6 @@ def all_restaurants(request):
             # Turns list of strings from url to cuisine object for use in template
             cuisine = Cuisine.objects.filter(Q(name=cuisine))[0]
 
-        print(restaurants)
-
     current_sorting = f'{sortkey}_{direction}'
     all_cuisines = Cuisine.objects.all()
 
