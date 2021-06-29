@@ -37,10 +37,12 @@
                                             {% csrf_token %}
                                             <input id="address" name="maps_address" {% if maps_address %}value="{{ maps_address }}"{% endif %} 
                                                 type="text" class="address align-middle" minlength="5" required>
-                                            <button class="btn btn-lg align-middle find-button" type="submit">
+                                            <button class="btn btn-lg align-middle find-button" type="submit" disabled>
                                                 <i class="fas fa-search d-inline-block d-lg-none"></i>
                                                 <span class="d-none d-lg-inline-block">Find</span>
                                             </button>
+                                        </div>
+                                        <div class="d-flex justify-content-center search-error-wrapper">
                                             <div class="error-message-div">
                                                 <span class="error-message d-flex justify-content-center"></span>
                                             </div>
