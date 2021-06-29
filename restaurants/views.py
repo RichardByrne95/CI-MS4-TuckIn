@@ -1,5 +1,7 @@
-from django.contrib import messages
+from home.views import home
 from django.db.models import Q
+from django.contrib import messages
+from django.urls.base import reverse
 from .models import FoodItem, Restaurant, MenuSection, Cuisine
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -23,14 +25,19 @@ def all_restaurants(request):
 
     #  Handle inputting/changing delivery address
     if request.method == 'POST':
-        maps_address = request.POST['maps_address']
+        try:
+            maps_address = request.POST['maps_address']
 
-        # Create address without city and country
-        short_maps_address_list = maps_address.split(',')
-        short_maps_address = f'{short_maps_address_list[0]}, {short_maps_address_list[1]}'
-        # Store in session
-        request.session['maps_address'] = maps_address
-        request.session['short_maps_address'] = short_maps_address
+            # Create address without city and country
+            short_maps_address_list = maps_address.split(',')
+            short_maps_address = f'{short_maps_address_list[0]}, {short_maps_address_list[1]}'
+            # Store in session
+            request.session['maps_address'] = maps_address
+            request.session['short_maps_address'] = short_maps_address
+        
+        except Exception:
+            messages.error(request, 'Address could not be found. Please ensure the address is valid, uses commas, is within Dublin, Ireland and is foramtted correctly.')
+            return redirect(reverse(home))
 
     # Sorting (referenced Boutique Ado)
     if request.GET:
