@@ -189,7 +189,7 @@ h3 {
 /* ----------------------------------------- >=1200px */
 @media screen and (min-width: 1200px) {
     main {
-        padding-bottom: 10rem;
+        padding-bottom: 20rem;
     }
 
     .background-image {
@@ -215,13 +215,14 @@ h3 {
     }
 
     .cuisines-section {
+        display: block;
         margin-top: 10rem;
     }
 
     .cuisines-container,
     .popular-cuisines {
         min-width: 28.2rem;
-        max-width: 110rem;
+        max-width: none;
     }
 
     .address {
@@ -239,5 +240,13 @@ h3 {
 
     .address {
         font-size: 1.6rem;
+    }
+}
+
+/* ----------------------------------------- >=1400px */
+@media screen and (min-width: 1400px) {
+    .cuisines-container,
+    .popular-cuisines {
+        max-width: 51%;
     }
 }
