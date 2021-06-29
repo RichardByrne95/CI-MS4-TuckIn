@@ -41,6 +41,31 @@ def all_restaurants(request):
 
     # Sorting (referenced Boutique Ado)
     if request.GET:
+        # Search Request (referenced Boutique Ado)
+        if 'q' in request.GET:
+            redirect_url = request.GET['redirect_url']
+            query_search = request.GET['q']
+            if not query_search:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(redirect_url)
+            # Referenced book for advanced queries https://books.agiliq.com/projects/django-orm-cookbook/en/latest/query.html
+            queries = Q(name__icontains=query_search) | Q(friendly_name__icontains=query_search) | Q(
+                description__icontains=query_search) | Q(cuisine__name__icontains=query_search) | Q(
+                    menusection__name__icontains=query_search) | Q(
+                        menusection__friendly_name__icontains=query_search) | Q(
+                        menusection__fooditem__name__icontains=query_search) | Q(
+                            menusection__fooditem__friendly_name__icontains=query_search) | Q(
+                                menusection__fooditem__description__icontains=query_search)
+            restaurants = restaurants.filter(queries).distinct()
+            # Filter queried restaurants by whether they're open or closed
+            open_restaurants = [
+                restaurant.name for restaurant in restaurants if restaurant.is_open_now()]
+            open_restaurants = restaurants.filter(name__in=open_restaurants)
+            closed_restaurants = [
+                restaurant for restaurant in restaurants if not restaurant.is_open_now()]
+            closed_restaurants = restaurants.filter(name__in=closed_restaurants)
+            
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             if sortkey == 'rating_high':
@@ -70,24 +95,7 @@ def all_restaurants(request):
             # Turns list of strings from url to cuisine object for use in template
             cuisine = Cuisine.objects.filter(Q(name=cuisine))[0]
 
-
-        # Search Request (referenced Boutique Ado)
-        if 'q' in request.GET:
-            redirect_url = request.GET['redirect_url']
-            query_search = request.GET['q']
-            if not query_search:
-                messages.error(
-                    request, "You didn't enter any search criteria!")
-                return redirect(redirect_url)
-            # Referenced book for advanced queries https://books.agiliq.com/projects/django-orm-cookbook/en/latest/query.html
-            queries = Q(name__icontains=query_search) | Q(friendly_name__icontains=query_search) | Q(
-                description__icontains=query_search) | Q(cuisine__name__icontains=query_search) | Q(
-                    menusection__name__icontains=query_search) | Q(
-                        menusection__friendly_name__icontains=query_search) | Q(
-                        menusection__fooditem__name__icontains=query_search) | Q(
-                            menusection__fooditem__friendly_name__icontains=query_search) | Q(
-                                menusection__fooditem__description__icontains=query_search)
-            restaurants = restaurants.filter(queries).distinct()
+        print(restaurants)
 
     current_sorting = f'{sortkey}_{direction}'
     all_cuisines = Cuisine.objects.all()
