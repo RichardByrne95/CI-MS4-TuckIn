@@ -163,6 +163,7 @@ This project was deployed using Heroku and AWS, with a postgres database, via th
 -   Allow the user to store a bag for each restaurant
 -   Add choices to food modal e.g. select toppings
 -   Add ability for restaurants to issue discount codes
+-   Show previous orders on homepage for easy re-ordering.
 
 
 
