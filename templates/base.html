@@ -98,7 +98,8 @@
         </div>
         <!-- Mobile Nav -->
         <div class="row no-gutters d-flex d-lg-none">
-            <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark {% else %}navbar-light {% endif %}w-100 d-flex justify-content-between align-items-center {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-block-colour{% endif %}" id="mobile-nav">
+            <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark navbar-scroll-transition {% else %}navbar-light navbar-block-colour {% endif %}w-100 d-flex justify-content-between align-items-center"
+                id="mobile-nav">
                 {% include 'includes/mobile-sidebar.html' %}
                 {% include 'includes/mobile-top-header.html' %}
             </nav>

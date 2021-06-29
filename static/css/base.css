@@ -162,7 +162,7 @@ strong {
 
 /* ----------------------------------------- Messages & Toasts */
 .toast-container {
-    z-index: 9999999;
+    z-index: 9997;
     overflow: visible;
     position: fixed;
     top: 7.5rem;
@@ -215,6 +215,7 @@ strong {
 /* Mobile Nav */
 #mobile-nav {
     height: 5.5rem;
+    z-index: 9998;
 }
 
 /* Navbar Toggler */
@@ -360,6 +361,14 @@ header {
 #sidebar-nav {
     background-color: #fafafa;
     height: 100vh;
+    width: 0;
+    visibility: hidden;
+    z-index: 9999;
+}
+
+#sidebar-logo {
+    display: flex;
+    justify-content: space-between;
 }
 
 #sidebar-logo,
