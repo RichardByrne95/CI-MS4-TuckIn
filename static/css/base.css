@@ -446,6 +446,18 @@ footer a, footer span {
     font-size: 2rem;
 }
 
+#confirm-email-page {
+    margin-top: 12rem;
+}
+
+a.email-url {
+    font-size: 1.6rem;
+}
+
+#confirm-email-button {
+    font-size: 2rem;
+}
+
 /* ----------------------------------------- Stripe */
 .StripeElement, .stripe-style-input, .profile-form-input {
     box-sizing: border-box;
