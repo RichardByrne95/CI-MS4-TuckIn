@@ -1,0 +1,1 @@
+TuckIn - {{ order.restaurant.friendly_name|title }} Confirmation for Order Number {{ order.order_number }}

@@ -1,3 +1,4 @@
+import os
 from restaurants.views import FoodItem
 from restaurants.models import Restaurant
 from django.shortcuts import get_object_or_404
@@ -12,6 +13,7 @@ def bag_contents(request):
     current_restaurant = None
     maps_address = request.session.get('maps_address', None)
     short_maps_address = request.session.get('short_maps_address', None)
+    contact_email = os.getenv('EMAIL_HOST_USER')
     
     # Add restuarant name to session
     current_restaurant = get_object_or_404(
@@ -54,6 +56,7 @@ def bag_contents(request):
         'grand_total': grand_total,
         'maps_address': maps_address,
         'short_maps_address': short_maps_address,
+        'contact_email': contact_email,
     }
 
     return context
