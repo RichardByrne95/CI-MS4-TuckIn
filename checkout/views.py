@@ -159,7 +159,7 @@ def checkout_payment(request):
     delivery_time = datetime.datetime.strptime(
         f'{now.date()} {session_delivery_time}', format)
 
-    # Make delivery time aware
+    # Make delivery time timezone aware
     delivery_time = delivery_time.replace(tzinfo=timezone.utc)
 
     # Handle submitting order
@@ -167,7 +167,7 @@ def checkout_payment(request):
         if 'from_delivery_time' not in request.POST:
             # Check if user changed delivery details on checkout page
             for item in request.POST:
-                if item != 'csrfmiddlewaretoken' or item != 'city' or item != 'save-info' or item == 'client_secret' or item == 'delivery_time' or item == 'from_delivery_time':
+                if item == 'csrfmiddlewaretoken' or item == 'city' or item == 'save-info' or item == 'client_secret' or item == 'delivery_time' or item == 'from_delivery_time':
                     pass
                 else:
                     if request.POST[item] != request.session['address'][item]:
@@ -227,19 +227,6 @@ def checkout_payment(request):
 
     # Generate Order Form
     if request.user.is_authenticated:
-        # Create order form with saved profile details
-        profile = get_object_or_404(CustomerProfile, customer=request.user)
-        order_form = OrderForm({
-            'full_name': profile.full_name,
-            'email': profile.customer.email,
-            'phone_number': profile.default_phone_number,
-            'address_1': profile.default_address_1,
-            'address_2': profile.default_address_2,
-            'city': 'Dublin',
-            'postcode': profile.default_postcode,
-            'order_restaurant': order_restaurant,
-        })
-    else:
         # Create order form using session data
         address_form = request.session.get('address')
         order_form = OrderForm({
