@@ -62,7 +62,7 @@ In order use multiplication and division in the Django templating language (with
 
 Custom template filters were written to aid in the creation and rendering of the star rating system for restaurants.
 
-Django's built in "json_script" template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
+Django's built in 'json_script' template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
 
 ### Delivery Time Timezone Issues
 
@@ -78,23 +78,42 @@ This project was deployed using Heroku and AWS, with a postgres database, via th
 
 1.  A new app was created on Heroku for the project, with the region set as Europe.
 2.  Once the app was created, the Heroku Postgres addon was installed in the Heroku resources tab.
-3.  A backup of the database was created in a file called 'db.json' using the command 'python -m django dumpdata exclude auth.permission --exclude contenttypes > db.json' (this allows the database to be imported into the new Postgres database).
-4.  dj_database_url was installed using pip in order to direct the database url to Heroku.
-5.  psychopg2-binary was also installed using pip to facilitate the adaptation of the Postgres database by this Python application.
+3.  A backup of the database was created in a file called 'db.json' using the command (this allows the database to be imported into the new Postgres database):
+    ```python
+    python -m django dumpdata exclude auth.permission --exclude contenttypes > db.json'
+    ```
+
+4.  'dj_database_url' was installed using pip in order to direct the database url to Heroku.
+5.  'psychopg2-binary' was also installed using pip to facilitate the adaptation of the Postgres database by this Python application.
 6.  dj_database_url was imported into the project's 'settings.py' and the default 'DATABASES' variable was replaced with "{'default': dj_database_url.parse()}".
-7.  The Config Vars were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
-8.  The command 'python -m django loaddata db.json' was then used to load the database backup created in step 3 into the new Postgres database.
-9.  As a new database was now being used, the project's migrations needed to be applied by using 'python manage.py migrate'.
-10. An if statement was added to settings.py so that the application could detect whether it should be using the hosted database or the local development database.
+7.  The 'Config Vars' were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
+8.  The following command was then used to load the database backup created in step 3 into the new Postgres database:
+    ```python
+    python -m django loaddata db.json
+    ``` 
+
+9.  As a new database was now being used, the project's migrations needed to be applied by using: 
+    ```python
+    python manage.py migrate
+    ```
+
+10. An if statement was added to 'settings.py' so that the application could detect whether it should be using the hosted database or the local development database.
 11. Gunicorn was then installed via pip which acts as the webserver in this project.
 12. A Procfile was created in the project's root in order to tell Heroku to create a web dyno and run Gunicorn to server our Django app.
 13. 'heroku login' was used to login into the Heroku CLI.
-14. In order to temporarily prevent Heroku from collecting the static files upon deployment, the command 'heroku config:set DISABLE_COLLECTSTATIC=1 --app=APP_NAME' was used.
+14. In order to temporarily prevent Heroku from collecting the static files upon deployment, the following command was used:
+    ```python
+    heroku config:set DISABLE_COLLECTSTATIC=True --app=APP_NAME
+    ```
+
 15. The Heroku app hostname was added to ALLOWED_HOSTS in settings.py as 'HEROKU-APP-NAME.herokuapp.com'. 'localhost' and '127.0.0.1' were also added for local development.
-16. A Heroku git remote was initialised using 'heroku git:remote -a HEROKU_APP_NAME'.
+16. A Heroku git remote was initialised using:
+    ```python 
+    heroku git:remote -a HEROKU_APP_NAME
+    ```
 17. The project was then deployed to the Heroku master via 'git push heroku main'.
 18. The application was set up to automatically deploy from GitHub via Heroku's deployment settings.
-18. In settings.py, 'DEBUG' was set to be true only if an environment variable called 'DEVELOPMENT' was present.
+18. In 'settings.py', 'DEBUG' was set to be true only if an environment variable called 'DEVELOPMENT' was present.
 
 ### AWS S3 Bucket Setup
 
@@ -120,29 +139,61 @@ This project was deployed using Heroku and AWS, with a postgres database, via th
 
 1.  'boto3' and 'django-storages' were installed using pip, and 'storages' was added to the project's installed apps.
 2.  'USE_AWS' environment variable was added to Heroku, and if statement was added so that if it existed, the following variables were assigned:
-    -   AWS_STORAGE_BUCKET_NAME = 'S3_BUCKET_NAME'
-    -   AWS_S3_REGION_NAME = 'eu-west-1'
-    -   AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
-    -   AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    ```python
+    AWS_STORAGE_BUCKET_NAME = 'S3_BUCKET_NAME'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    ```
 3.  The relevant variables and values from the last step were added to Heroku, and the 'DISABLE_COLLECTSTATIC' variable was removed to allow Django to collect our static files and upload them to S3.
 4.  In order to tell Django where our static files will be coming from in production, another variable was added in settings.py called 'AWS_S3_CUSTOM_DOMAIN' with a value of 'BUCKET-NAME.s3.amazonaws.com'.
 5.  Next, in order to tell Django that we want to use S3 to store the static files whenever 'collectstatic' is run, a new file at the root level called 'custom_storages.py' was created.
 6.  Inside this file, 'settings' was imported from 'django.conf' and 'S3Boto3Storage' was imported from 'storages.backends.s3boto3'.
 7.  Then a StaticStorage class was created, which inherited the 'S3Boto3Storage' class. A 'location' property was added with a value of 'settings.STATICFILES_LOCATION'. A copy of this class was then pasted below and its names adjusted for the media storage.
-8.  Back in settings.py the following variables and relevant values were created and assigned:
-    -   STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-    -   STATICFILES_LOCATION = 'static'
-    -   DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-    -   MEDIAFILES_LOCATION = 'media'
-9.  In order to override and explicitly set the urls for static and media files, the following variables were created in settings.py:
-    -   STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
-    -   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
-10. A cache control section was added to 'setting.py' in order to improve performance for users by caching static files for a long time. This was done by addin the following variable:
-    -   AWS_S3_OBJECT_PARAMETERS = {
-            'Expires': 'Thu 31 Dec 2099 20:00:00 GMT',
-            'CacheControl': 'max-age=94608000',
-        }
+8.  Back in 'settings.py' the following variables and relevant values were created and assigned:
+    ```python
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+    ```
+9.  In order to override and explicitly set the urls for static and media files, the following variables were created in 'settings.py':
+    ```python
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
+    ```
+10. A cache control section was added to 'setting.py' in order to improve performance for users by caching static files for a long time. This was done by adding the following variable:
+    ```python
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+    ```
 11. In order to add media files to S3, a new folder was created in the S3 bucket called 'media' and the media files were uploaded to it.
+
+### Using Django and Gmail to Send Emails
+
+In order to send emails to users who either set up an account or place an order, a simple SMTP server was setup in gmail using the developer's chosen email address via the following steps:
+
+1.  In Gmail, 'Settings' was opened, then the 'Accounts and Imports' section was selected, and then 'Other Google Account settings' was clicked.
+2.  2-step verification was enabled under the 'Security' tab.
+3.  'App Passwords' was opened and a new app with an app of 'Mail', and then 'Other' + 'Django' as device type.
+4.  The password was then copied and pasted into Heroku's config variables as 'EMAIL_HOST_PASSWORD'.
+5.  Another config variable was added called 'EMAIL_HOST_USER' with a value of the developer's chosen email address.
+6.  Lastly, the following code was added to 'settings.py':
+    ```python 
+    if 'DEVELOPMENT' in os.environ:
+        EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+        DEFAULT_FROM_EMAIL = 'tuckin@example.com'
+    else:
+        EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+        EMAIL_USE_TLS = True
+        EMAIL_PORT = 587
+        EMAIL_HOST = 'smtp.gmail.com'
+        EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+        EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+        DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+    ```
 
 ## Roadmap
 
