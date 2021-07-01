@@ -36,10 +36,10 @@ class CustomerProfileForm(forms.ModelForm):
             self.fields[field].label = False
         
         #Add regular expression to fields
-        self.fields['full_name'].widget.attrs['pattern'] = '[a-zA-ZÀ-ÿ ]{5,50}'
+        self.fields['full_name'].widget.attrs['pattern'] = "[a-zA-ZÀ-ÿ-' ]{5,50}"
         self.fields['default_phone_number'].widget.attrs['pattern'] = '[0-9]{7,15}'
-        self.fields['default_address_1'].widget.attrs['pattern'] = '[a-zA-Z0-9À-ÿ ]{5,80}'
-        self.fields['default_address_2'].widget.attrs['pattern'] = '[a-zA-Z0-9À-ÿ ]{5,80}'
+        self.fields['default_address_1'].widget.attrs['pattern'] = "[a-zA-Z0-9À-ÿ-' ]{5,80}"
+        self.fields['default_address_2'].widget.attrs['pattern'] = "[a-zA-Z0-9À-ÿ-' ]{5,80}"
         self.fields['default_postcode'].widget.attrs['pattern'] = '[a-zA-Z0-9 ]{7}'
 
         # Add onInvalid to fields
