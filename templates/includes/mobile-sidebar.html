@@ -14,6 +14,7 @@
         <li class="list-group-item"><a href="{% url 'home' %}" class="text-dark nav-link">Home</a></li>
         {% if request.user.is_authenticated %}    
             <li class="list-group-item"><a href="{% url 'customer_profile' %}" class="text-dark nav-link">Account</a></li>
+            <li class="list-group-item"><a href="{% url 'customer_order_history' %}" class="text-dark nav-link">Order History</a></li>
             <li class="list-group-item"><a href="{% url 'account_logout' %}" class="text-dark nav-link">Log Out</a></li>
         {% else %}
             <li class="list-group-item"><a href="{% url 'account_login' %}" class="text-dark nav-link">Login</a></li>
