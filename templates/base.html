@@ -180,13 +180,13 @@
     <!-- Mobile sidebar nav -->
     <script>
         function openNav() {
-            document.getElementById("sidebar-nav").style.width = "100%";
-            document.getElementById("sidebar-nav").style.visibility = "visible";
+            document.getElementById("sidebar-nav").classList.add("open-nav");
+            document.getElementById("sidebar-nav").classList.remove("close-nav");
         }
 
         function closeNav() {
-            document.getElementById("sidebar-nav").style.width = "0";
-            document.getElementById("sidebar-nav").style.visibility = "hidden";
+            document.getElementById("sidebar-nav").classList.add("close-nav");
+            document.getElementById("sidebar-nav").classList.remove("open-nav");
         }
     </script>
 
