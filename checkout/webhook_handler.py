@@ -1,6 +1,9 @@
 import json
 import time
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
+from django.conf import settings
 from django.http import HttpResponse
 from restaurants.models import FoodItem
 from checkout.models import Order, OrderLineItem
@@ -11,6 +14,25 @@ class StripeWH_Handler:
     # Add current request object as attribute of class
     def __init__(self, request):
         self.request = request
+
+    # Send order confirmation email
+    def _send_confirmation_email(self, order):
+        customer_email = order.email
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order}
+        )
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
+        )
+
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [customer_email]
+        )
 
     # Unhandled webhook event handler
     def handle_event(self, event):
@@ -73,6 +95,8 @@ class StripeWH_Handler:
                 time.sleep(1)
 
         if order_exists:
+            # Send confirmation email
+            self._send_confirmation_email(order)
             return HttpResponse(
                 content='Webhook received: {} | SUCCESS: Verified order already in database'.format(
                     event.type),
@@ -122,7 +146,9 @@ class StripeWH_Handler:
                     content='Webhook received: {} | ERROR: {}'.format(event.type, e),
                     status=500
                 )
-
+        
+        # Send confirmation email
+        self._send_confirmation_email(order)
         return HttpResponse(
             content='Webhook received: {} | SUCCESS: Created order via Webhook handler'.format(
                 event.type),
