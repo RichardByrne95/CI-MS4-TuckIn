@@ -40,7 +40,7 @@ def all_restaurants(request):
             return redirect(reverse(home))
 
     # Sorting (referenced Boutique Ado)
-    if request.GET:
+    if request.method == 'GET':
         # Search Request (referenced Boutique Ado)
         if 'q' in request.GET:
             redirect_url = request.GET['redirect_url']

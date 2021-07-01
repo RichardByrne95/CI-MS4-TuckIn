@@ -38,23 +38,34 @@ def checkout_address(request):
         messages.error(request, 'The restaurant is currently closed.')
         return redirect(reverse('view_bag'))
 
-    # Create instance of order form with logged in user's details
+    # Create instance of order form with authenticated user's profile details
+    maps_address = request.session['maps_address'].split(',')
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Put saved details into fields
-        address_form = OrderForm(initial={
-            'full_name': profile.full_name,
-            'email': profile.customer.email,
-            'phone_number': profile.default_phone_number,
-            'address_1': profile.default_address_1,
-            'address_2': profile.default_address_2,
-            'postcode': profile.default_postcode,
-        })
+        # If user has address in profile, populate with profile data
+        if profile.default_address_1:
+            address_form = OrderForm(initial={
+                'full_name': profile.full_name,
+                'email': profile.customer.email,
+                'phone_number': profile.default_phone_number,
+                'address_1': maps_address[0].lstrip() if maps_address[0] else profile.default_address_1,
+                'address_2': maps_address[1].lstrip() if maps_address[1] else profile.default_address_2,
+                'postcode': profile.default_postcode if maps_address[0] == profile.default_address_1 else None,
+            })
+        else:
+            address_form = OrderForm(initial={
+                'full_name': profile.full_name,
+                'email': profile.customer.email,
+                'phone_number': profile.default_phone_number,
+                'address_1': profile.default_address_1,
+                'address_2': profile.default_address_2,
+                'postcode': profile.default_postcode,
+            })
         # Make email field readonly
         address_form.fields['email'].widget.attrs['readonly'] = True
-    # If an address has been inputted via the homepage or location changer
-    elif 'maps_address' in request.session and request.session['maps_address']:
-        maps_address = request.session['maps_address'].split(',')
+    # If anonymous user and an address has been inputted via the homepage or location changer
+    elif request.session['maps_address']:
         address_form = OrderForm(initial={
             'full_name': '',
             'email': '',
