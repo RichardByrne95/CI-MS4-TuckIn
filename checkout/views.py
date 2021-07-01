@@ -237,18 +237,17 @@ def checkout_payment(request):
                     request, 'Order form invalid.')
 
     # Generate Order Form
-    if request.user.is_authenticated:
-        # Create order form using session data
-        address_form = request.session.get('address')
-        order_form = OrderForm({
-            'full_name': address_form['full_name'],
-            'email': address_form['email'],
-            'phone_number': address_form['phone_number'],
-            'address_1': address_form['address_1'],
-            'address_2': address_form['address_2'],
-            'city': 'Dublin',
-            'postcode': address_form['postcode'],
-        })
+    address_form = request.session.get('address')
+    # Create order form using session data
+    order_form = OrderForm({
+        'full_name': address_form['full_name'],
+        'email': address_form['email'],
+        'phone_number': address_form['phone_number'],
+        'address_1': address_form['address_1'],
+        'address_2': address_form['address_2'],
+        'city': 'Dublin',
+        'postcode': address_form['postcode'],
+    })
 
     # Get variables
     delivery_time = request.POST.get('delivery_time')
