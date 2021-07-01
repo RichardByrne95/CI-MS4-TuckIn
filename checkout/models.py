@@ -2,8 +2,10 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.db.models.deletion import CASCADE, RESTRICT
-from restaurants.models import Restaurant, FoodItem
 from profiles.models import CustomerProfile
+from restaurants.models import Restaurant, FoodItem
+from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 
 
 class Order(models.Model):
@@ -15,7 +17,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
     phone_number = models.CharField(
-        max_length=20, null=False, blank=False, default=0)
+        validators=[MinLengthValidator(limit_value=7)], max_length=15, null=False, blank=False, default='')
     address_1 = models.CharField(max_length=80, null=False, blank=False)
     address_2 = models.CharField(max_length=80, null=True, blank=True)
     city = models.CharField(max_length=6, null=False,
