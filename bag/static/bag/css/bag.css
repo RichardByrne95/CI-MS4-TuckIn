@@ -24,8 +24,6 @@ main {
 }
 
 .bag-contents {
-    border-top: .1rem solid #c8cfd6;
-    border-radius: .3rem;
     padding: 2rem;
     max-width: 80rem;
 }
@@ -80,6 +78,7 @@ input[type=number] {
 /* Buttons */
 #back-to-restaurant-btn {
     border: none;
+    text-decoration: underline;
 }
 
 #go-to-checkout-btn {
@@ -132,6 +131,13 @@ input[type=number] {
     }
 }
 
+/* ----------------------------------------- >=992px */
+@media screen and (min-width: 992px) {
+    #shopping-bag-section {
+        padding-top: 10rem;
+    }
+}
+
 /* ----------------------------------------- >=1200px */
 @media screen and (min-width: 1200px) {
     #shopping-bag-section {
@@ -146,6 +152,7 @@ input[type=number] {
     #back-to-restaurant-btn {
         border: black 1px solid;
         padding: 1.5rem 3rem;
+        
     }
 
     #go-to-checkout-btn {

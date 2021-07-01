@@ -218,16 +218,6 @@ strong {
     z-index: 9998;
 }
 
-.open-nav {
-    width: 100%;
-    visibility: visible;
-}
-
-.close-nav {
-    width: 0;
-    visibility: hidden;
-}
-
 /* Navbar Toggler */
 .navbar-toggler {
     font-size: 1.45rem;
@@ -372,6 +362,16 @@ header {
     background-color: #fafafa;
     height: 100vh;
     z-index: 9999;
+}
+
+.open-nav {
+    width: 100%;
+    visibility: visible;
+}
+
+.close-nav {
+    width: 0;
+    visibility: hidden;
 }
 
 #sidebar-logo {
