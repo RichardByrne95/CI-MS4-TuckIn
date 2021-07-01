@@ -34,3 +34,17 @@ class CustomerProfileForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'profile-form-input'
             self.fields[field].label = False
+        
+        #Add regular expression to fields
+        self.fields['full_name'].widget.attrs['pattern'] = '[a-zA-ZÀ-ÿ ]{5,50}'
+        self.fields['phone_number'].widget.attrs['pattern'] = '[0-9]{7,15}'
+        self.fields['address_1'].widget.attrs['pattern'] = '[a-zA-Z0-9À-ÿ ]{5,80}'
+        self.fields['address_2'].widget.attrs['pattern'] = '[a-zA-Z0-9À-ÿ ]{5,80}'
+        self.fields['postcode'].widget.attrs['pattern'] = '[a-zA-Z0-9 ]{7}'
+
+        # Add onInvalid to fields
+        self.fields['full_name'].widget.attrs['title'] = 'Between 5 and 50 letters'
+        self.fields['phone_number'].widget.attrs['title'] = 'Between 7 and 15 digits'
+        self.fields['address_1'].widget.attrs['title'] = 'Between 5 and 80 characters'
+        self.fields['address_2'].widget.attrs['title'] = 'Between 5 and 80 characters'
+        self.fields['postcode'].widget.attrs['title'] = 'e.g D01HR04, D01 HR04'
