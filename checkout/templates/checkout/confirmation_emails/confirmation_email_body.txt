@@ -2,6 +2,7 @@ Hello {{ order.full_name }}!
 
 This is a confirmation of your order with {{ order.restaurant.friendly_name }} at TuckIn. Your order information is below:
 
+Restaurant: {{ order.restaurant.friendly_name }}
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
@@ -13,7 +14,7 @@ Your order will be delivered to {{ order.address_1 }}{% if order.address_2 %}, {
 
 We've got your phone number on file as {{ order.phone_number }}.
 
-If you have any questions or want to change your order, please contact the restaurant.
+If you have any questions or want to change your order, please contact {{ order.order_restaurant.friendly_name }} at {{ order.order_restaurant.phone_number }}.
 
 Otherwise, feel free to contact us at {{ contact_email }}.
 

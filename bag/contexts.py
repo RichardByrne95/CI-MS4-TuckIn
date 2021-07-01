@@ -5,15 +5,15 @@ from django.shortcuts import get_object_or_404
 
 
 def bag_contents(request):
-    bag_contents = []
-    forloop_count = 0
     order_total = 0
-    bag = request.session.get('bag', {})
+    forloop_count = 0
     food_item_count = 0
+    bag_contents = []
     current_restaurant = None
+    bag = request.session.get('bag', {})
+    contact_email = os.getenv('EMAIL_HOST_USER')
     maps_address = request.session.get('maps_address', None)
     short_maps_address = request.session.get('short_maps_address', None)
-    contact_email = os.getenv('EMAIL_HOST_USER')
     
     # Add restuarant name to session
     current_restaurant = get_object_or_404(
