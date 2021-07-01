@@ -2,7 +2,7 @@ Hello {{ order.full_name }}!
 
 This is a confirmation of your order with {{ order.restaurant.friendly_name }} at TuckIn. Your order information is below:
 
-Restaurant: {{ order.restaurant.friendly_name }}
+Restaurant: {{ order.order_restaurant.friendly_name }}
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
