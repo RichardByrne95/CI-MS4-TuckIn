@@ -180,7 +180,7 @@ In order to send emails to users who either set up an account or place an order,
 3.  'App Passwords' was opened and a new app with an app of 'Mail', and then 'Other' + 'Django' as device type.
 4.  The password was then copied and pasted into Heroku's config variables as 'EMAIL_HOST_PASSWORD'.
 5.  Another config variable was added called 'EMAIL_HOST_USER' with a value of the developer's chosen email address.
-6.  Lastly, the following code was added to 'settings.py':
+6.  Next, the following code was added to 'settings.py':
     ```python 
     if 'DEVELOPMENT' in os.environ:
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -194,6 +194,7 @@ In order to send emails to users who either set up an account or place an order,
         EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
         DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
     ```
+7.  Lastly, a method was created in 'webhook_handler.py' to send a confirmation email when the order had been confirmed in the database.
 
 ## Roadmap
 
