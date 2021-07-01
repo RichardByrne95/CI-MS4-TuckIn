@@ -30,7 +30,7 @@ def customer_profile(request):
 @login_required
 def customer_order_history(request):
     profile = get_object_or_404(CustomerProfile, customer=request.user)
-    orders = profile.orders.all()
+    orders = profile.orders.all().order_by('-date')
 
     context = {
         'orders': orders,
