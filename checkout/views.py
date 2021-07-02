@@ -39,7 +39,7 @@ def checkout_address(request):
         return redirect(reverse('view_bag'))
 
     # Create instance of order form with authenticated user's profile details
-    maps_address = request.session['maps_address'].split(',')
+    maps_address = request.session.get('maps_address').split(',') if request.session.get('maps_address') else None
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Put saved details into fields
@@ -65,7 +65,7 @@ def checkout_address(request):
         # Make email field readonly
         address_form.fields['email'].widget.attrs['readonly'] = True
     # If anonymous user and an address has been inputted via the homepage or location changer
-    elif request.session['maps_address']:
+    elif maps_address:
         address_form = OrderForm(initial={
             'full_name': '',
             'email': '',
