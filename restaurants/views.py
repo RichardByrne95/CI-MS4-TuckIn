@@ -25,9 +25,23 @@ def all_restaurants(request):
 
     #  Handle inputting/changing delivery address
     if request.method == 'POST':
+        # Check that address has Dublin in it (English and Irish)
         try:
             maps_address = request.POST['maps_address']
+            variants_to_check = [
+                'Dublin',
+                'Baile Átha Cliath',
+                'Contae Bhaile Átha Cliath',
+            ]
+            # Referenced https://stackoverflow.com/questions/6531482/how-to-check-if-a-string-contains-an-element-from-a-list-in-python
+            if not any(variant in maps_address for variant in variants_to_check):
+                messages.error(request, 'Address not found within Dublin, please try again.')
+                return redirect(reverse(home))
+        except Exception:
+            messages.error(request, 'Address not found within Dublin, please try again.')
+            return redirect(reverse(home))
 
+        try:
             # Create address without city and country
             short_maps_address_list = maps_address.split(',')
             short_maps_address = f'{short_maps_address_list[0]}, {short_maps_address_list[1]}'
