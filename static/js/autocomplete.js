@@ -34,10 +34,9 @@ function OnPlaceChanged () {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     // Check to see if Dublin is in the address
                     let hasDublin = results[0].formatted_address.indexOf('Dublin');
-                    let hasCountyDublin = results[0].formatted_address.indexOf('County Dublin');
                     let hasBaile = results[0].formatted_address.indexOf('Baile Átha Cliath');
                     let hasContae = results[0].formatted_address.indexOf('Contae Bhaile Átha Cliath');
-                    if (hasDublin != -1 || hasCountyDublin != -1 || hasBaile != -1 || hasContae != -1) {
+                    if (hasDublin != -1 || hasCountyDublin != -1 || hasBaile != -1 || hasContae != -1 && length(results) > 0) {
                         $(".find-button").attr('disabled', false);
                         $(".error-message").html('');
                     } else {
@@ -60,3 +59,11 @@ function OnPlaceChanged () {
         addressVerification(document.getElementById('address'));
     }
 }
+
+// Disable find button if address is removed
+const input = document.querySelector('#address');
+input.addEventListener('input', event => {
+    if (!input.value) {
+        $(".find-button").attr('disabled', true);
+    }
+})
