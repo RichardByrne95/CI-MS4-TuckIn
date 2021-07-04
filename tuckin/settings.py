@@ -98,6 +98,9 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',  # Required by Debug Toolbar
 ]
 
+if 'DEVELOPMENT' in os.environ:
+    MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
+
 ROOT_URLCONF = 'tuckin.urls'
 
 INTERNAL_IPS = [
