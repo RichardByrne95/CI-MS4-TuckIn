@@ -36,7 +36,7 @@ function OnPlaceChanged () {
                     let hasDublin = results[0].formatted_address.indexOf('Dublin');
                     let hasBaile = results[0].formatted_address.indexOf('Baile Átha Cliath');
                     let hasContae = results[0].formatted_address.indexOf('Contae Bhaile Átha Cliath');
-                    if (hasDublin != -1 || hasCountyDublin != -1 || hasBaile != -1 || hasContae != -1 && length(results) > 0) {
+                    if (hasDublin != -1 || hasBaile != -1 || hasContae != -1) {
                         $(".find-button").attr('disabled', false);
                         $(".error-message").html('');
                     } else {
@@ -44,7 +44,7 @@ function OnPlaceChanged () {
                         $(".error-message").html('Your address must be inside Dublin');
                     }
 
-                    // Check to see if at least one comma in address (needed for maps_address var in bag/contexts.py/bag_contents())
+                    // Check to see if at least one comma in address (needed for maps_address variable in 'bag/contexts.py/bag_contents()')
                     let hasComma = results[0].formatted_address.indexOf(',');
                     if (hasComma != -1) {
                         $(".find-button").attr('disabled', false);
@@ -66,4 +66,4 @@ input.addEventListener('input', event => {
     if (!input.value) {
         $(".find-button").attr('disabled', true);
     }
-})
+});
