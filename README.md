@@ -196,6 +196,28 @@ In order to send emails to users who either set up an account or place an order,
     ```
 7.  Lastly, a method was created in 'webhook_handler.py' to send a confirmation email when the order had been confirmed in the database.
 
+# Testing
+
+## Testing with Cypress
+
+[Cypress](www.cypress.io) was used to create QA tests for this app, using the following steps:
+
+1.  Cypress was installed and saved as a dev dependency via NPM (Node Package Manager) using the command
+```javascript
+npm install cypress --save-dev
+```
+2.  Cypress was then run using the command:
+```javascript
+npx cypress open
+```
+This command added a cypress folder to the project, and opened the testing software.
+3.  Inside the cypress folder, a new file was created within the 'integration' folder called 'djangoAppNameSpec.js'.
+4.  Each test was created using the formula 'Arrange, Act, Assert':
+    -   'Arrange' sets up the initial state of the app.
+    -   'Act' performs an action to be tested.
+    -   'Asserts' makes an assertion as to the expected state of the app after the action has been taken.
+5.  A 'spec' file was created for each Django app in the project, for separation and consistency.
+
 ## Roadmap
 
 -   Use restaurant names instead of id numbers in restaurant url.
@@ -244,3 +266,5 @@ f-strings were replaced with the .format method for Stripe's webhook handlers, a
 The 'payment_intent.succeeded' webhook from Stripe kept failing due to being unable to get anything except the payment id from the intent (an Attribute error kept occurring, Stripe support recommended removing the code causing the issue). As each payment intent is unique, the decision was made to simply use the payment intent to search for the order in the webhook handler.
 
 While jQuery was used for most of the JavaScript in the project, it was not used for the implementation of Google Autocomplete, in order to stick to Google's recommended practices.
+
+CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
