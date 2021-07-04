@@ -48,7 +48,6 @@ def all_restaurants(request):
             # Store in session
             request.session['maps_address'] = maps_address
             request.session['short_maps_address'] = short_maps_address
-        
         except Exception:
             messages.error(request, 'Address could not be found. Please ensure the address is valid, uses commas, is within Dublin, Ireland and is formatted correctly.')
             return redirect(reverse(home))
