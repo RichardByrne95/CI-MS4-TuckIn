@@ -47,4 +47,12 @@ describe('Home Page/Index Tests', () => {
         cy.get('h4.nearby-restaurants').should('contain', 'delivering to 22 Shelbourne Road');
         cy.get('.change-location > a').should('contain', 'change location');
     });
+
+    it('creates session cookie upon submitting valid address', () => {
+        cy.visit('/');
+        cy.get('input#address').clear({ force: true }).type('22 Shelbourne Road', { force: true }).focus();
+        cy.get('.pac-item').first().click().wait(1000);
+        cy.get('#address-finder').submit().wait(1000);
+        cy.getCookie('sessionid').should('exist');
+    });
 });
