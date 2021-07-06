@@ -45,7 +45,7 @@
                             <!-- Refine -->
                             <div class="col-6 no-gutters pe-3">
                                 <div class="dropdown d-flex">
-                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-cuisines-button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                         type="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-filter"></i> Cuisines
                                     </a>
@@ -68,19 +68,19 @@
                             <!-- Sort -->
                             <div class="col-6 no-gutters ps-3">
                                 <div class="dropdown d-flex">
-                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button"
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-sort-button" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button"
                                         aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-sort-amount-down"></i>
                                         Sort{% if refine_text %}: {{ refine_text }}{% endif %}
                                     </a>
                                     <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                         <li>
-                                            <a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
+                                            <a class="dropdown-item" id="highest-rated-mobile" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
                                                 Rated
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
+                                            <a class="dropdown-item" id="delivery-cost-mobile" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
                                                 Cost
                                             </a>
                                         </li>
@@ -129,14 +129,14 @@
                         <!-- Sort Button -->
                         <div class="col-1 no-gutters d-none d-lg-block">
                             <div class="dropdown d-none d-lg-flex justify-content-lg-end">
-                                <a href="#" class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                <a href="#" class="btn btn-secondary dropdown-toggle desktop-sort-button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                     type="button" aria-haspopup="true" aria-expanded="false">
                                     Sort{% if refine_text %}: {{ refine_text }}{% endif %}
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
+                                    <li><a class="dropdown-item" id="highest-rated-desktop" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
                                             Rated</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
+                                    <li><a class="dropdown-item" id="delivery-cost-desktop" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
                                             Cost</a></li>
                                 </ul>
                             </div>

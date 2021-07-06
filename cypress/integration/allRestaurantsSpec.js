@@ -5,9 +5,24 @@ describe('All Restaurants Tests', () => {
         cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/');
     });
 
+    // Links
     it('brings the user back to the homepage when change/set location link is clicked', () => {
         cy.get('.change-location > a').click({ force: true });
         cy.url().should('equal', 'http://127.0.0.1:8000/');
+    });
+
+    it("brings you to the restaurant's menu page when clicking on a restaurant", () => {
+        cy.visit('http://127.0.0.1:8000/restaurants/');
+        cy.get('.card-body').first().click({ force: true });
+        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/1/');
+    });
+
+    // General QA
+    it("should display no more and no less than 5 stars for each restaurant's rating", () => {
+        cy.visit('http://127.0.0.1:8000/restaurants/');
+        cy.get('.restaurant-rating').each((rating) => {
+            cy.wrap(rating).children().should('have.length', 5);
+        });
     });
 
     // Sorting
