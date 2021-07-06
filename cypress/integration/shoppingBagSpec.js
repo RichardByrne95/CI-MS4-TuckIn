@@ -44,11 +44,39 @@ describe('Shopping Bag Tests', () => {
     });
 
     it("doesn't allow quantity selector to go above 15 or below 1", () => {
-        
+        cy.visit('/restaurants/1/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.visit('/bag/');
+        // Check above 15
+        let count = 0;
+        while (count < 20) {
+            cy.get('.increment-qty').click({ force: true }).wait(50);
+            count++;
+        }
+        cy.get('.qty-input').invoke('val').should('eq', '15');
+        // Check below 1
+        cy.reload();
+        cy.get('.qty-input').invoke('val').should('eq', '1');
+        count = 0;
+        while (count < 5) {
+            cy.get('.decrement-qty').click({ force: true }).wait(50);
+            count++;
+        }
+        cy.get('.qty-input').invoke('val').should('eq', '1');
     });
     
     it('deletes food from cart upon pressing the delete button', () => {
-        
+        cy.visit('/restaurants/1/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.visit('/bag/');
+        cy.get('.fa-trash-alt').parent().click({ force: true }).wait(500);
+        cy.get('.bag-contents > p').should('contain', "Looks like you haven't added any food to your order yet...");
+        cy.get('.browse-restaurants-btn').should('exist');
+        cy.get('form.table-responsive').should('not.exist');
+        cy.get('.toast-header').should('contain', 'Alert!');
+        cy.get('.toast-body > p').should('contain', 'has been removed from your order');
     });
 
     it('redirects user to restaurant associated with food in cart upon pressing back to restaurant button', () => {
