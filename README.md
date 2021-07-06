@@ -221,24 +221,26 @@ This command added a cypress folder to the project, and opened the testing softw
 ## Roadmap
 
 -   Use restaurant names instead of id numbers in restaurant url.
--   Allow users to change their email addresses
+-   Allow users to change their email addresses.
 -   Ability to add multiple addresses to one account.
 -   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
 -   Add ability to add a note to the overall order for the restaurant.
--   Add ability to edit notes/additional details
--   Add flexible minimum order amount
+-   Add ability to edit notes/additional details.
+-   Add flexible minimum order amount.
 -   Add restaurant accounts so that they can manage their inventory.
--   Allow restaurants delivery and collection times to be separate
--   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions)
--   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00
--   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules
--   Allow customers to pre-order with a restaurant if it's not open today
--   Add prompt to remove everything from order when food from another restaurant is in the bag
--   Allow the user to store a bag for each restaurant
--   Add choices to food modal e.g. select toppings
--   Add ability for restaurants to issue discount codes
+-   Allow restaurants delivery and collection times to be separate.
+-   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions).
+-   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00.
+-   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
+-   Allow customers to pre-order with a restaurant if it's not open today.
+-   Add prompt to remove everything from order when food from another restaurant is in the bag.
+-   Allow the user to store a bag for each restaurant.
+-   Add choices to food modal e.g. select toppings.
+-   Add ability for restaurants to issue discount codes.
 -   Show previous orders on homepage for easy re-ordering.
--   Use Google Place's Autocomplete for checkout address forms
+-   Use Google Place's Autocomplete for checkout address forms.
+-   Refine checkout by skipping checkout address if user has address associated with account and hasn't submitted a new address on the homepage.
+-   Add automated order confirmation text message when user successfully submits an order.
 
 
 
@@ -268,3 +270,5 @@ The 'payment_intent.succeeded' webhook from Stripe kept failing due to being una
 While jQuery was used for most of the JavaScript in the project, it was not used for the implementation of Google Autocomplete, in order to stick to Google's recommended practices.
 
 CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
+
+While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
