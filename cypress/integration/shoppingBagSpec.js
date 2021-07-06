@@ -13,6 +13,12 @@ describe('Shopping Bag Tests', () => {
         cy.get('form.table-responsive').should('not.exist');
     });
 
+    it('directs user to all restaurants page upon pressing "browse restaurants" button', () => {
+        cy.visit('/bag/');
+        cy.get('.browse-restaurants-btn').click({ force: true });
+        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/');
+    });
+
     it('should adjust food quantity upon proceeding with checkout', () => {
         // Putting food into bag
         cy.visit('/restaurants/1/');
@@ -76,22 +82,59 @@ describe('Shopping Bag Tests', () => {
         cy.get('.browse-restaurants-btn').should('exist');
         cy.get('form.table-responsive').should('not.exist');
         cy.get('.toast-header').should('contain', 'Alert!');
-        cy.get('.toast-body > p').should('contain', 'has been removed from your order');
+        cy.get('.toast-body > .row > .col > p').should('contain', 'has been removed from your order');
     });
 
     it('redirects user to restaurant associated with food in cart upon pressing back to restaurant button', () => {
-        
+        cy.visit('/restaurants/1/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.visit('/bag/');
+        cy.get('#back-to-restaurant-btn').click({ force: true });
+        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/1/');
     });
 
-    it('redirect user to checkout address page upon pressing secure checkout button', () => {
-        
+    it('redirect user to checkout address page upon pressing secure checkout button with valid bag', () => {
+        cy.visit('/restaurants/1/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.visit('/bag/');
+        cy.get('.continue-checkout-button').click();
+        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/address/');
     });
 
     it('should update prices in realtime as user adjusts quantities', () => {
-        
+        // Putting food into bag
+        cy.visit('/restaurants/1/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.visit('/bag/');
+        cy.get('form.table-responsive').should('exist');
+        // Adjusting quantity
+        cy.get('.qty-input').invoke('html').then((originalQty) => {
+            cy.get('.food-price > p').invoke('html').then((originalPrice) => {
+                originalPrice = originalPrice.replace('€', '');
+                cy.get('p.subtotal').invoke('html').then((originalSubtotal) => {
+                    cy.get('.increment-qty').click({ force: true });
+                    cy.get('p.subtotal').should('contain', `€${originalPrice * 2}`);
+                    cy.get('.bag-total > strong').should('contain', `€${originalPrice * 2}`);
+                    cy.get('.bag-delivery').invoke('html').then((deliveryCharge) => {
+                        deliveryCharge = deliveryCharge.replace('Delivery: €', '');
+                        cy.get('.bag-grand-total > strong').should('contain', `€${(originalPrice * 2) + parseFloat(deliveryCharge)}`);
+                    });
+                });
+            });
+        });
     });
 
     it('displays error message if trying to add food to cart from a different restaurant', () => {
-        
+        cy.visit('/restaurants/1/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.visit('/restaurants/2/');
+        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('#add-to-basket-btn').wait(300).click({ force: true });
+        cy.get('.toast-header').should('contain', 'Error');
+        cy.get('.toast-body > p').should('contain', 'There is already food from another restaurant in your cart.');
     });
 });
