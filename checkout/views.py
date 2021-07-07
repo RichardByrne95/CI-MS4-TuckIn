@@ -49,9 +49,9 @@ def checkout_address(request):
                 'full_name': profile.full_name,
                 'email': profile.customer.email,
                 'phone_number': profile.default_phone_number,
-                'address_1': maps_address[0].lstrip() if maps_address[0] else profile.default_address_1,
-                'address_2': maps_address[1].lstrip() if maps_address[1] else profile.default_address_2,
-                'postcode': profile.default_postcode if maps_address[0] == profile.default_address_1 else None,
+                'address_1': maps_address[0].lstrip() if maps_address else profile.default_address_1,
+                'address_2': maps_address[1].lstrip() if maps_address else profile.default_address_2,
+                'postcode': profile.default_postcode if maps_address == profile.default_address_1 else None,
             })
         else:
             address_form = OrderForm(initial={
