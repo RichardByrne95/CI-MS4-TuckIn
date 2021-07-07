@@ -87,8 +87,11 @@ def checkout_address(request):
     return render(request, 'checkout/checkout_address.html', context)
 
 
-@require_POST
 def checkout_time(request):
+    if not request.method == 'POST':
+        messages.error(request, 'An error occurred please try going through the checkout process again.')
+        return redirect(reverse('view_bag'))
+
     # Handle no food in bag
     if 'bag' not in request.session:
         messages.warning(request, 'You have no food in your basket.')
