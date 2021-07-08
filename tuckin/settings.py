@@ -100,6 +100,7 @@ MIDDLEWARE = [
 
 if 'DEVELOPMENT' in os.environ:
     MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
+    MIDDLEWARE.remove('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 ROOT_URLCONF = 'tuckin.urls'
 
