@@ -148,7 +148,7 @@
                                             <p class="my-0 text-end subtotal">{{ order_total | floatformat:2 }}</p>
                                             <p class="my-0 text-end">{{ delivery_cost | floatformat:2 }}</p>
                                             <br>
-                                            <p class="my-0 text-end grand-total">€{{ grand_total | floatformat:2 }}</p>
+                                            <p class="my-0 text-end grand-total grand-total-amount">€{{ grand_total | floatformat:2 }}</p>
                                         </div>
                                     </div>
                                     <hr class="divider">
@@ -184,7 +184,7 @@
                                     <div class="row no-gutters need-help">
                                         <div class="col-12 no-gutters d-flex justify-content-center">
                                             <p>Need help? Visit the 
-                                                <a href="{% url 'help' %}">help section</a>
+                                                <a href="{% url 'help' %}" id="help-link">help section</a>
                                             </p>
                                         </div>
                                     </div>
