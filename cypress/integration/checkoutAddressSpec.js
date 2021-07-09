@@ -5,7 +5,7 @@ describe('Checkout Address Tests', () => {
         cy.get('a#food-item-card-link').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/address/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/address/');
     });
 
     // Functionality and Validity
@@ -42,7 +42,7 @@ describe('Checkout Address Tests', () => {
         cy.visit('/checkout/address/');
         cy.get('.continue-checkout-button').click();
         cy.get('#delivery-address').then($el => $el[0].checkValidity()).should('be.false');
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/address/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/address/');
     });
 
     it("displays validation error if user tries to submit field that doesn't meet specifications", () => {
@@ -59,12 +59,12 @@ describe('Checkout Address Tests', () => {
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('a#adjust-order-button').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/bag/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
     });
 
     it('returns user to all restaurants page and displays warning if trying to access checkout payment with no food', () => {
         cy.visit('/checkout/address/');
-        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/');
         cy.get('.toast-header > strong').should('contain', 'Warning!');
         cy.get('.toast-body > p').should('contain', 'You have no food in your basket.');
     });

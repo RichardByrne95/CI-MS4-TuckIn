@@ -62,6 +62,6 @@ describe('Restaurant Menu Tests', () => {
         cy.get('a#food-item-card-link').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.get('#mini-bag-checkout-btn').click({ force: true });
-        cy.url().should('eq', 'http://127.0.0.1:8000/bag/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
     });
 });

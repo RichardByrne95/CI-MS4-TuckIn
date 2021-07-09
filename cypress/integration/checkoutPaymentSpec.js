@@ -7,7 +7,6 @@ const getIframeBody = (iframeSelector) => {
 };
 
 describe('Checkout Payment Tests', () => {
-
     // Page Load Test
     it('successfully loads', () => {
         // Setup
@@ -21,7 +20,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('input[name=address_1]').type('123 testland road');
         cy.get('.continue-checkout-button').click().wait(100);
         cy.get('.continue-checkout-button').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/payment/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/payment/');
     });
 
     // // Functionality Tests
@@ -85,13 +84,13 @@ describe('Checkout Payment Tests', () => {
         cy.get('#id_full_name').clear({ force: true });
         getIframeBody('iframe[allow="payment *"]').find('.CardNumberField-input-wrapper > span > input').type('424242424242424242424242424');
         cy.get('#submit-button').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/payment/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/payment/');
         cy.get('#payment-form').then($el => $el[0].checkValidity()).should('be.false');
         // Enter invalid phone number and attempt submit
         cy.get('#id_full_name').type('testy test');
         cy.get('#id_phone_number').clear({ force: true }).type('e&$bH5236');
         cy.get('#submit-button').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/payment/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/payment/');
         cy.get('#payment-form').then($el => $el[0].checkValidity()).should('be.false');
     });
 
@@ -110,7 +109,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('.continue-checkout-button').click();
         // Click link
         cy.get('.order-summary-heading a').click({ force: true });
-        cy.url().should('eq', 'http://127.0.0.1:8000/bag/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
     });
 
     it('accurately displays the amount to be charged beneath the card number input field', () => {
@@ -128,7 +127,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('.continue-checkout-button').click();
         // Validation
         cy.get('.charge-warning > strong').invoke('html').then((amount) => {
-            cy.get('.grand-total-amount').invoke('html').should('eq', amount);
+            cy.get('.grand-total-amount').invoke('html').should('equal', amount);
         });
     });
 
@@ -150,7 +149,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('#delivery-time-select').select('11:45 p.m.');
         cy.get('.continue-checkout-button').click();
         // Validation
-        cy.get('.order-summary-heading strong').invoke('html').should('eq', `Order summary (${count})`);
+        cy.get('.order-summary-heading strong').invoke('html').should('equal', `Order summary (${count})`);
     });
 
     it('directs user to help page upon clicking help link', () => {
@@ -168,7 +167,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('.continue-checkout-button').click();
         // Validation
         cy.get('#help-link').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/links/help/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/links/help/');
     });
 
     it('returns to payment page and displays error if issue with card', () => {
@@ -191,9 +190,9 @@ describe('Checkout Payment Tests', () => {
             cy.wrap(iframeContainer).its('0.contentDocument').should('exist').its('body').find('iframe.FullscreenFrame').then((fullscreenFrame) => {
                 cy.wrap(fullscreenFrame).its('0.contentDocument').should('exist').its('body').find('#test-source-authorize-3ds').click();
             });
-            // Validation
+        // Validation
         }).then(() => {
-            cy.url().should('eq', 'http://127.0.0.1:8000/checkout/payment/');
+            cy.url().should('equal', 'http://127.0.0.1:8000/checkout/payment/');
             cy.get('#card-errors').should('contain', 'insufficient funds');
         });
     });

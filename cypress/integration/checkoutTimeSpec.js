@@ -10,7 +10,7 @@ describe('Checkout Delivery Time Tests', () => {
         cy.get('input[name=phone_number]').type('0871568498');
         cy.get('input[name=address_1]').type('123 testland road');
         cy.get('.continue-checkout-button').click().wait(100);
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/time/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/time/');
     });
 
     // Functionality
@@ -19,7 +19,7 @@ describe('Checkout Delivery Time Tests', () => {
         cy.get('a#food-item-card-link').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/time/');
-        cy.url().should('eq', 'http://127.0.0.1:8000/bag/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
     });
 
     it('displays available delivery times for the restaurant', () => {
@@ -61,6 +61,6 @@ describe('Checkout Delivery Time Tests', () => {
         cy.get('input[name=address_1]').type('123 testland road');
         cy.get('.continue-checkout-button').click();
         cy.get('#edit-address-button').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/address/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/address/');
     });
 });

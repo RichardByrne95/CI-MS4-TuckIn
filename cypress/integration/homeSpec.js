@@ -2,7 +2,7 @@ describe('Home Page/Index Tests', () => {
     // Page Load Test
     it('successfully loads', () => {
         cy.visit('/');
-        cy.url().should('eq', 'http://127.0.0.1:8000/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/');
     });
 
     // Address Tests

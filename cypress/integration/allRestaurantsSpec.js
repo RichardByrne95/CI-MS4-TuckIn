@@ -14,7 +14,7 @@ describe('All Restaurants Tests', () => {
     it("brings you to the restaurant's menu page when clicking on a restaurant", () => {
         cy.visit('http://127.0.0.1:8000/restaurants/');
         cy.get('.card-body').first().click({ force: true });
-        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/1/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/1/');
     });
 
     // General QA

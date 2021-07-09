@@ -2,7 +2,7 @@ describe('Shopping Bag Tests', () => {
     // Page Load Test
     it('successfully loads', () => {
         cy.visit('/bag/');
-        cy.url().should('eq', 'http://127.0.0.1:8000/bag/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
     });
 
     // Functionality Tests
@@ -16,7 +16,7 @@ describe('Shopping Bag Tests', () => {
     it('directs user to all restaurants page upon pressing "browse restaurants" button', () => {
         cy.visit('/bag/');
         cy.get('.browse-restaurants-btn').click({ force: true });
-        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/');
     });
 
     it('should adjust food quantity upon proceeding with checkout', () => {
@@ -37,14 +37,14 @@ describe('Shopping Bag Tests', () => {
             // Proceeding with checkout
             cy.get('.qty-input').invoke('val').should('not.be', qtyOriginal).then((qtyNew) => {
                 cy.get('.continue-checkout-button').click();
-                cy.url().should('eq', 'http://127.0.0.1:8000/checkout/address/');
+                cy.url().should('equal', 'http://127.0.0.1:8000/checkout/address/');
                 cy.get('input[name=full_name]').type('testy test');
                 cy.get('input[name=email]').type('testy@test.com');
                 cy.get('input[name=phone_number]').type('0871568498');
                 cy.get('input[name=address_1]').type('123 testland road');
                 cy.get('.continue-checkout-button').click().wait(100);
                 cy.get('.continue-checkout-button').click();
-                cy.get('.food-qty').invoke('html').should('eq', `Qty: ${parseFloat(randomQty) + 1}`);
+                cy.get('.food-qty').invoke('html').should('equal', `Qty: ${parseFloat(randomQty) + 1}`);
             });
         });
     });
@@ -60,16 +60,16 @@ describe('Shopping Bag Tests', () => {
             cy.get('.increment-qty').click({ force: true }).wait(50);
             count++;
         }
-        cy.get('.qty-input').invoke('val').should('eq', '15');
+        cy.get('.qty-input').invoke('val').should('equal', '15');
         // Check below 1
         cy.reload();
-        cy.get('.qty-input').invoke('val').should('eq', '1');
+        cy.get('.qty-input').invoke('val').should('equal', '1');
         count = 0;
         while (count < 5) {
             cy.get('.decrement-qty').click({ force: true }).wait(50);
             count++;
         }
-        cy.get('.qty-input').invoke('val').should('eq', '1');
+        cy.get('.qty-input').invoke('val').should('equal', '1');
     });
     
     it('deletes food from cart upon pressing the delete button', () => {
@@ -91,7 +91,7 @@ describe('Shopping Bag Tests', () => {
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('#back-to-restaurant-btn').click({ force: true });
-        cy.url().should('eq', 'http://127.0.0.1:8000/restaurants/1/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/1/');
     });
 
     it('redirect user to checkout address page upon pressing secure checkout button with valid bag', () => {
@@ -100,7 +100,7 @@ describe('Shopping Bag Tests', () => {
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('.continue-checkout-button').click();
-        cy.url().should('eq', 'http://127.0.0.1:8000/checkout/address/');
+        cy.url().should('equal', 'http://127.0.0.1:8000/checkout/address/');
     });
 
     it('should update prices in realtime as user adjusts quantities', () => {
