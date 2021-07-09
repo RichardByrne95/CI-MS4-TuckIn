@@ -19,7 +19,7 @@ describe('Shopping Bag Tests', () => {
         cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/');
     });
 
-    it('should adjust food quantity upon proceeding with checkout', () => {
+    it('should adjust updated food quantity upon proceeding with checkout', () => {
         // Putting food into bag
         cy.visit('/restaurants/1/');
         cy.get('a#food-item-card-link').first().click({ force: true });
