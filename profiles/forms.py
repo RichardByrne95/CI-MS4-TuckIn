@@ -21,7 +21,8 @@ class CustomerProfileForm(forms.ModelForm):
         # Set cursor default field
         self.fields['full_name'].widget.attrs['autofocus'] = True
 
-        # Make city readonly
+        # Make email and city readonly
+        self.fields['email'].widget.attrs['readonly'] = True
         self.fields['default_city'].widget.attrs['readonly'] = True
 
         for field in self.fields:
