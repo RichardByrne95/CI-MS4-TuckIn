@@ -32,8 +32,17 @@ describe('List Your Restaurant Tests', () => {
         cy.url().should('equal', 'http://127.0.0.1:8000/links/list_your_restaurant/');
     });
     
-    it('correctly submits valid form and displays confirmation message', () => {
-        
+    it('correctly submits valid form', () => {
+        cy.visit('/links/list_your_restaurant/');
+        cy.get('#restaurant-name').type('Testaurant', { force: true });
+        cy.get('#contact-name').type('Testaurant Owner', { force: true });
+        cy.get('#restaurant-phone').type('012888888', { force: true });
+        cy.get('#contact-number').type('0838888888', { force: true });
+        cy.get('#restaurant-address-1').type('123 Testland Road', { force: true });
+        cy.get('#restaurant-address-2').type('Testlandia', { force: true });
+        cy.get('select').select('pizza');
+        cy.get('#postcode').type('D01EF23', { force: true });
+        cy.get('.footer-links-submit-button').click({ force: true });
     });
 
 });
