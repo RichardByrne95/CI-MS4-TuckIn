@@ -27,7 +27,7 @@
         <section id="list-your-restaurant">
             <div class="row no-gutters">
                 <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-0">
-                    <form action="" class="footer-link-form">
+                    <form action="{% url 'list_your_restaurant' %}" method="POST" class="footer-link-form">
                         <div class="row list-restaurant-fields text-center">
                             <div class="col-12 col-md-6 no-gutters form-col-left">
                                 <label for="restaurant-name">Restaurant Name *</label>

@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from django.contrib import messages
 from restaurants.models import Cuisine
 
 
 def list_your_restaurant(request):
+    if request.method == 'POST':
+        messages.success(request, 'Thank you for your interest in becoming a part of the TuckIn family. A member of our team will be in touch shortly.')
+    
     cuisines = Cuisine.objects.all()
     context = {
         'cuisines': cuisines,
