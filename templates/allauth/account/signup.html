@@ -1,7 +1,6 @@
 {% extends "account/base.html" %}
 
-{% load i18n %}
-{% load account socialaccount %}
+{% load account %}
 
 {% block head_title %}Signup{% endblock %}
 
@@ -11,7 +10,7 @@
         <section id="signup">
             <div class="row no-gutters d-flex justify-content-center">
                 <div class="col-10 col-md-5 col-lg-5 col-xl-3 no-gutters">
-                    <h1>"Sign Up"</h1>
+                    <h1>Sign Up</h1>
                     <p>Already have an account? Then please <a href="{{ login_url }}" id="sign-in-link">sign in</a>.</p>
                     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                         {% csrf_token %}
