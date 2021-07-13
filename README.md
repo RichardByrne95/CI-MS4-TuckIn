@@ -1,5 +1,7 @@
 # TuckIn - Dublin
 
+<img src="https://github.com/RichardByrne95/CI-MS3-Floral-Reef/blob/main/static/images/floral_reef_mockup.PNG?raw=true">
+
 If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
 
 ### Food Images Source
