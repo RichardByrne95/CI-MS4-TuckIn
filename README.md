@@ -1,6 +1,114 @@
 # TuckIn - Dublin
 
-<img src="https://github.com/RichardByrne95/CI-MS3-Floral-Reef/blob/main/static/images/floral_reef_mockup.PNG?raw=true">
+<h2 align="center"><img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/media/amiresponsive_mockup.PNG?raw=true"></h2>
+
+This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat and UberEats. It provides a platform for restaurants and takeaways to display their menus and receive orders through a secure and streamlined process.
+
+[View live project here.](https://tuckin-ms4.herokuapp.com/)
+
+## User Experience (UX)
+
+### Project Goals
+
+### Developer Goals
+
+### User Stories
+
+### Design Choices
+
+### Wireframes
+
+
+## Features
+
+### Current Features
+
+### Features Left to Implement
+
+
+## Technologies Used
+
+### Languages Used
+
+### Frameworks, Libraries & Programs Used
+
+
+## Development
+
+### Database Schema
+
+
+## Testing
+
+### Code Validation
+
+### Testing User Stories from User Experience (UX) Section
+
+### Testing with Cypress
+
+### Manual Functionality Testing
+
+### Manual Accessibility Testing
+
+### Manual Usability Testing
+
+### Manual Database Testing
+
+### Manual Compatibility Testing
+
+### Manual Responsiveness Testing
+
+### Manual Security Testing
+
+### Performance Testing
+
+### Further Testing
+
+
+## Deployment
+
+### Source Control Process
+
+### Deploying to Heroku and AWS
+
+### Running This Project Locally
+
+### Project Status
+
+
+## Credits
+
+### Content
+
+### Media
+
+### Code
+
+### Acknowledgements
+
+### Support
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
 
