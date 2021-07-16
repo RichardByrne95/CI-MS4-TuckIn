@@ -10,7 +10,16 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 ### Project Goals
 
+-   Develop a food delivery webapp akin to JustEat, UberEats etc.
+-   Create a full-stack site using HTML, CSS, JavaScript, Python+Django.
+-   Utilise a secure login system to allow users to create an account.
+-   Provide an easy-to-use search platform for users to find restaurants serving Dublin.
+-   Use a relational database, hosted on AWS.
+-   Integrate Stripe to accept secure payments.
+
 ### Developer Goals
+
+-   Create a commercial-grade webapp that could be a minimum viable product/proof of concept for a real-world business.
 
 ### User Stories
 
@@ -25,6 +34,28 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 ### Features Left to Implement
 
+-   Use restaurant names instead of id numbers in restaurant url.
+-   Allow users to change their email addresses.
+-   Ability to add multiple addresses to one account.
+-   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
+-   Add ability to add a note to the overall order for the restaurant.
+-   Add ability to edit notes/additional details.
+-   Add flexible minimum order amount.
+-   Add restaurant accounts so that they can manage their inventory.
+-   Allow restaurants delivery and collection times to be separate.
+-   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions).
+-   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00.
+-   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
+-   Allow customers to pre-order with a restaurant if it's not open today.
+-   Add prompt to remove everything from order when food from another restaurant is in the bag.
+-   Allow the user to store a bag for each restaurant.
+-   Add choices to food modal e.g. select toppings.
+-   Add ability for restaurants to issue discount codes.
+-   Show previous orders on homepage for easy re-ordering.
+-   Use Google Place's Autocomplete for checkout address forms.
+-   Refine checkout by skipping checkout address if user has address associated with account and hasn't submitted a new address on the homepage.
+-   Add automated order confirmation text message when user successfully submits an order.
+
 
 ## Technologies Used
 
@@ -37,122 +68,9 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 ### Database Schema
 
-
-## Testing
-
-### Code Validation
-
-### Testing User Stories from User Experience (UX) Section
-
-### Testing with Cypress
-
-### Manual Functionality Testing
-
-### Manual Accessibility Testing
-
-### Manual Usability Testing
-
-### Manual Database Testing
-
-### Manual Compatibility Testing
-
-### Manual Responsiveness Testing
-
-### Manual Security Testing
-
-### Performance Testing
-
-### Further Testing
-
-
-## Deployment
-
-### Source Control Process
-
-### Deploying to Heroku and AWS
-
-### Running This Project Locally
-
-### Project Status
-
-
-## Credits
-
-### Content
-
-### Media
-
-### Code
-
-### Acknowledgements
-
-### Support
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
-
-### Food Images Source
-
-#### Background Images
-
--   Homepage - https://unsplash.com/photos/JplMVRjzQVU
-
-#### Ezio Pizza
-
-Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
-
-#### McDoogle's
-
-Quarter Kilo - https://www.pexels.com/photo/ham-and-bacon-burger-2983098/
-
-#### Tomato King
-
--   MASSIVE Burger - https://www.pexels.com/photo/photo-of-burger-beside-fires-3616956/
--   MightyMeaty - https://www.pexels.com/photo/person-holding-a-double-patty-cheese-burger-3826273/
--   MiniMeaty - https://www.pexels.com/photo/close-up-photo-of-a-cheeseburger-1556698/
--   MiniMeaty Meal - https://www.pexels.com/photo/tomato-burger-and-fried-fries-1600727/
--   Cheez Burger - https://www.pexels.com/photo/close-up-photo-of-hamburger-1893557/
--   Classic Hamburger - https://www.pexels.com/photo/photo-of-burger-and-fries-3219547/
--   Classic Hamburger Meal - https://www.pexels.com/photo/plate-of-fries-and-burger-3219483/
--   Crispy Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-6896379/
--   Classic Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-7963144/
--   Bean Burger - https://www.pexels.com/photo/close-up-photo-of-burger-1639562/
--   Classic Chips - https://www.pexels.com/photo/fries-on-brown-table-2271110/
--   Onion Rings - https://pixabay.com/photos/food-restaurant-cafe-dining-dinner-3669928/
--   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
--   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
-
-### Logo Images Sources
-
-Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
-McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
-Ezio Pizza's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
-
 ### Django Secret Key Exposure
 
 When starting off this project, I followed along with the course lectures to ensure that I had the project set up properly. In the course lecturers, however, the lecturer uploads the Django secret key to GitHub. I also did the same before realising what had happened. After contacting Student Care, they confirmed that removing 'settings.py' from GitHub in future commits and changing the Django secret key would be sufficient so as to not incur any penalties during grading.
-
 
 ### Google Maps Places API Autocomplete Limitations
 
@@ -180,9 +98,56 @@ Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 
 
 However, it was discovered upon saving an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class.
 
+## Testing
+
+### Code Validation
+
+### Testing User Stories from User Experience (UX) Section
+
+### Testing with Cypress
+
+[Cypress](www.cypress.io) was used to create QA tests for this app, using the following steps:
+
+1.  Cypress was installed and saved as a dev dependency via NPM (Node Package Manager) using the command
+```javascript
+npm install cypress --save-dev
+```
+2.  Cypress was then run using the command:
+```javascript
+npx cypress open
+```
+This command added a cypress folder to the project, and opened the testing software.
+3.  Inside the cypress folder, a new file was created within the 'integration' folder called 'djangoAppNameSpec.js'.
+4.  Each test was created using the formula 'Arrange, Act, Assert':
+    -   'Arrange' sets up the initial state of the app.
+    -   'Act' performs an action to be tested.
+    -   'Asserts' makes an assertion as to the expected state of the app after the action has been taken.
+5.  A 'spec' file was created for each Django app in the project, for separation and consistency.
+
+### Manual Functionality Testing
+
+### Manual Accessibility Testing
+
+### Manual Usability Testing
+
+### Manual Database Testing
+
+### Manual Compatibility Testing
+
+### Manual Responsiveness Testing
+
+### Manual Security Testing
+
+### Performance Testing
+
+### Further Testing
+
+
 ## Deployment
 
 This project was deployed using Heroku and AWS, with a postgres database, via the following steps:
+
+### Source Control Process
 
 ### Heroku Deployment
 
@@ -195,7 +160,7 @@ This project was deployed using Heroku and AWS, with a postgres database, via th
 
 4.  'dj_database_url' was installed using pip in order to direct the database url to Heroku.
 5.  'psychopg2-binary' was also installed using pip to facilitate the adaptation of the Postgres database by this Python application.
-6.  dj_database_url was imported into the project's 'settings.py' and the default 'DATABASES' variable was replaced with "{'default': dj_database_url.parse()}".
+6.  dj_database_url was imported into the project's 'settings.py' and the default 'DATABASES' variable value was replaced with "{'default': dj_database_url.parse()}".
 7.  The 'Config Vars' were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
 8.  The following command was then used to load the database backup created in step 3 into the new Postgres database:
     ```python
@@ -306,51 +271,100 @@ In order to send emails to users who either set up an account or place an order,
     ```
 7.  Lastly, a method was created in 'webhook_handler.py' to send a confirmation email when the order had been confirmed in the database.
 
+### Running This Project Locally
+
+### Project Status
+
+
+## Credits
+
+If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
+
+### Content
+
+### Media
+
+#### Image Sources
+
+##### Background Images
+
+-   Homepage - https://unsplash.com/photos/JplMVRjzQVU
+
+##### Ezio Pizza
+
+-   Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
+
+##### McDoogle's
+
+-   Quarter Kilo - https://www.pexels.com/photo/ham-and-bacon-burger-2983098/
+
+##### Tomato King
+
+-   MASSIVE Burger - https://www.pexels.com/photo/photo-of-burger-beside-fires-3616956/
+-   MightyMeaty - https://www.pexels.com/photo/person-holding-a-double-patty-cheese-burger-3826273/
+-   MiniMeaty - https://www.pexels.com/photo/close-up-photo-of-a-cheeseburger-1556698/
+-   MiniMeaty Meal - https://www.pexels.com/photo/tomato-burger-and-fried-fries-1600727/
+-   Cheez Burger - https://www.pexels.com/photo/close-up-photo-of-hamburger-1893557/
+-   Classic Hamburger - https://www.pexels.com/photo/photo-of-burger-and-fries-3219547/
+-   Classic Hamburger Meal - https://www.pexels.com/photo/plate-of-fries-and-burger-3219483/
+-   Crispy Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-6896379/
+-   Classic Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-7963144/
+-   Bean Burger - https://www.pexels.com/photo/close-up-photo-of-burger-1639562/
+-   Classic Chips - https://www.pexels.com/photo/fries-on-brown-table-2271110/
+-   Onion Rings - https://pixabay.com/photos/food-restaurant-cafe-dining-dinner-3669928/
+-   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
+-   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
+
+#### Logo Images Sources
+
+Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
+McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
+Ezio Pizza's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
+
+### Code
+
+### Acknowledgements
+
+### Support
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Testing
 
-## Testing with Cypress
 
-[Cypress](www.cypress.io) was used to create QA tests for this app, using the following steps:
 
-1.  Cypress was installed and saved as a dev dependency via NPM (Node Package Manager) using the command
-```javascript
-npm install cypress --save-dev
-```
-2.  Cypress was then run using the command:
-```javascript
-npx cypress open
-```
-This command added a cypress folder to the project, and opened the testing software.
-3.  Inside the cypress folder, a new file was created within the 'integration' folder called 'djangoAppNameSpec.js'.
-4.  Each test was created using the formula 'Arrange, Act, Assert':
-    -   'Arrange' sets up the initial state of the app.
-    -   'Act' performs an action to be tested.
-    -   'Asserts' makes an assertion as to the expected state of the app after the action has been taken.
-5.  A 'spec' file was created for each Django app in the project, for separation and consistency.
 
-## Roadmap
-
--   Use restaurant names instead of id numbers in restaurant url.
--   Allow users to change their email addresses.
--   Ability to add multiple addresses to one account.
--   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
--   Add ability to add a note to the overall order for the restaurant.
--   Add ability to edit notes/additional details.
--   Add flexible minimum order amount.
--   Add restaurant accounts so that they can manage their inventory.
--   Allow restaurants delivery and collection times to be separate.
--   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions).
--   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00.
--   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
--   Allow customers to pre-order with a restaurant if it's not open today.
--   Add prompt to remove everything from order when food from another restaurant is in the bag.
--   Allow the user to store a bag for each restaurant.
--   Add choices to food modal e.g. select toppings.
--   Add ability for restaurants to issue discount codes.
--   Show previous orders on homepage for easy re-ordering.
--   Use Google Place's Autocomplete for checkout address forms.
--   Refine checkout by skipping checkout address if user has address associated with account and hasn't submitted a new address on the homepage.
--   Add automated order confirmation text message when user successfully submits an order.
 
 
 
