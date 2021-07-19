@@ -35,10 +35,12 @@ def all_restaurants(request):
             ]
             # Referenced https://stackoverflow.com/questions/6531482/how-to-check-if-a-string-contains-an-element-from-a-list-in-python
             if not any(variant in maps_address for variant in variants_to_check):
-                messages.error(request, 'Address not found within Dublin, please try again.')
+                messages.error(
+                    request, 'Address not found within Dublin, please try again.')
                 return redirect(reverse(home))
         except Exception:
-            messages.error(request, 'Address not found within Dublin, please try again.')
+            messages.error(
+                request, 'Address not found within Dublin, please try again.')
             return redirect(reverse(home))
 
         try:
@@ -49,7 +51,8 @@ def all_restaurants(request):
             request.session['maps_address'] = maps_address
             request.session['short_maps_address'] = short_maps_address
         except Exception:
-            messages.error(request, 'Address could not be found. Please ensure the address is valid, uses commas, is within Dublin, Ireland and is formatted correctly.')
+            messages.error(
+                request, 'Address could not be found. Please ensure the address is valid, uses commas, is within Dublin, Ireland and is formatted correctly.')
             return redirect(reverse(home))
 
     # Sorting (referenced Boutique Ado)
@@ -77,8 +80,9 @@ def all_restaurants(request):
             open_restaurants = restaurants.filter(name__in=open_restaurants)
             closed_restaurants = [
                 restaurant for restaurant in restaurants if not restaurant.is_open_now()]
-            closed_restaurants = restaurants.filter(name__in=closed_restaurants)
-            
+            closed_restaurants = restaurants.filter(
+                name__in=closed_restaurants)
+
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             if sortkey == 'rating_high':

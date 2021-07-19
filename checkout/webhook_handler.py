@@ -46,7 +46,8 @@ class StripeWH_Handler:
         # Get order data from payment intent
         intent = event.data.object
         payment_intent_id = intent.id
-        bag = json.loads(intent.metadata.bag) if intent.metadata and intent.metadata.bag else None
+        bag = json.loads(
+            intent.metadata.bag) if intent.metadata and intent.metadata.bag else None
         billing_details = intent.charges.data[0].billing_details if intent.charges.data[0].billing_details else None
         shipping_details = intent.shipping if intent.shipping else None
         grand_total = round(intent.charges.data[0].amount / 100, 2)
@@ -54,21 +55,24 @@ class StripeWH_Handler:
         # If no bag in metadata
         if not bag:
             return HttpResponse(
-                content='No bag or items associated with this order | {}'.format(intent),
+                content='No bag or items associated with this order | {}'.format(
+                    intent),
                 status=400
             )
-        
+
         # If no billing details
         if not billing_details:
             return HttpResponse(
-                content='No billing details associated with this order | {}'.format(intent),
+                content='No billing details associated with this order | {}'.format(
+                    intent),
                 status=400
             )
-        
+
         # If no shipping details
         if not shipping_details:
             return HttpResponse(
-                content='No shipping details associated with this order | {}'.format(intent),
+                content='No shipping details associated with this order | {}'.format(
+                    intent),
                 status=400
             )
 
@@ -84,7 +88,7 @@ class StripeWH_Handler:
         while attempt <= 5:
             # Check if order already exists in database
             try:
-                order = get_object_or_404(Order,                   
+                order = get_object_or_404(Order,
                                           stripe_payment_id=payment_intent_id,
                                           )
                 order_exists = True
@@ -143,10 +147,11 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
                 return HttpResponse(
-                    content='Webhook received: {} | ERROR: {}'.format(event.type, e),
+                    content='Webhook received: {} | ERROR: {}'.format(
+                        event.type, e),
                     status=500
                 )
-        
+
         # Send confirmation email
         self._send_confirmation_email(order)
         return HttpResponse(

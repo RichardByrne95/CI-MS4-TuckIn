@@ -39,7 +39,8 @@ def checkout_address(request):
         return redirect(reverse('view_bag'))
 
     # Create instance of order form with authenticated user's profile details
-    maps_address = request.session.get('maps_address').split(',') if request.session.get('maps_address') else None
+    maps_address = request.session.get('maps_address').split(
+        ',') if request.session.get('maps_address') else None
     if request.user.is_authenticated:
         profile = get_object_or_404(CustomerProfile, customer=request.user)
         # Put saved details into fields
@@ -89,7 +90,8 @@ def checkout_address(request):
 
 def checkout_time(request):
     if not request.method == 'POST':
-        messages.error(request, 'An error occurred please try going through the checkout process again.')
+        messages.error(
+            request, 'An error occurred please try going through the checkout process again.')
         return redirect(reverse('view_bag'))
 
     # Handle no food in bag
@@ -135,7 +137,7 @@ def checkout_payment(request):
     if 'bag' not in request.session:
         messages.warning(request, 'You have no food in your basket.')
         return redirect(reverse('restaurants'))
-    
+
     # Get restaurant associated with order
     restaurant = request.session.get('restaurant')
     order_restaurant = get_object_or_404(Restaurant, name=restaurant)

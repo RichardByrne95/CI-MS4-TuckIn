@@ -14,7 +14,7 @@ def bag_contents(request):
     contact_email = os.getenv('EMAIL_HOST_USER')
     maps_address = request.session.get('maps_address', None)
     short_maps_address = request.session.get('short_maps_address', None)
-    
+
     # Add restuarant name to session
     current_restaurant = get_object_or_404(
         Restaurant, name=list(bag)[0]) if bag else None
@@ -22,7 +22,7 @@ def bag_contents(request):
 
     # Get delivery cost from current restaurant
     delivery_cost = current_restaurant.delivery_cost if bag else 0
-    
+
     for restaurant, food_items in bag.items():
         list_of_food_keys_in_bag = list(food_items.keys())
 

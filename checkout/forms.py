@@ -41,8 +41,8 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             # Remove the label for each field
             self.fields[field].label = False
-        
-        #Add regular expression to fields
+
+        # Add regular expression to fields
         self.fields['full_name'].widget.attrs['pattern'] = "[a-zA-ZÀ-ÿ-' ]{5,50}"
         self.fields['phone_number'].widget.attrs['pattern'] = '[0-9]{7,15}'
         self.fields['address_1'].widget.attrs['pattern'] = "[a-zA-Z0-9À-ÿ-' ]{5,80}"
