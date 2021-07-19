@@ -23,9 +23,59 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 ### User Stories
 
+#### Viewing and Navigation
+
+-   As a hungry site user, I want to be able to...
+    -   View available restaurants in my area
+    -   See which restaurants are open and which are closed
+    -   Clearly and easily see other customers' ratings of a restaurant
+    -   View food available from a restaurant in easy-to-navigate sections
+    -   View a restaurant's opening times
+    -   View a restaurant's delivery charge
+
+#### Registration and User Accounts
+
+-   As an enthusiastic and efficient foodie, I want to be able to...
+    -   Register for an account
+    -   Easily login and logout
+    -   View my previous orders
+    -   Save an address for use in checkout
+    -   Recover my password in case I forget it
+    -   Receive an email confirmation upon registering
+
+#### Sorting and Searching
+
+-   As a site user who is looking for something specific, I want to be able to...
+    -   Refine restaurants by cuisine
+    -   Sort restaurants by rating and delivery cost
+    -   View food from a specific restaurant's menu section
+    -   Search for a restaurant either by name, cuisine, food or food description
+
+#### Purchasing and Checkout
+
+-   As a site user who needs food ASAP, I want to be able to...
+    -   Add food to my bag with a message for the restaurant
+    -   Change the quantity of food being added to my bag
+    -   View items in my bag to be ordered
+    -   Adjust the quantity of a food item in my bag
+    -   Confirm my address details before ordering
+    -   Easily choose a delivery time for my order
+    -   Simply enter my card details for payment
+    -   Feel my information and payment is secure
+    -   Reach out for help if something goes wrong
+    -   View an order confirmation upon checking out successfully
+    -   Receive an email confirming my order
+
+#### Admin and Store Management
+
+-   As the proud site owner, I want to be able to...
+    -   Accept requests from restaurants to join the platform
+    -   Receive requests for help from customers
+
 ### Design Choices
 
 ### Wireframes
+
 
 
 ## Features
@@ -35,9 +85,9 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 ### Features Left to Implement
 
 -   Use restaurant names instead of id numbers in restaurant url.
--   Allow users to change their email addresses.
+-   Allow users to change their email addresses (presents logistical and security issues).
 -   Ability to add multiple addresses to one account.
--   Add realtime updates of order status (cooking/on it's way etc.) to order confirmation page.
+-   Add realtime updates of order status ('cooking'/'on it's way' etc.) to order confirmation page.
 -   Add ability to add a note to the overall order for the restaurant.
 -   Add ability to edit notes/additional details.
 -   Add flexible minimum order amount.
@@ -48,13 +98,17 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
 -   Allow customers to pre-order with a restaurant if it's not open today.
 -   Add prompt to remove everything from order when food from another restaurant is in the bag.
--   Allow the user to store a bag for each restaurant.
+-   Allow the user to store a different bag for each restaurant.
 -   Add choices to food modal e.g. select toppings.
 -   Add ability for restaurants to issue discount codes.
 -   Show previous orders on homepage for easy re-ordering.
 -   Use Google Place's Autocomplete for checkout address forms.
 -   Refine checkout by skipping checkout address if user has address associated with account and hasn't submitted a new address on the homepage.
 -   Add automated order confirmation text message when user successfully submits an order.
+-   Allow sorting within a specific cuisine
+-   Add a minimum delivery threshold
+-   Add an optional delivery threshold for free delivery
+-   Add ASAP to delivery time options
 
 
 ## Technologies Used
@@ -396,3 +450,7 @@ While jQuery was used for most of the JavaScript in the project, it was not used
 CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
 
 While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
+
+When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag.
+
+As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a commercial scenario, a more sophisticated system of address verification, delivery radii and geo-tracking would be used from the paid services of the Google Places API.
