@@ -74,6 +74,26 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 ### Design Choices
 
+-   Colour Scheme
+
+    -   The colours used throughout the website are: #FF7200 (primary buttons and links), #008DFF (secondary buttons and links), #354555 (opening later banner) and ##f1f2f4 (footer background).
+
+    -   The primary colour (#FF7200) of the site was chosen because, according to popular colour theory, it is energetic and draw attention. The intention is to give users the impression that their hunger can be satiated quickly by using this site. Orange hues can also represent a refreshing feeling, linked to citrus fruit.
+
+    -   The secondary colour (#008DFF) of the site was chosen as the direct compliment of the primary colour (#FF7200) using [colourpicke.me](https://colorpicker.me/).
+
+-   Layout
+
+    [This website](https://www.just-eat.ie/) and [this website](https://www.ubereats.com/ie) were used to inform the layout choices made.
+
+-   Typography
+
+    -   One primary font was used throughout the website: 'Inter'. The logo, however, uses 'Baloo 2'. 'Inter' was chosen for its easy readability and simplicity, reducing friction for users allowing them to get their food faster. 'Baloo 2' with its rounded edged and lack of ornamentation was chosen for the logo to display a sense of carefree-ness, light-heartedness and youthfulness. This combines with the 'energy' of the orange colour to provide consistent messaging to the user about the type of business with whom they are interacting.
+
+-   Imagery
+
+    -   Images play a large role throughout the website. The homepage contains a large background image to warm up the taste buds of the user. Each restaurant is [primarily represented by the image](https://www.easel.ly/blog/text-vs-images-which-content-format-effective/) and logo chosen by the restaurant, and secondarily by the restaurant name. The same goes for each food item within restaurants' menus, but to a lesser extent.
+
 ### Wireframes
 
 
@@ -81,6 +101,14 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 ## Features
 
 ### Current Features
+
+-   Food ordering from local restaurants
+-   Allows users to interact with an e-commerce website as expected by modern web users
+-   User accounts that can save information for a quicker checkout experience
+-   View order history
+-   Search functionality
+-   Interactive elements
+-   Responsive on all common device sizes
 
 ### Features Left to Implement
 
@@ -110,12 +138,19 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Add an optional delivery threshold for free delivery
 -   Add ASAP to delivery time options
 
-
 ## Technologies Used
 
 ### Languages Used
 
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5)
+-   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [Python 3.9](https://www.python.org/)
+-   [JavaScript ES6](https://www.javascript.com/)
+
 ### Frameworks, Libraries & Programs Used
+
+1.  [Django 3.1.7](https://www.djangoproject.com/)
+    -   Django 3.1.7 was used 
 
 
 ## Development
@@ -454,3 +489,5 @@ While there are measure in place throughout the project to ensure the validity o
 When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag.
 
 As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a commercial scenario, a more sophisticated system of address verification, delivery radii and geo-tracking would be used from the paid services of the Google Places API.
+
+In a commercial setting, the logo would just read 'TuckIn' without the '- Dublin' ending. The '- Dublin' ending currently exists as part of a number of measures to ensure users know that the current state of the site only allows ordering from restaurants in Dublin.
