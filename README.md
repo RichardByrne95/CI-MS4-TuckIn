@@ -84,7 +84,13 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 -   Layout
 
-    [This website](https://www.just-eat.ie/) and [this website](https://www.ubereats.com/ie) were used to inform the layout choices made.
+    -   [This website](https://www.just-eat.ie/) and [this website](https://www.ubereats.com/ie) were used to inform the layout choices made.
+
+    -   The restaurant phone number was purposely excluded from restaurant menu to encourage the user to order through TuckIn. Phone number is provided on the order confirmation page if a user needs to contact them about an order.
+
+    -   The footer was removed from the bag and checkout pages so as to minimise potential distractions that could prevent the user from completing an order.
+
+    -   In a commercial setting, the logo would just read 'TuckIn' without the '- Dublin' ending. The '- Dublin' ending currently exists as part of a number of measures to ensure users know that the current state of the site only allows ordering from restaurants in Dublin.
 
 -   Typography
 
@@ -188,13 +194,24 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 12. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
     -   Django Storages was used to allow Django to access the database setup on AWS S3.
 
+13. [Stripe](https://stripe.com)
+    -   Stripe was used to accept payment for orders.
+
 ## Development
 
 ### Database Schema
 
+<img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/media/tuckin_ms4_dbms_diagram.png?raw=true">
+
+-   The database for TuckIn is a flat system made up of 8 custom collections.
+
+-   The fields for each record can be found in the above image, or at [this link](https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/media/tuckin_ms4_dbms_diagram.png).
+
+-   Conceptually speaking, the database can be split in two conjoined sections: the order section and the restaurant section. The diagram above displays the order section in top half and the restaurant section in the lower half.
+
 ### Django Secret Key Exposure
 
-When starting off this project, I followed along with the course lectures to ensure that I had the project set up properly. In the course lecturers, however, the lecturer uploads the Django secret key to GitHub. I also did the same before realising what had happened. After contacting Student Care, they confirmed that removing 'settings.py' from GitHub in future commits and changing the Django secret key would be sufficient so as to not incur any penalties during grading.
+When starting off this project, I followed along with the course lectures to ensure that I had the project set up properly. In the course lecturers, however, the lecturer uploads the Django secret key to GitHub. I also did the same before realising what had happened. After contacting Student Care, they confirmed that removing 'settings.py' from GitHub in future commits or changing the Django secret key would be sufficient so as to not incur any penalties during grading.
 
 ### Google Maps Places API Autocomplete Limitations
 
@@ -206,21 +223,45 @@ The 'findPlaceFromQuery' method was used to find a place within the Google Maps 
 
 Biases were also used in the API settings, so that the API would search within Dublin first, but it ultimately searches all counties of Ireland if not enough results are found within Dublin.
 
+As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a commercial scenario, a more sophisticated system of address verification, delivery radii and geo-tracking would be used from the paid services of the Google Places API.
+
 ### Django Math Filters
 
-In order use multiplication and division in the Django templating language (without the result returning a rounded integer), [Django Math Filters](https://pypi.org/project/django-mathfilters/) was installed to allow this functionality. Specifically, it was required for the creation of the star ratings underneath each restaurant card in 'restaurants.html'.
+-    In order use multiplication and division in the Django templating language (without the result returning a rounded integer), [Django Math Filters](https://pypi.org/project/django-mathfilters/) was installed to allow this functionality. Specifically, it was required for the creation of the star ratings underneath each restaurant card in 'restaurants.html'.
 
 ### Custom Django Template Filters
 
-Custom template filters were written to aid in the creation and rendering of the star rating system for restaurants.
+-    Custom template filters were written to aid in the creation and rendering of the star rating system for restaurants. These can be found in 'restaurants/templatetags/restaurants_extra.py' or at [this link](https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/restaurants/templatetags/restaurants_extra.py).
 
-Django's built in 'json_script' template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
+-    Django's built in 'json_script' template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
 
 ### Delivery Time Timezone Issues
 
-Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. 
+-    Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. However, it was discovered upon saving an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class.
 
-However, it was discovered upon saving an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class.
+### Other/Misc
+
+-   Despite contemporary style guides, HTML files were named using snake case for continuity and cohesion with the python views that call them.
+
+-   A note for the CodeInstitute examiner: Some restaurants may not be open depending on what time of day the examiner is grading this project. Time is set to UTC.
+
+-   After completing circa 60% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented.
+
+-   For customers, the user field in the CustomerProfile model was named 'customer' instead of 'user' to prevent potential confusion in the future, when admin accounts for the restaurants themselves are to be set up, allowing them to manage their menu and details.
+
+-   While jQuery was used for most of the JavaScript in the project, it was not used for the implementation of Google Autocomplete, in order to stick to Google's recommended practices.
+
+-   CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
+
+-   When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag.
+
+### Issues Encountered
+
+-   The 'payment_intent.succeeded' webhook from Stripe kept failing due to being unable to get anything except the payment id from the intent (an Attribute error kept occurring, Stripe support recommended removing the code causing the issue). As each payment intent is unique, the decision was made to simply use the payment intent to search for the order in the webhook handler.
+
+-   f-strings were replaced with the .format method for Stripe's webhook handlers, as 500 errors were frequently occurring when using f-strings. Stripe also us the .format method in their example code in the [Stripe Docs](https://stripe.com/docs/webhooks/build).
+
+-   While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
 
 ## Testing
 
@@ -452,77 +493,10 @@ Ezio Pizza's logo was created by the developer using [freelogodesign.org](https:
 ### Support
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Testing
-
-
-
-
-
-
-
-
-Why underscores were used in html files instead of hyphens
-
-Timezone for person marking this project. Some restaurants may not be open depending on what time of day the examiner is grading this project. Time is set to Dublin time.
-
-After completing circa 75% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented.
-
-For users, the user field was named 'customer' instead of 'user' to prevent confusion in the future, if user accounts for the restaurants themselves were to be set up to allow them to manage their menu.
-
 Used https://webformatter.com/javascript for JavaScript formatting
 
-Phone number purposely excluded from restaurant menu to encourage the user to order through tuckin. Phone number is provided on order confirmation page.
+
 
 Used https://www.cookiepolicygenerator.com/ to generate cookie and privacy policies.
 Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
 Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
-
-Footer was removed from bag and checkout pages so as to minimise potential distractions that could prevent the user from completing an order.
-
-f-strings were replaced with the .format method for Stripe's webhook handlers, as 500 errors were frequently occurring when using f-strings. Stripe also us the .format method in their example code in the [Stripe Docs](https://stripe.com/docs/webhooks/build).
-
-The 'payment_intent.succeeded' webhook from Stripe kept failing due to being unable to get anything except the payment id from the intent (an Attribute error kept occurring, Stripe support recommended removing the code causing the issue). As each payment intent is unique, the decision was made to simply use the payment intent to search for the order in the webhook handler.
-
-While jQuery was used for most of the JavaScript in the project, it was not used for the implementation of Google Autocomplete, in order to stick to Google's recommended practices.
-
-CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
-
-While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
-
-When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag.
-
-As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a commercial scenario, a more sophisticated system of address verification, delivery radii and geo-tracking would be used from the paid services of the Google Places API.
-
-In a commercial setting, the logo would just read 'TuckIn' without the '- Dublin' ending. The '- Dublin' ending currently exists as part of a number of measures to ensure users know that the current state of the site only allows ordering from restaurants in Dublin.
