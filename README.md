@@ -255,13 +255,15 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 -   When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag.
 
-### Issues Encountered
+### Notable Issues Encountered
 
 -   The 'payment_intent.succeeded' webhook from Stripe kept failing due to being unable to get anything except the payment id from the intent (an Attribute error kept occurring, Stripe support recommended removing the code causing the issue). As each payment intent is unique, the decision was made to simply use the payment intent to search for the order in the webhook handler.
 
--   f-strings were replaced with the .format method for Stripe's webhook handlers, as 500 errors were frequently occurring when using f-strings. Stripe also us the .format method in their example code in the [Stripe Docs](https://stripe.com/docs/webhooks/build).
+-   'f-strings' were replaced with the '.format' method for Stripe's webhook handlers that were used in the lectures, as 500 errors were frequently occurring when using 'f-strings'. Stripe also uses the '.format' method in their example code in the [Stripe Docs](https://stripe.com/docs/webhooks/build).
 
 -   While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
+
+-   In rare circumstances, a restaurant with a 5 star rating may display 6 stars, and a restaurant with a 3 star rating may only display 4 stars. The cause of these issues is yet unknown.
 
 ## Testing
 
