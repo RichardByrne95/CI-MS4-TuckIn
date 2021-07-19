@@ -150,8 +150,43 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 ### Frameworks, Libraries & Programs Used
 
 1.  [Django 3.1.7](https://www.djangoproject.com/)
-    -   Django 3.1.7 was used 
+    -   Django 3.1.7 was used as the web framework for this project.
 
+2.  [jQuery](https://jquery.com/)
+    -   jQuery was used to streamline the process of writing JavaScript code.
+
+3.  [AWS S3](https://aws.amazon.com/s3/)
+    -   S3 was used to store the database for the site.
+
+3.  [Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
+    -   Allauth was used to create a secure system through which user could safely register for accounts, login, logout and perform other account-related activities.
+
+4.  [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/#)
+    -   Crispy Forms was used to easily control the rendering behaviour of the forms used on the website.
+
+5.  [Balsamiq](https://balsamiq.com/)
+    -   Balsamiq was used to create the wireframes during the design process.
+
+6.  [Git](https://git-scm.com/)
+    -   Git was used for version control by utilizing the terminal to commit to Git and Push to GitHub.
+
+7.  [GitHub](https://github.com/)
+    -   GitHub is used to store the projects code after being pushed from Git.
+
+8.  [VSCode](https://code.visualstudio.com/)
+    -   VSCode was the text editor used for this project. All installed addons can be found in the 'requirements.txt' file.
+
+9.  [LucidChart](https://www.lucidchart.com/)
+    -   LucidChart was used to create the database schema diagram for the README.
+
+10. [Mathfilters](https://pypi.org/project/django-mathfilters/)
+    -   Mathfilters was used for the creation and rendering of the rating system for restaurants.
+
+11. [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+    -   Django Debug Toolbar was used to aid in the debugging of errors that occurred throughout development.
+
+12. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
+    -   Django Storages was used to allow Django to access the database setup on AWS S3.
 
 ## Development
 
