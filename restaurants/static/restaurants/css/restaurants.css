@@ -34,7 +34,7 @@ header {
     margin: 0;
     font-size: 1.4rem;
     font-weight: 500;
-    color: #00baff;
+    color: #008dff;
 }
 
 /* Referenced https://calvinke.com/seo/fixed-header-anchor-css/ */
@@ -80,15 +80,15 @@ header {
 }
 
 .dropdown-toggle {
-    background-color: #00baff;
-    border-color: #00baff;
+    background-color: #008dff;
+    border-color: #008dff;
     font-weight: 600;
 }
 
 .dropdown-toggle:hover,
 .dropdown-toggle:focus {
-    background-color: #00baff;
-    border-color: #00baff;
+    background-color: #008dff;
+    border-color: #008dff;
 }
 
 .opaque-image-overlay {
@@ -452,7 +452,7 @@ header {
     .change-location a {
         font-size: 1.4rem;
         font-weight: 500;
-        color: #00baff;
+        color: #008dff;
         margin-left: 1rem;
     }
 

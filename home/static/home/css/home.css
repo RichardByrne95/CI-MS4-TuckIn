@@ -57,17 +57,17 @@ h3 {
 
 .find-button {
     font-size: 1.3rem;
-    background-color: orangered;
+    background-color: #ff7200;
     color: #fafafa;
-    border: orangered 1px solid;
+    border: #ff7200 1px solid;
     border-radius: 0 .3rem .3rem 0;
     max-width: 80%;
 }
 
 .find-button:hover {
-    background-color: rgba(255, 68, 0, 0.774);
+    background-color: #e96800;
     color: white;
-    border: rgba(255, 68, 0, 0.774) 1px solid;
+    border: #e96800 1px solid;
 }
 
 .find-button i,
@@ -102,13 +102,13 @@ h3 {
 .cuisine i {
     font-size: 3.4rem;
     padding: 1rem;
-    color: rgba(255, 68, 0, 0.808);
+    color: #ff7200;
 }
 
 .cuisine a {
     color: #fafafa;
     font-weight: 500;
-    color: rgba(255, 68, 0, 0.808);
+    color: #ff7200;
 }
 
 .cuisine-col:hover {
@@ -231,9 +231,9 @@ h3 {
 
     .find-button {
         font-size: 1.8rem;
-        background-color: orangered;
+        background-color: #ff7200;
         color: #fafafa;
-        border: orangered 1px solid;
+        border: #ff7200 1px solid;
         border-radius: 0 .3rem .3rem 0;
         max-width: 80%;
     }

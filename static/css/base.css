@@ -48,7 +48,7 @@ p {
 }
 
 a {
-    color: orangered;
+    color: #ff7200;
     border-bottom: none;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
     text-decoration: none;
@@ -113,7 +113,7 @@ strong {
 
 /* ----------------------------------------- Components */
 .continue-checkout-button {
-    background-color: orangered;
+    background-color: #ff7200;
     color: #fff;
     border-radius: .3rem;
     padding: 1rem 2rem;
@@ -134,9 +134,9 @@ strong {
 }
 
 .continue-checkout-button:hover {
-    background-color: orangered;
+    background-color: #ff7200;
     color: white;
-    border: orangered .1rem solid;
+    border: #ff7200 .1rem solid;
 }
 
 /* ----------------------------------------- Scrollbar */
@@ -203,8 +203,8 @@ strong {
 
 #mini-bag-checkout-btn {
     color: #fff;
-    background-color: orangered;
-    border-color: orangered;
+    background-color: #ff7200;
+    border-color: #ff7200;
 }
 
 /* ----------------------------------------- Navbar */
@@ -280,7 +280,7 @@ header {
 }
 
 .navbar-brand-block-colour {
-    color: orangered !important;
+    color: #ff7200 !important;
 }
 
 .search-icon-block-colour {
@@ -288,7 +288,7 @@ header {
 }
 
 .nav-link-colour, .fa-shopping-bag-block-colour {
-    color: #00baff !important;
+    color: #008dff !important;
 }
 
 /* End of Dynamic Navbar */
@@ -324,7 +324,7 @@ header {
 }
 
 #desktop-search-button:hover {
-    color: orangered;
+    color: #ff7200;
 }
 
 .search-icon {
@@ -353,7 +353,7 @@ header {
 
 .bag-icon a i:hover {
     font-size: 2.2rem;
-    color: orangered;
+    color: #ff7200;
 }
 
 /* Mobile Sidebar */
