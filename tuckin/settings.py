@@ -98,7 +98,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',  # Required by Debug Toolbar
 ]
 
-if 'DEVELOPMENT' in os.environ:
+if 'TESTING' in os.environ:
     MIDDLEWARE.remove('django.middleware.csrf.CsrfViewMiddleware')
     MIDDLEWARE.remove('debug_toolbar.middleware.DebugToolbarMiddleware')
 
