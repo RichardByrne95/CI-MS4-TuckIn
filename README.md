@@ -263,13 +263,25 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 -   While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
 
--   In rare circumstances, a restaurant with a 5 star rating may display 6 stars, and a restaurant with a 3 star rating may only display 4 stars. The cause of these issues is yet unknown.
+-   In rare circumstances, a restaurant with a 5 star rating may display 6 stars, and a restaurant with a 3 star rating may only display 4 stars. The cause of these issues is yet unknown as they are difficult to replicate on a consistent basis.
 
 ## Testing
 
 ### Code Validation
 
-### Testing User Stories from User Experience (UX) Section
+-   [MagicPython](https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython) 
+    -   MagicPython was used to format all Python code to [PEP 8](https://pep8.org/) standard
+
+-   [JSHINT](https://jshint.com/)
+    -   JSHint was used to check for JavaScript errors. However, due to the use of jQuery in the project, it's usefulness was limited.
+
+-   HTML W3C Validator [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftuckin-ms4.herokuapp.com%2F)
+    -   W3C's HTML validator was used to validate all HTML code rendered in the final project.
+
+-   CSS W3C Validator [Results](http://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Ftuckin-ms4.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    -   W3C's CSS validator was used to validate all CSS files. It found errors with Bootstrap's CSS that are out of the control of the developer, and therefore should not inform any grading decisions made.
+
+### TODO Testing User Stories from User Experience (UX) Section
 
 ### Testing with Cypress
 
@@ -291,30 +303,91 @@ This command added a cypress folder to the project, and opened the testing softw
     -   'Asserts' makes an assertion as to the expected state of the app after the action has been taken.
 5.  A 'spec' file was created for each Django app in the project, for separation and consistency.
 
-### Manual Functionality Testing
+### TODO Manual Functionality Testing
 
-### Manual Accessibility Testing
+-   All external links are functional and open in a new tab.
+-   All internal links are functional and provide user feedback where applicable.
+-   All forms function and submit data correctly.
+-   All cookies work as expected.
 
-### Manual Usability Testing
+### TODO Manual Accessibility Testing
 
-### Manual Database Testing
+-   Semantic markup is used to convey the document structure.
+-   Information is presented and categorised in terms of its priority.
+-   All images contain 'alt' text. Aria labels are used when the 'img' 'alt' attribute is not available.
 
-### Manual Compatibility Testing
+### TODO Manual Usability Testing
 
-### Manual Responsiveness Testing
+-   All nav links bring you to the correct page.
+-   The mobile nav bar icon opens the navbar as expected.
+-   User Navigation is unambiguous.
+-   While the 'Distinction' criteria state that 'users who direct to a non-existent page or resource are redirected back to the main page', it was deemed more appropriate to either display an error message on the same page if submitting a form, or redirecting the to '404.html' which contains a link to the homepage. This way the user is given explicit direction and understands that something went wrong.
+-   Messages are displayed at the top of the website indicating user progress and feedback where appropriate.
 
-### Manual Security Testing
+### TODO Manual Database Testing
 
-### Performance Testing
+-   No database errors occur when using the queries built for this project.
+-   Data integrity is maintained while creating, reading, updating or deleting data in the database.
 
-### Further Testing
+### TODO Manual Interface Testing
 
+-   All queries retrieve data from the database and display correctly.
+-   Heroku processes and displays everything correctly.
+-   All pages are aesthetically consistent.
+
+### TODO Manual Compatibility Testing
+
+-   This project functions as expected on Google Chrome, Internet Explorer and Microsoft Edge.
+
+### TODO Manual Responsiveness Testing
+
+-   The website was viewed on a variety of devices including Desktop, Laptop, Moto G3, Pixel 3a XL, iPhone 6s, iPhone 7, iPhone 8 & iPhone X.
+-   The website is responsive on all common device sizes.
+
+### TODO Manual Security Testing
+
+-   Unauthorised access to secure pages returns the user to 404.html.
+-   Incorrect login details returns an user-friendly error, and reloads the page.
+-   Database code injection by search bar is prevented against by using regular expressions and by using the '.isalspha()' method in Python.
+Website uses HTTPS.
+-   Users can only edit flowers that they themselves have created.
+-   Users can change their password without verification as long as they have logged in. This is addressed in the roadmap.
+-   All data, including user-submitted content is editable via the MongoDB database.
+
+### TODO Performance Testing
+
+-   Lighthouse on Google Chrome Dev Tools gave the following scores on the development server:
+
+    -   Performance: 100
+    -   Accessibility: 99
+    -   Best Practices: 100
+    -   SEO: 100
+
+### TODO Further Testing
+
+-   Try/except syntax is used to redirect the user to 404.html if anything goes wrong.
+-   A large amount of testing was done to ensure that all pages were linking correctly.
+-   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
+-   All HTML was auto-formatted using VSCode's built in formatter.
 
 ## Deployment
 
-This project was deployed using Heroku and AWS, with a postgres database, via the following steps:
+This project was deployed using GitHub, Heroku and AWS, with a Postgres database, via the following steps:
 
-### Source Control Process
+### TODO Source Control Process
+
+-   This project was developed using Visual Studio Code, Git and GitHub using the following steps:
+
+    1.   Logged into Github Desktop App
+    2.   A new repository called 'CI-MS3-Floral-Reef' was created locally for this project.
+    3.   This repository was initalised with a blank README.md file.
+    4.   This repository was then published from Github Desktop to the remote Github server using 'Ctrl + P'.
+    5.   The project folder was opened in Visual Studio Code where the initial files were created.
+    6.   A new terminal in Visual Studio Code (Ctrl + Shift + ') was opened to begin the git commit process.
+    7.   Files were added to the local git staging area using 'git add <'filename'>' and 'git add *' where applicable.
+    8.   Local commits were made using the 'git commit -m <'message'>' command.
+    9.   These local commits were then periodically pushed to the remote Github server using the 'git push' command.
+    10.   A local server was run throughout the development process using the Live Server Extension to test, in real time, changes made to the game and HTML page.
 
 ### Heroku Deployment
 
@@ -438,34 +511,34 @@ In order to send emails to users who either set up an account or place an order,
     ```
 7.  Lastly, a method was created in 'webhook_handler.py' to send a confirmation email when the order had been confirmed in the database.
 
-### Running This Project Locally
+### TODO Running This Project Locally
 
-### Project Status
+### TODO Project Status
 
 
 ## Credits
 
 If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
 
-### Content
+### TODO Content
 
 ### Media
 
 #### Image Sources
 
-##### Background Images
+##### TODO Background Images
 
 -   Homepage - https://unsplash.com/photos/JplMVRjzQVU
 
-##### Ezio Pizza
+##### TODO Ezio Pizza
 
 -   Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
 
-##### McDoogle's
+##### TODO McDoogle's
 
 -   Quarter Kilo - https://www.pexels.com/photo/ham-and-bacon-burger-2983098/
 
-##### Tomato King
+##### TODO Tomato King
 
 -   MASSIVE Burger - https://www.pexels.com/photo/photo-of-burger-beside-fires-3616956/
 -   MightyMeaty - https://www.pexels.com/photo/person-holding-a-double-patty-cheese-burger-3826273/
@@ -482,22 +555,20 @@ If code was directly copied and pasted from another source and left unchanged, t
 -   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
 -   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
 
-#### Logo Images Sources
+#### TODO Logo Images Sources
 
 Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
 McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
 Ezio Pizza's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
 
-### Code
+### TODO Code
 
-### Acknowledgements
+### TODO Acknowledgements
 
-### Support
+### TODO Support
 
 
 Used https://webformatter.com/javascript for JavaScript formatting
-
-
 
 Used https://www.cookiepolicygenerator.com/ to generate cookie and privacy policies.
 Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
