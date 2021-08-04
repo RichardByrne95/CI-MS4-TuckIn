@@ -90,7 +90,8 @@
                                 <div class="col-12 col-md-6 col-lg-4 no-gutters food-item-col">
                                     <div class="row no-gutters h-100">
                                         <div class="col-12 card border-0 food-item-card">
-                                            <a href="#" id="food-item-card-link" class="card-body food-item-card-body" data-bs-toggle="modal" data-bs-target="#food-item-modal" data-food-item="{{ food.friendly_name }}">
+                                            <a href="#" class="card-body food-item-card-body" data-bs-toggle="modal"
+                                                data-bs-target="#food-item-modal" data-food-item="{{ food.friendly_name }}">
                                                 <div class="food-item-card-text">
                                                     <p class="font-weight-bold food-item-card-name">{{ food.friendly_name }}</p>
                                                     <p class="food-item-card-description">{{ food.description }}</p>
@@ -118,7 +119,7 @@
                     </div>
                 {% endfor %}
                 <!-- Food Modal referenced https://getbootstrap.com/docs/5.0/components/modal/ -->
-                <div class="modal fade" id="food-item-modal" aria-labelledby="#modal-label" aria-hidden="true">
+                <div class="modal fade" id="food-item-modal" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <!-- Modal Header -->
