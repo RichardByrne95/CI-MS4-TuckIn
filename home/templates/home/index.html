@@ -65,9 +65,9 @@
                     {% for cuisine in cuisines %}
                         <div class="col no-gutters cuisine-col">
                             <span class="cuisine">
-                                <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}" class="cuisine-icon">
+                                <a href="{% url 'restaurants' %}?cuisine={{ cuisine.name }}" class="cuisine-icon cuisine-text">
                                     <i class="{{ cuisine.icon_html }}"></i>
-                                    <p class="cuisine-text">{{ cuisine.name|title }}</p>
+                                    {{ cuisine.name|title }}
                                 </a>
                             </span>
                         </div>
