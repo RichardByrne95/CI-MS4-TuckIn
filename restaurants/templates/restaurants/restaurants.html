@@ -45,11 +45,11 @@
                             <!-- Refine -->
                             <div class="col-6 no-gutters pe-3">
                                 <div class="dropdown d-flex">
-                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-cuisines-button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                                        type="button" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-cuisines-button" id="mobileCuisineDropdownMenuLink"
+                                        data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-filter"></i> Cuisines
                                     </a>
-                                    <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+                                    <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="mobileCuisineDropdownMenuLink">
                                         <li>
                                             <a href="{% url 'restaurants' %}" class="dropdown-item">
                                                 All
@@ -68,19 +68,21 @@
                             <!-- Sort -->
                             <div class="col-6 no-gutters ps-3">
                                 <div class="dropdown d-flex">
-                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-sort-button" id="dropdownMenuLink" data-bs-toggle="dropdown" type="button"
-                                        aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-sort-button" id="mobileSortDropdownMenuLink"
+                                        data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-sort-amount-down"></i>
                                         Sort{% if refine_text %}: {{ refine_text }}{% endif %}
                                     </a>
-                                    <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+                                    <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="mobileSortDropdownMenuLink">
                                         <li>
-                                            <a class="dropdown-item" id="highest-rated-mobile" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
+                                            <a class="dropdown-item" id="highest-rated-mobile"
+                                                href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
                                                 Rated
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" id="delivery-cost-mobile" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
+                                            <a class="dropdown-item" id="delivery-cost-mobile"
+                                                href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
                                                 Cost
                                             </a>
                                         </li>
@@ -129,14 +131,16 @@
                         <!-- Sort Button -->
                         <div class="col-1 no-gutters d-none d-lg-block">
                             <div class="dropdown d-none d-lg-flex justify-content-lg-end">
-                                <a href="#" class="btn btn-secondary dropdown-toggle desktop-sort-button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                                    type="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="#" class="btn btn-secondary dropdown-toggle desktop-sort-button" id="sortDropdownMenuLink"
+                                    data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     Sort{% if refine_text %}: {{ refine_text }}{% endif %}
                                 </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" id="highest-rated-desktop" href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="sortDropdownMenuLink">
+                                    <li><a class="dropdown-item" id="highest-rated-desktop"
+                                            href="{% url 'restaurants' %}?sort=rating_high&direction=desc">Highest
                                             Rated</a></li>
-                                    <li><a class="dropdown-item" id="delivery-cost-desktop" href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
+                                    <li><a class="dropdown-item" id="delivery-cost-desktop"
+                                            href="{% url 'restaurants' %}?sort=delivery_cost&direction=asc">Delivery
                                             Cost</a></li>
                                 </ul>
                             </div>
@@ -153,21 +157,25 @@
                                             <!-- Cover Image -->
                                             {% if restaurant.cover_image %}
                                                 <figure>
-                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image"
+                                                        class="img-fluid card-image-top restaurant-card-cover-image">
                                                 </figure>
                                             {% else %}
                                                 <figure>
-                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image" class="img-fluid card-image-top restaurant-card-cover-image">
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} cover image"
+                                                        class="img-fluid card-image-top restaurant-card-cover-image">
                                                 </figure>
                                             {% endif %}
                                             <!-- Logo -->
                                             {% if restaurant.logo %}
                                                 <figure>
-                                                    <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.logo }}" alt="{{ restaurant.friendly_name }} logo"
+                                                        class="img-fluid restaurant-card-logo">
                                                 </figure>
                                             {% else %}
                                                 <figure>
-                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo" class="img-fluid restaurant-card-logo">
+                                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ restaurant.friendly_name }} logo"
+                                                        class="img-fluid restaurant-card-logo">
                                                 </figure>
                                             {% endif %}
                                         </div>
