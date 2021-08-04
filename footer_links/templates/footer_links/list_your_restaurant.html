@@ -55,8 +55,8 @@
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-left">
                                 <label for="restaurant-cuisine">Cuisine *</label>
-                                <select type="select" name="restaurant-cuisine" required>
-                                    <option value="none" autofocus></option>
+                                <select name="restaurant-cuisine" id="restaurant-cuisine" required>
+                                    <option label="None" value="" autofocus></option>
                                     {% for cuisine in cuisines %}
                                         <option value="{{ cuisine.name }}">{{ cuisine.name }}</option>
                                     {% endfor %}
