@@ -111,6 +111,10 @@ h3 {
     color: #ff7200;
 }
 
+.cuisine-text {
+    font-size: 1.4rem;
+}
+
 .cuisine-col:hover {
     text-decoration: underline;
     -webkit-box-shadow: inset 0px 0px 74px -19px rgba(0,0,0,0.33);
