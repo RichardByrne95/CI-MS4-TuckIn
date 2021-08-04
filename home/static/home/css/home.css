@@ -170,7 +170,7 @@ h3 {
         transform: translate(-50%, -50%);
         padding: 5rem 7.5rem;
         width: 50vw;
-        height: none;
+        height: 0;
         max-width: none;
         min-width: 67rem;
     }
