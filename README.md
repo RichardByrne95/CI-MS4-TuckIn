@@ -143,6 +143,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Add a minimum delivery threshold
 -   Add an optional delivery threshold for free delivery
 -   Add ASAP to delivery time options
+-   Allow a user to proceed with their order if a restaurant closes while the user is in the processing of ordering.
 
 ## Technologies Used
 
@@ -282,6 +283,102 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
     -   W3C's CSS validator was used to validate all CSS files. It found errors with Bootstrap's CSS that are out of the control of the developer, and therefore should not inform any grading decisions made.
 
 ### TODO Testing User Stories from User Experience (UX) Section
+
+#### Viewing and Navigation
+
+-  As a hungry site user, I want to be able to...
+
+    1.  View available restaurants in my area.
+
+        -   Upon entering the site, the user is greeted with a screen dedicated to entering their address so that they can view restaurants available in their area.
+
+    2.  See which restaurants are open and which are closed.
+
+        -   Upon searching for restaurants, the user is presented first with a grid of restaurants that are open. Beneath the open restaurants is a banner stating the number of restaurants that will be opening at another time/date. These currently closed restaurants are then displayed beneath the banner in a similar grid with their images slightly greyed out.
+
+        -   If a user goes to a restaurant menu of a restaurant that is currently closed, the banner image will be slightly greyed out, a message will be displayed beneath the restaurant name in the banner stating the next time it opens for ordering, and adding food to an order from a closed restaurant is also disabled.
+
+    3.  Clearly and easily see other customers' ratings of a restaurant.
+
+        -   A restaurant's rating is displayed below its name on the 'All Restaurants' page. Users can submit ratings of a restaurant upon completing an order from that restaurant. Users can also change their rating via their order history should they wish to.
+
+        -   A restaurant's rating was purposely not placed on its menu, so as to encourage users to form their own opinions of restaurants on the platform.
+
+    4.  View food available from a restaurant in easy-to-navigate sections.
+
+        -   Each restaurant has a menu, containing multiple sections for the user to view, just like a physical menu. Links are provided for each section in case a user wants to skip to a particular section.
+
+    5.  View a restaurant's opening times.
+
+        -   Restaurant opening times are clearly displayed in the restaurant information section beneath the banner on the menu page.
+
+    6.  View a restaurant's delivery charge.
+
+        -   Restaurant delivery charges are displayed in two areas: the 'All Restaurants' grid and in the restaurant menu. This allows for complete transparency and means the user gets no surprise charges at checkout.
+
+        -   The delivery charge is also clearly displayed and accounted for in both the bag and the checkout stages so the user is always aware of all the costs.
+
+#### Registration and User Accounts
+
+-   As an enthusiastic and efficient foodie, I want to be able to...
+
+    1.  Register for an account.
+
+    2.  Easily login and logout.
+
+    3.  View my previous orders.
+
+    4.  Save an address for use in checkout.
+
+    5.  Recover my password in case I forget it.
+
+    6.  Receive an email confirmation upon registering.
+
+#### Sorting and Searching
+
+-   As a site user who is looking for something specific, I want to be able to...
+
+    1.  Refine restaurants by cuisine.
+
+    2.  Sort restaurants by rating and delivery cost.
+
+    3.  View food from a specific restaurant's menu section.
+
+    4.  Search for a restaurant either by name, cuisine, food or food description.
+
+#### Purchasing and Checkout
+
+-   As a site user who needs food ASAP, I want to be able to...
+
+    1.  Add food to my bag with a message for the restaurant.
+
+    2.  Change the quantity of food being added to my bag.
+
+    3.  View items in my bag to be ordered.
+
+    4.  Adjust the quantity of a food item in my bag.
+
+    5.  Confirm my address details before ordering.
+
+    6.  Easily choose a delivery time for my order.
+
+    7.  Simply enter my card details for payment.
+
+    8.  Feel my information and payment is secure.
+
+    9.  Reach out for help if something goes wrong.
+
+    10. View an order confirmation upon checking out successfully.
+
+    11. Receive an email confirming my order.
+
+#### Admin and Store Management
+
+-   As the proud site owner, I want to be able to...
+
+    1.  Accept requests from restaurants to join the platform.
+
+    2.  Receive requests for help from customers.
 
 ### Testing with Cypress
 
