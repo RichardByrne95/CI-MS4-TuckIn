@@ -143,6 +143,8 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Add an optional delivery threshold for free delivery
 -   Add ASAP to delivery time options
 -   Allow a user to proceed with their order if a restaurant closes while the user is in the processing of ordering.
+-   Allow users to edit messages for the restaurant within the bag.
+-   Allow users to choose to pay with cash at the door if being delivered, or at the restaurant if collecting.
 
 ## Technologies Used
 
@@ -370,25 +372,63 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
     1.  Add food to my bag with a message for the restaurant.
 
+        -   Users can add to food to their bag with a message for the restaurant via the popup modal that appears when selecting a food from the menu.
+
+        -   If a user adds the same food to their bag but with different messages, the messages are displayed with commas separating them.
+
     2.  Change the quantity of food being added to my bag.
+
+        -   When adding a menu item to the bag, users can adjust the quantity of the item up to 15 and no less than 1.
+
+        -   While users can currently add more than 15 of a particular food item to their bag by adding the food multiple times, the bag page will not allow the user to proceed unless the quantity of each food item is less that or equal to 15.
 
     3.  View items in my bag to be ordered.
 
+        -   The bag icon in the navbar bring users to the bag page where they can preview their order and make changes to food items and quantities if necessary.
+
+        -   The mobile bag icon contains the number of items currently in the bag for viewing convenience on the small screen.
+
     4.  Adjust the quantity of a food item in my bag.
+
+        -   Users can easily change the quantity of a food item on the bag page without the need to click an 'update' button. The assumption is made that if the user does not proceed with the order, the user does not want to save changes made to the bag. The changes made are saved upon pressing the 'Go to Checkout' button.
 
     5.  Confirm my address details before ordering.
 
+        -   Users must enter their address if they are not signed into an account upon proceeding with checkout from the bag. Signed in users will have the address saved to their account pre-loaded into the fields.
+
+        -   Users have a second change to verify/change their address upon reaching the payment page, in order to prevent orders being sent to the wrong address.
+
+        -   Even though signed in users can save an address to their account, the 'Delivery Address' screen always gets displayed in case the user wants to order to an address not saved to their account.
+
     6.  Easily choose a delivery time for my order.
+
+        -   The user can easily select a delivery time that suits them upon entering their address details in the checkout process.
+        
+        -   Currently the default delivery times are every 15 minutes on the hour from when a restaurant opens.
 
     7.  Simply enter my card details for payment.
 
+        -   Stripe is used to accept card details securely in a one-line entry system. This allows users to enter all the details of their card in one line without having to change to another field on the form.
+
     8.  Feel my information and payment is secure.
+
+        -   Stripe is a well trusted payment method that uses state of the art security to process payments, providing peace of mind to both the buyer and the seller.
 
     9.  Reach out for help if something goes wrong.
 
+        -   The navbar contains a link to the help page where users can contact the business for assistance.
+
+        -   A link to the help page is also conveniently provided on the payment page in case the user encounters an issue while ordering.
+
     10. View an order confirmation upon checking out successfully.
 
+        -   Upon successfully completing an order, users are greeted with a confirmation page where they can rate the restaurant, view an order summary and add the contents of the order to bag if they wish to place the same order again.
+
+        -   The user's account contains an order history where users can revisit their past orders.
+
     11. Receive an email confirming my order.
+
+        -   Upon successfully completing an order, users are sent an order confirmation email containing an order summary for their records.
 
 #### Admin and Store Management
 
@@ -396,7 +436,15 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
     1.  Accept requests from restaurants to join the platform.
 
+        -   The footer of all non-checkout related pages contains a link where restaurants can request to join the platform.
+
     2.  Receive requests for help from customers.
+
+        -   There is a dedicated help page where users can contact the business for assistance.
+
+        -   The navbar permanently contains a link to the help page.
+
+        -   A link to the help page is also conveniently provided on the payment page in case the user encounters an issue while ordering.
 
 ### Testing with Cypress
 
