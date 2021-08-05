@@ -41,7 +41,6 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
     -   View my previous orders
     -   Save an address for use in checkout
     -   Recover my password in case I forget it
-    -   Receive an email confirmation upon registering
 
 #### Sorting and Searching
 
@@ -324,15 +323,24 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
     1.  Register for an account.
 
+        -   Account registration can be easily accessed from the nav, or from the checkout payment page.
+
     2.  Easily login and logout.
+
+        -   If a user is not logged into their account, a login button is displayed in the nav.
+        -   If a user is logged into their account, a logout button is displayed in the nav.
 
     3.  View my previous orders.
 
+        -   As long a user has created an account and has logged into that account before placing an order, all their orders will be saved to their account for them to view in detail.
+
     4.  Save an address for use in checkout.
 
-    5.  Recover my password in case I forget it.
+        -   Users can save their address for ease of use later when placing orders. This reduces the steps needed to be taken by a user to place the order and reduces friction in the purchasing process.
 
-    6.  Receive an email confirmation upon registering.
+    5.  Recover my account in case I forget my password.
+
+        -   Users can safely recover their account via the login screen, where there is a button to reset their password.
 
 #### Sorting and Searching
 
