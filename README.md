@@ -466,7 +466,7 @@ This command added a cypress folder to the project, and opened the testing softw
     -   'Asserts' makes an assertion as to the expected state of the app after the action has been taken.
 5.  A 'spec' file was created for each Django app in the project, for separation and consistency.
 
-### TODO Manual Functionality Testing
+### Manual Functionality Testing
 
 -   All external links are functional and open in a new tab.
 -   All internal links are functional and provide user feedback where applicable.
