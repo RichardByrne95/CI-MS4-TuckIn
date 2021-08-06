@@ -283,7 +283,7 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 -   CSS W3C Validator [Results](http://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Ftuckin-ms4.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
     -   W3C's CSS validator was used to validate all CSS files. It found errors with Bootstrap's CSS that are out of the control of the developer, and therefore should not inform any grading decisions made.
 
-### TODO Testing User Stories from User Experience (UX) Section
+### Testing User Stories from User Experience (UX) Section
 
 #### Viewing and Navigation
 
