@@ -1,5 +1,5 @@
 {% if food.food.image %}
     <img src="{{ MEDIA_URL }}{{ food.food.image }}" alt="{{ food.food.friendly_name }}" class="img-fluid food-image">
 {% else %}
-    <img src="{{ MEDIA_URL }}noimage.png" alt="" class="img-fluid food-image" alt="{{ food.food.friendly_name }}">
+    <img src="{{ MEDIA_URL }}noimage.png" alt="no image found" class="img-fluid food-image" alt="{{ food.food.friendly_name }}">
 {% endif %}
