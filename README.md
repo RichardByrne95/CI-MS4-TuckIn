@@ -59,7 +59,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
     -   Adjust the quantity of a food item in my bag
     -   Confirm my address details before ordering
     -   Easily choose a delivery time for my order
-    -   Simply enter my card details for payment
+    -   Simply and quickly enter my card details for payment
     -   Feel my information and payment is secure
     -   Reach out for help if something goes wrong
     -   View an order confirmation upon checking out successfully
@@ -130,7 +130,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00.
 -   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
 -   Allow customers to pre-order with a restaurant if it's not open today.
--   Add prompt to remove everything from order when food from another restaurant is in the bag.
+-   Add prompt to remove everything from bag when food from another restaurant is in the bag.
 -   Allow the user to store a different bag for each restaurant.
 -   Add choices to food modal e.g. select toppings.
 -   Add ability for restaurants to issue discount codes.
@@ -166,37 +166,38 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 3.  [AWS S3](https://aws.amazon.com/s3/)
     -   S3 was used to store the database for the site.
 
-3.  [Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
-    -   Allauth was used to create a secure system through which user could safely register for accounts, login, logout and perform other account-related activities.
-
-4.  [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/#)
-    -   Crispy Forms was used to easily control the rendering behaviour of the forms used on the website.
-
-5.  [Balsamiq](https://balsamiq.com/)
-    -   Balsamiq was used to create the wireframes during the design process.
-
-6.  [Git](https://git-scm.com/)
+4.  [Git](https://git-scm.com/)
     -   Git was used for version control by utilizing the terminal to commit to Git and Push to GitHub.
 
-7.  [GitHub](https://github.com/)
+5.  [GitHub](https://github.com/)
     -   GitHub is used to store the projects code after being pushed from Git.
+
+6.  [Django Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
+    -   Allauth was used to create a secure system through which user could safely register for accounts, login, logout and perform other account-related activities.
+
+7.  [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/#)
+    -   Crispy Forms was used to easily control the rendering behaviour of the forms used on the website.
 
 8.  [VSCode](https://code.visualstudio.com/)
     -   VSCode was the text editor used for this project. All installed addons can be found in the 'requirements.txt' file.
 
-9.  [LucidChart](https://www.lucidchart.com/)
-    -   LucidChart was used to create the database schema diagram for the README.
-
-10. [Mathfilters](https://pypi.org/project/django-mathfilters/)
+9. [Django Mathfilters](https://pypi.org/project/django-mathfilters/)
     -   Mathfilters was used for the creation and rendering of the rating system for restaurants.
 
-11. [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+10. [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
     -   Django Debug Toolbar was used to aid in the debugging of errors that occurred throughout development.
 
-12. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
+11. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
     -   Django Storages was used to allow Django to access the database setup on AWS S3.
 
-13. [Stripe](https://stripe.com)
+12.  [Balsamiq](https://balsamiq.com/)
+    -   Balsamiq was used to create the wireframes during the design process.
+
+
+13.  [LucidChart](https://www.lucidchart.com/)
+    -   LucidChart was used to create the database schema diagram for the README.
+
+14. [Stripe](https://stripe.com)
     -   Stripe was used to accept payment for orders.
 
 ## Development
@@ -406,7 +407,7 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
         
         -   Currently the default delivery times are every 15 minutes on the hour from when a restaurant opens.
 
-    7.  Simply enter my card details for payment.
+    7.  Simply and quickly enter my card details for payment.
 
         -   Stripe is used to accept card details securely in a one-line entry system. This allows users to enter all the details of their card in one line without having to change to another field on the form.
 
