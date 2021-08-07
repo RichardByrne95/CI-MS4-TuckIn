@@ -96,6 +96,11 @@ label[for="delivery-time-select"] {
     min-width: 1.8rem;
 }
 
+.form-check-label,
+.text-info {
+    font-size: 1.3rem;
+}
+
 #submit-button {
     width: 100%;
     padding: 1rem;
