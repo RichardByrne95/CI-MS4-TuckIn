@@ -494,9 +494,9 @@ This command added a cypress folder to the project, and opened the testing softw
 -   Data integrity is maintained while creating, reading, updating or deleting data in the database.
 -   All queries retrieve data from the database and display correctly.
 
-### TODO Manual Interface Testing
+### Manual Interface Testing
 
--   Heroku processes and displays everything correctly.
+-   Heroku processes and displays everything that hasn't already been noted in this README correctly.
 -   All pages are aesthetically consistent.
 
 ### TODO Manual Compatibility Testing
