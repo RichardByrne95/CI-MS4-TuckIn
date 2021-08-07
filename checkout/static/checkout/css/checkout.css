@@ -105,7 +105,7 @@ label[for="delivery-time-select"] {
     width: 100%;
     padding: 1rem;
     color: white;
-    background-color: #ff7200;
+    background-color: #e96800;
 }
 
 #submit-button .complete-order {
@@ -147,7 +147,7 @@ label[for="delivery-time-select"] {
 
 .jumbotron-container {
     padding: 9rem 0 4.5rem 0;
-    background-color: #008dff;
+    background-color: #0073cf;
     min-width: 0;
     max-width: none;
 }
@@ -173,7 +173,7 @@ label[for="delivery-time-select"] {
 
 .order-again-btn {
     color: #fff;
-    background-color: #ff7200;
+    background-color: #e96800;
     font-size: 1.5rem;
     font-weight: 500;
     margin-top: 1rem;
@@ -192,7 +192,7 @@ label[for="delivery-time-select"] {
 }
 
 #rating-stars i {
-    color: #ff7200;
+    color: #e96800;
     font-size: 2rem;
 }
 
@@ -345,7 +345,7 @@ hr.divider {
     #continue-checkout-btn {
         display: inline-block;
         position: relative;
-        border: #ff7200 1px solid;
+        border: #e96800 1px solid;
         margin: 0;
         padding: 1rem 2rem;
         border-radius: .3rem;
@@ -357,6 +357,7 @@ hr.divider {
     #continue-checkout-btn span,
     #continue-checkout-btn i,
     #continue-checkout-btn span {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
+        font-weight: bold;
     }
 }

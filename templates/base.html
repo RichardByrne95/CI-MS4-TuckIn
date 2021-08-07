@@ -66,7 +66,7 @@
                             <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
                                 <input type="text" pattern="^[a-zA-Z]{1,30}$" class="form-control border border-black rounded-1" id="searchbar"
                                     name="q" placeholder="Favourite Restaurant?" minlength="3" required>
-                                <button id="desktop-search-button" class="form-control btn rounded-0" type="submit">
+                                <button id="desktop-search-button" aria-label="Search button" class="form-control btn rounded-0" type="submit">
                                     <span class="search-icon {% if dynamic_navbar %}navbar-scroll-transition{% else %}search-icon-block-colour{% endif %}"><i class="fas fa-search"></i></span>
                                 </button>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -87,7 +87,7 @@
                         <!-- Bag -->
                         <div class="shopping-bag d-flex justify-content-end">
                             <span class="nav-item bag-icon">
-                                <a class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}" href="{% url 'view_bag' %}">
+                                <a class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}" href="{% url 'view_bag' %}" aria-label="Bag">
                                     <i class="fas fa-shopping-bag {% if dynamic_navbar %}navbar-scroll-transition{% else %}fa-shopping-bag-block-colour{% endif %}"></i>
                                 </a>
                             </span>
@@ -142,9 +142,9 @@
                     <div class="col-12 col-sm-6 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
                         <div class="footer-icons">
                             <h4>Follow Us</h4>
-                            <a href="https://www.instagram.com/" id="instagram-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.facebook.com/" id="facebook-link" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="https://twitter.com/" id="twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/" aria-label="Instagram" id="instagram-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/" aria-label="Facebook" id="facebook-link" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/" aria-label="Twitter" id="twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                     <div class="col-12 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">

@@ -48,7 +48,7 @@ p {
 }
 
 a {
-    color: #ff7200;
+    color: #e96800;
     border-bottom: none;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
     text-decoration: none;
@@ -113,7 +113,7 @@ strong {
 
 /* ----------------------------------------- Components */
 .continue-checkout-button {
-    background-color: #ff7200;
+    background-color: #e96800;
     color: #fff;
     border-radius: .3rem;
     padding: 1rem 2rem;
@@ -134,9 +134,9 @@ strong {
 }
 
 .continue-checkout-button:hover {
-    background-color: #ff7200;
+    background-color: #e96800;
     color: white;
-    border: #ff7200 .1rem solid;
+    border: #e96800 .1rem solid;
 }
 
 /* ----------------------------------------- Scrollbar */
@@ -203,8 +203,8 @@ strong {
 
 #mini-bag-checkout-btn {
     color: #fff;
-    background-color: #ff7200;
-    border-color: #ff7200;
+    background-color: #e96800;
+    border-color: #e96800;
 }
 
 /* ----------------------------------------- Navbar */
@@ -272,7 +272,7 @@ header {
 }
 
 .navbar-block-colour {
-    background-color: #f0f0f0 !important;
+    background-color: #f9f9f9 !important;
 }
 
 .navbar-toggler-block-colour {
@@ -280,7 +280,7 @@ header {
 }
 
 .navbar-brand-block-colour {
-    color: #ff7200 !important;
+    color: #e96800 !important;
 }
 
 .search-icon-block-colour {
@@ -288,7 +288,7 @@ header {
 }
 
 .nav-link-colour, .fa-shopping-bag-block-colour {
-    color: #008dff !important;
+    color: #0073cf !important;
 }
 
 /* End of Dynamic Navbar */
@@ -312,7 +312,7 @@ header {
 }
 
 .nav-link {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     color: #fafafa;
 }
 
@@ -324,7 +324,7 @@ header {
 }
 
 #desktop-search-button:hover {
-    color: #ff7200;
+    color: #e96800;
 }
 
 .search-icon {
@@ -353,7 +353,7 @@ header {
 
 .bag-icon a i:hover {
     font-size: 2.2rem;
-    color: #ff7200;
+    color: #e96800;
 }
 
 /* Mobile Sidebar */
@@ -402,7 +402,7 @@ footer {
 footer a, footer span {
     font-size: 1.6rem;
     text-decoration: none;
-    color: #7e7e7e;
+    color: #6d6d6d;
 }
 
 .footer-icons a i {
