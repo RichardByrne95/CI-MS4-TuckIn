@@ -504,9 +504,9 @@ This command added a cypress folder to the project, and opened the testing softw
 -   This project functions as expected on Google Chrome, Firefox and Microsoft Edge.
 -   Internet Explorer is not properly supported, and Safari was unable to be tested.
 
-### TODO Manual Responsiveness Testing
+### Manual Responsiveness Testing
 
--   The website was viewed on a variety of devices including Desktop, Laptop, Moto G3, Pixel 3a XL, iPhone 6s, iPhone 7, iPhone 8 & iPhone X.
+-   The website was viewed on a variety of devices including Windows Desktop, Windows Laptop, Moto G3, Pixel 3a XL, iPhone 6s, iPhone 7, iPhone 8 & iPhone X.
 -   The website is responsive on all common device sizes.
 
 ### TODO Manual Security Testing
