@@ -473,9 +473,9 @@ This command added a cypress folder to the project, and opened the testing softw
 -   All forms function and submit data correctly.
 -   All cookies work as expected.
 
-### TODO Manual Accessibility Testing
+### Manual Accessibility Testing
 
--   Semantic markup is used to convey the document structure.
+-   Semantic markup is used to convey the document structure. Some tags, like '<summary>', were not used due to lack of support on older browsers.
 -   Information is presented and categorised in terms of its priority.
 -   All images contain 'alt' text. Aria labels are used when the 'img' 'alt' attribute is not available.
 
