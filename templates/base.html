@@ -64,8 +64,8 @@
                         <!-- Search Bar -->
                         <div class="search-bar-container d-flex justify-content-end">
                             <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
-                                <input type="text" class="form-control border border-black rounded-1" id="searchbar" name="q"
-                                    placeholder="Favourite Restaurant?" minlength="3">
+                                <input type="text" pattern="^[a-zA-Z]{1,30}$" class="form-control border border-black rounded-1" id="searchbar"
+                                    name="q" placeholder="Favourite Restaurant?" minlength="3" required>
                                 <button id="desktop-search-button" class="form-control btn rounded-0" type="submit">
                                     <span class="search-icon {% if dynamic_navbar %}navbar-scroll-transition{% else %}search-icon-block-colour{% endif %}"><i class="fas fa-search"></i></span>
                                 </button>

@@ -56,12 +56,15 @@ def all_restaurants(request):
                     request, 'Address could not be found. Please ensure the address is valid, uses commas, is within Dublin, Ireland and is formatted correctly.')
                 return redirect(reverse(home))
 
-        # Sorting (referenced Boutique Ado)
+        # Sorting and Searching (referenced Boutique Ado)
         if request.method == 'GET':
             # Search Request (referenced Boutique Ado)
             if 'q' in request.GET:
                 redirect_url = request.GET['redirect_url']
                 query_search = request.GET['q']
+                if not query_search.isalpha():
+                    messages.error(request, "Please enter valid search criteria.")
+                    return redirect(redirect_url)
                 if not query_search:
                     messages.error(
                         request, "You didn't enter any search criteria!")
