@@ -499,9 +499,10 @@ This command added a cypress folder to the project, and opened the testing softw
 -   Heroku processes and displays everything that hasn't already been noted in this README correctly.
 -   All pages are aesthetically consistent.
 
-### TODO Manual Compatibility Testing
+### Manual Compatibility Testing
 
--   This project functions as expected on Google Chrome, Internet Explorer and Microsoft Edge.
+-   This project functions as expected on Google Chrome, Firefox and Microsoft Edge.
+-   Internet Explorer is not properly supported, and Safari was unable to be tested.
 
 ### TODO Manual Responsiveness Testing
 
