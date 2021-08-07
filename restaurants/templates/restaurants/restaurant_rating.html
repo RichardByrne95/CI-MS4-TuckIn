@@ -21,6 +21,8 @@
                 {% endfor %}
             {% endwith %}
         {% endwith %}
+    {% elif restaurant.rating >= 4.8 and restaurant.rating < 5 %}
+        <span><i class="fas fa-star"></i></span>
     {% endif %}
     ({{ restaurant.orders.all|get_number_of_orders_with_rating }})
 </p>
