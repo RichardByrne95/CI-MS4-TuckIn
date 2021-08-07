@@ -21,7 +21,7 @@ def checkout_address(request):
     try:
         # Handle no food in bag
         if 'bag' not in request.session:
-            messages.warning(request, 'You have no food in your basket.')
+            messages.error(request, 'You have no food in your basket.')
             return redirect(reverse('restaurants'))
 
         # Update food quantity
@@ -89,7 +89,7 @@ def checkout_address(request):
         }
         return render(request, 'checkout/checkout_address.html', context)
     except Exception:
-        messages.warning(
+        messages.error(
             request, 'Oops! Looks like an error occurred. Please try checking out again. If this error persists, please contact us via the help section.')
         return redirect(reverse('view_bag'))
 
@@ -103,7 +103,7 @@ def checkout_time(request):
 
         # Handle no food in bag
         if 'bag' not in request.session:
-            messages.warning(request, 'You have no food in your basket.')
+            messages.error(request, 'You have no food in your basket.')
             return redirect(reverse('restaurants'))
 
         # Get delivery times
@@ -137,7 +137,7 @@ def checkout_time(request):
         }
         return render(request, 'checkout/checkout_time.html', context)
     except Exception:
-        messages.warning(
+        messages.error(
             request, 'Oops! Looks like an error occurred. Please try checking out again. If this error persists, please contact us via the help section.')
         return redirect(reverse('view_bag'))
 
@@ -146,7 +146,7 @@ def checkout_payment(request):
     try:
         # Handle no food in bag
         if 'bag' not in request.session:
-            messages.warning(request, 'You have no food in your basket.')
+            messages.error(request, 'You have no food in your basket.')
             return redirect(reverse('restaurants'))
 
         # Get restaurant associated with order
@@ -279,9 +279,9 @@ def checkout_payment(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        # Warning if stripe public key has not been set in environment variables
+        # error if stripe public key has not been set in environment variables
         if not settings.STRIPE_PUBLIC_KEY:
-            messages.warning(request, 'Stripe pkey is missing.')
+            messages.error(request, 'Stripe pkey is missing.')
 
         context = {
             'order_form': order_form,
@@ -293,7 +293,7 @@ def checkout_payment(request):
         return render(request, 'checkout/checkout_payment.html', context)
 
     except Exception:
-        messages.warning(
+        messages.error(
             request, 'Oops! Looks like an error occurred. Please try checking out again. If this error persists, please contact us via the help section.')
         return redirect(reverse('view_bag'))
 
@@ -355,7 +355,7 @@ def order_confirmation(request, order_number):
         }
         return render(request, 'checkout/order_confirmation.html', context)
     except Exception:
-        messages.warning(
+        messages.error(
             request, 'Oops! Looks like an error occurred. Please try checking out again. If this error persists, please contact us via the help section.')
         return redirect(reverse('view_bag'))
 

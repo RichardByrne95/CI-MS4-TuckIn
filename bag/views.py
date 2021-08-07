@@ -15,8 +15,8 @@ def view_bag(request):
         }
         return render(request, 'bag/bag.html', context)
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=500)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))
 
 
@@ -78,8 +78,8 @@ def add_to_bag(request):
 
         return redirect(redirect_url)
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=500)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))
 
 
@@ -99,8 +99,8 @@ def remove_from_bag(request, food_id):
         return redirect(reverse('view_bag'))
 
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=500)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))
 
 
@@ -169,6 +169,6 @@ def order_again(request, order_number):
         return redirect('/bag')
     
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=500)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))

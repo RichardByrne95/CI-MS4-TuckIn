@@ -128,8 +128,8 @@ def all_restaurants(request):
         return render(request, 'restaurants/restaurants.html', context)
     
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=400)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))
 
 
@@ -151,6 +151,6 @@ def restaurant_menu(request, restaurant_id):
         return render(request, 'restaurants/restaurant_menu.html', context)
         
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=400)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))

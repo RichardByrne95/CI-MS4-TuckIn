@@ -29,7 +29,7 @@ def customer_profile(request):
         return render(request, 'profiles/customer_profile.html', context)
     
     except Exception:
-        messages.warning(
+        messages.error(
             request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=400)
         return redirect(reverse('home'))
 
@@ -46,7 +46,7 @@ def customer_order_history(request):
         }
         return render(request, 'profiles/customer_order_history.html', context)
     except Exception:
-        messages.warning(
+        messages.error(
             request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=400)
         return redirect(reverse('home'))
 
@@ -72,6 +72,6 @@ def order_confirmation_from_profile(request, order_number):
 
         return render(request, 'checkout/order_confirmation.html', context)
     except Exception:
-        messages.warning(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.', status=400)
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
         return redirect(reverse('home'))
