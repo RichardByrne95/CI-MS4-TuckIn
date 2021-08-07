@@ -466,6 +466,10 @@ a.email-url {
     font-size: 2rem;
 }
 
+form .alert-block li {
+    font-size: 1.6rem;
+}
+
 /* ----------------------------------------- Stripe */
 .StripeElement, .stripe-style-input, .profile-form-input {
     box-sizing: border-box;
