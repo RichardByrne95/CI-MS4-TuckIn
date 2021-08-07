@@ -479,12 +479,12 @@ This command added a cypress folder to the project, and opened the testing softw
 -   Information is presented and categorised in terms of its priority.
 -   All images contain 'alt' text. Aria labels are used when the 'img' 'alt' attribute is not available.
 
-### TODO Manual Usability Testing
+### Manual Usability Testing
 
 -   All nav links bring you to the correct page.
 -   The mobile nav bar icon opens the navbar as expected.
 -   User Navigation is unambiguous.
--   While the 'Distinction' criteria state that 'users who direct to a non-existent page or resource are redirected back to the main page', it was deemed more appropriate to either display an error message on the same page if submitting a form, or redirecting the to '404.html' which contains a link to the homepage. This way the user is given explicit direction and understands that something went wrong.
+-   While the 'Distinction' criteria state that 'users who direct to a non-existent page or resource are redirected back to the main page', it was deemed more appropriate to either display an error message on the same page if submitting a form, or redirecting the to a different page such as the bag, and displaying a message to the user about the error. This way the user is given explicit direction and understands that something went wrong.
 -   Messages are displayed at the top of the website indicating user progress and feedback where appropriate.
 
 ### TODO Manual Database Testing
