@@ -479,6 +479,7 @@ This command added a cypress folder to the project, and opened the testing softw
 -   Semantic markup is used to convey the document structure. Some tags, like '<summary>', were not used due to lack of support on older browsers.
 -   Information is presented and categorised in terms of its priority.
 -   All images contain 'alt' text. Aria labels are used when the 'img' 'alt' attribute is not available.
+-   Despite following Google's Web Accessibility Guidelines for contrast, Google Chrome's Lighthouse marked a small number of valid elements as invalid. Each element has been manually checked by the developer using Google's own up-to-date documentation. For example, when a user has added a food item to their bag, a button appears in the bag to allow the user to continue to checkout. The text inside this button on desktop is 1.4rem (14px) in size and is bold. The button text on mobile is 1.8rem (18px). Both of these meet the accessibility guidelines set out [here](https://web.dev/color-contrast/?utm_source=lighthouse&utm_medium=devtools), but Google Lighthouse still displays them as errors. My suspicion is that it is due to the fact that Google is looking for font sizes in pixels, but the project uses rem units. Nonetheless, the project still meets all standard accessibility guidelines.
 
 ### Manual Usability Testing
 
@@ -524,7 +525,7 @@ Website uses HTTPS.
 -   Lighthouse on Google Chrome Dev Tools gave the following scores on the deployed version hosted by Heroku and AWS:
 
     -   Performance: 92
-    -   Accessibility: 96
+    -   Accessibility: 98
     -   Best Practices: 93
     -   SEO: 90
 
