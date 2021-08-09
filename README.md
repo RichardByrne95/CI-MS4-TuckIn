@@ -509,15 +509,15 @@ This command added a cypress folder to the project, and opened the testing softw
 -   The website was viewed on a variety of devices including Windows Desktop, Windows Laptop, Moto G3, Pixel 3a XL, iPhone 6s, iPhone 7, iPhone 8 & iPhone X.
 -   The website is responsive on all common device sizes.
 
-### TODO Manual Security Testing
+### Manual Security Testing
 
--   Unauthorised access to secure pages returns the user to 404.html.
+-   Unauthorised access to secure pages returns the user to the sign in page, or to another relevant page.
 -   Incorrect login details returns an user-friendly error, and reloads the page.
 -   Database code injection by search bar is prevented against by using regular expressions and by using the '.isalspha()' method in Python.
 Website uses HTTPS.
--   Users can only edit flowers that they themselves have created.
--   Users can change their password without verification as long as they have logged in. This is addressed in the roadmap.
--   All data, including user-submitted content is editable via the MongoDB database.
+-   Users can only access data that is either public or in their account.
+-   Users can reset their password if they forget it via the login page.
+-   All data, except order numbers, order dates, order totals and stripe payment ids associated with orders, is editable via the Django admin of the site.
 
 ### TODO Performance Testing
 
@@ -527,6 +527,8 @@ Website uses HTTPS.
     -   Accessibility: 99
     -   Best Practices: 100
     -   SEO: 100
+
+    Points were mostly deducted due to 3rd party libraries causing slowdowns.
 
 ### TODO Further Testing
 
