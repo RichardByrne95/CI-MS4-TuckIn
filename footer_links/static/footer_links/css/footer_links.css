@@ -121,6 +121,10 @@ h2 {
     font-size: 2rem;
 }
 
+#help-email-link {
+    color: #0073cf;
+}
+
 /* ----------------------------------------- >=768px */
 @media screen and (min-width: 768px) {
     #list-your-restaurant-heading {

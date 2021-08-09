@@ -16,7 +16,7 @@
 <!-- Bag -->
 <div class="list-inline-item">
     <a class="{% if food_item_count %}font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
-        href="{% url 'view_bag' %}">
+        href="{% url 'view_bag' %}" aria-label="Link to bag">
         <div class="text-center">
             <i
                 class="fa-stack-2x fas fa-shopping-bag fa-lg position-relative {% if dynamic_navbar %}text-white{% else %}text-dark{% endif %}">
