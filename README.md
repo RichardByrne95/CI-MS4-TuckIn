@@ -519,14 +519,14 @@ Website uses HTTPS.
 -   Users can reset their password if they forget it via the login page.
 -   All data, except order numbers, order dates, order totals and stripe payment ids associated with orders, is editable via the Django admin of the site.
 
-### TODO Performance Testing
+### Performance Testing
 
--   Lighthouse on Google Chrome Dev Tools gave the following scores on the development server:
+-   Lighthouse on Google Chrome Dev Tools gave the following scores on the deployed version hosted by Heroku and AWS:
 
-    -   Performance: 100
-    -   Accessibility: 99
-    -   Best Practices: 100
-    -   SEO: 100
+    -   Performance: 92
+    -   Accessibility: 96
+    -   Best Practices: 93
+    -   SEO: 90
 
     Points were mostly deducted due to 3rd party libraries causing slowdowns.
 
