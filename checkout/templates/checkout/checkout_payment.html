@@ -50,7 +50,7 @@
                                         {{ order_form.postcode | as_crispy_field }}
                                         <div class="form-check form-check-inline pe-3 d-flex justify-content-start align-items-center">
                                             {% if user.is_authenticated %}
-                                                <input type="checkbox" class="form-check-input" id="save-info" name="save-info" checked>
+                                                <input type="checkbox" class="form-check-input" id="save-info" aria-label="Save address to account checkbox" name="save-info" checked>
                                                 <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
                                             {% else %}
                                                 <label class="form-check-label" for="save-info">
