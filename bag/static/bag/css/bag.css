@@ -12,6 +12,14 @@ main {
     color: #fff;
     padding: 1.5rem 2rem 1.5rem 2rem;
     margin-top: 2rem;
+    background-color: #0073cf;
+    border-color: #0073cf;
+}
+
+.browse-restaurants-btn:hover,
+.browse-restaurants-btn:focus {
+    background-color: #0480e6;
+    border-color: #0480e6;
 }
 
 .browse-restaurants-btn span {
