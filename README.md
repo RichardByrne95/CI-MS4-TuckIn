@@ -532,12 +532,12 @@ Website uses HTTPS.
 
     Points were mostly deducted due to 3rd party libraries causing slowdowns.
 
-### TODO Further Testing
+### Further Testing
 
--   Try/except syntax is used to redirect the user to 404.html if anything goes wrong.
+-   Try/except syntax is used to redirect the user if anything goes wrong.
 -   A large amount of testing was done to ensure that all pages were linking correctly.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
--   All HTML was auto-formatted using VSCode's built in formatter.
+-   All HTML was formatted using VSCode's built in formatters.
 
 ## Deployment
 
