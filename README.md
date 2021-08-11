@@ -99,7 +99,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
     -   Images play a large role throughout the website. The homepage contains a large background image to warm up the taste buds of the user. Each restaurant is [primarily represented by the image](https://www.easel.ly/blog/text-vs-images-which-content-format-effective/) and logo chosen by the restaurant, and secondarily by the restaurant name. The same goes for each food item within restaurants' menus, but to a lesser extent.
 
-### Wireframes
+### TODO Wireframes
 
 
 
@@ -679,10 +679,9 @@ In order to send emails to users who either set up an account or place an order,
     ```
 7.  Lastly, a method was created in 'webhook_handler.py' to send a confirmation email when the order had been confirmed in the database.
 
-### TODO Running This Project Locally
+### Project Status
 
-### TODO Project Status
-
+-   This project's development has paused while the grading for this project is being completed. This status will change once the course has been completed.
 
 ## Credits
 
