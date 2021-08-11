@@ -257,7 +257,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 8.  [VSCode](https://code.visualstudio.com/)
     -   VSCode was the text editor used for this project. All installed addons can be found in the 'requirements.txt' file.
 
-9. [Django Mathfilters](https://pypi.org/project/django-mathfilters/)
+9.  [Django Mathfilters](https://pypi.org/project/django-mathfilters/)
     -   Mathfilters was used for the creation and rendering of the rating system for restaurants.
 
 10. [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
@@ -266,15 +266,17 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 11. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
     -   Django Storages was used to allow Django to access the database setup on AWS S3.
 
-12.  [Balsamiq](https://balsamiq.com/)
+12. [Balsamiq](https://balsamiq.com/)
     -   Balsamiq was used to create the wireframes during the design process.
 
-
-13.  [LucidChart](https://www.lucidchart.com/)
+13. [LucidChart](https://www.lucidchart.com/)
     -   LucidChart was used to create the database schema diagram for the README.
 
 14. [Stripe](https://stripe.com)
     -   Stripe was used to accept payment for orders.
+
+15. [Cookie/Privacy Policy Generator](https://www.cookiepolicygenerator.com/) 
+    -   Cookie Policy Generator was used to generate cookie and privacy policies.
 
 ## Development
 
@@ -353,6 +355,9 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 -   [JSHINT](https://jshint.com/)
     -   JSHint was used to check for JavaScript errors. However, due to the use of jQuery in the project, it's usefulness was limited.
+
+-   [Webformatter JavaScript](https://webformatter.com/javascript)
+    -   Webformatter was used for JavaScript formatting.
 
 -   HTML W3C Validator [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftuckin-ms4.herokuapp.com%2F)
     -   W3C's HTML validator was used to validate all HTML code rendered in the final project.
@@ -763,7 +768,9 @@ In order to send emails to users who either set up an account or place an order,
 
 If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
 
-### TODO Content
+### Content
+
+-   All content, unless otherwise stated, was written by the developer.
 
 ### Media
 
@@ -775,7 +782,7 @@ If code was directly copied and pasted from another source and left unchanged, t
 
 ##### TODO Ezio Pizza
 
--   Bufalina Pizza - Ezio Pizza = https://unsplash.com/photos/exSEmuA7R7k
+-   Bufalina Pizza - https://unsplash.com/photos/exSEmuA7R7k
 
 ##### TODO McDoogle's
 
@@ -798,21 +805,27 @@ If code was directly copied and pasted from another source and left unchanged, t
 -   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
 -   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
 
-#### TODO Logo Images Sources
+##### Policy Pages
 
-Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
-McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
-Ezio Pizza's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
+-   Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
+-   Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
 
-### TODO Code
+#### Logo Images Sources
 
-### TODO Acknowledgements
+-   Tomato King logo was sourced from [Deviant Art](https://www.deviantart.com/greateronion/art/TomatoKing-163647925).
+-   McDoogle's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
+-   Ezio Pizza's logo was created by the developer using [freelogodesign.org](https://www.freelogodesign.org/).
 
-### TODO Support
+### Code
 
+-   [Code Institute - Full Stack Software Development Course](https://codeinstitute.net/): Coding skills learned in this course allowed the developer to create all the pages of this web-app.
+-   [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web): Referenced for best practices for lists and images, as well as the smooth scrolling functionality.
 
-Used https://webformatter.com/javascript for JavaScript formatting
+### Acknowledgements
 
-Used https://www.cookiepolicygenerator.com/ to generate cookie and privacy policies.
-Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
-Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
+-   My mentor, Spencer Bariball, for continuous helpful feedback and encouragement.
+-   Code Institute for giving me skills to create this project.
+
+### Support
+
+-   Further information can be gotten by contacting the developer at [richardbyrne1995@gmail.com](mailto:richardbyrne1995@gmail.com)
