@@ -543,20 +543,20 @@ Website uses HTTPS.
 
 This project was deployed using GitHub, Heroku and AWS, with a Postgres database, via the following steps:
 
-### TODO Source Control Process
+### Source Control Process
 
 -   This project was developed using Visual Studio Code, Git and GitHub using the following steps:
 
-    1.   Logged into Github Desktop App
-    2.   A new repository called 'CI-MS3-Floral-Reef' was created locally for this project.
-    3.   This repository was initalised with a blank README.md file.
-    4.   This repository was then published from Github Desktop to the remote Github server using 'Ctrl + P'.
-    5.   The project folder was opened in Visual Studio Code where the initial files were created.
-    6.   A new terminal in Visual Studio Code (Ctrl + Shift + ') was opened to begin the git commit process.
-    7.   Files were added to the local git staging area using 'git add <'filename'>' and 'git add *' where applicable.
-    8.   Local commits were made using the 'git commit -m <'message'>' command.
-    9.   These local commits were then periodically pushed to the remote Github server using the 'git push' command.
-    10.   A local server was run throughout the development process using the Live Server Extension to test, in real time, changes made to the game and HTML page.
+    1.  Logged into Github Desktop App
+    2.  A new repository called 'CI-MS4-TuckIn' was created locally for this project.
+    3.  This repository was initalised with a blank README.md file.
+    4.  This repository was then published from Github Desktop to the remote Github server using 'Ctrl + P'.
+    5.  The project folder was opened in Visual Studio Code where the initial files were created.
+    6.  A new terminal in Visual Studio Code (Ctrl + Shift + ') was opened to begin the git commit process.
+    7.  Files were added to the local git staging area using 'git add <'filename'>' and 'git add *' where applicable.
+    8.  Local commits were made using the 'git commit -m <'message'>' command.
+    9.  These local commits were then periodically pushed to the remote Github server using the 'git push' command.
+    10. A local server was run throughout the development process using ```python manage.py runserver``` to test changes made in real time to the HTML pages.
 
 ### Heroku Deployment
 
@@ -566,10 +566,9 @@ This project was deployed using GitHub, Heroku and AWS, with a Postgres database
     ```python
     python -m django dumpdata exclude auth.permission --exclude contenttypes > db.json'
     ```
-
 4.  'dj_database_url' was installed using pip in order to direct the database url to Heroku.
 5.  'psychopg2-binary' was also installed using pip to facilitate the adaptation of the Postgres database by this Python application.
-6.  dj_database_url was imported into the project's 'settings.py' and the default 'DATABASES' variable value was replaced with "{'default': dj_database_url.parse()}".
+6.  'dj_database_url' was imported into the project's 'settings.py' and the default 'DATABASES' variable value was replaced with "{'default': dj_database_url.parse()}".
 7.  The 'Config Vars' were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
 8.  The following command was then used to load the database backup created in step 3 into the new Postgres database:
     ```python
