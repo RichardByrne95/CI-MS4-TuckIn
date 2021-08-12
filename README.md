@@ -800,22 +800,22 @@ If code was directly copied and pasted from another source and left unchanged, t
 -   Sweet Chilli Bean Wrap - https://unsplash.com/photos/F10nTHkCiW8
 -   Chips - https://unsplash.com/photos/t4NNQyv09Sw
 
-##### TODO Tomato King
+##### Tomato King
 
 -   MASSIVE Burger - https://www.pexels.com/photo/photo-of-burger-beside-fires-3616956/
 -   MightyMeaty - https://www.pexels.com/photo/person-holding-a-double-patty-cheese-burger-3826273/
 -   MiniMeaty - https://www.pexels.com/photo/close-up-photo-of-a-cheeseburger-1556698/
 -   MiniMeaty Meal - https://www.pexels.com/photo/tomato-burger-and-fried-fries-1600727/
--   Cheez Burger - https://www.pexels.com/photo/close-up-photo-of-hamburger-1893557/
 -   Classic Hamburger - https://www.pexels.com/photo/photo-of-burger-and-fries-3219547/
 -   Classic Hamburger Meal - https://www.pexels.com/photo/plate-of-fries-and-burger-3219483/
 -   Crispy Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-6896379/
 -   Classic Chicken Burger - https://www.pexels.com/photo/bread-food-dinner-lunch-7963144/
--   Bean Burger - https://www.pexels.com/photo/close-up-photo-of-burger-1639562/
--   Classic Chips - https://www.pexels.com/photo/fries-on-brown-table-2271110/
--   Onion Rings - https://pixabay.com/photos/food-restaurant-cafe-dining-dinner-3669928/
+-   Crispy Chicken Wings - https://www.pexels.com/photo/cooked-leg-chicken-with-green-vegetable-leaf-60616/
 -   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
 -   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
+-   Veggie Bean Burger - https://www.pexels.com/photo/close-up-photo-of-burger-1639562/
+-   Classic Chips - https://www.pexels.com/photo/fries-on-brown-table-2271110/
+-   Onion Rings - https://pixabay.com/photos/food-restaurant-cafe-dining-dinner-3669928/
 
 #### Logo Images Sources
 
