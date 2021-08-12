@@ -782,9 +782,13 @@ If code was directly copied and pasted from another source and left unchanged, t
 -   Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
 -   Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
 
-##### TODO Ezio Pizza
+##### Ezio Pizza
 
+-   Cover Image - https://unsplash.com/photos/MQUqbmszGGM
 -   Bufalina Pizza - https://unsplash.com/photos/exSEmuA7R7k
+-   Panettone - https://unsplash.com/photos/AQ_og51xGlE
+-   Antolini Amarone della Valpolicella Moropio - https://winesdirect.ie/pier-paulo-antolini-amarone-classico-moropio.html
+-   Zuppa Del Giorno - https://unsplash.com/photos/KGw62KtHzxA
 
 ##### TODO McDoogle's
 
