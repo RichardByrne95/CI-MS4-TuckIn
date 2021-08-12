@@ -776,9 +776,11 @@ If code was directly copied and pasted from another source and left unchanged, t
 
 #### Image Sources
 
-##### TODO Background Images
+##### Background Images
 
 -   Homepage - https://unsplash.com/photos/JplMVRjzQVU
+-   Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
+-   Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
 
 ##### TODO Ezio Pizza
 
@@ -804,11 +806,6 @@ If code was directly copied and pasted from another source and left unchanged, t
 -   Onion Rings - https://pixabay.com/photos/food-restaurant-cafe-dining-dinner-3669928/
 -   Fanta - https://pixabay.com/photos/aluminum-can-coca-cola-cylinder-87987/
 -   Pepsi - https://pixabay.com/photos/pepsi-can-soda-cola-supermarket-5152332/
-
-##### Policy Pages
-
--   Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
--   Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
 
 #### Logo Images Sources
 
