@@ -790,9 +790,15 @@ If code was directly copied and pasted from another source and left unchanged, t
 -   Antolini Amarone della Valpolicella Moropio - https://winesdirect.ie/pier-paulo-antolini-amarone-classico-moropio.html
 -   Zuppa Del Giorno - https://unsplash.com/photos/KGw62KtHzxA
 
-##### TODO McDoogle's
+##### McDoogle's
 
+-   Big Muc - https://unsplash.com/photos/sc5sTPMrVfk
 -   Quarter Kilo - https://www.pexels.com/photo/ham-and-bacon-burger-2983098/
+-   Cheez Burger - https://www.pexels.com/photo/close-up-photo-of-hamburger-1893557/
+-   Chicken McNaggets - https://unsplash.com/photos/P_z_xlMGuEk
+-   Coca Cola - https://unsplash.com/photos/z8PEoNIlGlg
+-   Sweet Chilli Bean Wrap - https://unsplash.com/photos/F10nTHkCiW8
+-   Chips - https://unsplash.com/photos/t4NNQyv09Sw
 
 ##### TODO Tomato King
 
