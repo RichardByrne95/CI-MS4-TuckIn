@@ -75,21 +75,23 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 -   Colour Scheme
 
-    -   The colours used throughout the website are: #FF7200 (primary buttons and links), #008DFF (secondary buttons and links), #354555 (opening later banner) and ##f1f2f4 (footer background).
+    -   The colours used throughout the website are: #E96800 (primary buttons and links), #0073CF (secondary buttons and links), #354555 (opening later banner) and #F1F2F4 (footer background).
 
-    -   The primary colour (#FF7200) of the site was chosen because, according to popular colour theory, it is energetic and draw attention. The intention is to give users the impression that their hunger can be satiated quickly by using this site. Orange hues can also represent a refreshing feeling, linked to citrus fruit.
+    -   The primary colour (#E96800) of the site was chosen because, according to popular colour theory, it is energetic and draw attention. The intention is to give users the impression that their hunger can be satiated quickly by using this site. Orange hues can also represent a refreshing feeling, linked to citrus fruit.
 
-    -   The secondary colour (#008DFF) of the site was chosen as the direct compliment of the primary colour (#FF7200) using [colourpicke.me](https://colorpicker.me/).
+    -   The secondary colour (#0073CF) of the site was chosen as the direct compliment of the primary colour (#E96800) using [colourpicke.me](https://colorpicker.me/).
 
 -   Layout
 
     -   [This website](https://www.just-eat.ie/) and [this website](https://www.ubereats.com/ie) were used to inform the layout choices made.
 
-    -   The restaurant phone number was purposely excluded from restaurant menu to encourage the user to order through TuckIn. Phone number is provided on the order confirmation page if a user needs to contact them about an order.
+    -   The current state of the site includes 3 fake restaurants with a limited amount of food. As this is a proof of concept and not a final product, this was deemed to be enough content to portray the purpose and functionality of the site.
+
+    -   The restaurant phone numbers were purposely excluded from the restaurant menu to encourage the user to order through TuckIn, and not directly from the restaurant itself. The restaurant's phone number is provided on the order confirmation page if a user needs to contact them about an order.
 
     -   The footer was removed from the bag and checkout pages so as to minimise potential distractions that could prevent the user from completing an order.
 
-    -   In a commercial setting, the logo would just read 'TuckIn' without the '- Dublin' ending. The '- Dublin' ending currently exists as part of a number of measures to ensure users know that the current state of the site only allows ordering from restaurants in Dublin.
+    -   In a commercial setting, the logo would just read 'TuckIn' without the '- Dublin' ending. The '- Dublin' ending currently exists as part of a number of measures to ensure users know that the current state of the site only allows ordering from 'restaurants' in Dublin.
 
 -   Typography
 
@@ -200,6 +202,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Add ability to add a note to the overall order for the restaurant.
 -   Add ability to edit notes/additional details.
 -   Add flexible minimum order amount.
+-   Allow user to choose delivery or collection.
 -   Add restaurant accounts so that they can manage their inventory.
 -   Allow restaurants delivery and collection times to be separate.
 -   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions).
@@ -246,7 +249,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
     -   Git was used for version control by utilizing the terminal to commit to Git and Push to GitHub.
 
 5.  [GitHub](https://github.com/)
-    -   GitHub is used to store the projects code after being pushed from Git.
+    -   GitHub was used to store the project's code after being pushed from Git.
 
 6.  [Django Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
     -   Allauth was used to create a secure system through which user could safely register for accounts, login, logout and perform other account-related activities.
@@ -292,23 +295,23 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 
 ### Django Secret Key Exposure
 
-When starting off this project, I followed along with the course lectures to ensure that I had the project set up properly. In the course lecturers, however, the lecturer uploads the Django secret key to GitHub. I also did the same before realising what had happened. After contacting Student Care, they confirmed that removing 'settings.py' from GitHub in future commits or changing the Django secret key would be sufficient so as to not incur any penalties during grading.
+When starting off this project, I followed along with the course lectures to ensure that I had the project set up properly. In the course lecturers, however, the lecturer uploads the Django secret key to GitHub. I also did the same before realising what had happened. After contacting Student Care, they confirmed that removing 'settings.py' from GitHub in future commits or changing the Django secret key would be sufficient so as to not incur any penalties during grading. As such, I generated a new secret key using [https://miniwebtool.com/django-secret-key-generator/](https://miniwebtool.com/django-secret-key-generator/).
 
 ### Google Maps Places API Autocomplete Limitations
 
-While implementing the Autocomplete feature from Google's Maps API, I discovered that while you could restrict results to a specific country or between a set of co-ordinates, Google would [not allow you to restrict results to a specific city](https://issuetracker.google.com/issues/35822067). As a workaround, I tried using two pairs of co-ordinates that surrounded the entire county of Dublin. However, this proved unworkable as, firstly, since Dublin's boundaries do not form a quadrilateral, the co-ordinates that would create the boundary would include places outside of Dublin. Secondly, when setting a strict boundary in the Places API, you are restricted only to road and area names, with no house addresses being being selectable.
+While implementing the Autocomplete feature from Google's Maps API, I discovered that while you could restrict results to a specific country or between a set of co-ordinates, Google would [not allow you to restrict results to a specific city](https://issuetracker.google.com/issues/35822067). As a workaround, I tried using two pairs of co-ordinates that surrounded the entire county of Dublin. However, this proved unworkable as, firstly, since Dublin's boundaries do not form a quadrilateral, the co-ordinates that would create the boundary would either include places outside of Dublin, or exclude areas within the county. Secondly, when setting a strict boundary in the Places API, you are restricted only to road and area names, with no house addresses being being selectable.
 
 The most effective solution to this is to use a combination of Google's Maps APIs (Places, GeoCoding, Geolocation, Distance Matrix) in conjunction with one another to convert a given co-ordinate into standard address format, and to then to use the aforementioned services to check if that address is within Dublin. This method would provide extra validation of the inputted address through cross-checking it through multiple different Google services, leading to higher accuracy, better results and tighter security. If this were a commercial project, this would be the way in which I would solve this problem. However, as this is a college project and using these APIs together could easily incur hefty monthly costs, I chose to use the free Google Maps Places API as well as native form validation via HTML. The word 'Dublin' was also placed into 3 different places on the homepage (including the website logo) so that users would know before typing that the service is restricted to Dublin. 
 
-The 'findPlaceFromQuery' method was used to find a place within the Google Maps Places' database using the selected autocomplete address. Then, if the address contained the string 'Dublin' or 'Baile Átha Cliath' (for Irish-speaking users), the form can be submitted. Otherwise, the submit button becomes disabled and an error message displays informing the user of the corrective action. While this method is more simple than the ideal method, it is effective and appropriate for the use case of this college project.
-
 Biases were also used in the API settings, so that the API would search within Dublin first, but it ultimately searches all counties of Ireland if not enough results are found within Dublin.
 
-As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a commercial scenario, a more sophisticated system of address verification, delivery radii and geo-tracking would be used from the paid services of the Google Places API.
+The 'findPlaceFromQuery' method was used to find a place within the Google Maps Places' database using the selected autocomplete address. Then, if the address contained the string 'Dublin' or 'Baile Átha Cliath' (for Irish-speaking users), the form can be submitted. Otherwise, the submit button becomes disabled and an error message displays informing the user of the corrective action. While this method is more simple than the ideal method, it is effective and appropriate for the use case of this college project.
+
+As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a commercial scenario, a more sophisticated system of address verification, delivery radii and geo-tracking would be used from the paid services of the Google Places API.
 
 ### Django Math Filters
 
--    In order use multiplication and division in the Django templating language (without the result returning a rounded integer), [Django Math Filters](https://pypi.org/project/django-mathfilters/) was installed to allow this functionality. Specifically, it was required for the creation of the star ratings underneath each restaurant card in 'restaurants.html'.
+-    In order to use multiplication and division in the Django templating language (without the result returning a rounded integer), [Django Math Filters](https://pypi.org/project/django-mathfilters/) was installed to allow this functionality. Specifically, it was required for the creation of the star ratings underneath each restaurant card in 'restaurants.html'.
 
 ### Custom Django Template Filters
 
@@ -318,7 +321,7 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 ### Delivery Time Timezone Issues
 
--    Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. However, it was discovered upon saving an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class.
+-    Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. However, it was discovered upon viewing an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class. Some issues still persist depending on the device of the user, which would require further examination before becoming a commercial product. In a transnational commercial example, the timezone of the user and the restaurant would be calculated separately so as to avoid errors.
 
 ### Other/Misc
 
@@ -326,7 +329,7 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 -   A note for the CodeInstitute examiner: Some restaurants may not be open depending on what time of day the examiner is grading this project. Time is set to UTC.
 
--   After completing circa 60% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented.
+-   After completing circa 60% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented. However, VSCode recommends to keep commit messages to no more than 50 characters which I adhered to most of the time throughout this project.
 
 -   For customers, the user field in the CustomerProfile model was named 'customer' instead of 'user' to prevent potential confusion in the future, when admin accounts for the restaurants themselves are to be set up, allowing them to manage their menu and details.
 
@@ -334,7 +337,7 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 -   CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
 
--   When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag.
+-   When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag. Therefore, if a user makes changes in their bag but then goes back to the restaurants page or closes their browser tab, their changes are not saved. Only by proceeding with checkout will their changes to a food's quantity be saved. Deleting a food item does not have this restriction.
 
 ### Notable Issues Encountered
 
@@ -342,9 +345,9 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
 
 -   'f-strings' were replaced with the '.format' method for Stripe's webhook handlers that were used in the lectures, as 500 errors were frequently occurring when using 'f-strings'. Stripe also uses the '.format' method in their example code in the [Stripe Docs](https://stripe.com/docs/webhooks/build).
 
--   While there are measure in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API that is behind a paywall would be used to prevent this from happening.
+-   While there are measures in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API services that are behind a paywall would be used to prevent this from happening.
 
--   In rare circumstances, a restaurant with a 5 star rating may display 6 stars, and a restaurant with a 3 star rating may only display 4 stars. The cause of these issues is yet unknown as they are difficult to replicate on a consistent basis.
+-   In rare circumstances, a restaurant with a 5 star rating displayed 6 stars, and a restaurant with a 3 star rating might only display 4 stars. The cause of these issues was eventually found to an error in the rendering logic of the stars. More details can be found in the commit messages regarding this issue.
 
 ## Testing
 
@@ -354,7 +357,7 @@ As this is a MVP, all restaurants are presumed to deliver all over Dublin. In a 
     -   MagicPython was used to format all Python code to [PEP 8](https://pep8.org/) standard
 
 -   [JSHINT](https://jshint.com/)
-    -   JSHint was used to check for JavaScript errors. However, due to the use of jQuery in the project, it's usefulness was limited.
+    -   JSHint was used to check for JavaScript errors. However, due to the widespread use of jQuery in the project, it's usefulness was limited.
 
 -   [Webformatter JavaScript](https://webformatter.com/javascript)
     -   Webformatter was used for JavaScript formatting.
@@ -541,11 +544,14 @@ npm install cypress --save-dev
 npx cypress open
 ```
 This command added a cypress folder to the project, and opened the testing software.
+
 3.  Inside the cypress folder, a new file was created within the 'integration' folder called 'djangoAppNameSpec.js'.
+
 4.  Each test was created using the formula 'Arrange, Act, Assert':
     -   'Arrange' sets up the initial state of the app.
     -   'Act' performs an action to be tested.
     -   'Asserts' makes an assertion as to the expected state of the app after the action has been taken.
+
 5.  A 'spec' file was created for each Django app in the project, for separation and consistency.
 
 ### Manual Functionality Testing
@@ -557,7 +563,7 @@ This command added a cypress folder to the project, and opened the testing softw
 
 ### Manual Accessibility Testing
 
--   Semantic markup is used to convey the document structure. Some tags, like '<summary>', were not used due to lack of support on older browsers.
+-   Semantic markup is used to convey the document structure. Some tags, like 'summary', were not used due to lack of support on older browsers.
 -   Information is presented and categorised in terms of its priority.
 -   All images contain 'alt' text. Aria labels are used when the 'img' 'alt' attribute is not available.
 -   Despite following Google's Web Accessibility Guidelines for contrast, Google Chrome's Lighthouse marked a small number of valid elements as invalid. Each element has been manually checked by the developer using Google's own up-to-date documentation. For example, when a user has added a food item to their bag, a button appears in the bag to allow the user to continue to checkout. The text inside this button on desktop is 1.4rem (14px) in size and is bold. The button text on mobile is 1.8rem (18px). Both of these meet the accessibility guidelines set out [here](https://web.dev/color-contrast/?utm_source=lighthouse&utm_medium=devtools), but Google Lighthouse still displays them as errors. My suspicion is that it is due to the fact that Google is looking for font sizes in pixels, but the project uses rem units. Nonetheless, the project still meets all standard accessibility guidelines.
@@ -626,20 +632,22 @@ This project was deployed using GitHub, Heroku and AWS, with a Postgres database
 
 ### Source Control Process
 
--   This project was developed using Visual Studio Code, Git and GitHub using the following steps:
+This project was developed using Visual Studio Code, Git and GitHub using the following steps:
 
-    1.  Logged into Github Desktop App
-    2.  A new repository called 'CI-MS4-TuckIn' was created locally for this project.
-    3.  This repository was initalised with a blank README.md file.
-    4.  This repository was then published from Github Desktop to the remote Github server using 'Ctrl + P'.
-    5.  The project folder was opened in Visual Studio Code where the initial files were created.
-    6.  A new terminal in Visual Studio Code (Ctrl + Shift + ') was opened to begin the git commit process.
-    7.  Files were added to the local git staging area using 'git add <'filename'>' and 'git add *' where applicable.
-    8.  Local commits were made using the 'git commit -m <'message'>' command.
-    9.  These local commits were then periodically pushed to the remote Github server using the 'git push' command.
-    10. A local server was run throughout the development process using ```python manage.py runserver``` to test changes made in real time to the HTML pages.
+1.  Logged into Github Desktop App
+2.  A new repository called 'CI-MS4-TuckIn' was created locally for this project.
+3.  This repository was initalised with a blank README.md file.
+4.  This repository was then published from Github Desktop to the remote Github server using 'Ctrl + P'.
+5.  The project folder was opened in Visual Studio Code where the initial files were created.
+6.  A new terminal in Visual Studio Code (Ctrl + Shift + ') was opened to begin the git commit process.
+7.  Files were added to the local git staging area using 'git add <'filename'>' and 'git add *' where applicable.
+8.  Local commits were made using the 'git commit -m <'message'>' command.
+9.  These local commits were then periodically pushed to the remote Github server using the 'git push' command.
+10. A local server was run throughout the development process using ```python manage.py runserver``` to test changes made in real time to the HTML pages.
 
 ### Heroku Deployment
+
+This project was deployed to Heroku using the following steps:
 
 1.  A new app was created on Heroku for the project, with the region set as Europe.
 2.  Once the app was created, the Heroku Postgres addon was installed in the Heroku resources tab.
@@ -663,7 +671,7 @@ This project was deployed using GitHub, Heroku and AWS, with a Postgres database
 
 10. An if statement was added to 'settings.py' so that the application could detect whether it should be using the hosted database or the local development database.
 11. Gunicorn was then installed via pip which acts as the webserver in this project.
-12. A Procfile was created in the project's root in order to tell Heroku to create a web dyno and run Gunicorn to server our Django app.
+12. A Procfile was created in the project's root in order to tell Heroku to create a web dyno and run Gunicorn to serve the Django app.
 13. 'heroku login' was used to login into the Heroku CLI.
 14. In order to temporarily prevent Heroku from collecting the static files upon deployment, the following command was used:
     ```python
