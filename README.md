@@ -645,6 +645,7 @@ This command added a cypress folder to the project, and opened the testing softw
 -   While the 'Distinction' criteria state that 'users who direct to a non-existent page or resource are redirected back to the main page', it was deemed more appropriate to either display an error message on the same page if submitting a form, or redirecting the to a different page such as the bag, and displaying a message to the user about the error. This way the user is given explicit direction and understands that something went wrong.
 -   Messages are displayed at the top of the website indicating user progress and feedback where appropriate.
 -   The Stripe element on the payment page triggers an accessibility error due to a hidden element being focusable. This is unavoidable as Stripe control the code inserted onto the page, and does not therefore contribute to the grading of the project.
+-   As this is a proof on concept project, the Stripe API test keys were kept in favour of the live keys, as no actual live transactions will be taking place.
 
 ### Manual Database Testing
 
