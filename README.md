@@ -213,6 +213,7 @@ This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat
 -   Allow the user to store a different bag for each restaurant.
 -   Add choices to food modal e.g. select toppings.
 -   Add ability for restaurants to issue discount codes.
+-   Properly integrate vegan and vegetarian options to allow users to see restaurants that serve these diets.
 -   Show previous orders on homepage for easy re-ordering.
 -   Use Google Place's Autocomplete for checkout address forms.
 -   Refine checkout by skipping checkout address if user has address associated with account and hasn't submitted a new address on the homepage.
@@ -321,7 +322,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
 ### Delivery Time Timezone Issues
 
--    Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. However, it was discovered upon viewing an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class. Some issues still persist depending on the device of the user, which would require further examination before becoming a commercial product. In a transnational commercial example, the timezone of the user and the restaurant would be calculated separately so as to avoid errors.
+-    Upon starting the project, the 'TIME_ZONE' property in 'settings.py' was set to 'Europe/Dublin' to reflect the localised nature of the service. Each datetime object was also given the same time zone to make it an 'aware' datetime object. However, it was discovered upon viewing an order after submission, that the 'Europe/Dublin' timezone was being interpreted as '+0025' instead of '+0100'. This was later found out to be caused by the datetime objects ['not working' with pytz](http://pytz.sourceforge.net/#localized-times-and-date-arithmetic) for many time zones. As such, the project and all datetime objects were reverted to UTC via Django's 'timezone.utc' class. Issues still persist depending on the device of the user, which would require further examination before becoming a commercial product. In a transnational commercial example, the timezone of the user and the restaurant would be calculated separately so as to avoid errors. As such, the application does not currently adapt to daylight savings time. Therefore depending on when the examiner views this project, the delivery times may be an hour behind.
 
 ### Other/Misc
 
