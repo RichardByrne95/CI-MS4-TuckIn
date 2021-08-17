@@ -1,12 +1,14 @@
 {% if current_restaurant %}
-    <a href="{% url 'restaurant_menu' current_restaurant.id %}" class="btn btn-outline-dark btn-lg" aria-label="Go back to restaurant" id="back-to-restaurant-btn">
+    <a href="{% url 'restaurant_menu' current_restaurant.id %}" class="btn btn-outline-dark btn-lg"
+        aria-label="Go back to restaurant" id="back-to-restaurant-btn">
         <span class="d-inline-flex align-items-center icon">
             <i class="fas fa-chevron-left"></i>
         </span>
         <span class="d-inline-flex align-items-center text-uppercase">Back to restaurant</span>
     </a>
 {% else %}
-    <a href="{% url 'restaurants' %}" class="btn btn-outline-dark btn-lg" aria-label="Browse restaurants" id="back-to-restaurant-btn">
+    <a href="{% url 'restaurants' %}" class="btn btn-outline-dark btn-lg" aria-label="Browse restaurants"
+        id="back-to-restaurant-btn">
         <span class="icon">
             <i class="fas fa-chevron-left"></i>
         </span>
@@ -15,14 +17,16 @@
 {% endif %}
 
 {% if current_restaurant.is_open_now %}
-    <button type="submit" class="btn btn-lg continue-checkout-button" aria-label="Go to secure checkout" id="go-to-checkout-btn">
+    <button type="submit" class="btn btn-lg continue-checkout-button" aria-label="Go to secure checkout"
+        id="go-to-checkout-btn">
         <span class="text-uppercase">Go to Checkout</span>
         <span class="icon">
             <i class="fas fa-lock"></i>
         </span>
     </button>
 {% else %}
-    <button class="btn btn-lg continue-checkout-button" aria-label="Restaurant is currently closed" id="go-to-checkout-btn" disabled aria-disabled="true">
+    <button class="btn btn-lg continue-checkout-button" aria-label="Restaurant is currently closed" id="go-to-checkout-btn"
+        disabled aria-disabled="true">
         <span class="text-uppercase">Restaurant Closed</span>
     </button>
 {% endif %}

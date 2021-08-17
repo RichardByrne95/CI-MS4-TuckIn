@@ -39,13 +39,14 @@
                                                     <div class="d-inline-flex justify-content-start restaurant-logo-container">
                                                         <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
                                                             <figure class="restaurant-logo">
-                                                                <img src="{{ MEDIA_URL }}{{ order.order_restaurant.logo }}" alt="{{ order.order_restaurant.friendly_name }}"
-                                                                    class="restaurant-logo">
+                                                                <img src="{{ MEDIA_URL }}{{ order.order_restaurant.logo }}"
+                                                                    alt="{{ order.order_restaurant.friendly_name }}" class="restaurant-logo">
                                                             </figure>
                                                         </a>
                                                     </div>
                                                     <!-- Restaurant Address -->
-                                                    <a href="{% url 'order_confirmation_from_profile' order.order_number %}" class="d-inline restaurant-address-container">
+                                                    <a href="{% url 'order_confirmation_from_profile' order.order_number %}"
+                                                        class="d-inline restaurant-address-container">
                                                         <h3>{{ order.order_restaurant.friendly_name }}</h3>
                                                         <p>{{ order.date }}</p>
                                                         <p>

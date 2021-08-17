@@ -17,11 +17,14 @@
             <div class="col-12 no-gutters">
                 <figure>
                     {% if restaurant.cover_image %}
-                        <img src="{{ restaurant.cover_image.url }}" class="background-image menu-background-image" alt="{{ restaurant.friendly_name }} cover image">
+                        <img src="{{ restaurant.cover_image.url }}" class="background-image menu-background-image"
+                            alt="{{ restaurant.friendly_name }} cover image">
                     {% else %}
-                        <img src="{{ MEDIA_URL }}noimage.png" class="background-image menu-background-image" alt="{{ restaurant.friendly_name }} cover image">
+                        <img src="{{ MEDIA_URL }}noimage.png" class="background-image menu-background-image"
+                            alt="{{ restaurant.friendly_name }} cover image">
                     {% endif %}
-                    <div class="background-image {% if restaurant.is_open_now %}shadow-overlay{% else %}closed-overlay{% endif %} d-flex justify-content-center align-items-center">
+                    <div
+                        class="background-image {% if restaurant.is_open_now %}shadow-overlay{% else %}closed-overlay{% endif %} d-flex justify-content-center align-items-center">
                         <div class="row no-gutters">
                             <div class="col-12 no-gutters text-center">
                                 <h1 class="restaurant-name-menu">{{ restaurant.friendly_name }}</h1>
@@ -113,7 +116,8 @@
                                                         {% if food.image %}
                                                             <img src="{{ food.image.url }}" alt="{{ food.friendly_name }}" class="food-item-photo">
                                                         {% else %}
-                                                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ food.friendly_name }}" class="food-item-photo">
+                                                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ food.friendly_name }}"
+                                                                class="food-item-photo">
                                                         {% endif %}
                                                     </figure>
                                                 </div>
@@ -161,7 +165,8 @@
                                                         </button>
                                                     </div>
                                                     <!-- Quantity Input -->
-                                                    <input class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="15">
+                                                    <input class="form-control qty-input" type="number" name="quantity" value="1"
+                                                        min="1" max="15">
                                                     <!-- Plus Button -->
                                                     <div class="input-group-append">
                                                         <button class="increment-qty btn btn-black rounded-0" type="button">
@@ -182,14 +187,15 @@
                                     <div class="form-row">
                                         <div class="col-12">
                                             <p class="mt-3 mb-2" id="additional-details-title"><strong>Additional Details:</strong></p>
-                                            <textarea name="additional-details" cols="30" rows="4" class="form-control additional-details-input"
-                                                placeholder="e.g. no mayo"></textarea>
+                                            <textarea name="additional-details" cols="30" rows="4"
+                                                class="form-control additional-details-input" placeholder="e.g. no mayo"></textarea>
                                         </div>
                                     </div>
                                     <!-- Modal Footer -->
                                     <div class="modal-footer text-center">
                                         {% if restaurant.is_open_now %}
-                                            <button class="btn btn-secondary food-form-btn" id="add-to-basket-btn" type="submit">Add to Basket</button>
+                                            <button class="btn btn-secondary food-form-btn" id="add-to-basket-btn" type="submit">Add to
+                                            Basket</button>
                                         {% else %}
                                             <p class="btn btn-secondary food-form-btn">Restaurant Currently Closed</p>
                                         {% endif %}

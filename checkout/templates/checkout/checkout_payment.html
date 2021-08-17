@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% debug %}
 {% load static %}
 {% load bag_tools %}
 
@@ -30,7 +29,8 @@
                     </div>
                     <!-- Payment Form and Order Summary -->
                     <div class="row no-gutters justify-content-center" id="address-and-payment-form">
-                        <div class="col-11 col-md-5 col-xl-3 no-gutters d-flex justify-content-center justify-content-lg-end">
+                        <div
+                            class="col-11 col-md-5 col-xl-3 no-gutters d-flex justify-content-center justify-content-lg-end">
                             <div class="customer-details">
                                 <form action="{% url 'checkout_payment' %}" method="POST" id="payment-form">
                                     {% csrf_token %}
@@ -48,14 +48,19 @@
                                         {{ order_form.address_2 | as_crispy_field }}
                                         {{ order_form.city | as_crispy_field }}
                                         {{ order_form.postcode | as_crispy_field }}
-                                        <div class="form-check form-check-inline pe-3 d-flex justify-content-start align-items-center">
+                                        <div
+                                            class="form-check form-check-inline pe-3 d-flex justify-content-start align-items-center">
                                             {% if user.is_authenticated %}
-                                                <input type="checkbox" class="form-check-input" id="save-info" aria-label="Save address to account checkbox" name="save-info" checked>
-                                                <span class="form-check-label px-3 save-info">Save this delivery information to my profile.</span>
+                                                <input type="checkbox" class="form-check-input" id="save-info"
+                                                    aria-label="Save address to account checkbox" name="save-info" checked>
+                                                <span class="form-check-label px-3 save-info">Save this delivery information to
+                                                    my profile.</span>
                                             {% else %}
                                                 <label class="form-check-label" for="save-info">
-                                                    <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or
-                                                    <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this information.
+                                                    <a href="{% url 'account_signup' %}" class="text-info">Create an account</a>
+                                                    or
+                                                    <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this
+                                                    information.
                                                 </label>
                                             {% endif %}
                                         </div>
@@ -70,7 +75,7 @@
                                         <!-- Pass client secret to view to get payment intent id -->
                                         <input type="hidden" name="client_secret" value="{{ client_secret }}">
                                     </fieldset>
-                                    <div class="submit-button p-3 mt-4 mb-2">                    
+                                    <div class="submit-button p-3 mt-4 mb-2">
                                         <!-- Submit Button -->
                                         <button id="submit-button" class="btn d-flex justify-content-center align-items-center" type="submit">
                                             <span class="complete-order">
@@ -164,7 +169,8 @@
                                         {% endif %}
                                         <!-- Restaurant Address -->
                                         <div class="col-12 col-md-7 no-gutters restaurant-address">
-                                            <p class="d-inline-block">{{ order_restaurant.friendly_name }}, {{ order_restaurant.address_1 }}, {{ order_restaurant.address_2 }}</p>
+                                            <p class="d-inline-block">{{ order_restaurant.friendly_name }}, {{ order_restaurant.address_1 }}, {{
+                                                order_restaurant.address_2 }}</p>
                                         </div>
                                     </div>
                                     <hr class="divider">
@@ -183,7 +189,7 @@
                                 <div class="col-12 no-gutters">
                                     <div class="row no-gutters need-help">
                                         <div class="col-12 no-gutters d-flex justify-content-center">
-                                            <p>Need help? Visit the 
+                                            <p>Need help? Visit the
                                                 <a href="{% url 'help' %}" id="help-link">help section</a>
                                             </p>
                                         </div>
@@ -198,7 +204,7 @@
                             <div class="col-11 col-md-6 offset-md-6 col-lg-4 offset-lg-none no-gutters">
                                 <div class="row no-gutters need-help">
                                     <div class="col-12 no-gutters d-flex justify-content-center">
-                                        <p>Need help? Visit the 
+                                        <p>Need help? Visit the
                                             <a href="{% url 'help' %}">help section</a>
                                         </p>
                                     </div>

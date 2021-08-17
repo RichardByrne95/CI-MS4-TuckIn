@@ -3,195 +3,222 @@
 <!doctype html>
 <html lang="en-ie">
 
-<head>
-    {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% endblock %}
-
-    {% block extra_meta %}
-    {% endblock %}
-
-    {% block corecss %}
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Inter:wght@432&display=swap"
-            rel="stylesheet">
-        <!-- Base CSS -->
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <!-- Homepage CSS -->
-        <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
-    {% endblock %}
-
-    
-    {% block extra_css %}
-    {% endblock %}
-
-    {% block corejs %}
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/e2f6d2d599.js" crossorigin="anonymous"></script>
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    {% endblock %}
-
-    {% block extra_js %}
-    {% endblock %}
-
-    <title>TuckIn {% block extra_title %}{% endblock %}</title>
-</head>
-
-<body>
-    <header class="fixed-top {% if dynamic_navbar %}navbar-scroll-transition transparent-gradient{% else %}block-colour header-border-bottom{% endif %}">
-        {% block page_header %}
+    <head>
+        {% block meta %}
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
         {% endblock %}
-        <!-- Desktop Nav -->
-        <div id="topnav" class="row no-gutters d-none d-lg-flex">
-            <div class="col-12 no-gutters">
-                <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark navbar-scroll-transition{% else %}navbar-light navbar-block-colour{% endif %}">
-                    <div class="container-fluid justify-content-evenly align-items-center">
-                        <!-- Logo -->
-                        <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}" class="navbar-brand {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-brand-block-colour{% endif %}">TUCKIN - Dublin</a></h2>
-                        <!-- Search Bar -->
-                        <div class="search-bar-container d-flex justify-content-end">
-                            <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
-                                <input type="text" pattern="^[a-zA-Z]{1,30}$" class="form-control border border-black rounded-1" id="desktop-searchbar"
-                                    name="q" placeholder="Favourite Restaurant?" minlength="3" required>
-                                <button id="desktop-search-button" aria-label="Search button" class="form-control btn rounded-0" type="submit">
-                                    <span
-                                        class="search-icon {% if dynamic_navbar %}navbar-scroll-transition{% else %}search-icon-block-colour{% endif %}"><i
-                                            class="fas fa-search"></i></span>
-                                </button>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            </form>
+
+        {% block extra_meta %}
+        {% endblock %}
+
+        {% block corecss %}
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+            <!-- Google Fonts -->
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link
+                href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Inter:wght@432&display=swap"
+                rel="stylesheet">
+            <!-- Base CSS -->
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+            <!-- Homepage CSS -->
+            <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+        {% endblock %}
+
+        
+        {% block extra_css %}
+        {% endblock %}
+
+        {% block corejs %}
+            <!-- Font Awesome -->
+            <script src="https://kit.fontawesome.com/e2f6d2d599.js" crossorigin="anonymous"></script>
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+                crossorigin="anonymous"></script>
+            <!-- jQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+        <title>TuckIn {% block extra_title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <header
+            class="fixed-top {% if dynamic_navbar %}navbar-scroll-transition transparent-gradient{% else %}block-colour header-border-bottom{% endif %}">
+            {% block page_header %}
+            {% endblock %}
+            <!-- Desktop Nav -->
+            <div id="topnav" class="row no-gutters d-none d-lg-flex">
+                <div class="col-12 no-gutters">
+                    <nav
+                        class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark navbar-scroll-transition{% else %}navbar-light navbar-block-colour{% endif %}">
+                        <div class="container-fluid justify-content-evenly align-items-center">
+                            <!-- Logo -->
+                            <h2 class="logo d-flex justify-content-start"><a href="{% url 'home' %}"
+                                    class="navbar-brand {% if dynamic_navbar %}navbar-scroll-transition{% else %}navbar-brand-block-colour{% endif %}">TUCKIN
+                                    - Dublin</a></h2>
+                            <!-- Search Bar -->
+                            <div class="search-bar-container d-flex justify-content-end">
+                                <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
+                                    <input type="text" pattern="^[a-zA-Z]{1,30}$"
+                                        class="form-control border border-black rounded-1" id="desktop-searchbar" name="q"
+                                        placeholder="Favourite Restaurant?" minlength="3" required>
+                                    <button id="desktop-search-button" aria-label="Search button"
+                                        class="form-control btn rounded-0" type="submit">
+                                        <span
+                                            class="search-icon {% if dynamic_navbar %}navbar-scroll-transition{% else %}search-icon-block-colour{% endif %}"><i
+                                                class="fas fa-search"></i></span>
+                                    </button>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                </form>
+                            </div>
+                            <!-- Nav Links -->
+                            <ul class="navbar-nav d-flex justify-content-end">
+                                <li class="nav-item"><a href="{% url 'home' %}"
+                                        class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Home</a>
+                                </li>
+                                {% if request.user.is_authenticated %}
+                                    <li class="nav-item"><a href="{% url 'customer_profile' %}"
+                                            class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Account</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'account_logout' %}"
+                                            class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Log
+                                            Out</a></li>
+                                {% else %}
+                                    <li class="nav-item"><a href="{% url 'account_login' %}"
+                                            class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Login</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'account_signup' %}"
+                                            class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Register</a>
+                                    </li>
+                                {% endif %}
+                                <li class="nav-item"><a href="{% url 'help' %}"
+                                        class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Help</a>
+                                </li>
+                            </ul>
+                            <!-- Bag -->
+                            <div class="shopping-bag d-flex justify-content-end">
+                                <span class="nav-item bag-icon">
+                                    <a class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}"
+                                        href="{% url 'view_bag' %}" aria-label="Bag">
+                                        <i
+                                            class="fas fa-shopping-bag {% if dynamic_navbar %}navbar-scroll-transition{% else %}fa-shopping-bag-block-colour{% endif %}"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
-                        <!-- Nav Links -->
-                        <ul class="navbar-nav d-flex justify-content-end">
-                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Home</a></li>
-                            {% if request.user.is_authenticated %}    
-                                <li class="nav-item"><a href="{% url 'customer_profile' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Account</a></li>
-                                <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Log Out</a></li>
-                            {% else %}
-                                <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Login</a></li>
-                                <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Register</a></li>
-                            {% endif %}
-                            <li class="nav-item"><a href="{% url 'help' %}" class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}">Help</a></li>
-                        </ul>
-                        <!-- Bag -->
-                        <div class="shopping-bag d-flex justify-content-end">
-                            <span class="nav-item bag-icon">
-                                <a class="nav-link {% if dynamic_navbar %}navbar-scroll-transition{% else %}nav-link-colour{% endif %}" href="{% url 'view_bag' %}" aria-label="Bag">
-                                    <i class="fas fa-shopping-bag {% if dynamic_navbar %}navbar-scroll-transition{% else %}fa-shopping-bag-block-colour{% endif %}"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Mobile Nav -->
+            <div class="row no-gutters d-flex d-lg-none">
+                <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark navbar-scroll-transition {% else %}navbar-light navbar-block-colour {% endif %}w-100 d-flex justify-content-between align-items-center"
+                    id="mobile-nav">
+                    {% include 'includes/mobile-sidebar.html' %}
+                    {% include 'includes/mobile-top-header.html' %}
                 </nav>
             </div>
-        </div>
-        <!-- Mobile Nav -->
-        <div class="row no-gutters d-flex d-lg-none">
-            <nav class="navbar navbar-expand-lg {% if dynamic_navbar %}navbar-dark navbar-scroll-transition {% else %}navbar-light navbar-block-colour {% endif %}w-100 d-flex justify-content-between align-items-center"
-                id="mobile-nav">
-                {% include 'includes/mobile-sidebar.html' %}
-                {% include 'includes/mobile-top-header.html' %}
-            </nav>
-        </div>
-    </header>
+        </header>
 
-    {% if messages %}
-        <div class="toast-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast-error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast-warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast-success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast-info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
-    {% endif %}
-    
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+        {% if messages %}
+            <div class="toast-container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 40 %}
+                            {% include 'includes/toasts/toast-error.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/toast-warning.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/toast-success.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/toast-info.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
 
-    {% block footer %}
-        <footer class="footer">
-            <div class="d-flex justify-content-center">
-                <div class="row no-gutters w-100">
-                    <div class="col-12 col-sm-6 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
-                        <div class="footer-links">
-                            <h4>Partner With Us</h4>
-                            <a href="{% url 'list_your_restaurant' %}" id="list-your-restaurant-link">List your restaurant</a>
+        {% block footer %}
+            <footer class="footer">
+                <div class="d-flex justify-content-center">
+                    <div class="row no-gutters w-100">
+                        <div
+                            class="col-12 col-sm-6 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
+                            <div class="footer-links">
+                                <h4>Partner With Us</h4>
+                                <a href="{% url 'list_your_restaurant' %}" id="list-your-restaurant-link">List your restaurant</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
-                        <div class="footer-icons">
-                            <h4>Follow Us</h4>
-                            <a href="https://www.instagram.com/" aria-label="Instagram" rel="noreferrer" id="instagram-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.facebook.com/" aria-label="Facebook" rel="noreferrer" id="facebook-link" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="https://twitter.com/" aria-label="Twitter" rel="noreferrer" id="twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <div
+                            class="col-12 col-sm-6 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
+                            <div class="footer-icons">
+                                <h4>Follow Us</h4>
+                                <a href="https://www.instagram.com/" aria-label="Instagram" rel="noreferrer" id="instagram-link"
+                                    target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/" aria-label="Facebook" rel="noreferrer" id="facebook-link"
+                                    target="_blank"><i class="fab fa-facebook"></i></a>
+                                <a href="https://twitter.com/" aria-label="Twitter" rel="noreferrer" id="twitter-link"
+                                    target="_blank"><i class="fab fa-twitter"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
-                        <div class="footer-links">
-                            <h4>The Legal Stuff</h4>
-                            <a class="d-block d-sm-inline-block" id="cookies-policy-link" href="{% url 'cookies_policy' %}">Cookies Policy</a>
-                            <span class="d-none d-sm-inline-block">|</span>
-                            <a class="d-block d-sm-inline-block" id="privacy-policy-link" href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                        <div class="col-12 col-md-4 no-gutters footer-col d-flex justify-content-start justify-content-sm-center">
+                            <div class="footer-links">
+                                <h4>The Legal Stuff</h4>
+                                <a class="d-block d-sm-inline-block" id="cookies-policy-link"
+                                    href="{% url 'cookies_policy' %}">Cookies Policy</a>
+                                <span class="d-none d-sm-inline-block">|</span>
+                                <a class="d-block d-sm-inline-block" id="privacy-policy-link"
+                                    href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-    {% endblock %}
+            </footer>
+        {% endblock %}
 
-    <!-- Toasts JS -->
-    <script>
-        $(document).ready(function() {
-            $(".toast").toast('show')
-        });
-    </script>
+        <!-- Toasts JS -->
+        <script>
+            $(document).ready(function() {
+                $(".toast").toast('show')
+            });
+        </script>
 
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
-    
-    <!-- Dynamic navbar -->
-    {% block footer_js %}
-        {% if dynamic_navbar %}
-            <script src="{% static 'js/navbarScroll.js' %}"></script>
-        {% endif %}
-    {% endblock %}
+        <!-- Stripe -->
+        <script src="https://js.stripe.com/v3/"></script>
+        
+        <!-- Dynamic navbar -->
+        {% block footer_js %}
+            {% if dynamic_navbar %}
+                <script src="{% static 'js/navbarScroll.js' %}"></script>
+            {% endif %}
+        {% endblock %}
 
-    <!-- Mobile sidebar nav -->
-    <script>
-        function openNav() {
-            document.getElementById("sidebar-nav").classList.add("open-nav");
-            document.getElementById("sidebar-nav").classList.remove("close-nav");
-        }
+        <!-- Mobile sidebar nav -->
+        <script>
+            function openNav() {
+                document.getElementById("sidebar-nav").classList.add("open-nav");
+                document.getElementById("sidebar-nav").classList.remove("close-nav");
+            }
 
-        function closeNav() {
-            document.getElementById("sidebar-nav").classList.add("close-nav");
-            document.getElementById("sidebar-nav").classList.remove("open-nav");
-        }
-    </script>
+            function closeNav() {
+                document.getElementById("sidebar-nav").classList.add("close-nav");
+                document.getElementById("sidebar-nav").classList.remove("open-nav");
+            }
+        </script>
 
-</body>
+    </body>
 
 </html>

@@ -45,8 +45,9 @@
                             <!-- Refine -->
                             <div class="col-6 no-gutters pe-3">
                                 <div class="dropdown d-flex">
-                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-cuisines-button" id="mobileCuisineDropdownMenuLink"
-                                        data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="btn btn-secondary w-100 dropdown-toggle mobile-cuisines-button"
+                                        id="mobileCuisineDropdownMenuLink" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
+                                        aria-expanded="false">
                                         <i class="fas fa-filter"></i> Cuisines
                                     </a>
                                     <ul class="w-100 dropdown-menu" role="menu" aria-labelledby="mobileCuisineDropdownMenuLink">
@@ -157,7 +158,8 @@
                                             <!-- Cover Image -->
                                             {% if restaurant.cover_image %}
                                                 <figure>
-                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image"
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}"
+                                                        alt="{{ restaurant.friendly_name }} cover image"
                                                         class="img-fluid card-image-top restaurant-card-cover-image">
                                                 </figure>
                                             {% else %}
@@ -219,7 +221,8 @@
                                             <!-- Cover Image -->
                                             {% if restaurant.cover_image %}
                                                 <figure>
-                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}" alt="{{ restaurant.friendly_name }} cover image"
+                                                    <img src="{{ MEDIA_URL }}{{ restaurant.cover_image }}"
+                                                        alt="{{ restaurant.friendly_name }} cover image"
                                                         class="img-fluid card-image-top opaque-image-overlay restaurant-card-cover-image">
                                                 </figure>
                                             {% else %}

@@ -19,13 +19,15 @@
         <div class="row no-gutters page-wrapper">
             <div class="col-12 no-gutters">
                 <!-- Order Confirmed Jumbotron -->
-                <section class="row no-gutters justify-content-center jumbotron-container" id="order-confirmation-jumbotron-section">
+                <section class="row no-gutters justify-content-center jumbotron-container"
+                    id="order-confirmation-jumbotron-section">
                     <div class="col-12 com-md-9 col-lg-6 no-gutters d-flex justify-content-center">
                         <div class="jumbotron" id="order-confirmed-jumbotron">
                             <h2 id="order-confirmed-heading">Order confirmed!</h2>
                             <h3 class="mb-3">Delivery estimate: {{ order.delivery_time }}</h3>
                             <p>Your order has been submitted to the restaurant!</p>
-                            <p class="mb-3">You should be <strong>contacted by the restaurant</strong> in a few moments confirming your
+                            <p class="mb-3">You should be <strong>contacted by the restaurant</strong> in a few moments
+                                confirming your
                                 order.</p>
                             <a href="{% url 'order_again' order.order_number %}" class="btn order-again-btn">Order again</a>
                         </div>
@@ -79,8 +81,8 @@
                                         <div class="restaurant-checkout-logo-container d-flex">
                                             <a href="{% url 'restaurant_menu' order.order_restaurant.id %}">
                                                 <figure class="restaurant-checkout-logo">
-                                                    <img src="{{ MEDIA_URL }}{{ order.order_restaurant.logo }}" alt="{{ order.order_restaurant.friendly_name }}"
-                                                        class="restaurant-checkout-logo">
+                                                    <img src="{{ MEDIA_URL }}{{ order.order_restaurant.logo }}"
+                                                        alt="{{ order.order_restaurant.friendly_name }}" class="restaurant-checkout-logo">
                                                 </figure>
                                             </a>
                                         </div>
