@@ -21,5 +21,21 @@
             <li class="list-group-item"><a href="{% url 'account_signup' %}" class="text-dark nav-link">Register</a></li>
         {% endif %}
         <li class="list-group-item"><a href="{% url 'help' %}" class="text-dark nav-link">Help</a></li>
+        <!-- Search Bar -->
+        <li class="list-group-item">
+            <div class="search-bar-container d-flex justify-content-start">
+                <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
+                    <input type="text" pattern="^[a-zA-Z]{1,30}$" class="form-control border border-black rounded-1 mobile-searchbar"
+                        id="searchbar" name="q" placeholder="Favourite Restaurant?" minlength="3" required>
+                    <button id="mobile-search-button" aria-label="Search button" class="form-control btn rounded-0"
+                        type="submit">
+                        <span
+                            class="search-icon {% if dynamic_navbar %}navbar-scroll-transition{% else %}search-icon-block-colour{% endif %}"><i
+                                class="fas fa-search"></i></span>
+                    </button>
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                </form>
+            </div>
+        </li>
     </ul>
 </div>

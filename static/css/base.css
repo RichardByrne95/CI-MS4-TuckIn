@@ -316,8 +316,19 @@ header {
     color: #fafafa;
 }
 
+.mobile-searchbar {
+    margin: 0 1rem;
+}
+
+#mobile-search-button {
+    color: #000;
+    font-size: 2rem;
+    width: 12%;
+    padding: 0 1rem 2rem 1rem;
+}
+
 #desktop-search-button {
-    color: #fafafa;
+    color: #0182eb;
     font-size: 2rem;
     width: 12%;
     padding: 0 1rem 2rem 1rem;
