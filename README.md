@@ -856,8 +856,9 @@ If code was directly copied and pasted from another source and left unchanged, t
 ##### Background Images
 
 -   Homepage - https://unsplash.com/photos/JplMVRjzQVU
--   Cookies image - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
--   Privacy Image - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
+-   Cookies Background - https://www.pexels.com/photo/cookies-on-square-white-ceramic-plate-890577/
+-   Privacy Background - https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/
+-   Error Background - https://unsplash.com/photos/0W4XLGITrHg
 
 ##### Ezio Pizza
 
