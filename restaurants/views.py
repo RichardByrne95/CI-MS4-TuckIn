@@ -63,7 +63,8 @@ def all_restaurants(request):
                 redirect_url = request.GET['redirect_url']
                 query_search = request.GET['q']
                 if not query_search.isalpha():
-                    messages.error(request, "Please enter valid search criteria.")
+                    messages.error(
+                        request, "Please enter valid search criteria.")
                     return redirect(redirect_url)
                 if not query_search:
                     messages.error(
@@ -81,7 +82,8 @@ def all_restaurants(request):
                 # Filter queried restaurants by whether they're open or closed
                 open_restaurants = [
                     restaurant.name for restaurant in restaurants if restaurant.is_open_now()]
-                open_restaurants = restaurants.filter(name__in=open_restaurants)
+                open_restaurants = restaurants.filter(
+                    name__in=open_restaurants)
                 closed_restaurants = [
                     restaurant for restaurant in restaurants if not restaurant.is_open_now()]
                 closed_restaurants = restaurants.filter(
@@ -129,7 +131,7 @@ def all_restaurants(request):
             'current_cuisine': cuisine,
         }
         return render(request, 'restaurants/restaurants.html', context)
-    
+
     except Exception:
         messages.error(
             request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
@@ -137,13 +139,15 @@ def all_restaurants(request):
 
 
 def restaurant_menu(request, restaurant_id):
-    try:
+    # try:
         restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
         menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
 
         food_items = []
         for section in menu_sections:
             food_items += FoodItem.objects.all().filter(menu_section=section)
+        
+        print(food_items)
 
         context = {
             'restaurant': restaurant,
@@ -152,8 +156,20 @@ def restaurant_menu(request, restaurant_id):
             'dynamic_navbar': True,
         }
         return render(request, 'restaurants/restaurant_menu.html', context)
-        
+
+    # except Exception:
+    #     messages.error(
+    #         request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
+    #     return redirect(reverse('home'))
+
+
+def delete_restaurant(request, restaurant_id):
+    try:
+        restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+        restaurant.delete()
+        messages.success(request, 'Restaurant successfully deleted.')
+        return redirect(reverse('restaurants'))
     except Exception:
-        messages.error(
-            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
-        return redirect(reverse('home'))
+        messages.error(request, 
+            'Issue deleting restaurant. Please seek assistance.')
+        return redirect(reverse('restaurants'))

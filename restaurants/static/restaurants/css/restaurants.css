@@ -187,6 +187,13 @@ header {
     height: 25rem;
 }
 
+#delete-restaurant-btn {
+    background-color: red;
+    color: #fafafa;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+}
+
 .restaurant-menu-section {
     padding-top: 3rem;
 }
