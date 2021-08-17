@@ -11,7 +11,7 @@ describe('Checkout Payment Tests', () => {
     it('successfully loads', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -27,7 +27,7 @@ describe('Checkout Payment Tests', () => {
     it('successfully submits all order details upon proceeding with checkout', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -39,6 +39,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('.continue-checkout-button').click();
         getIframeBody('#card-element iframe').find('.CardNumberField-input-wrapper > span > input').type('424242424242424242424242424');
         cy.get('#submit-button').click();
+        cy.wait(4000)
         // // Validation
         cy.get('#order-confirmed-jumbotron > h3').should('contain', '11:45 p.m.');
         cy.get('.food-line-item > strong').should('contain', 'Big Muc');
@@ -54,7 +55,7 @@ describe('Checkout Payment Tests', () => {
     it('does not allow user to change city', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -70,7 +71,7 @@ describe('Checkout Payment Tests', () => {
     it('should not allow user to submit form with invalid fields', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -97,7 +98,7 @@ describe('Checkout Payment Tests', () => {
     it('successfully loads bag upon clicking "adjust order" link', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -115,7 +116,7 @@ describe('Checkout Payment Tests', () => {
     it('accurately displays the amount to be charged beneath the card number input field', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -136,7 +137,7 @@ describe('Checkout Payment Tests', () => {
         cy.visit('/restaurants/1/');
         let count = 0;
         while (count < Math.round(Math.random() * 5)) {
-            cy.get('a#food-item-card-link').first().click({ force: true });
+            cy.get('a.food-item-card-body').first().click({ force: true });
             cy.get('#add-to-basket-btn').wait(300).click({ force: true });
             count++;
         }
@@ -155,7 +156,7 @@ describe('Checkout Payment Tests', () => {
     it('directs user to help page upon clicking help link', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -173,7 +174,7 @@ describe('Checkout Payment Tests', () => {
     it('returns to payment page and displays error if issue with card', () => {
         // Setup
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');

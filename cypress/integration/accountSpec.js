@@ -168,7 +168,7 @@ describe('Order History', () => {
         cy.get('button.primaryAction[type=submit]').click({ force: true });
         // Create order
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').clear({ force: true }).type('testy test');
@@ -180,7 +180,7 @@ describe('Order History', () => {
         cy.get('.continue-checkout-button').click();
         getIframeBody('#card-element iframe').find('.CardNumberField-input-wrapper > span > input').type('424242424242424242424242424');
         cy.get('#submit-button').click().wait(4000);
-        cy.url().should('contain', 'order-confirmation').wait(300);
+        cy.url().should('contain', 'order_confirmation').wait(300);
         // Validation
         cy.visit('/profiles/customer_order_history/');
         cy.get('.restaurant-logo').first().click({ force: true });
@@ -195,7 +195,7 @@ describe('Order History', () => {
         cy.get('button.primaryAction[type=submit]').click({ force: true });
         // Create order
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').clear({ force: true }).type('testy test');
@@ -221,7 +221,7 @@ describe('Order History', () => {
         cy.get('button.primaryAction[type=submit]').click({ force: true });
         // Create order
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#modal-label').invoke('html').then((foodName) => {
             cy.get('#add-to-basket-btn').wait(300).click({ force: true });
             cy.visit('/checkout/address/');

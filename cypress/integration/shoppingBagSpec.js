@@ -22,7 +22,7 @@ describe('Shopping Bag Tests', () => {
     it('should adjust updated food quantity upon proceeding with checkout', () => {
         // Putting food into bag
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('form.table-responsive').should('exist');
@@ -51,7 +51,7 @@ describe('Shopping Bag Tests', () => {
 
     it("doesn't allow quantity selector to go above 15 or below 1", () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         // Check above 15
@@ -74,7 +74,7 @@ describe('Shopping Bag Tests', () => {
     
     it('deletes food from cart upon pressing the delete button', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('.fa-trash-alt').parent().click({ force: true }).wait(500);
@@ -87,7 +87,7 @@ describe('Shopping Bag Tests', () => {
 
     it('redirects user to restaurant associated with food in cart upon pressing back to restaurant button', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('#back-to-restaurant-btn').click({ force: true });
@@ -96,7 +96,7 @@ describe('Shopping Bag Tests', () => {
 
     it('redirect user to checkout address page upon pressing secure checkout button with valid bag', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('.continue-checkout-button').click();
@@ -106,7 +106,7 @@ describe('Shopping Bag Tests', () => {
     it('should update prices in realtime as user adjusts quantities', () => {
         // Putting food into bag
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/bag/');
         cy.get('form.table-responsive').should('exist');
@@ -129,10 +129,10 @@ describe('Shopping Bag Tests', () => {
 
     it('displays error message if trying to add food to cart from a different restaurant', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/restaurants/2/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.get('.toast-header').should('contain', 'Error');
         cy.get('.toast-body > p').should('contain', 'There is already food from another restaurant in your cart.');

@@ -2,7 +2,7 @@ describe('Checkout Address Tests', () => {
     // Page Load Test
     it('successfully loads', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.url().should('equal', 'http://127.0.0.1:8000/checkout/address/');
@@ -11,7 +11,7 @@ describe('Checkout Address Tests', () => {
     // Functionality and Validity
     it('saves any address details that are inputted/changed', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -29,7 +29,7 @@ describe('Checkout Address Tests', () => {
 
     it('does not allow user to change city', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('#id_city').should('have.attr', 'readonly');
@@ -37,7 +37,7 @@ describe('Checkout Address Tests', () => {
 
     it('displays validation error if user tries to submit form without required fields', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('.continue-checkout-button').click();
@@ -47,7 +47,7 @@ describe('Checkout Address Tests', () => {
 
     it("displays validation error if user tries to submit field that doesn't meet specifications", () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=phone_number]').type('t45tcvD$"d*!?').then($el => $el[0].checkValidity()).should('be.false');
@@ -55,17 +55,17 @@ describe('Checkout Address Tests', () => {
 
     it('bring the user back to the bag upon clicking the adjust order link', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('a#adjust-order-button').click();
         cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
     });
 
-    it('returns user to all restaurants page and displays warning if trying to access checkout payment with no food', () => {
+    it('returns user to all restaurants page and displays error if trying to access checkout payment with no food', () => {
         cy.visit('/checkout/address/');
         cy.url().should('equal', 'http://127.0.0.1:8000/restaurants/');
-        cy.get('.toast-header > strong').should('contain', 'Warning!');
+        cy.get('.toast-header > strong').should('contain', 'Error');
         cy.get('.toast-body > p').should('contain', 'You have no food in your basket.');
     });
 });

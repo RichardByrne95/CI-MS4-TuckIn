@@ -2,7 +2,7 @@ describe('Checkout Delivery Time Tests', () => {
     // Page Load Test
     it('successfully loads', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -16,7 +16,7 @@ describe('Checkout Delivery Time Tests', () => {
     // Functionality
     it('redirects user to bag with error message if user tries to go directly to page', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/time/');
         cy.url().should('equal', 'http://127.0.0.1:8000/bag/');
@@ -24,7 +24,7 @@ describe('Checkout Delivery Time Tests', () => {
 
     it('displays available delivery times for the restaurant', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -37,7 +37,7 @@ describe('Checkout Delivery Time Tests', () => {
 
     it('successfully adds delivery time to order upon submission', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');
@@ -52,7 +52,7 @@ describe('Checkout Delivery Time Tests', () => {
 
     it('directs user to checkout address page upon pressing edit address button', () => {
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.visit('/checkout/address/');
         cy.get('input[name=full_name]').type('testy test');

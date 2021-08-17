@@ -38,7 +38,7 @@ describe('Mobile Nav Tests', () => {
     it('displays the number of food items in the bag on mobile bag icon', () => {
         cy.viewport(402, 828);
         cy.visit('/restaurants/1/');
-        cy.get('a#food-item-card-link').first().click({ force: true });
+        cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#add-to-basket-btn').wait(300).click({ force: true });
         cy.get('.fa-stack-1x').invoke('html').should('exist').then((numberOfBagItems) => {
             cy.wrap(numberOfBagItems).should('contain', '1');
