@@ -378,25 +378,25 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Upon entering the site, the user is greeted with a screen dedicated to entering their address so that they can view restaurants available in their area.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/all_restaurants.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/all_restaurants.PNG?raw=true">
 
     2.  See which restaurants are open and which are closed.
 
         -   Upon searching for restaurants, the user is presented first with a grid of restaurants that are open. Beneath the open restaurants is a banner stating the number of restaurants that will be opening at another time/date. These currently closed restaurants are then displayed beneath the banner in a similar grid with their images slightly greyed out.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/open_restaurants_with_closed_banner.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/open_restaurants_with_closed_banner.PNG?raw=true">
         
 
         -   If a user goes to a restaurant menu of a restaurant that is currently closed, the banner image will be slightly greyed out, a message will be displayed beneath the restaurant name in the banner stating the next time it opens for ordering, and adding food to an order from a closed restaurant is also disabled.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/closed_restaurant_menu_header.PNG?raw=true">
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/closed_restaurant_add_food_to_bag_disabled.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/closed_restaurant_menu_header.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/closed_restaurant_add_food_to_bag_disabled.PNG?raw=true">
 
     3.  Clearly and easily see other customers' ratings of a restaurant.
 
         -   A restaurant's rating is displayed below its name on the 'All Restaurants' page. Users can submit ratings of a restaurant upon completing an order from that restaurant. Users can also change their rating via their order history should they wish to.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/restaurant_rating.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/restaurant_rating.PNG?raw=true">
 
         -   A restaurant's rating was purposely not placed on its menu, so as to encourage users to form their own opinions of restaurants on the platform.
 
@@ -404,13 +404,13 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Each restaurant has a menu, containing multiple sections for the user to view, just like a physical menu. Links are provided for each section in case a user wants to skip to a particular section.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/restaurant_menu_food.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/restaurant_menu_food.PNG?raw=true">
 
     5.  View a restaurant's opening times.
 
         -   Restaurant opening times are clearly displayed in the restaurant information section beneath the banner on the menu page.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/restaurant_menu_info.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/restaurant_menu_info.PNG?raw=true">
 
     6.  View a restaurant's delivery charge.
 
@@ -419,8 +419,8 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
         
         -   The delivery charge is also clearly displayed and accounted for in both the bag and the checkout stages so the user is always aware of all the costs.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/bag.PNG?raw=true">
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_order_summary.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/bag.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_order_summary.PNG?raw=true">
 
 #### Registration and User Accounts
 
@@ -430,34 +430,34 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Account registration can be easily accessed from the nav, or from the checkout payment page.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/navbar.PNG?raw=true">
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_create_account_or_log_in.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/navbar.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_create_account_or_log_in.PNG?raw=true">
 
     2.  Easily login and logout.
 
         -   If a user is not logged into their account, a login button is displayed in the nav.
         -   If a user is logged into their account, a logout button is displayed in the nav.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/navbar.PNG?raw=true">
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/navbar_logged_in.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/navbar.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/navbar_logged_in.PNG?raw=true">
 
     3.  View my previous orders.
 
         -   As long a user has created an account and has logged into that account before placing an order, all their orders will be saved to their account for them to view in detail.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/order_history.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/order_history.PNG?raw=true">
 
     4.  Save an address for use in checkout.
 
         -   Users can save their address for ease of use later when placing orders. This reduces the steps needed to be taken by a user to place the order and reduces friction in the purchasing process.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/account_address.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/account_address.PNG?raw=true">
 
     5.  Recover my account in case I forget my password.
 
         -   Users can safely recover their account via the login screen, where there is a button to reset their password.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/login.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/login.PNG?raw=true">
 
 #### Sorting and Searching
 
@@ -467,7 +467,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Restaurants can be refined by their cuisine either via the homepage or directly in the 'All Restaurants' view.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/cuisine_refine.PNG">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/cuisine_refine.PNG">
 
         -   Not all cuisines contain restaurants at this time, but are there for display purposes only.
 
@@ -475,19 +475,19 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   All restaurants can be sorted either by their rating from highest to lowest, or by their delivery cost, lowest to highest.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/sort.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/sort.PNG?raw=true">
 
     3.  View food from a specific restaurant's menu section.
 
         -   Links are provided for each section within a menu at the top of the menu beneath the restaurant info section. These links smoothly bring the user down to the section associated with the link.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/menu_sections.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/menu_sections.PNG?raw=true">
 
     4.  Search for a restaurant either by name, cuisine, food or food description.
 
         -   The navigation bar contains a search box that users can use to find a restaurant they like quickly, or to find restaurants that contain food related to the search query.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/searchbar.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/searchbar.PNG?raw=true">
 
 #### Purchasing and Checkout
 
@@ -497,11 +497,11 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Users can add to food to their bag with a message for the restaurant via the popup modal that appears when selecting a food from the menu.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/add_food_to_bag.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/add_food_to_bag.PNG?raw=true">
 
         -   If a user adds the same food to their bag but with different messages, the messages are displayed with commas separating them. This would need to be re-examined before commercial release.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/bag_showing_food_messages.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/bag_showing_food_messages.PNG?raw=true">
 
     2.  Change the quantity of food being added to my bag.
 
@@ -513,11 +513,11 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   The bag icon in the navbar bring users to the bag page where they can preview their order and make changes to food items and quantities if necessary.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/nav_header.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/nav_header.PNG?raw=true">
 
         -   The mobile bag icon contains the number of items currently in the bag for viewing convenience on the small screen.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/mobile_bag_icon.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/mobile_bag_icon.PNG?raw=true">
 
     4.  Adjust the quantity of a food item in my bag.
 
@@ -527,11 +527,11 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Users must enter their address if they are not signed into an account upon proceeding with checkout from the bag. Signed in users will have the address saved to their account pre-loaded into the fields.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_delivery_address.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_delivery_address.PNG?raw=true">
 
         -   Users have a second chance to verify/change their address upon reaching the payment page, in order to prevent orders being sent to the wrong address.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_payment_form.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_payment_form.PNG?raw=true">
 
         -   Even though signed in users can save an address to their account, the 'Delivery Address' screen always gets displayed in case the user wants to order to an address not saved to their account.
 
@@ -539,7 +539,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   The user can easily select a delivery time that suits them upon entering their address details in the checkout process.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_delivery_time.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_delivery_time.PNG?raw=true">
         
         -   Currently the default delivery times are every 15 minutes on the hour from when a restaurant opens.
 
@@ -557,13 +557,13 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   A link to the help page is also conveniently provided on the payment page in case the user encounters an issue while ordering.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_help_link.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_help_link.PNG?raw=true">
 
     10. View an order confirmation upon checking out successfully.
 
         -   Upon successfully completing an order, users are greeted with a confirmation page where they can rate the restaurant, view an order summary and add the contents of the order to bag if they wish to place the same order again.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/order_confirmation.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/order_confirmation.PNG?raw=true">
 
         -   The user's account contains an order history where users can revisit their past orders.
         
@@ -579,13 +579,13 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   The footer of all non-checkout related pages contains a link where restaurants can request to join the platform.
 
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/help.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/help.PNG?raw=true">
 
     2.  Receive requests for help from customers.
 
         -   There is a dedicated help page where users can contact the business for assistance.
         
-        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/list_your_restaurant.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/list_your_restaurant.PNG?raw=true">
 
         -   The navbar permanently contains a link to the help page.
 
@@ -593,7 +593,15 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
 ### Testing with Cypress
 
-[Cypress](www.cypress.io) was used to create QA tests for this app, using the following steps:
+[Cypress](www.cypress.io) was used to create QA tests for this app.
+
+Each test file has a video displaying all tests running and passing, which can be viewed [here](https://github.com/RichardByrne95/CI-MS4-TuckIn/tree/main/cypress/videos).
+
+Below is an image of the summary of all the test results generated by Cypress.
+
+<img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/cypress_test_results.PNG?raw=true">
+
+Cypress was used to test the application via the following steps:
 
 1.  Cypress was installed and saved as a dev dependency via NPM (Node Package Manager) using the command
 ```javascript
