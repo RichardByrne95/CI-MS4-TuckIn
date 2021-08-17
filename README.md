@@ -430,24 +430,34 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Account registration can be easily accessed from the nav, or from the checkout payment page.
         
-        <img src="">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/navbar.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_create_account_or_log_in.PNG?raw=true">
 
     2.  Easily login and logout.
 
         -   If a user is not logged into their account, a login button is displayed in the nav.
         -   If a user is logged into their account, a logout button is displayed in the nav.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/navbar.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/navbar_logged_in.PNG?raw=true">
 
     3.  View my previous orders.
 
         -   As long a user has created an account and has logged into that account before placing an order, all their orders will be saved to their account for them to view in detail.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/order_history.PNG?raw=true">
 
     4.  Save an address for use in checkout.
 
         -   Users can save their address for ease of use later when placing orders. This reduces the steps needed to be taken by a user to place the order and reduces friction in the purchasing process.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/account_address.PNG?raw=true">
 
     5.  Recover my account in case I forget my password.
 
         -   Users can safely recover their account via the login screen, where there is a button to reset their password.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/login.PNG?raw=true">
 
 #### Sorting and Searching
 
