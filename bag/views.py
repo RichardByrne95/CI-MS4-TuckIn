@@ -167,7 +167,7 @@ def order_again(request, order_number):
 
         request.session['bag'] = bag
         return redirect('/bag')
-    
+
     except Exception:
         messages.error(
             request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')

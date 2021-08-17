@@ -6,6 +6,8 @@ from django.utils.timezone import utc
 from django.db.models.deletion import CASCADE, SET_NULL
 
 # Cuisine
+
+
 class Cuisine(models.Model):
     name = models.CharField(max_length=254)
     icon_html = models.TextField(

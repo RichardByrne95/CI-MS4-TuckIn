@@ -39,7 +39,7 @@ describe('Checkout Payment Tests', () => {
         cy.get('.continue-checkout-button').click();
         getIframeBody('#card-element iframe').find('.CardNumberField-input-wrapper > span > input').type('424242424242424242424242424');
         cy.get('#submit-button').click();
-        cy.wait(4000)
+        cy.wait(4000);
         // // Validation
         cy.get('#order-confirmed-jumbotron > h3').should('contain', '11:45 p.m.');
         cy.get('.food-line-item > strong').should('contain', 'Big Muc');
@@ -191,7 +191,7 @@ describe('Checkout Payment Tests', () => {
             cy.wrap(iframeContainer).its('0.contentDocument').should('exist').its('body').find('iframe.FullscreenFrame').then((fullscreenFrame) => {
                 cy.wrap(fullscreenFrame).its('0.contentDocument').should('exist').its('body').find('#test-source-authorize-3ds').click();
             });
-        // Validation
+            // Validation
         }).then(() => {
             cy.url().should('equal', 'http://127.0.0.1:8000/checkout/payment/');
             cy.get('#card-errors').should('contain', 'insufficient funds');

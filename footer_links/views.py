@@ -16,7 +16,7 @@ def list_your_restaurant(request):
             'dynamic_navbar': True,
         }
         return render(request, 'footer_links/list_your_restaurant.html', context)
-    
+
     except Exception:
         messages.error(
             request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')

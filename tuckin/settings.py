@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['https://tuckin-ms4.herokuapp.com/', 'tuckin-ms4.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://tuckin-ms4.herokuapp.com/',
+                 'tuckin-ms4.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -73,7 +74,8 @@ SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username' # Signup error solved using https://github.com/pennersr/django-allauth/issues/1014#issuecomment-121245406
+# Signup error solved using https://github.com/pennersr/django-allauth/issues/1014#issuecomment-121245406
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 ACCOUNT_SIGNUP_REDIRECT_URL = '/restaurants/'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'

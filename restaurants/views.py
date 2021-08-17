@@ -140,22 +140,22 @@ def all_restaurants(request):
 
 def restaurant_menu(request, restaurant_id):
     # try:
-        restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
-        menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
+    restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+    menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
 
-        food_items = []
-        for section in menu_sections:
-            food_items += FoodItem.objects.all().filter(menu_section=section)
-        
-        print(food_items)
+    food_items = []
+    for section in menu_sections:
+        food_items += FoodItem.objects.all().filter(menu_section=section)
 
-        context = {
-            'restaurant': restaurant,
-            'menu_sections': menu_sections,
-            'food_items': food_items,
-            'dynamic_navbar': True,
-        }
-        return render(request, 'restaurants/restaurant_menu.html', context)
+    print(food_items)
+
+    context = {
+        'restaurant': restaurant,
+        'menu_sections': menu_sections,
+        'food_items': food_items,
+        'dynamic_navbar': True,
+    }
+    return render(request, 'restaurants/restaurant_menu.html', context)
 
     # except Exception:
     #     messages.error(
@@ -170,6 +170,6 @@ def delete_restaurant(request, restaurant_id):
         messages.success(request, 'Restaurant successfully deleted.')
         return redirect(reverse('restaurants'))
     except Exception:
-        messages.error(request, 
-            'Issue deleting restaurant. Please seek assistance.')
+        messages.error(request,
+                       'Issue deleting restaurant. Please seek assistance.')
         return redirect(reverse('restaurants'))

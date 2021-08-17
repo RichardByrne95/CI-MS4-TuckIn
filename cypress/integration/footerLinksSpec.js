@@ -31,7 +31,7 @@ describe('List Your Restaurant Tests', () => {
         cy.visit('/links/list_your_restaurant/');
         cy.url().should('equal', 'http://127.0.0.1:8000/links/list_your_restaurant/');
     });
-    
+
     it('correctly submits valid form', () => {
         cy.visit('/links/list_your_restaurant/');
         cy.get('#restaurant-name').type('Testaurant', { force: true });

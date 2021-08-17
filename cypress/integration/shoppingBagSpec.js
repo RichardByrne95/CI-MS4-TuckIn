@@ -71,7 +71,7 @@ describe('Shopping Bag Tests', () => {
         }
         cy.get('.qty-input').invoke('val').should('equal', '1');
     });
-    
+
     it('deletes food from cart upon pressing the delete button', () => {
         cy.visit('/restaurants/1/');
         cy.get('a.food-item-card-body').first().click({ force: true });

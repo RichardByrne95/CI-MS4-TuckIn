@@ -120,7 +120,7 @@ describe('Profile Tests', () => {
         cy.get('button.primaryAction[type=submit]').click({ force: true });
         cy.visit('/profiles/');
         cy.get('#id_full_name').clear({ force: true }).type('abcd', { force: true });
-        cy.get('.save-changes-button').click({ force: true});
+        cy.get('.save-changes-button').click({ force: true });
         cy.get('#account-details-form').then($el => $el[0].checkValidity()).should('be.false');
     });
 
@@ -133,7 +133,7 @@ describe('Profile Tests', () => {
         cy.get('#id_default_address_1').clear({ force: true }).type('123 Test Road');
         cy.get('#id_default_address_2').clear({ force: true }).type('Testlandia');
         cy.get('#id_default_phone_number').clear({ force: true }).type('12345678');
-        cy.get('.save-changes-button').click({ force: true}).wait(4000);
+        cy.get('.save-changes-button').click({ force: true }).wait(4000);
         cy.get('#id_default_address_1').invoke('val').should('contain', '123 Test Road');
         cy.get('#id_default_address_2').invoke('val').should('contain', 'Testlandia');
         cy.get('#id_default_phone_number').invoke('val').should('contain', '12345678');
