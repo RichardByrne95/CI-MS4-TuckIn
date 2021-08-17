@@ -318,6 +318,9 @@ header {
 
 .mobile-searchbar {
     margin: 0 1rem;
+    font-size: 1.6rem;
+    width: 24rem;
+    height: 65%;
 }
 
 #mobile-search-button {
@@ -328,7 +331,7 @@ header {
 }
 
 #desktop-search-button {
-    color: #0182eb;
+    color: #fafafa;
     font-size: 2rem;
     width: 12%;
     padding: 0 1rem 2rem 1rem;
@@ -351,7 +354,7 @@ header {
     padding-top: 1.3rem;
 }
 
-#searchbar {
+#desktop-searchbar {
     font-size: 1.6rem;
     width: 24rem;
     height: 65%;

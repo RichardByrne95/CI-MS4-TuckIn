@@ -25,8 +25,9 @@
         <li class="list-group-item">
             <div class="search-bar-container d-flex justify-content-start">
                 <form action="{% url 'restaurants' %}" method="GET" class="d-flex">
-                    <input type="text" pattern="^[a-zA-Z]{1,30}$" class="form-control border border-black rounded-1 mobile-searchbar"
-                        id="searchbar" name="q" placeholder="Favourite Restaurant?" minlength="3" required>
+                    <input type="text" pattern="^[a-zA-Z]{1,30}$"
+                        class="form-control border border-black rounded-1 mobile-searchbar" name="q"
+                        placeholder="Favourite Restaurant?" minlength="3" required>
                     <button id="mobile-search-button" aria-label="Search button" class="form-control btn rounded-0"
                         type="submit">
                         <span
