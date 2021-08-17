@@ -579,9 +579,13 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   The footer of all non-checkout related pages contains a link where restaurants can request to join the platform.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/help.PNG?raw=true">
+
     2.  Receive requests for help from customers.
 
         -   There is a dedicated help page where users can contact the business for assistance.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/list_your_restaurant.PNG?raw=true">
 
         -   The navbar permanently contains a link to the help page.
 
