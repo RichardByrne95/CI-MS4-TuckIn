@@ -467,19 +467,27 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Restaurants can be refined by their cuisine either via the homepage or directly in the 'All Restaurants' view.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/cuisine_refine.PNG">
+
         -   Not all cuisines contain restaurants at this time, but are there for display purposes only.
 
     2.  Sort restaurants by rating and delivery cost.
 
         -   All restaurants can be sorted either by their rating from highest to lowest, or by their delivery cost, lowest to highest.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/sort.PNG?raw=true">
+
     3.  View food from a specific restaurant's menu section.
 
         -   Links are provided for each section within a menu at the top of the menu beneath the restaurant info section. These links smoothly bring the user down to the section associated with the link.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/menu_sections.PNG?raw=true">
+
     4.  Search for a restaurant either by name, cuisine, food or food description.
 
         -   The navigation bar contains a search box that users can use to find a restaurant they like quickly, or to find restaurants that contain food related to the search query.
+
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/searchbar.PNG?raw=true">
 
 #### Purchasing and Checkout
 
