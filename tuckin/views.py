@@ -8,8 +8,3 @@ def handler404(request, exception=None):
         'dynamic_navbar': True,
     }
     return render(request, '404.html', context)
-
-
-# Referenced https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page
-def handler500(request, exception=None):
-    return render(request, '500.html')
