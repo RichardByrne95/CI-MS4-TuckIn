@@ -2,9 +2,15 @@
 
 <h2 align="center"><img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/media/amiresponsive_mockup.PNG?raw=true"></h2>
 
-This is the repository for TuckIn - Dublin, a food delivery app, akin to JustEat and UberEats. It provides a platform for restaurants and takeaways to display their menus and receive orders through a secure and streamlined process.
+This is the repository for TuckIn - Dublin, a food ordering app, akin to JustEat and UberEats. It provides a platform for restaurants and takeaways to display their menus and receive orders through a secure and streamlined process.
 
 [View live project here.](https://tuckin-ms4.herokuapp.com/)
+
+## Project Rationale
+
+The idea of building a food ordering application for the MS4 project came about after brainstorming multiple ideas and refining them with the help of my mentor. TuckIn was eventually chosen as not only would it comfortably fit within the criteria of the project, but it would also challenge me as a developer in creating a project larger than I had ever tackled before.
+
+As a contemporary food ordering platform, TuckIn would have to include everything from cuisines to restaurants, menus to individual foods, user accounts, a secure e-commerce checkout and much more. It would also require a significant amount of planning of the customer's journey through the application, getting them from homepage to order confirmation. Below, you will find multiple stages of planning and execution that was required to complete this project. As the project is so large for one novice developer, many features that were deemed unessential were added to the roadmap for development after the course has been completed.
 
 ## User Experience (UX)
 
