@@ -545,10 +545,27 @@ select:invalid, select option[value=""] {
     height: 100%;
 }
 
+/* ----------------------------------------- Error */
+#error-title {
+    color: #fafafa;
+}
+
+.error-image {
+    height: 25rem;
+    width: 100%;
+    object-fit: cover;
+}
+
 a#back-to-homepage-btn {
-    font-size: 1.7rem;
+    font-size: 2rem;
     background-color: #0073cf;
     color: #fafafa;
+    margin-top: 5rem;
+}
+
+a#back-to-homepage-btn:hover,
+a#back-to-homepage-btn:focus {
+    background-color: #0182eb;
 }
 
 .shadow-overlay {
@@ -568,6 +585,10 @@ a#back-to-homepage-btn {
 
     #login, #signup, #sign-out {
         margin-top: 16rem;
+    }
+
+    .error-image {
+        height: 40rem;
     }
 }
 
