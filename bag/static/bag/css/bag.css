@@ -1,4 +1,5 @@
 /* ----------------------------------------- Shopping Bag */
+
 main {
     padding-bottom: 0;
 }
@@ -16,8 +17,7 @@ main {
     border-color: #0073cf;
 }
 
-.browse-restaurants-btn:hover,
-.browse-restaurants-btn:focus {
+.browse-restaurants-btn:hover, .browse-restaurants-btn:focus {
     background-color: #0480e6;
     border-color: #0480e6;
 }
@@ -26,8 +26,7 @@ main {
     font-size: 1.8rem;
 }
 
-.browse-restaurants-btn:hover,
-.browse-restaurants-btn:focus {
+.browse-restaurants-btn:hover, .browse-restaurants-btn:focus {
     color: #fff;
 }
 
@@ -59,16 +58,18 @@ main {
 }
 
 /* Remove spinner from qty input - referenced https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp*/
+
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
+
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 .bag-total strong {
@@ -84,6 +85,7 @@ input[type=number] {
 }
 
 /* Buttons */
+
 #back-to-restaurant-btn {
     border: none;
     text-decoration: underline;
@@ -100,12 +102,12 @@ input[type=number] {
     border-radius: 3rem;
 }
 
-#go-to-checkout-btn span,
-#go-to-checkout-btn i {
+#go-to-checkout-btn span, #go-to-checkout-btn i {
     font-size: 1.8rem;
 }
 
 /* Bag rows */
+
 .food-image-container {
     min-width: 10rem;
 }
@@ -125,21 +127,21 @@ input[type=number] {
 }
 
 /* ----------------------------------------- >=768px */
+
 @media screen and (min-width: 768px) {
     #shopping-bag-section {
         margin-bottom: 0;
     }
-
     main {
         padding-bottom: 8rem;
     }
-
     .bag-contents {
         min-width: 60rem;
     }
 }
 
 /* ----------------------------------------- >=992px */
+
 @media screen and (min-width: 992px) {
     #shopping-bag-section {
         padding-top: 10rem;
@@ -147,22 +149,19 @@ input[type=number] {
 }
 
 /* ----------------------------------------- >=1200px */
+
 @media screen and (min-width: 1200px) {
     #shopping-bag-section {
         padding-top: 11rem;
     }
-
     .bag-contents {
         border: .1rem solid #c8cfd6;
     }
-
     /* Buttons */
     #back-to-restaurant-btn {
         border: black 1px solid;
         padding: 1.5rem 3rem;
-        
     }
-
     #go-to-checkout-btn {
         display: inline-block;
         position: relative;
@@ -174,10 +173,7 @@ input[type=number] {
         bottom: 0;
         transform: translateX(0);
     }
-
-    #go-to-checkout-btn span,
-    #go-to-checkout-btn i,
-    #back-to-restaurant-btn span {
+    #go-to-checkout-btn span, #go-to-checkout-btn i, #back-to-restaurant-btn span {
         font-size: 1.5rem;
         font-weight: bold;
     }

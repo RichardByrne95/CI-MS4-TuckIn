@@ -1,4 +1,5 @@
 /* ----------------------------------------- All Restaurants */
+
 header {
     padding-bottom: 0;
 }
@@ -15,8 +16,7 @@ header {
     padding: 0;
 }
 
-.fa-filter,
-.fa-sort-amount-down {
+.fa-filter, .fa-sort-amount-down {
     font-size: 1.5rem;
 }
 
@@ -38,6 +38,7 @@ header {
 }
 
 /* Referenced https://calvinke.com/seo/fixed-header-anchor-css/ */
+
 .anchor {
     padding-top: 12rem;
     margin-top: -12rem;
@@ -51,8 +52,7 @@ header {
     position: relative;
 }
 
-.restaurant-card-cover-image,
-.restaurant-card-logo {
+.restaurant-card-cover-image, .restaurant-card-logo {
     border-radius: .3rem;
 }
 
@@ -85,8 +85,7 @@ header {
     font-weight: 600;
 }
 
-.dropdown-toggle:hover,
-.dropdown-toggle:focus {
+.dropdown-toggle:hover, .dropdown-toggle:focus {
     background-color: #0073cf;
     border-color: #0073cf;
 }
@@ -170,7 +169,7 @@ header {
 }
 
 .closed-overlay {
-    position:absolute;
+    position: absolute;
     top: 0;
     max-height: 40vh;
     background-color: rgba(66, 65, 65, 0.5);
@@ -219,6 +218,7 @@ header {
     padding-left: 0;
     padding-right: 0;
 }
+
 .menu-section-heading {
     padding-left: 0;
     padding-right: 0;
@@ -254,8 +254,7 @@ header {
     color: black;
 }
 
-.food-item-card-text,
-.food-item-price-container {
+.food-item-card-text, .food-item-price-container {
     max-width: 50%;
 }
 
@@ -276,6 +275,7 @@ header {
 }
 
 /* Modal */
+
 .food-item-form {
     margin-top: 3rem;
 }
@@ -309,8 +309,7 @@ header {
 
 /* Modal Quantity */
 
-#quantity-title strong,
-#additional-details-title strong {
+#quantity-title strong, #additional-details-title strong {
     font-size: 1.4rem;
 }
 
@@ -320,16 +319,12 @@ header {
     margin-bottom: 1rem;
 }
 
-.input-group-prepend,
-.input-group-append {
+.input-group-prepend, .input-group-append {
     display: flex;
     align-items: center;
 }
 
-.qty-input,
-.icon i,
-.additional-details-input,
-.food-form-btn {
+.qty-input, .icon i, .additional-details-input, .food-form-btn {
     font-size: 1.6rem;
 }
 
@@ -339,63 +334,54 @@ header {
     justify-content: center;
 }
 
-
 /* ----------------------------------------- <=335px */
+
 @media screen and (max-width: 335px) {
     .dropdown-toggle {
         font-size: 1.2rem;
     }
-
-    .fa-sort-amount-down,
-    .fa-filter {
+    .fa-sort-amount-down, .fa-filter {
         display: none !important;
     }
 }
 
 /* ----------------------------------------- >=768px */
+
 @media screen and (min-width: 768px) {
     .restaurant-info-menu {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
     .menu-section-heading {
         font-size: 2.8rem;
         padding-left: 1rem;
         padding-right: 1rem;
         margin-bottom: 0;
     }
-
     #menu-divider {
         margin: 1rem 1rem 4rem 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
     .card {
         margin: 2rem;
     }
-
     .restaurant-card {
         margin: 0;
         padding: 2rem;
     }
-    
     .food-item-card {
         margin: 0;
         padding: 1rem;
     }
-
     .food-item-photo {
         padding: 3rem;
     }
-
     .restaurant-card-cover-image {
         width: 100%;
         height: auto;
         object-fit: cover;
     }
-
     .restaurant-card-logo {
         position: absolute;
         left: 5%;
@@ -403,7 +389,6 @@ header {
         max-width: 33%;
         height: auto;
     }
-
     .restaurant-cuisines-col {
         margin-right: 0rem;
         padding: 2rem 2rem 0 2rem;
@@ -412,42 +397,36 @@ header {
         max-width: 12.5rem;
         min-width: 12.5rem;
     }
-
     .restaurant-name-menu {
         font-size: 4.5rem;
     }
 }
 
 /* ----------------------------------------- >=992px */
+
 @media screen and (min-width: 992px) {
     header {
         border: none;
     }
-
     #restaurants {
         margin-top: 13rem;
     }
-
     #restaurants-column {
         padding: 0 0 0 5rem;
     }
-
-    .menu-background-image,
-    .shadow-overlay,
-    .closed-overlay {
+    .menu-background-image, .shadow-overlay, .closed-overlay {
         height: 40rem;
     }
-
     .restaurant-menu-section {
         padding-top: 5rem;
     }
-
     .restaurant-name-menu {
         font-size: 5rem;
     }
 }
 
 /* ----------------------------------------- >=1200px */
+
 @media screen and (min-width: 1200px) {
     .change-location a {
         font-size: 1.4rem;
@@ -455,7 +434,6 @@ header {
         color: #0073cf;
         margin-left: 1rem;
     }
-
     #restaurants-opening-later-text {
         font-size: 1.5rem;
         width: 100%;

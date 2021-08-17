@@ -36,17 +36,13 @@
     padding-left: 0;
 }
 
-.list-restaurant-fields input,
-.list-restaurant-fields label, 
-.list-restaurant-fields select,
-.list-restaurant-fields option {
+.list-restaurant-fields input, .list-restaurant-fields label, .list-restaurant-fields select, .list-restaurant-fields option {
     display: flex;
     font-size: 1.8rem;
     padding: .3rem 1rem .3rem .3rem;
 }
 
-.list-restaurant-fields input,
-.list-restaurant-fields select {
+.list-restaurant-fields input, .list-restaurant-fields select {
     width: 100%;
 }
 
@@ -68,30 +64,26 @@
 }
 
 .shadow-overlay {
-    position:absolute;
+    position: absolute;
     top: 0;
     /* max-height: 30vh; */
     /* min-height: 20.5rem; */
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     width: 100%;
     height: 30rem;
 }
 
-#cookies-policy-heading,
-#privacy-policy-heading,
-#list-your-restaurant-heading {
+#cookies-policy-heading, #privacy-policy-heading, #list-your-restaurant-heading {
     font-size: 2.5rem;
 }
 
-#cookies-policy h2,
-#privacy-policy h2 {
+#cookies-policy h2, #privacy-policy h2 {
     font-size: 2.2rem;
     font-weight: 600;
     margin: 3rem 0 1rem;
 }
 
-#cookies-policy h3,
-#privacy-policy h3 {
+#cookies-policy h3, #privacy-policy h3 {
     font-weight: 500;
 }
 
@@ -116,8 +108,7 @@ h2 {
 
 /* ----------------------------------------- Help */
 
-#help-details p,
-#help-details a {
+#help-details p, #help-details a {
     font-size: 2rem;
 }
 
@@ -126,75 +117,57 @@ h2 {
 }
 
 /* ----------------------------------------- >=768px */
+
 @media screen and (min-width: 768px) {
     #list-your-restaurant-heading {
         top: 11%;
     }
-
     #list-your-restaurant-tagline {
         top: 16%;
     }
-
-    #cookies-policy-heading,
-    #privacy-policy-heading,
-    #list-your-restaurant-heading {
+    #cookies-policy-heading, #privacy-policy-heading, #list-your-restaurant-heading {
         font-size: 3.5rem;
     }
-
     .form-col-left {
         padding-right: 2.5rem;
     }
-    
     .form-col-right {
         padding-left: 2.5rem;
     }
 }
 
 /* ----------------------------------------- >=992px */
+
 @media screen and (min-width: 992px) {
     #list-your-restaurant-heading {
         top: 15%;
     }
-
     #list-your-restaurant-tagline {
         top: 23%;
     }
-
-    #cookies-policy-heading,
-    #privacy-policy-heading,
-    #list-your-restaurant-heading {
+    #cookies-policy-heading, #privacy-policy-heading, #list-your-restaurant-heading {
         font-size: 4.5rem;
     }
-
-    #cookies-policy h2,
-    #privacy-policy h2 {
+    #cookies-policy h2, #privacy-policy h2 {
         font-size: 2.8rem;
     }
-
     .background-image {
         /* max-height: 40vh; */
         /* min-height: 28rem; */
         height: 40rem;
     }
-
     .shadow-overlay {
         height: 40rem;
         /* max-height: 40vh; */
         /* min-height: 28rem; */
     }
-
     .form-col-left {
         padding-right: 3rem;
     }
-    
     .form-col-right {
         padding-left: 3rem;
     }
-
-    .list-restaurant-fields input,
-    .list-restaurant-fields label, 
-    .list-restaurant-fields select,
-    .list-restaurant-fields option {
+    .list-restaurant-fields input, .list-restaurant-fields label, .list-restaurant-fields select, .list-restaurant-fields option {
         display: flex;
         font-size: 2rem;
         padding: .3rem 1rem .3rem .3rem;
@@ -202,43 +175,35 @@ h2 {
 }
 
 /* ----------------------------------------- >=1200px */
+
 @media screen and (min-width: 1200px) {
     main {
         padding-bottom: 15rem;
     }
-
     .background-image {
         /* max-height: 50vh; */
         height: 50rem;
     }
-
     .shadow-overlay {
         /* max-height: 50vh; */
         height: 50rem;
     }
-
     #list-your-restaurant-heading {
         top: 18%;
     }
-
     #list-your-restaurant-tagline {
         top: 26%;
         font-size: 2rem;
     }
-
-    #cookies-policy h2,
-    #privacy-policy h2 {
+    #cookies-policy h2, #privacy-policy h2 {
         font-size: 3rem;
     }
-
     .footer-link-form {
         margin-top: 4rem;
     }
-
     .form-col-left {
         padding-right: 5rem;
     }
-    
     .form-col-right {
         padding-left: 5rem;
     }

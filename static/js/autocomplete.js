@@ -2,12 +2,12 @@ let autocomplete;
 let service;
 
 // Initialise autocomplete
-function initAutocomplete () {
+function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
         document.getElementById('address'),
         {
-            componentRestrictions: {'country': ['IE']},
-            location: {lat: 53.350140, lng: -6.266155},
+            componentRestrictions: { 'country': ['IE'] },
+            location: { lat: 53.350140, lng: -6.266155 },
             radius: 31053.48,
             name: 'Dublin',
         }
@@ -15,14 +15,14 @@ function initAutocomplete () {
     autocomplete.addListener('place_changed', OnPlaceChanged);
 }
 
-function OnPlaceChanged () {
+function OnPlaceChanged() {
     // Handle selecting address from autocomplete
     let place = autocomplete.getPlace();
     if (!place.geometry) {
         document.getElementById('address').placeholder = 'Start typing an address';
     } else {
         document.getElementById('address').innerHTML = place.name;
-        
+
         // Handle address verification
         const addressVerification = (address) => {
             service = new google.maps.places.PlacesService(address);

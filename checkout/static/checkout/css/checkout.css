@@ -1,15 +1,15 @@
 /* ----------------------------------------- Checkout */
+
 main {
     padding-bottom: 2rem;
 }
 
-#checkout-address-section,
-#checkout-time-section,
-#checkout-payment-section {
+#checkout-address-section, #checkout-time-section, #checkout-payment-section {
     padding-top: 7rem;
 }
 
 /* Buttons */
+
 #adjust-order-btn {
     border: none;
     text-decoration: underline;
@@ -26,22 +26,17 @@ main {
     border-radius: 3rem;
 }
 
-#continue-checkout-btn span,
-#continue-checkout-btn i {
+#continue-checkout-btn span, #continue-checkout-btn i {
     font-size: 1.8rem;
 }
 
 /* ----------------------------------------- Delivery Address */
 
-.address-form-buttons,
-.delivery-time-form-buttons {
+.address-form-buttons, .delivery-time-form-buttons {
     margin: 1rem 2rem;
 }
 
-.address-form-buttons .btn,
-.delivery-time-form-buttons .btn,
-.address-form-buttons a,
-.delivery-time-form-buttons a {
+.address-form-buttons .btn, .delivery-time-form-buttons .btn, .address-form-buttons a, .delivery-time-form-buttons a {
     font-size: 1.3rem;
     font-weight: 500;
 }
@@ -68,12 +63,11 @@ label[for="delivery-time-select"] {
     min-width: 1rem;
 }
 
-.order-summary{
+.order-summary {
     padding: 0;
 }
 
-.customer-details,
-.order-summary {
+.customer-details, .order-summary {
     border: .1rem solid #c8cfd6;
     border-radius: .3rem;
     padding: 2rem;
@@ -89,8 +83,7 @@ label[for="delivery-time-select"] {
     color: #0073cf;
 }
 
-.order-summary-heading span:focus,
-.order-summary-heading span:hover {
+.order-summary-heading span:focus, .order-summary-heading span:hover {
     font-size: 1.15rem;
     color: #0486f0;
 }
@@ -103,8 +96,7 @@ label[for="delivery-time-select"] {
     min-width: 1.8rem;
 }
 
-.form-check-label,
-.text-info {
+.form-check-label, .text-info {
     font-size: 1.3rem;
 }
 
@@ -124,8 +116,7 @@ label[for="delivery-time-select"] {
     padding-left: .8rem;
 }
 
-.charge-warning,
-.charge-warning span {
+.charge-warning, .charge-warning span {
     font-size: 1.4rem;
 }
 
@@ -189,8 +180,7 @@ label[for="delivery-time-select"] {
     border-radius: .3rem;
 }
 
-.order-again-btn:hover,
-.order-again-btn:focus {
+.order-again-btn:hover, .order-again-btn:focus {
     color: #fff;
 }
 
@@ -212,8 +202,7 @@ label[for="delivery-time-select"] {
     padding-bottom: 28rem;
 }
 
-.restaurant-checkout-logo-container,
-.delivery-checkout-marker-container {
+.restaurant-checkout-logo-container, .delivery-checkout-marker-container {
     width: 5.5rem;
     height: 5.5rem;
     margin: 0em 1rem 1rem 0;
@@ -224,8 +213,7 @@ label[for="delivery-time-select"] {
     width: 5.5rem;
 }
 
-.order-summary-card,
-.delivery-info-card {
+.order-summary-card, .delivery-info-card {
     padding: 2rem;
     border: solid .1rem #c8cfd6;
     border-radius: .8rem;
@@ -257,8 +245,7 @@ hr.divider {
     /* margin-bottom: 1rem; */
 }
 
-.delivery-time strong,
-.delivery-time i {
+.delivery-time strong, .delivery-time i {
     font-size: 1.6rem;
 }
 
@@ -267,8 +254,7 @@ hr.divider {
     border-bottom: .1rem black dotted;
 }
 
-.need-help p,
-.need-help a {
+.need-help p, .need-help a {
     font-size: 1.4rem;
     color: #333;
 }
@@ -280,6 +266,7 @@ hr.divider {
 }
 
 /* ----------------------------------------- <=280px */
+
 @media screen and (max-width: 280px) {
     .order-number {
         font-size: 1.2rem;
@@ -287,69 +274,60 @@ hr.divider {
 }
 
 /* ----------------------------------------- <=360px */
+
 @media screen and (max-width: 360px) {
-    .customer-details,
-    .order-summary {
+    .customer-details, .order-summary {
         padding: 1rem;
     }
 }
 
 /* ----------------------------------------- >=768px */
+
 @media screen and (min-width: 768px) {
     #payment-form {
         display: inline-block;
     }
-
-    .customer-details,
-    .order-summary {
+    .customer-details, .order-summary {
         padding: 1rem;
     }
-
     .card-padding {
         padding: 1.5rem 1.7rem 1.5rem 1.7rem;
     }
-
     .jumbotron-container {
         padding-bottom: 2rem;
     }
-
     #order-details-section {
         padding-bottom: 15rem;
     }
 }
 
 /* ----------------------------------------- >=992px */
+
 @media screen and (min-width: 992px) {
     main {
         padding-bottom: 12.5rem;
     }
-
-    #checkout-address-section,
-    #checkout-time-section,
-    #checkout-payment-section {
+    #checkout-address-section, #checkout-time-section, #checkout-payment-section {
         padding-top: 12rem;
     }
-
     .jumbotron-container {
         padding: 15rem 0 4.5rem 0;
     }
-
     .jumbotron {
         margin: 0;
     }
-
     .customer-details {
         min-width: 40rem;
         max-width: 42rem;
     }
-    
-    .order-summary{
+    .order-summary {
         min-width: 42rem;
         max-width: 53rem;
     }
 }
 
 /* ----------------------------------------- >=1200px */
+
 @media screen and (min-width: 1200px) {
     #continue-checkout-btn {
         display: inline-block;
@@ -362,10 +340,7 @@ hr.divider {
         bottom: 0;
         transform: translateX(0);
     }
-    
-    #continue-checkout-btn span,
-    #continue-checkout-btn i,
-    #continue-checkout-btn span {
+    #continue-checkout-btn span, #continue-checkout-btn i, #continue-checkout-btn span {
         font-size: 1.4rem;
         font-weight: bold;
     }

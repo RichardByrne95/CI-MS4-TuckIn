@@ -1,4 +1,5 @@
 /* ----------------------------------------- General */
+
 * {
     margin: 0;
     padding: 0;
@@ -112,6 +113,7 @@ strong {
 }
 
 /* ----------------------------------------- Components */
+
 .continue-checkout-button {
     background-color: #e96800;
     color: #fff;
@@ -140,7 +142,9 @@ strong {
 }
 
 /* ----------------------------------------- Scrollbar */
+
 /* Referenced https://css-tricks.com/the-current-state-of-styling-scrollbars/ */
+
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.3);
@@ -161,6 +165,7 @@ strong {
 }
 
 /* ----------------------------------------- Messages & Toasts */
+
 .toast-container {
     z-index: 9997;
     overflow: visible;
@@ -208,17 +213,20 @@ strong {
 }
 
 /* ----------------------------------------- Navbar */
+
 .navbar {
     min-width: 20.4rem;
 }
 
 /* Mobile Nav */
+
 #mobile-nav {
     height: 5.5rem;
     z-index: 9998;
 }
 
 /* Navbar Toggler */
+
 .navbar-toggler {
     font-size: 1.45rem;
     border: 0;
@@ -231,12 +239,14 @@ strong {
 }
 
 /* Logo */
+
 .mobile-logo {
     margin: 0;
     font-family: 'Baloo 2', cursive;
 }
 
 /* Shopping bag icon */
+
 .fa-stack-2x {
     font-size: 3rem !important;
 }
@@ -251,6 +261,7 @@ header {
 }
 
 /* Dynamic Navbar - Classes that change when user scrolls down from top of page */
+
 .transparent-gradient {
     background-image: -o-linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)) !important;
     background-image: -moz-linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)) !important;
@@ -263,6 +274,7 @@ header {
 }
 
 /* Referenced https://codecorns.com/bootstrap-4-navbar-toggle-color-change/ */
+
 .navbar-dark .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
@@ -393,8 +405,7 @@ header {
     justify-content: space-between;
 }
 
-#sidebar-logo,
-#sidebar-logo a {
+#sidebar-logo, #sidebar-logo a {
     padding: .5rem 1rem;
 }
 
@@ -403,6 +414,7 @@ header {
 }
 
 /* ----------------------------------------- Footer */
+
 footer {
     position: absolute;
     padding-bottom: 2rem;
@@ -429,6 +441,7 @@ footer a, footer span {
 }
 
 /* ----------------------------------------- Login/Signup/Sign Out */
+
 #login, #signup, #sign-out {
     margin-top: 16rem;
 }
@@ -485,6 +498,7 @@ form .alert-block li {
 }
 
 /* ----------------------------------------- Stripe */
+
 .StripeElement, .stripe-style-input, .profile-form-input {
     box-sizing: border-box;
     height: 4rem;
@@ -560,6 +574,7 @@ select:invalid, select option[value=""] {
 }
 
 /* ----------------------------------------- Error */
+
 #error-title {
     color: #fafafa;
 }
@@ -577,36 +592,35 @@ a#back-to-homepage-btn {
     margin-top: 5rem;
 }
 
-a#back-to-homepage-btn:hover,
-a#back-to-homepage-btn:focus {
+a#back-to-homepage-btn:hover, a#back-to-homepage-btn:focus {
     background-color: #0182eb;
 }
 
 .shadow-overlay {
-    position:absolute;
+    position: absolute;
     top: 0;
     max-height: 40vh;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, .3);
     width: 100%;
     height: 25rem;
 }
 
 /* ----------------------------------------- >=992px */
+
 @media screen and (min-width: 992px) {
     .navbar-brand {
         font-size: 3.1rem;
     }
-
     #login, #signup, #sign-out {
         margin-top: 16rem;
     }
-
     .error-image {
         height: 40rem;
     }
 }
 
 /* ----------------------------------------- >=1200px */
+
 @media screen and (min-width: 1200px) {
     h1 {
         font-size: 4rem;
