@@ -545,10 +545,6 @@ select:invalid, select option[value=""] {
     height: 100%;
 }
 
-#error-section {
-    margin-top: 13rem;
-}
-
 a#back-to-homepage-btn {
     font-size: 1.7rem;
     background-color: #0073cf;
