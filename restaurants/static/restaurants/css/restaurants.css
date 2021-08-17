@@ -169,15 +169,6 @@ header {
     font-size: 2rem;
 }
 
-.shadow-overlay {
-    position:absolute;
-    top: 0;
-    max-height: 40vh;
-    background-color: rgba(0,0,0,.3);
-    width: 100%;
-    height: 25rem;
-}
-
 .closed-overlay {
     position:absolute;
     top: 0;

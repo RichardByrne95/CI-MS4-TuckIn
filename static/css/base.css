@@ -549,10 +549,19 @@ select:invalid, select option[value=""] {
     margin-top: 13rem;
 }
 
-#back-to-homepage-btn {
+a#back-to-homepage-btn {
     font-size: 1.7rem;
     background-color: #0073cf;
     color: #fafafa;
+}
+
+.shadow-overlay {
+    position:absolute;
+    top: 0;
+    max-height: 40vh;
+    background-color: rgba(0,0,0,.3);
+    width: 100%;
+    height: 25rem;
 }
 
 /* ----------------------------------------- >=992px */

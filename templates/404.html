@@ -15,7 +15,7 @@
                 <div class="background-image shadow-overlay d-flex justify-content-center align-items-center">
                     <div class="row no-gutters">
                         <div class="col-12 no-gutters text-center">
-                            <h1 class="error-title">405 Oops! Looks like an error occurred...</h1>
+                            <h1 class="error-title">404 Oops! Looks like an error occurred...</h1>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,9 @@
         </div>
         <!-- Back to home button -->
         <div class="col-12 no-gutters">
-            <a href="{% url 'home' %}" class="btn btn-lg" id="back-to-homepage-btn">Back to home</a>
+            <div class="button-wrapper d-flex justify-content-center">
+                <a href="{% url 'home' %}" class="btn btn-lg" id="back-to-homepage-btn">Back to home</a>
+            </div>
         </div>
     </section>
 {% endblock %}
