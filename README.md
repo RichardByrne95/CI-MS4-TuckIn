@@ -378,31 +378,49 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Upon entering the site, the user is greeted with a screen dedicated to entering their address so that they can view restaurants available in their area.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/all_restaurants.PNG?raw=true">
+
     2.  See which restaurants are open and which are closed.
 
         -   Upon searching for restaurants, the user is presented first with a grid of restaurants that are open. Beneath the open restaurants is a banner stating the number of restaurants that will be opening at another time/date. These currently closed restaurants are then displayed beneath the banner in a similar grid with their images slightly greyed out.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/open_restaurants_with_closed_banner.PNG?raw=true">
+        
+
         -   If a user goes to a restaurant menu of a restaurant that is currently closed, the banner image will be slightly greyed out, a message will be displayed beneath the restaurant name in the banner stating the next time it opens for ordering, and adding food to an order from a closed restaurant is also disabled.
+
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/closed_restaurant_menu_header.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/closed_restaurant_add_food_to_bag_disabled.PNG?raw=true">
 
     3.  Clearly and easily see other customers' ratings of a restaurant.
 
         -   A restaurant's rating is displayed below its name on the 'All Restaurants' page. Users can submit ratings of a restaurant upon completing an order from that restaurant. Users can also change their rating via their order history should they wish to.
+
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/restaurant_rating.PNG?raw=true">
 
         -   A restaurant's rating was purposely not placed on its menu, so as to encourage users to form their own opinions of restaurants on the platform.
 
     4.  View food available from a restaurant in easy-to-navigate sections.
 
         -   Each restaurant has a menu, containing multiple sections for the user to view, just like a physical menu. Links are provided for each section in case a user wants to skip to a particular section.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/restaurant_menu_food.PNG?raw=true">
 
     5.  View a restaurant's opening times.
 
         -   Restaurant opening times are clearly displayed in the restaurant information section beneath the banner on the menu page.
 
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/restaurant_menu_info.PNG?raw=true">
+
     6.  View a restaurant's delivery charge.
 
         -   Restaurant delivery charges are displayed in two areas: the 'All Restaurants' grid and in the restaurant menu. This allows for complete transparency and means the user gets no surprise charges at checkout.
 
+        
         -   The delivery charge is also clearly displayed and accounted for in both the bag and the checkout stages so the user is always aware of all the costs.
+
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/bag.PNG?raw=true">
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_order_summary.PNG?raw=true">
 
 #### Registration and User Accounts
 
@@ -411,6 +429,8 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
     1.  Register for an account.
 
         -   Account registration can be easily accessed from the nav, or from the checkout payment page.
+        
+        <img src="">
 
     2.  Easily login and logout.
 
