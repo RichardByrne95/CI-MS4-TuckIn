@@ -1,7 +1,6 @@
-from django.http.request import HttpRequest
-from django.http.response import HttpResponse
 from django.shortcuts import render
 from restaurants.models import Cuisine
+from django.http.response import HttpResponse
 
 
 def home(request):

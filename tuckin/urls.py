@@ -15,3 +15,6 @@ urlpatterns = [
     path('bag/', include('bag.urls')),
     path('checkout/', include('checkout.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'tuckin.views.handler404'
+handler500 = 'tuckin.views.handler500'

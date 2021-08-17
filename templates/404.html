@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+    | 404
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid no-gutters">
+    <section id="error-section" class="row no-gutters">
+        <!-- Hero Image -->
+        <div class="col-12 no-gutters">
+            <figure>
+                <img src="{{ MEDIA_URL }}error_background.webp" class="background-image menu-background-image" alt="Error 404 image">
+                <div class="background-image shadow-overlay d-flex justify-content-center align-items-center">
+                    <div class="row no-gutters">
+                        <div class="col-12 no-gutters text-center">
+                            <h1 class="error-title">405 Oops! Looks like an error occurred...</h1>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+        </div>
+        <!-- Back to home button -->
+        <div class="col-12 no-gutters">
+            <a href="{% url 'home' %}" class="btn btn-lg" id="back-to-homepage-btn">Back to home</a>
+        </div>
+    </section>
+{% endblock %}

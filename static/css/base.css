@@ -545,6 +545,16 @@ select:invalid, select option[value=""] {
     height: 100%;
 }
 
+#error-section {
+    margin-top: 13rem;
+}
+
+#back-to-homepage-btn {
+    font-size: 1.7rem;
+    background-color: #0073cf;
+    color: #fafafa;
+}
+
 /* ----------------------------------------- >=992px */
 @media screen and (min-width: 992px) {
     .navbar-brand {
