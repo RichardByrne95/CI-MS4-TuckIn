@@ -496,8 +496,12 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
     1.  Add food to my bag with a message for the restaurant.
 
         -   Users can add to food to their bag with a message for the restaurant via the popup modal that appears when selecting a food from the menu.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/add_food_to_bag.PNG?raw=true">
 
-        -   If a user adds the same food to their bag but with different messages, the messages are displayed with commas separating them.
+        -   If a user adds the same food to their bag but with different messages, the messages are displayed with commas separating them. This would need to be re-examined before commercial release.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/bag_showing_food_messages.PNG?raw=true">
 
     2.  Change the quantity of food being added to my bag.
 
@@ -508,8 +512,12 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
     3.  View items in my bag to be ordered.
 
         -   The bag icon in the navbar bring users to the bag page where they can preview their order and make changes to food items and quantities if necessary.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/nav_header.PNG?raw=true">
 
         -   The mobile bag icon contains the number of items currently in the bag for viewing convenience on the small screen.
+
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/mobile_bag_icon.PNG?raw=true">
 
     4.  Adjust the quantity of a food item in my bag.
 
@@ -519,13 +527,19 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   Users must enter their address if they are not signed into an account upon proceeding with checkout from the bag. Signed in users will have the address saved to their account pre-loaded into the fields.
 
-        -   Users have a second change to verify/change their address upon reaching the payment page, in order to prevent orders being sent to the wrong address.
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_delivery_address.PNG?raw=true">
+
+        -   Users have a second chance to verify/change their address upon reaching the payment page, in order to prevent orders being sent to the wrong address.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_payment_form.PNG?raw=true">
 
         -   Even though signed in users can save an address to their account, the 'Delivery Address' screen always gets displayed in case the user wants to order to an address not saved to their account.
 
     6.  Easily choose a delivery time for my order.
 
         -   The user can easily select a delivery time that suits them upon entering their address details in the checkout process.
+
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_delivery_time.PNG?raw=true">
         
         -   Currently the default delivery times are every 15 minutes on the hour from when a restaurant opens.
 
@@ -542,13 +556,17 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
         -   The navbar contains a link to the help page where users can contact the business for assistance.
 
         -   A link to the help page is also conveniently provided on the payment page in case the user encounters an issue while ordering.
+        
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/checkout_help_link.PNG?raw=true">
 
     10. View an order confirmation upon checking out successfully.
 
         -   Upon successfully completing an order, users are greeted with a confirmation page where they can rate the restaurant, view an order summary and add the contents of the order to bag if they wish to place the same order again.
 
-        -   The user's account contains an order history where users can revisit their past orders.
+        <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/user_stories_testing_images/order_confirmation.PNG?raw=true">
 
+        -   The user's account contains an order history where users can revisit their past orders.
+        
     11. Receive an email confirming my order.
 
         -   Upon successfully completing an order, users are sent an order confirmation email containing an order summary for their records.
