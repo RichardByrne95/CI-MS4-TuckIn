@@ -10,7 +10,7 @@ This is the repository for TuckIn - Dublin, a food ordering app, akin to JustEat
 
 The idea of building a food ordering application for the MS4 project came about after brainstorming multiple ideas and refining them with the help of my mentor. TuckIn was eventually chosen as not only would it comfortably fit within the criteria of the project, but it would also challenge me as a developer in creating a project larger than I had ever tackled before.
 
-As a contemporary food ordering platform, TuckIn would have to include everything from cuisines to restaurants, menus to individual foods, user accounts, a secure e-commerce checkout and much more. It would also require a significant amount of planning of the customer's journey through the application, getting them from homepage to order confirmation. Below, you will find multiple stages of planning and execution that was required to complete this project. As the project is so large for one novice developer, many features that were deemed unessential were added to the roadmap for development after the course has been completed.
+As a contemporary food ordering platform, TuckIn would have to include everything from cuisines to restaurants, menus to individual foods, user accounts, a secure e-commerce checkout, opening times for each restaurant and much more. It would also require a significant amount of planning of the customer's journey through the application, getting them from homepage to order confirmation. Below, you will find multiple stages of planning and execution that was required to complete this project. As the project is so large for one novice developer, many features that were deemed unessential were added to the roadmap for development after the course has been completed.
 
 ## User Experience (UX)
 
@@ -694,6 +694,8 @@ Website uses HTTPS.
     -   SEO: 90
 
     Points were mostly deducted due to 3rd party libraries causing slowdowns. However, accessibility points were also deducted due to Chrome incorrectly marking some texts as not having a sufficient contrast ratio. [Google's own accessibility guidelines](https://web.dev/color-contrast/?utm_source=lighthouse&utm_medium=devtools) state that text with a font size over 18px or 14px bold only needs a contrast ratio of 3:1 instead of the regular 4.5:1. However, Chrome did not seem to recognise this and marked it as an error.
+
+-   Typical SEO was not implemented as this was not deemed necessary for the purpose and context of this project.
 
 ### Further Testing
 
