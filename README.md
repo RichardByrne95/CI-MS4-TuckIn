@@ -10,7 +10,7 @@ This is the repository for TuckIn - Dublin, a food ordering app, akin to JustEat
 
 The idea of building a food ordering application for the MS4 project came about after brainstorming multiple ideas and refining them with the help of my mentor. TuckIn was eventually chosen as not only would it comfortably fit within the criteria of the project, but it would also challenge me as a developer in creating a project larger than I had ever tackled before.
 
-As a contemporary food ordering platform, TuckIn would have to include everything from cuisines to restaurants, menus to individual foods, user accounts, a secure e-commerce checkout, opening times for each restaurant and much more. It would also require a significant amount of planning of the customer's journey through the application, getting them from homepage to order confirmation. Below, you will find multiple stages of planning and execution that was required to complete this project. As the project is so large for one novice developer, many features that were deemed unessential were added to the roadmap for development after the course has been completed.
+As a contemporary food ordering platform, TuckIn would have to include everything from cuisines to restaurants, menus to individual foods, user accounts, a secure e-commerce checkout, opening times for each restaurant and much more. It would also require a significant amount of planning of the customer's journey through the application, getting them from the homepage to order confirmation. Below, you will find multiple stages of planning and execution that was required to complete this project. As the project is so large for one novice developer, many features that were deemed unessential were added to the roadmap for development after the course has been completed.
 
 In a commercial scenario, the owner of the site would generate revenue by taking a small commission from each order placed.
 
@@ -18,7 +18,7 @@ In a commercial scenario, the owner of the site would generate revenue by taking
 
 ### Project Goals
 
--   Develop a food delivery webapp akin to JustEat, UberEats etc.
+-   Develop a food delivery web app akin to JustEat, UberEats etc.
 -   Create a full-stack site using HTML, CSS, JavaScript, Python+Django.
 -   Utilise a secure login system to allow users to create an account.
 -   Provide an easy-to-use search platform for users to find restaurants serving Dublin.
@@ -27,7 +27,7 @@ In a commercial scenario, the owner of the site would generate revenue by taking
 
 ### Developer Goals
 
--   Create a commercial-grade webapp that could be a minimum viable product/proof of concept for a real-world business.
+-   Create a commercial-grade web app that could be a minimum viable product/proof of concept for a real-world business.
 
 ### User Stories
 
@@ -103,7 +103,7 @@ In a commercial scenario, the owner of the site would generate revenue by taking
 
 -   Typography
 
-    -   One primary font was used throughout the website: 'Inter'. The logo, however, uses 'Baloo 2'. 'Inter' was chosen for its easy readability and simplicity, reducing friction for users allowing them to get their food faster. 'Baloo 2' with its rounded edged and lack of ornamentation was chosen for the logo to display a sense of carefree-ness, light-heartedness and youthfulness. This combines with the 'energy' of the orange colour to provide consistent messaging to the user about the type of business with whom they are interacting.
+    -   One primary font was used throughout the website: 'Inter'. The logo, however, uses 'Baloo 2'. 'Inter' was chosen for its easy readability and simplicity, reducing friction for users allowing them to get their food faster. 'Baloo 2' with its rounded edge and lack of ornamentation was chosen for the logo to display a sense of carefree-ness, light-heartedness and youthfulness. This combines with the 'energy' of the orange colour to provide consistent messaging to the user about the type of business with whom they are interacting.
 
 -   Imagery
 
@@ -203,36 +203,36 @@ In a commercial scenario, the owner of the site would generate revenue by taking
 
 ### Features Left to Implement
 
--   Use restaurant names instead of id numbers in restaurant url.
+-   Use restaurant names instead of id numbers in the restaurant URL.
 -   Allow users to change their email addresses (presents logistical and security issues).
 -   Ability to add multiple addresses to one account.
--   Add realtime updates of order status ('cooking'/'on it's way' etc.) to order confirmation page.
--   Add ability to add a note to the overall order for the restaurant.
--   Add ability to edit notes/additional details.
+-   Add real-time updates of an order's status ('cooking'/'on it's way' etc.) to order confirmation page.
+-   Add the ability to add a note to the overall order for the restaurant.
+-   Add the ability to edit notes/additional details.
 -   Add flexible minimum order amount.
--   Allow user to choose delivery or collection.
+-   Allow users to choose delivery or collection.
 -   Add restaurant accounts so that they can manage their inventory.
 -   Allow restaurants delivery and collection times to be separate.
--   Allow restaurant to have delivery intervals other that 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions).
+-   Allow restaurant to have delivery intervals other than 15 minutes (done via adding delivery_interval option to model and setting interval to self.delivery_interval in class' functions).
 -   Allow restaurant opening times to span over 2 days e.g. 13:00 - 02:00.
--   Implement flexible minimum time before first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
+-   Implement flexible minimum time before the first available delivery slot as different restaurants prepare food at different speeds, and have different delivery schedules.
 -   Allow customers to pre-order with a restaurant if it's not open today.
--   Add prompt to remove everything from bag when food from another restaurant is in the bag.
+-   Add a prompt to remove everything from the bag when food from another restaurant is in the bag.
 -   Allow the user to store a different bag for each restaurant.
 -   Add choices to food modal e.g. select toppings.
 -   Add ability for restaurants to issue discount codes.
 -   Properly integrate vegan and vegetarian options to allow users to see restaurants that serve these diets.
--   Show previous orders on homepage for easy re-ordering.
+-   Show previous orders on the homepage for easy re-ordering.
 -   Use Google Place's Autocomplete for checkout address forms.
--   Refine checkout by skipping checkout address if user has address associated with account and hasn't submitted a new address on the homepage.
--   Add automated order confirmation text message when user successfully submits an order.
+-   Refine checkout by skipping checkout address if the user has an address associated with their account and hasn't submitted a new address on the homepage.
+-   Add automated order confirmation text message when a user successfully submits an order.
 -   Allow sorting within a specific cuisine
 -   Add a minimum delivery threshold
 -   Add an optional delivery threshold for free delivery
 -   Add ASAP to delivery time options
--   Allow a user to proceed with their order if a restaurant closes while the user is in the processing of ordering.
+-   Allow a user to proceed with their order if a restaurant closes while the user is in the process of ordering.
 -   Allow users to edit messages for the restaurant within the bag.
--   Allow users to choose to pay with cash at the door if being delivered, or at the restaurant if collecting.
+-   Allow users to choose to pay with cash at the door if being delivered, or at the restaurant, if collecting.
 
 ## Technologies Used
 
@@ -261,7 +261,7 @@ In a commercial scenario, the owner of the site would generate revenue by taking
     -   GitHub was used to store the project's code after being pushed from Git.
 
 6.  [Django Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
-    -   Allauth was used to create a secure system through which user could safely register for accounts, login, logout and perform other account-related activities.
+    -   Allauth was used to create a secure system through which users could safely register for accounts, log in, log out and perform other account-related activities.
 
 7.  [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/#)
     -   Crispy Forms was used to easily control the rendering behaviour of the forms used on the website.
@@ -303,7 +303,7 @@ In a commercial scenario, the owner of the site would generate revenue by taking
 
 -   The fields for each record can be found in the above image, or at [this link](https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/media/tuckin_ms4_dbms_diagram.png).
 
--   Conceptually speaking, the database can be split in two conjoined sections: the order section and the restaurant section. The diagram above displays the order section in top half and the restaurant section in the lower half.
+-   Conceptually speaking, the database can be split into two conjoined sections: the order section and the restaurant section. The diagram above displays the order section in the top half and the restaurant section in the lower half.
 
 ### Django Secret Key Exposure
 
@@ -311,11 +311,11 @@ When starting off this project, I followed along with the course lectures to ens
 
 ### Google Maps Places API Autocomplete Limitations
 
-While implementing the Autocomplete feature from Google's Maps API, I discovered that while you could restrict results to a specific country or between a set of co-ordinates, Google would [not allow you to restrict results to a specific city](https://issuetracker.google.com/issues/35822067). As a workaround, I tried using two pairs of co-ordinates that surrounded the entire county of Dublin. However, this proved unworkable as, firstly, since Dublin's boundaries do not form a quadrilateral, the co-ordinates that would create the boundary would either include places outside of Dublin, or exclude areas within the county. Secondly, when setting a strict boundary in the Places API, you are restricted only to road and area names, with no house addresses being being selectable.
+While implementing the Autocomplete feature from Google's Maps API, I discovered that while you could restrict results to a specific country or between a set of co-ordinates, Google would [not allow you to restrict results to a specific city](https://issuetracker.google.com/issues/35822067). As a workaround, I tried using two pairs of co-ordinates that surrounded the entire county of Dublin. However, this proved unworkable as, firstly, since Dublin's boundaries do not form a quadrilateral, the co-ordinates that would create the boundary would either include places outside of Dublin, or exclude areas within the county. Secondly, when setting a strict boundary in the Places API, you are restricted only to road and area names, with no house addresses being selectable.
 
 The most effective solution to this is to use a combination of Google's Maps APIs (Places, GeoCoding, Geolocation, Distance Matrix) in conjunction with one another to convert a given co-ordinate into standard address format, and to then to use the aforementioned services to check if that address is within Dublin. This method would provide extra validation of the inputted address through cross-checking it through multiple different Google services, leading to higher accuracy, better results and tighter security. If this were a commercial project, this would be the way in which I would solve this problem. However, as this is a college project and using these APIs together could easily incur hefty monthly costs, I chose to use the free Google Maps Places API as well as native form validation via HTML. The word 'Dublin' was also placed into 3 different places on the homepage (including the website logo) so that users would know before typing that the service is restricted to Dublin. 
 
-Biases were also used in the API settings, so that the API would search within Dublin first, but it ultimately searches all counties of Ireland if not enough results are found within Dublin.
+Biases were also used in the API settings so that the API would search within Dublin first, but it ultimately searches all counties of Ireland if not enough results are found within Dublin.
 
 The 'findPlaceFromQuery' method was used to find a place within the Google Maps Places' database using the selected autocomplete address. Then, if the address contained the string 'Dublin' or 'Baile Átha Cliath' (for Irish-speaking users), the form can be submitted. Otherwise, the submit button becomes disabled and an error message displays informing the user of the corrective action. While this method is more simple than the ideal method, it is effective and appropriate for the use case of this college project.
 
@@ -329,7 +329,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
 -    Custom template filters were written to aid in the creation and rendering of the star rating system for restaurants. These can be found in 'restaurants/templatetags/restaurants_extra.py' or at [this link](https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/restaurants/templatetags/restaurants_extra.py).
 
--    Django's built in 'json_script' template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
+-    Django's built-in 'json_script' template tag was used to [prevent code injection](https://adamj.eu/tech/2020/02/18/safely-including-data-for-javascript-in-a-django-template/) via some of Django's vulnerabilities.
 
 ### Delivery Time Timezone Issues
 
@@ -341,7 +341,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
 -   A note for the CodeInstitute examiner: Some restaurants may not be open depending on what time of day the examiner is grading this project. Time is set to UTC.
 
--   After completing circa 60% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less-crucial functionality and changes to be documented. However, VSCode recommends to keep commit messages to no more than 50 characters which I adhered to most of the time throughout this project.
+-   After completing circa 60% of the project, I received feedback regarding my previous project stating that it would be useful to include more detail in my commit messages. I integrated this feedback into this project as soon as I received it by increasing the frequency at which I made commits. This allowed for lower-level and less crucial functionality and changes to be documented. However, VSCode recommends keeping commit messages to no more than 50 characters which I adhered to most of the time throughout this project.
 
 -   For customers, the user field in the CustomerProfile model was named 'customer' instead of 'user' to prevent potential confusion in the future, when admin accounts for the restaurants themselves are to be set up, allowing them to manage their menu and details.
 
@@ -349,7 +349,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
 -   CSRF tokens were removed while testing to avoid conflict with Cypress not providing the CSRF tokens needed for Django's security.
 
--   When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag. Therefore, if a user makes changes in their bag but then goes back to the restaurants page or closes their browser tab, their changes are not saved. Only by proceeding with checkout will their changes to a food's quantity be saved. Deleting a food item does not have this restriction.
+-   When changing a food's quantity in the bag, it is presumed that if the user does not continue with checkout, that they do not want to save the changes they made to any quantities in their bag. Therefore, if a user makes changes in their bag but then goes back to the restaurant's page or closes their browser tab, their changes are not saved. Only by proceeding with checkout will their changes to a food's quantity be saved. Deleting a food item does not have this restriction.
 
 ### Notable Issues Encountered
 
@@ -359,7 +359,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
 -   While there are measures in place throughout the project to ensure the validity of the address inputted by the user, a user can still place an order with a false or disingenuous address. In a production website, full address verification provided by the Google Places API services that are behind a paywall would be used to prevent this from happening.
 
--   In rare circumstances, a restaurant with a 5 star rating displayed 6 stars, and a restaurant with a 3 star rating might only display 4 stars. The cause of these issues was eventually found to an error in the rendering logic of the stars. More details can be found in the commit messages regarding this issue.
+-   In rare circumstances, a restaurant with a 5-star rating displayed 6 stars, and a restaurant with a 3-star rating might only display 4 stars. The cause of these issues was eventually found to be an error in the rendering logic of the stars. More details can be found in the commit messages regarding this issue.
 
 ## Testing
 
@@ -369,7 +369,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
     -   MagicPython was used to format all Python code to [PEP 8](https://pep8.org/) standard
 
 -   [JSHINT](https://jshint.com/)
-    -   JSHint was used to check for JavaScript errors. However, due to the widespread use of jQuery in the project, it's usefulness was limited.
+    -   JSHint was used to check for JavaScript errors. However, due to the widespread use of jQuery in the project, its usefulness was limited.
 
 -   [Webformatter JavaScript](https://webformatter.com/javascript)
     -   Webformatter was used for JavaScript formatting.
@@ -445,7 +445,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/navbar.PNG?raw=true">
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_create_account_or_log_in.PNG?raw=true">
 
-    2.  Easily login and logout.
+    2.  Easily log in and log out.
 
         -   If a user is not logged into their account, a login button is displayed in the nav.
         -   If a user is logged into their account, a logout button is displayed in the nav.
@@ -481,7 +481,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/cuisine_refine.PNG">
 
-        -   Not all cuisines contain restaurants at this time, but are there for display purposes only.
+        -   Not all cuisines contain restaurants at this time but are there for display purposes only.
 
     2.  Sort restaurants by rating and delivery cost.
 
@@ -497,7 +497,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
     4.  Search for a restaurant either by name, cuisine, food or food description.
 
-        -   The navigation bar contains a search box that users can use to find a restaurant they like quickly, or to find restaurants that contain food related to the search query.
+        -   The navigation bar contains a search box that users can use to find a restaurant they like quickly, or to find restaurants that contain food-related to the search query.
 
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/searchbar.PNG?raw=true">
 
@@ -507,7 +507,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
     1.  Add food to my bag with a message for the restaurant.
 
-        -   Users can add to food to their bag with a message for the restaurant via the popup modal that appears when selecting a food from the menu.
+        -   Users can add food to their bag with a message for the restaurant via the popup modal that appears when selecting food from the menu.
         
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/add_food_to_bag.PNG?raw=true">
 
@@ -519,11 +519,11 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         -   When adding a menu item to the bag, users can adjust the quantity of the item up to 15 and no less than 1.
 
-        -   While users can currently add more than 15 of a particular food item to their bag by adding the food multiple times, the bag page will not allow the user to proceed unless the quantity of each food item is less that or equal to 15.
+        -   While users can currently add more than 15 of a particular food item to their bag by adding the food multiple times, the bag page will not allow the user to proceed unless the quantity of each food item is less than or equal to 15.
 
     3.  View items in my bag to be ordered.
 
-        -   The bag icon in the navbar bring users to the bag page where they can preview their order and make changes to food items and quantities if necessary.
+        -   The bag icon in the navbar brings users to the bag page where they can preview their order and make changes to food items and quantities if necessary.
         
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/nav_header.PNG?raw=true">
 
@@ -541,7 +541,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_delivery_address.PNG?raw=true">
 
-        -   Users have a second chance to verify/change their address upon reaching the payment page, in order to prevent orders being sent to the wrong address.
+        -   Users have a second chance to verify/change their address upon reaching the payment page, in order to prevent orders from being sent to the wrong address.
         
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_payment_form.PNG?raw=true">
 
@@ -553,7 +553,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/checkout_delivery_time.PNG?raw=true">
         
-        -   Currently the default delivery times are every 15 minutes on the hour from when a restaurant opens.
+        -   Currently, the default delivery times are every 15 minutes on the hour from when a restaurant opens.
 
     7.  Simply and quickly enter my card details for payment.
 
@@ -561,7 +561,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
     8.  Feel my information and payment is secure.
 
-        -   Stripe is a well trusted payment method that uses state of the art security to process payments, providing peace of mind to both the buyer and the seller.
+        -   Stripe is a well-trusted payment method that uses state of the art security to process payments, providing peace of mind to both the buyer and the seller.
 
     9.  Reach out for help if something goes wrong.
 
@@ -573,7 +573,7 @@ As this is an MVP, all restaurants are presumed to deliver all over Dublin. In a
 
     10. View an order confirmation upon checking out successfully.
 
-        -   Upon successfully completing an order, users are greeted with a confirmation page where they can rate the restaurant, view an order summary and add the contents of the order to bag if they wish to place the same order again.
+        -   Upon successfully completing an order, users are greeted with a confirmation page where they can rate the restaurant, view an order summary and add the contents of the order to their now empty bag if they wish to place the same order again.
 
         <img src="https://github.com/RichardByrne95/CI-MS4-TuckIn/blob/main/readme_images/order_confirmation.PNG?raw=true">
 
@@ -623,7 +623,7 @@ npm install cypress --save-dev
 ```javascript
 npx cypress open
 ```
-This command added a cypress folder to the project, and opened the testing software.
+This command added a cypress folder to the project and opened the testing software.
 
 3.  Inside the cypress folder, a new file was created within the 'integration' folder called 'djangoAppNameSpec.js'.
 
@@ -643,7 +643,7 @@ This command added a cypress folder to the project, and opened the testing softw
 
 ### Manual Accessibility Testing
 
--   Semantic markup is used to convey the document structure. Some tags, like 'summary', were not used due to lack of support on older browsers.
+-   Semantic markup is used to convey the document structure. Some tags, like 'summary', were not used due to a lack of support on older browsers.
 -   Information is presented and categorised in terms of its priority.
 -   All images contain 'alt' text. Aria labels are used when the 'img' 'alt' attribute is not available.
 -   Despite following Google's Web Accessibility Guidelines for contrast, Google Chrome's Lighthouse marked a small number of valid elements as invalid. Each element has been manually checked by the developer using Google's own up-to-date documentation. For example, when a user has added a food item to their bag, a button appears in the bag to allow the user to continue to checkout. The text inside this button on desktop is 1.4rem (14px) in size and is bold. The button text on mobile is 1.8rem (18px). Both of these meet the accessibility guidelines set out [here](https://web.dev/color-contrast/?utm_source=lighthouse&utm_medium=devtools), but Google Lighthouse still displays them as errors. My suspicion is that it is due to the fact that Google is looking for font sizes in pixels, but the project uses rem units. Nonetheless, the project still meets all standard accessibility guidelines.
@@ -651,12 +651,12 @@ This command added a cypress folder to the project, and opened the testing softw
 ### Manual Usability Testing
 
 -   All nav links bring you to the correct page.
--   The mobile nav bar icon opens the navbar as expected.
+-   The mobile navbar icon opens the navbar as expected.
 -   User Navigation is unambiguous.
--   While the 'Distinction' criteria state that 'users who direct to a non-existent page or resource are redirected back to the main page', it was deemed more appropriate to either display an error message on the same page if submitting a form, or redirecting the to a different page such as the bag, and displaying a message to the user about the error. This way the user is given explicit direction and understands that something went wrong.
+-   While the 'Distinction' criteria state that 'users who direct to a non-existent page or resource are redirected back to the main page', it was deemed more appropriate to either display an error message on the same page if submitting a form, or redirecting them to a different page such as the bag, and displaying a message to the user about the error. This way the user is given explicit direction and understands that something went wrong.
 -   Messages are displayed at the top of the website indicating user progress and feedback where appropriate.
--   The Stripe element on the payment page triggers an accessibility error due to a hidden element being focusable. This is unavoidable as Stripe control the code inserted onto the page, and does not therefore contribute to the grading of the project.
--   As this is a proof on concept project, the Stripe API test keys were kept in favour of the live keys, as no actual live transactions will be taking place.
+-   The Stripe element on the payment page triggers an accessibility error due to a hidden element being focusable. This is unavoidable as Stripe control the code inserted onto the page and does not, therefore, contribute to the grading of the project.
+-   As this is a proof of concept project, the Stripe API test keys were kept in favour of the live keys, as no actual live transactions will be taking place.
 
 ### Manual Database Testing
 
@@ -681,10 +681,10 @@ This command added a cypress folder to the project, and opened the testing softw
 
 ### Manual Security Testing
 
--   Unauthorised access to secure pages returns the user to the sign in page, or to another relevant page.
--   Incorrect login details returns an user-friendly error, and reloads the page.
--   Database code injection by search bar is prevented against by using regular expressions and by using the '.isalspha()' method in Python.
-Website uses HTTPS.
+-   Unauthorised access to secure pages returns the user to the sign-in page, or to another relevant page.
+-   Incorrect login details returns a user-friendly error and reloads the page.
+-   Database code injection by search bar is prevented by using regular expressions and by using the '.isalspha()' method in Python.
+The website would also HTTPS in a commerical scenario.
 -   Users can only access data that is either public or in their account.
 -   Users can reset their password if they forget it via the login page.
 -   All data, except order numbers, order dates, order totals and stripe payment ids associated with orders, is editable via the Django admin of the site.
@@ -708,7 +708,7 @@ Website uses HTTPS.
 -   Try/except syntax is used to redirect the user if anything goes wrong.
 -   A large amount of testing was done to ensure that all pages were linking correctly.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
--   All HTML was formatted using VSCode's built in formatters.
+-   All HTML was formatted using VSCode's built-in formatters.
 
 ## Deployment
 
@@ -720,29 +720,29 @@ This project was developed using Visual Studio Code, Git and GitHub using the fo
 
 1.  Logged into Github Desktop App
 2.  A new repository called 'CI-MS4-TuckIn' was created locally for this project.
-3.  This repository was initalised with a blank README.md file.
+3.  This repository was initialised with a blank README.md file.
 4.  This repository was then published from Github Desktop to the remote Github server using 'Ctrl + P'.
 5.  The project folder was opened in Visual Studio Code where the initial files were created.
 6.  A new terminal in Visual Studio Code (Ctrl + Shift + ') was opened to begin the git commit process.
 7.  Files were added to the local git staging area using 'git add <'filename'>' and 'git add *' where applicable.
 8.  Local commits were made using the 'git commit -m <'message'>' command.
 9.  These local commits were then periodically pushed to the remote Github server using the 'git push' command.
-10. A local server was run throughout the development process using ```python manage.py runserver``` to test changes made in real time to the HTML pages.
+10. A local server was run throughout the development process using ```python manage.py runserver``` to test changes made in real-time to the HTML pages.
 
 ### Heroku Deployment
 
 This project was deployed to Heroku using the following steps:
 
 1.  A new app was created on Heroku for the project, with the region set as Europe.
-2.  Once the app was created, the Heroku Postgres addon was installed in the Heroku resources tab.
+2.  Once the app was created, the Heroku Postgres add-on was installed in the Heroku resources tab.
 3.  A backup of the database was created in a file called 'db.json' using the command (this allows the database to be imported into the new Postgres database):
     ```python
     python -m django dumpdata exclude auth.permission --exclude contenttypes > db.json'
     ```
-4.  'dj_database_url' was installed using pip in order to direct the database url to Heroku.
+4.  'dj_database_url' was installed using pip in order to direct the database URL to Heroku.
 5.  'psychopg2-binary' was also installed using pip to facilitate the adaptation of the Postgres database by this Python application.
 6.  'dj_database_url' was imported into the project's 'settings.py' and the default 'DATABASES' variable value was replaced with "{'default': dj_database_url.parse()}".
-7.  The 'Config Vars' were revealed in the Heroku app's Settings tab and the database url was copied and pasted as a string into the brackets of the parse method from the previous step.
+7.  The 'Config Vars' were revealed in the Heroku app's Settings tab and the database URL was copied and pasted as a string into the brackets of the parse method from the previous step.
 8.  The following command was then used to load the database backup created in step 3 into the new Postgres database:
     ```python
     python -m django loaddata db.json
@@ -788,7 +788,7 @@ This project was deployed to Heroku using the following steps:
 3. The policy's 'Resource' key was changed to a list containing two strings, one being the S3 bucket's ARN, and the other being the ARN with '/*' at the end. This allows access to both the bucket and the content of the bucket.
 4. The policy was named 'HEROKU-APP-NAME-policy' and a brief description of the policy was added.
 5. The policy was then attached to the group created a few steps ago.
-6. Lastly, a user was created called 'HEROKU-APP-NAME-staticfiles-user', programmatic access was given, and then user was then added to the group.
+6. Lastly, a user was created called 'HEROKU-APP-NAME-staticfiles-user', programmatic access was given, and then the user was added to the group.
 7. Once the user was created, the .csv file was downloaded that contained the user's Access key and Secret Access key.
 
 ### Connecting Django to AWS
@@ -813,7 +813,7 @@ This project was deployed to Heroku using the following steps:
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
     ```
-9.  In order to override and explicitly set the urls for static and media files, the following variables were created in 'settings.py':
+9.  In order to override and explicitly set the URLs for static and media files, the following variables were created in 'settings.py':
     ```python
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
@@ -829,7 +829,7 @@ This project was deployed to Heroku using the following steps:
 
 ### Using Django and Gmail to Send Emails
 
-In order to send emails to users who either set up an account or place an order, a simple SMTP server was setup in gmail using the developer's chosen email address via the following steps:
+In order to send emails to users who either set up an account or place an order, a simple SMTP server was set up in Gmail using the developer's chosen email address via the following steps:
 
 1.  In Gmail, 'Settings' was opened, then the 'Accounts and Imports' section was selected, and then 'Other Google Account settings' was clicked.
 2.  2-step verification was enabled under the 'Security' tab.
@@ -858,7 +858,7 @@ In order to send emails to users who either set up an account or place an order,
 
 ## Credits
 
-If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the projects needs, then the link above the code will be preceded by 'Referenced...'.
+If code was directly copied and pasted from another source and left unchanged, then the link to the source will be above that code. However, if a source was referenced but significantly customised to the project's needs, then the link above the code will be preceded by 'Referenced...'.
 
 ### Content
 
@@ -918,13 +918,13 @@ If code was directly copied and pasted from another source and left unchanged, t
 
 ### Code
 
--   [Code Institute - Full Stack Software Development Course](https://codeinstitute.net/): Coding skills learned in this course allowed the developer to create all the pages of this web-app.
+-   [Code Institute - Full Stack Software Development Course](https://codeinstitute.net/): Coding skills learned in this course allowed the developer to create all the pages of this web app.
 -   [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web): Referenced for best practices for lists and images, as well as the smooth scrolling functionality.
 
 ### Acknowledgements
 
 -   My mentor, Spencer Bariball, for continuous helpful feedback and encouragement.
--   Code Institute for giving me skills to create this project.
+-   Code Institute for giving me the skills to create this project.
 
 ### Support
 
