@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from restaurants.models import Cuisine
-from django.http.response import HttpResponse
+from django.http.response import Http404, HttpResponse
 
 
 def home(request):
@@ -11,5 +11,5 @@ def home(request):
             'dynamic_navbar': True,
         }
         return render(request, 'home/index.html', context)
-    except Exception as e:
-        return HttpResponse(request, 'Error loading homepage. Please contact support@tuckin.com for assistance.')
+    except Exception:
+        raise Http404(request, 'Error loading homepage. Please contact support@tuckin.com for assistance.')
