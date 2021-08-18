@@ -58,16 +58,12 @@
 /* ----------------------------------------- Cookies Policy */
 
 .background-image {
-    /* max-height: 30vh; */
-    /* min-height: 20.5rem; */
     height: 30rem;
 }
 
 .shadow-overlay {
     position: absolute;
     top: 0;
-    /* max-height: 30vh; */
-    /* min-height: 20.5rem; */
     background-color: rgba(0, 0, 0, .4);
     width: 100%;
     height: 30rem;
@@ -152,14 +148,10 @@ h2 {
         font-size: 2.8rem;
     }
     .background-image {
-        /* max-height: 40vh; */
-        /* min-height: 28rem; */
         height: 40rem;
     }
     .shadow-overlay {
         height: 40rem;
-        /* max-height: 40vh; */
-        /* min-height: 28rem; */
     }
     .form-col-left {
         padding-right: 3rem;
@@ -179,14 +171,6 @@ h2 {
 @media screen and (min-width: 1200px) {
     main {
         padding-bottom: 15rem;
-    }
-    .background-image {
-        /* max-height: 50vh; */
-        height: 50rem;
-    }
-    .shadow-overlay {
-        /* max-height: 50vh; */
-        height: 50rem;
     }
     #list-your-restaurant-heading {
         top: 18%;
