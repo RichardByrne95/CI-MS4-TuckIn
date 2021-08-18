@@ -7,10 +7,10 @@ describe('Restaurant Menu Tests', () => {
 
     // Add to Cart Tests
     it('shows and hides add to cart modal based on user interaction', () => {
-        // Show
+        // Show - click on food
         cy.get('a.food-item-card-body').first().click({ force: true });
         cy.get('#food-item-modal').should('have.class', 'show').and('have.css', 'display', 'block');
-        // Hide - x
+        // Hide - x button
         cy.get('button.btn-close').wait(300).click({ force: true });
         cy.get('#food-item-modal').should('not.have.class', 'show').and('have.css', 'display', 'none');
         // Hide - click outside modal
