@@ -288,6 +288,9 @@ As a contemporary food ordering platform, TuckIn would have to include everythin
 15. [Cookie/Privacy Policy Generator](https://www.cookiepolicygenerator.com/) 
     -   Cookie Policy Generator was used to generate cookie and privacy policies.
 
+16. [RegExr](https://regexr.com/)
+    -   RegExr was used to test and generate regular expressions for use in field validation.
+
 ## Development
 
 ### Database Schema
@@ -683,6 +686,7 @@ Website uses HTTPS.
 -   Users can only access data that is either public or in their account.
 -   Users can reset their password if they forget it via the login page.
 -   All data, except order numbers, order dates, order totals and stripe payment ids associated with orders, is editable via the Django admin of the site.
+-   Some regular expressions had to be removed as, despite them being in the correct format, the local development server repeatedly marked valid fields as invalid.
 
 ### Performance Testing
 
