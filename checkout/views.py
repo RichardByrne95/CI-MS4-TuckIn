@@ -279,7 +279,7 @@ def checkout_payment(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        # error if stripe public key has not been set in environment variables
+        # Error if stripe public key has not been set in environment variables
         if not settings.STRIPE_PUBLIC_KEY:
             messages.error(request, 'Stripe pkey is missing.')
 

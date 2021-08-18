@@ -139,28 +139,26 @@ def all_restaurants(request):
 
 
 def restaurant_menu(request, restaurant_id):
-    # try:
-    restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
-    menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
+    try:
+        restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+        menu_sections = MenuSection.objects.all().filter(restaurant=restaurant)
 
-    food_items = []
-    for section in menu_sections:
-        food_items += FoodItem.objects.all().filter(menu_section=section)
+        food_items = []
+        for section in menu_sections:
+            food_items += FoodItem.objects.all().filter(menu_section=section)
 
-    print(food_items)
+        context = {
+            'restaurant': restaurant,
+            'menu_sections': menu_sections,
+            'food_items': food_items,
+            'dynamic_navbar': True,
+        }
+        return render(request, 'restaurants/restaurant_menu.html', context)
 
-    context = {
-        'restaurant': restaurant,
-        'menu_sections': menu_sections,
-        'food_items': food_items,
-        'dynamic_navbar': True,
-    }
-    return render(request, 'restaurants/restaurant_menu.html', context)
-
-    # except Exception:
-    #     messages.error(
-    #         request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
-    #     return redirect(reverse('home'))
+    except Exception:
+        messages.error(
+            request, 'Oops! Looks like an error occurred. Please try again. If this error persists, please contact us via the help section.')
+        return redirect(reverse('restaurants'))
 
 
 def delete_restaurant(request, restaurant_id):

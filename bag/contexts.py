@@ -44,7 +44,6 @@ def bag_contents(request):
     for food in bag_contents:
         food_item_count += food['quantity']
 
-    # food_item_count = len(bag_contents) if bag_contents else 0
     grand_total = order_total + delivery_cost
 
     context = {
