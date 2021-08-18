@@ -12,6 +12,8 @@ The idea of building a food ordering application for the MS4 project came about 
 
 As a contemporary food ordering platform, TuckIn would have to include everything from cuisines to restaurants, menus to individual foods, user accounts, a secure e-commerce checkout, opening times for each restaurant and much more. It would also require a significant amount of planning of the customer's journey through the application, getting them from homepage to order confirmation. Below, you will find multiple stages of planning and execution that was required to complete this project. As the project is so large for one novice developer, many features that were deemed unessential were added to the roadmap for development after the course has been completed.
 
+In a commercial scenario, the owner of the site would generate revenue by taking a small commission from each order placed.
+
 ## User Experience (UX)
 
 ### Project Goals
