@@ -32,6 +32,7 @@
             <div class="row no-gutters">
                 <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-0">
                     <form action="{% url 'list_your_restaurant' %}" method="POST" class="footer-link-form">
+                        {% csrf_token %}
                         <div class="row list-restaurant-fields text-center">
                             <div class="col-12 col-md-6 no-gutters form-col-left">
                                 <label for="restaurant-name">Restaurant Name *</label>
@@ -40,28 +41,27 @@
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-right">
                                 <label for="contact-name">Your Name *</label>
-                                <input type="text" id="contact-name" name="contact-name" minlength="3" maxlength="50"
-                                    pattern="[a-zA-Z ]" required>
+                                <input type="text" id="contact-name" name="contact-name" minlength="3" maxlength="50" required>
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-left">
                                 <label for="restaurant-phone">Restaurant Phone *</label>
                                 <input type="text" id="restaurant-phone" name="restaurant-phone" minlength="7"
-                                    maxlength="20" pattern="[a-zA-Z1-9&+ ]" required>
+                                    maxlength="20" pattern="[1-9+- ]" required>
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-right">
                                 <label for="contact-number">Your Phone *</label>
                                 <input type="tel" id="contact-number" name="contact-number" minlength="7" maxlength="20"
-                                    pattern="[a-zA-Z1-9&+ ]" required>
+                                    pattern="[1-9+- ]" required>
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-left">
                                 <label for="restaurant-address-1">Restaurant Address 1 *</label>
                                 <input type="text" id="restaurant-address-1" name="restaurant-address-1" minlength="3"
-                                    maxlength="50" pattern="[a-zA-Z1-9&+ ]" required>
+                                    maxlength="50" required>
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-right">
                                 <label for="restaurant-address-2">Restaurant Address 2</label>
                                 <input type="text" name="restaurant-address-2" id="restaurant-address-2"
-                                    name="restaurant-address-1" minlength="3" maxlength="50" pattern="[a-zA-Z1-9&+ ]">
+                                    name="restaurant-address-1" minlength="3" maxlength="50">
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-left">
                                 <label for="restaurant-cuisine">Cuisine *</label>
@@ -75,8 +75,7 @@
                             </div>
                             <div class="col-12 col-md-6 no-gutters form-col-right">
                                 <label for="postcode">Postcode</label>
-                                <input type="text" name="postcode" id="postcode" minlength="7" maxlength="8"
-                                    pattern="[a-zA-Z1-9 ]">
+                                <input type="text" name="postcode" id="postcode" minlength="7" maxlength="8">
                             </div>
                             <button type="submit" class="footer-links-submit-button">Submit</button>
                         </div>
