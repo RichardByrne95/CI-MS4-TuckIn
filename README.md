@@ -688,12 +688,12 @@ Website uses HTTPS.
 
 -   Lighthouse on Google Chrome Dev Tools gave the following scores on the deployed version hosted by Heroku and AWS:
 
-    -   Performance: 92
-    -   Accessibility: 98
-    -   Best Practices: 93
+    -   Performance: 96
+    -   Accessibility: 96
+    -   Best Practices: 100
     -   SEO: 90
 
-    Points were mostly deducted due to 3rd party libraries causing slowdowns.
+    Points were mostly deducted due to 3rd party libraries causing slowdowns. However, accessibility points were also deducted due to Chrome incorrectly marking some texts as not having a sufficient contrast ratio. [Google's own accessibility guidelines](https://web.dev/color-contrast/?utm_source=lighthouse&utm_medium=devtools) state that text with a font size over 18px or 14px bold only needs a contrast ratio of 3:1 instead of the regular 4.5:1. However, Chrome did not seem to recognise this and marked it as an error.
 
 ### Further Testing
 
