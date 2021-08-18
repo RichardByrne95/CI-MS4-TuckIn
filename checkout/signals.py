@@ -1,6 +1,6 @@
-from django.db.models.signals import post_delete, post_save
-from django.dispatch import receiver
 from .models import OrderLineItem
+from django.dispatch import receiver
+from django.db.models.signals import post_delete, post_save
 
 
 @receiver(post_save, sender=OrderLineItem)

@@ -1,12 +1,12 @@
 import json
 import time
-from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404
-from django.template.loader import render_to_string
 from django.conf import settings
 from django.http import HttpResponse
+from django.core.mail import send_mail
 from restaurants.models import FoodItem
+from django.shortcuts import get_object_or_404
 from checkout.models import Order, OrderLineItem
+from django.template.loader import render_to_string
 
 
 # Class to handle the different stripe webhooks

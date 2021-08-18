@@ -1,18 +1,17 @@
 import json
-from django.http.response import HttpResponseBadRequest
 import stripe
 import datetime
+from .forms import OrderForm
+from django.urls import reverse
+from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
-from django.conf import settings
 from django.http import HttpResponse
-from .forms import OrderForm
+from bag.contexts import bag_contents
 from .models import Order, OrderLineItem
 from profiles.models import CustomerProfile
 from profiles.forms import CustomerProfileForm
 from restaurants.models import FoodItem, Restaurant
-from django.urls import reverse
-from bag.contexts import bag_contents
 from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404, redirect, render
 

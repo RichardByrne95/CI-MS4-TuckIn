@@ -1,11 +1,10 @@
 import uuid
 from django.db import models
 from django.db.models import Sum
-from django.db.models.deletion import CASCADE, RESTRICT
 from profiles.models import CustomerProfile
 from restaurants.models import Restaurant, FoodItem
-from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
+from django.db.models.deletion import CASCADE, RESTRICT
 
 
 class Order(models.Model):

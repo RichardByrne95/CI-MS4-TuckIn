@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from restaurants.models import Cuisine
-from django.http.response import Http404, HttpResponse
+from django.http.response import Http404
 
 
 def home(request):

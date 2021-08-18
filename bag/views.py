@@ -1,10 +1,10 @@
 import json
+from checkout.models import Order
 from django.contrib import messages
 from django.urls.base import reverse
-from django.shortcuts import get_object_or_404, redirect, render
 from django.http.response import HttpResponse
-from checkout.models import Order
 from restaurants.models import FoodItem, MenuSection, Restaurant
+from django.shortcuts import get_object_or_404, redirect, render
 
 
 def view_bag(request):
